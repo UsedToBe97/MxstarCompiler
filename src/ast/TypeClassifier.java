@@ -1,4 +1,4 @@
-import ast.*;
+package ast;
 import parser.MxstarParser;
 import utils.Position;
 

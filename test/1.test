@@ -1,0 +1,8 @@
+int a;
+bool b = true;
+string c;
+int main() {
+	string a;
+	string b;
+	bool c;
+}
