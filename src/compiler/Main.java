@@ -4,17 +4,15 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
-import parser.MxstarBaseVisitor;
 import parser.MxstarLexer;
 import parser.MxstarParser;
+import utils.ScopeTree;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
 
 
-
+/*
 class atom{
     atom(){}
     Map<String, String> scope = new HashMap<String, String>();
@@ -64,8 +62,6 @@ class MyVisitor extends MxstarBaseVisitor<atom>
     {
         return visit(ctx.block());
     }
-    /* public atom visitParams(MxstarParser.ParamsContext ctx){}
-     public atom visitParam(MxstarParser.ParamContext ctx){}*/
     public atom visitBlock(MxstarParser.BlockContext ctx)
     {
         atom rt = new atom();
@@ -77,7 +73,7 @@ class MyVisitor extends MxstarBaseVisitor<atom>
         }
         return rt;
     }
-    /*public atom visitStmt(MxstarParser.StmtContext ctx)
+    public atom visitStmt(MxstarParser.StmtContext ctx)
     {
         atom rt = new atom();
         //if (ctx.block() != null) rt.scope.putAll((visit(ctx.block())).scope);
@@ -92,9 +88,9 @@ class MyVisitor extends MxstarBaseVisitor<atom>
         }
         if (ctx.varDef() != null) rt.scope.putAll(visit(ctx.varDef()).scope);
         return rt;
-    }*/
+    }
     // public atom visitExprs(MxstarParser.ExprsContext ctx){}
-    /*public atom visitExpr(MxstarParser.ExprContext ctx)
+    public atom visitExpr(MxstarParser.ExprContext ctx)
     {
         atom rt = new atom();
         for (int i = 0;i < ctx.expr().size();++i)
@@ -103,12 +99,13 @@ class MyVisitor extends MxstarBaseVisitor<atom>
         }
 
         return rt;
-    }*/
+    }
     // public atom visitNews(MxstarParser.NewsContext ctx){}
 }
-
+*/
 
 public class Main {
+    public static ScopeTree st = new ScopeTree();
     public static void main(String[] args) throws Exception {
         String inputFile = "D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/1.test";
         InputStream is = new FileInputStream(inputFile);
@@ -122,7 +119,7 @@ public class Main {
         //再使用 tokens 构造语法分析器 parser,至此已经完成词法分析和语法分析的准备工作
         MxstarParser parser = new MxstarParser(tokens);
         ParseTree tree = parser.prog();
-        MyVisitor AST = new MyVisitor();
+        AstBuilder AST = new AstBuilder();
         AST.visit(tree);
 
         //System.out.println(tree.toStringTree(parser));

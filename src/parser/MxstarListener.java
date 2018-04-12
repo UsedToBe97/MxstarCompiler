@@ -18,6 +18,16 @@ public interface MxstarListener extends ParseTreeListener {
 	 */
 	void exitProg(MxstarParser.ProgContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MxstarParser#def}.
+	 * @param ctx the parse tree
+	 */
+	void enterDef(MxstarParser.DefContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MxstarParser#def}.
+	 * @param ctx the parse tree
+	 */
+	void exitDef(MxstarParser.DefContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link MxstarParser#classDef}.
 	 * @param ctx the parse tree
 	 */

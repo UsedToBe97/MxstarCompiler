@@ -1,7 +1,11 @@
 grammar Mxstar;
 
 prog:
-    (classDef | funcDef | varDef)* EOF
+    def* EOF
+;
+
+def:
+    (classDef | funcDef | varDef)
 ;
 
 classDef:
