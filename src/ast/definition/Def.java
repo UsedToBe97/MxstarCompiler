@@ -1,8 +1,8 @@
-package ast;
+package ast.definition;
 
 import utils.*;
 
-public class Type{
+public class Def{
     public Position pos;
     public Position getpos() {
         return pos;

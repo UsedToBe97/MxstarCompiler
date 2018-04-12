@@ -36,8 +36,11 @@ stmt:
 ;
 
 type:
-    ((Identifier | 'int' | 'bool' | 'string') ('[]')*)
-    | 'void'
+    (baseType brackets)
+;
+
+baseType:
+    (Identifier | 'int' | 'bool' | 'string' | 'void')
 ;
 
 expr:
@@ -47,7 +50,7 @@ expr:
     | Identifier '(' exprList? ')'                                     # FuncExpr
     | expr '.' expr                                                    # MemberExpr
     | expr ('[' expr ']')+                                             # ArrayExpr
-    | 'new' (Identifier | 'int'| 'string') ('[' expr ']')* ('[]')*     # NewExpr
+    | 'new' (Identifier | 'int'| 'string') ('[' expr ']')* brackets    # NewExpr
     | ('+' | '-') expr                                                 # SignExpr
     | expr ('*' | '/' | '%') expr                                      # BinaryExpr
     | expr ('+' | '-') expr                                            # BinaryExpr
@@ -64,6 +67,10 @@ expr:
 
 exprList:
     expr (',' expr)*
+;
+
+brackets:
+    ('[]')*
 ;
 
 constant:
