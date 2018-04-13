@@ -9,7 +9,11 @@ def:
 ;
 
 classDef:
-    'class' name=Identifier '{' (varDef | funcDef)* '}'
+    'class' name=Identifier '{' inClassDef* '}'
+;
+
+inClassDef:
+    (varDef | funcDef)
 ;
 
 varDef:
@@ -17,7 +21,11 @@ varDef:
 ;
 
 funcDef:
-    type name=Identifier '(' (parameter (',' parameter)*)? ')' block
+    type name=Identifier '(' parameterList ')' block
+;
+
+parameterList:
+    (parameter (',' parameter)*)?
 ;
 
 parameter:
@@ -31,12 +39,14 @@ block:
 stmt:
     expr? ';'                                                          # ExprStmt
     | block                                                            # BlockStmt
-    | 'if' '(' expr ')' (block | stmt) ('else' (block | stmt) )?       # IfStmt
+    | 'if' '(' expr ')' stmt
+           ('else' 'if' '(' expr ')' stmt)* ('else' stmt )?            # IfStmt
     | 'while' '(' expr ')' (block | stmt)                              # WhileStmt
-    | 'for' '(' expr? ';' expr? ';' expr? ')' (block | stmt)           # ForStmt
+    | 'for' '(' first=expr? ';' second=expr? ';' third=expr? ')'
+            (block | stmt)                                             # ForStmt
     | varDef                                                           # VarDefStmt
-    | 'return' expr ';'                                                # ReturnStmat
-    | ('break' | 'continue') ';'                                       # CtrlStmt
+    | 'return' expr? ';'                                               # ReturnStmt
+    | name=('break' | 'continue') ';'                                  # CtrlStmt
 ;
 
 type:

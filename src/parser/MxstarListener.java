@@ -38,6 +38,16 @@ public interface MxstarListener extends ParseTreeListener {
 	 */
 	void exitClassDef(MxstarParser.ClassDefContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MxstarParser#inClassDef}.
+	 * @param ctx the parse tree
+	 */
+	void enterInClassDef(MxstarParser.InClassDefContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MxstarParser#inClassDef}.
+	 * @param ctx the parse tree
+	 */
+	void exitInClassDef(MxstarParser.InClassDefContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link MxstarParser#varDef}.
 	 * @param ctx the parse tree
 	 */
@@ -57,6 +67,16 @@ public interface MxstarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFuncDef(MxstarParser.FuncDefContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MxstarParser#parameterList}.
+	 * @param ctx the parse tree
+	 */
+	void enterParameterList(MxstarParser.ParameterListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MxstarParser#parameterList}.
+	 * @param ctx the parse tree
+	 */
+	void exitParameterList(MxstarParser.ParameterListContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MxstarParser#parameter}.
 	 * @param ctx the parse tree
@@ -150,17 +170,17 @@ public interface MxstarListener extends ParseTreeListener {
 	 */
 	void exitVarDefStmt(MxstarParser.VarDefStmtContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ReturnStmat}
+	 * Enter a parse tree produced by the {@code ReturnStmt}
 	 * labeled alternative in {@link MxstarParser#stmt}.
 	 * @param ctx the parse tree
 	 */
-	void enterReturnStmat(MxstarParser.ReturnStmatContext ctx);
+	void enterReturnStmt(MxstarParser.ReturnStmtContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code ReturnStmat}
+	 * Exit a parse tree produced by the {@code ReturnStmt}
 	 * labeled alternative in {@link MxstarParser#stmt}.
 	 * @param ctx the parse tree
 	 */
-	void exitReturnStmat(MxstarParser.ReturnStmatContext ctx);
+	void exitReturnStmt(MxstarParser.ReturnStmtContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code CtrlStmt}
 	 * labeled alternative in {@link MxstarParser#stmt}.

@@ -29,6 +29,12 @@ public interface MxstarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitClassDef(MxstarParser.ClassDefContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MxstarParser#inClassDef}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInClassDef(MxstarParser.InClassDefContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link MxstarParser#varDef}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -40,6 +46,12 @@ public interface MxstarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFuncDef(MxstarParser.FuncDefContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MxstarParser#parameterList}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParameterList(MxstarParser.ParameterListContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MxstarParser#parameter}.
 	 * @param ctx the parse tree
@@ -95,12 +107,12 @@ public interface MxstarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitVarDefStmt(MxstarParser.VarDefStmtContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code ReturnStmat}
+	 * Visit a parse tree produced by the {@code ReturnStmt}
 	 * labeled alternative in {@link MxstarParser#stmt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitReturnStmat(MxstarParser.ReturnStmatContext ctx);
+	T visitReturnStmt(MxstarParser.ReturnStmtContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code CtrlStmt}
 	 * labeled alternative in {@link MxstarParser#stmt}.

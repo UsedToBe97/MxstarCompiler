@@ -52,6 +52,18 @@ public class MxstarBaseListener implements MxstarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterInClassDef(MxstarParser.InClassDefContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInClassDef(MxstarParser.InClassDefContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterVarDef(MxstarParser.VarDefContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -71,6 +83,18 @@ public class MxstarBaseListener implements MxstarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitFuncDef(MxstarParser.FuncDefContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterParameterList(MxstarParser.ParameterListContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParameterList(MxstarParser.ParameterListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -172,13 +196,13 @@ public class MxstarBaseListener implements MxstarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterReturnStmat(MxstarParser.ReturnStmatContext ctx) { }
+	@Override public void enterReturnStmt(MxstarParser.ReturnStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitReturnStmat(MxstarParser.ReturnStmatContext ctx) { }
+	@Override public void exitReturnStmt(MxstarParser.ReturnStmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
