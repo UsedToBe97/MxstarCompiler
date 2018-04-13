@@ -1,18 +1,12 @@
 package compiler;
 
-import ast.Atom;
-import ast.Root;
-import ast.definition.ClassDef;
-import ast.definition.Def;
-import ast.definition.FuncDef;
-import ast.definition.VarDef;
-import ast.expr.Expr;
+import ast.*;
+import ast.definition.*;
+import ast.expr.*;
 import ast.stmt.*;
 import org.antlr.v4.runtime.ParserRuleContext;
-import parser.MxstarBaseVisitor;
-import parser.MxstarParser;
-import utils.Position;
-import utils.ScopeTree;
+import parser.*;
+import utils.*;
 
 public class AstBuilder extends MxstarBaseVisitor<Atom> {
     public ScopeTree tree = Main.st;
@@ -118,4 +112,99 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
         return null;
     }
 
+    @Override
+    public Atom visitBracketExpr(MxstarParser.BracketExprContext ctx) {
+        return visit(ctx.expr());
+    }
+
+    /*@Override
+    public Atom visitConstantExpr(MxstarParser.ConstantExprContext ctx) {
+        return null;
+    }*/
+
+    @Override
+    public Atom visitIDExpr(MxstarParser.IDExprContext ctx) {
+        return new IDExpr(ctx.Identifier().getText(),
+                new Position(ctx.Identifier().getSymbol()));
+    }
+
+    @Override
+    public Atom visitFuncExpr(MxstarParser.FuncExprContext ctx) {
+        FuncExpr tmp = new FuncExpr(ctx);
+        for (ParserRuleContext child : ctx.exprList().expr()) {
+            tmp.add((Expr)visit(child));
+        }
+        return tmp;
+    }
+
+    @Override
+    public Atom visitMemberExpr(MxstarParser.MemberExprContext ctx) {
+        MemberExpr tmp = new MemberExpr((Expr)visit(ctx.expr()),
+                ctx.Identifier().getText(),
+                new Position(ctx.getStart()));
+        return tmp;
+    }
+
+    @Override
+    public Atom visitMemberFuncExpr(MxstarParser.MemberFuncExprContext ctx) {
+        MemberFuncExpr tmp = new MemberFuncExpr(ctx);
+        tmp.who = (Expr) visit(ctx.expr());
+        if (ctx.exprList() != null) {
+            for (ParserRuleContext child : ctx.exprList().expr()) tmp.add((Expr)visit(child));
+        }
+        return tmp;
+    }
+
+    @Override
+    public Atom visitArrayExpr(MxstarParser.ArrayExprContext ctx) {
+        ArrayExpr tmp = new ArrayExpr((Expr)visit(ctx.expr(0)));
+        int k = 1;
+        while (ctx.expr(k) != null) {
+            tmp.add((Expr)visit(ctx.expr(k)));
+            ++k;
+        }
+        return tmp;
+    }
+
+    @Override
+    public Atom visitNewExpr(MxstarParser.NewExprContext ctx) {
+        NewExpr tmp = new NewExpr(ctx.baseType());
+        int d1 = 0, d2 = 0;
+        for (ParserRuleContext _e : ctx.expr()) {
+            tmp.add((Expr)visit(_e));
+            ++d1;
+        }
+        if (ctx.brackets() != null)
+            d2 = ctx.brackets().getText().length() / 2;
+        tmp.d1 = d1;
+        tmp.d2 = d2;
+        tmp.d = d1 + d2;
+        return tmp;
+    }
+
+    @Override
+    public Atom visitLUnaryExpr(MxstarParser.LUnaryExprContext ctx) {
+        return new LUnaryExpr((Expr)visit(ctx.expr()),
+                ctx.op.getText(), new Position(ctx.getStart()));
+    }
+
+    @Override
+    public Atom visitBinaryExpr(MxstarParser.BinaryExprContext ctx) {
+        return new BinaryExpr((Expr)visit(ctx.expr(0)),
+                (Expr)visit(ctx.expr(1)),
+                ctx.op.getText(), new Position(ctx.getStart()));
+    }
+
+    @Override
+    public Atom visitRUnaryExpr(MxstarParser.RUnaryExprContext ctx) {
+        return new RUnaryExpr((Expr)visit(ctx.expr()),
+                ctx.op.getText(), new Position(ctx.getStart()));
+    }
+
+    @Override
+    public Atom visitAssignExpr(MxstarParser.AssignExprContext ctx) {
+        return new AssignExpr((Expr)visit(ctx.expr(0)),
+                (Expr)visit(ctx.expr(1)),
+                new Position(ctx.getStart()));
+    }
 }

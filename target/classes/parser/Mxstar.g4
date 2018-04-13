@@ -1,11 +1,19 @@
 grammar Mxstar;
 
 prog:
-    (classDef | funcDef | varDef)* EOF
+    def* EOF
+;
+
+def:
+    (classDef | funcDef | varDef)
 ;
 
 classDef:
-    'class' name=Identifier '{' (varDef | funcDef)* '}'
+    'class' name=Identifier '{' inClassDef* '}'
+;
+
+inClassDef:
+    (varDef | funcDef)
 ;
 
 varDef:
@@ -13,7 +21,11 @@ varDef:
 ;
 
 funcDef:
-    type name=Identifier '(' (parameter (',' parameter)*)? ')' block
+    type name=Identifier '(' parameterList ')' block
+;
+
+parameterList:
+    (parameter (',' parameter)*)?
 ;
 
 parameter:
@@ -27,12 +39,14 @@ block:
 stmt:
     expr? ';'                                                          # ExprStmt
     | block                                                            # BlockStmt
-    | 'if' '(' expr ')' (block | stmt) ('else' (block | stmt) )?       # IfStmt
+    | 'if' '(' expr ')' stmt
+           ('else' 'if' '(' expr ')' stmt)* ('else' stmt )?            # IfStmt
     | 'while' '(' expr ')' (block | stmt)                              # WhileStmt
-    | 'for' '(' expr? ';' expr? ';' expr? ')' (block | stmt)           # ForStmt
+    | 'for' '(' first=expr? ';' second=expr? ';' third=expr? ')'
+            (block | stmt)                                             # ForStmt
     | varDef                                                           # VarDefStmt
-    | 'return' expr ';'                                                # ReturnStmat
-    | ('break' | 'continue') ';'                                       # CtrlStmt
+    | 'return' expr? ';'                                               # ReturnStmt
+    | name=('break' | 'continue') ';'                                  # CtrlStmt
 ;
 
 type:
@@ -48,7 +62,8 @@ expr:
     | constant                                                         # ConstantExpr
     | Identifier                                                       # IDExpr
     | Identifier '(' exprList? ')'                                     # FuncExpr
-    | expr '.' expr                                                    # MemberExpr
+    | expr '.' Identifier                                              # MemberExpr
+    | expr '.' Identifier '(' exprList? ')'                            # MemberFuncExpr
     | expr ('[' expr ']')+                                             # ArrayExpr
     | 'new' (Identifier | 'int'| 'string') ('[' expr ']')* brackets    # NewExpr
     | ('+' | '-') expr                                                 # SignExpr
@@ -56,9 +71,9 @@ expr:
     | expr ('+' | '-') expr                                            # BinaryExpr
     | expr ('&' | '^' | '|') expr                                      # BinaryExpr
     | expr ('<<' | '>>') expr                                          # BinaryExpr
-    | expr ('<' | '>' | '>=' | '<=') expr                              # BinaryExpr
-    | expr ('==' | '!=' ) expr                                         # BinaryExpr
-    | expr ('&&' | '||') expr                                          # BinaryExpr
+    | expr ('<' | '>' | '>=' | '<=') expr                              # LogicalExpr
+    | expr ('==' | '!=' ) expr                                         # LogicalExpr
+    | expr ('&&' | '||') expr                                          # LogicalExpr
     | ('++' | '--') expr                                               # LSelfExpr
     | expr ('++' | '--')                                               # RSelfExpr
     | ('~' | '!' ) expr                                                # NotExpr

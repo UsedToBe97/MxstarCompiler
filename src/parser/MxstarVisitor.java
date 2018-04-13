@@ -140,41 +140,6 @@ public interface MxstarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIDExpr(MxstarParser.IDExprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code BinaryExpr}
-	 * labeled alternative in {@link MxstarParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitBinaryExpr(MxstarParser.BinaryExprContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code ConstantExpr}
-	 * labeled alternative in {@link MxstarParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitConstantExpr(MxstarParser.ConstantExprContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code FuncExpr}
-	 * labeled alternative in {@link MxstarParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFuncExpr(MxstarParser.FuncExprContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code AssignExpr}
-	 * labeled alternative in {@link MxstarParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAssignExpr(MxstarParser.AssignExprContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code SignExpr}
-	 * labeled alternative in {@link MxstarParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSignExpr(MxstarParser.SignExprContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code ArrayExpr}
 	 * labeled alternative in {@link MxstarParser#expr}.
 	 * @param ctx the parse tree
@@ -188,6 +153,20 @@ public interface MxstarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitMemberExpr(MxstarParser.MemberExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code BinaryExpr}
+	 * labeled alternative in {@link MxstarParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBinaryExpr(MxstarParser.BinaryExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ConstantExpr}
+	 * labeled alternative in {@link MxstarParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConstantExpr(MxstarParser.ConstantExprContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code NewExpr}
 	 * labeled alternative in {@link MxstarParser#expr}.
@@ -203,26 +182,40 @@ public interface MxstarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBracketExpr(MxstarParser.BracketExprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code NotExpr}
+	 * Visit a parse tree produced by the {@code FuncExpr}
 	 * labeled alternative in {@link MxstarParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitNotExpr(MxstarParser.NotExprContext ctx);
+	T visitFuncExpr(MxstarParser.FuncExprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code LSelfExpr}
+	 * Visit a parse tree produced by the {@code RUnaryExpr}
 	 * labeled alternative in {@link MxstarParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLSelfExpr(MxstarParser.LSelfExprContext ctx);
+	T visitRUnaryExpr(MxstarParser.RUnaryExprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code RSelfExpr}
+	 * Visit a parse tree produced by the {@code MemberFuncExpr}
 	 * labeled alternative in {@link MxstarParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitRSelfExpr(MxstarParser.RSelfExprContext ctx);
+	T visitMemberFuncExpr(MxstarParser.MemberFuncExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code LUnaryExpr}
+	 * labeled alternative in {@link MxstarParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLUnaryExpr(MxstarParser.LUnaryExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code AssignExpr}
+	 * labeled alternative in {@link MxstarParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAssignExpr(MxstarParser.AssignExprContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MxstarParser#exprList}.
 	 * @param ctx the parse tree

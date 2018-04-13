@@ -58,24 +58,30 @@ baseType:
 ;
 
 expr:
-    '(' expr ')'                                                       # BracketExpr
+     '(' expr ')'                                                      # BracketExpr
+    | op=('++' | '--' | '+' | '-') expr                                # LUnaryExpr
+    | expr op=('++' | '--')                                            # RUnaryExpr
+    | op=('~' | '!' ) expr                                             # LUnaryExpr
     | constant                                                         # ConstantExpr
     | Identifier                                                       # IDExpr
     | Identifier '(' exprList? ')'                                     # FuncExpr
-    | expr '.' expr                                                    # MemberExpr
+    | expr '.' Identifier                                              # MemberExpr
+    | expr '.' Identifier '(' exprList? ')'                            # MemberFuncExpr
+    | 'new' (baseType)
+        ('[' expr ']')* brackets                                       # NewExpr
     | expr ('[' expr ']')+                                             # ArrayExpr
-    | 'new' (Identifier | 'int'| 'string') ('[' expr ']')* brackets    # NewExpr
-    | ('+' | '-') expr                                                 # SignExpr
-    | expr ('*' | '/' | '%') expr                                      # BinaryExpr
-    | expr ('+' | '-') expr                                            # BinaryExpr
-    | expr ('&' | '^' | '|') expr                                      # BinaryExpr
-    | expr ('<<' | '>>') expr                                          # BinaryExpr
-    | expr ('<' | '>' | '>=' | '<=') expr                              # BinaryExpr
-    | expr ('==' | '!=' ) expr                                         # BinaryExpr
-    | expr ('&&' | '||') expr                                          # BinaryExpr
-    | ('++' | '--') expr                                               # LSelfExpr
-    | expr ('++' | '--')                                               # RSelfExpr
-    | ('~' | '!' ) expr                                                # NotExpr
+
+
+    | expr op=('*' | '/' | '%') expr                                   # BinaryExpr
+    | expr op=('+' | '-') expr                                         # BinaryExpr
+    | expr op=('<<' | '>>') expr                                       # BinaryExpr
+
+    | expr op=('<' | '>' | '>=' | '<=') expr                           # BinaryExpr
+    | expr op=('==' | '!=' ) expr                                      # BinaryExpr
+
+    | expr op=('&' | '^' | '|') expr                                   # BinaryExpr
+    | expr op=('&&' | '||') expr                                       # BinaryExpr
+
     | <assoc=right> expr '=' expr                                      # AssignExpr
 ;
 
