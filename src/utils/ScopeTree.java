@@ -25,7 +25,9 @@ public class ScopeTree {
     }
 
     public void addObj(String _s, Def _d) {
-        if (scope.peek().contains(_s)) System.exit(-1);
+        if (scope.peek().contains(_s))
+            throw new CompileError("Var Already Defined.", _d.pos);
+        System.out.println(_s);
         scope.peek().add(_s);
         Stack<Def> tmp = objmap.get(_s);
         if (tmp == null) {

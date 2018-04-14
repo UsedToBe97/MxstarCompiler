@@ -3,7 +3,7 @@ package utils;
 import org.antlr.v4.runtime.Token;
 
 public class Position {
-    private final int line, column;
+    public int line, column;
     public Position(int _line, int _column) {
         line = _line;
         column = _column;

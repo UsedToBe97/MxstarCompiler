@@ -16,7 +16,14 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
     @Override
     public Atom visitProg(MxstarParser.ProgContext ctx) {
         Root prog = new Root();
-        for (ParserRuleContext child : ctx.def()) prog.add((Def)visit(child));
+        int tot = 0;
+        for (ParserRuleContext child : ctx.def()) {
+            ++tot;
+            System.out.println(tot);
+            prog.add((Def)visit(child));
+        }
+        System.out.println("ExitProg");
+
         return prog;
     }
 
@@ -34,23 +41,34 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
 
     @Override
     public Atom visitFuncDef(MxstarParser.FuncDefContext ctx) {
+        System.out.println("EnterFunc");
         FuncDef tmp = new FuncDef(ctx);
         infunc = true;
+        int tot = 0;
         for (ParserRuleContext child : ctx.block().stmt()) {
+            ++tot;
+            System.out.println(tot);
             tmp.addstmt((Stmt)visit(child));
         }
         if (inclass) tree.addObj(classname + "." + tmp.name, tmp);
         else tree.addObj(tmp.name, tmp);
         infunc = false;
+        System.out.println("ExitFunc");
         return tmp;
     }
 
     @Override
     public Atom visitVarDef(MxstarParser.VarDefContext ctx) {
+
+        System.out.println("EnterVarDef");
         VarDef tmp = new VarDef(ctx);
         if (ctx.expr() != null) tmp.setExpr((Expr)(visit(ctx.expr())));
         if (inclass && !infunc) tree.addObj(classname + "." + tmp.getName(), tmp);
-        if (!inclass) tree.addObj(tmp.name, tmp);
+
+        System.out.println("???");
+        if (!inclass && !infunc) tree.addObj(tmp.name, tmp);
+
+        System.out.println("ExitVarDef");
         return tmp;
     }
 

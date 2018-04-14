@@ -13,19 +13,15 @@ import java.util.List;
 public class FuncDef extends Def{
     public String name;
     public Type type;
-    public List<Pair<Type, String>> params;
-    public List<Stmt> stmts;
+    public List<Pair<Type, String>> params = new LinkedList<>();
+    public List<Stmt> stmts = new LinkedList<>();
     public FuncDef(String _name, Type _type) {
         name = _name;
         type = _type;
-        params = new LinkedList<>();
-        stmts = new LinkedList<>();
     }
     public FuncDef(MxstarParser.FuncDefContext ctx) {
         TypeClassifier tc = new TypeClassifier();
         pos = new Position(ctx.name);
-        params = new LinkedList<>();
-        stmts = new LinkedList<>();
         name = ctx.name.getText();
         type = tc.Classify(ctx.type());
         for (MxstarParser.ParameterContext tmp : ctx.parameterList().parameter()) {

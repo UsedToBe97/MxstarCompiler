@@ -1,9 +1,9 @@
 package ast.definition;
 
-import ast.Atom;
+import ast.stmt.Stmt;
 import utils.Position;
 
-public class Def extends Atom {
+public class Def extends Stmt {
     public Position pos;
     public Position getpos() {
         return pos;
