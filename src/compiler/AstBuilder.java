@@ -4,6 +4,7 @@ import ast.*;
 import ast.definition.*;
 import ast.expr.*;
 import ast.stmt.*;
+import ast.type.NullType;
 import org.antlr.v4.runtime.ParserRuleContext;
 import parser.*;
 import utils.*;
@@ -111,9 +112,12 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
     public Atom visitForStmt(MxstarParser.ForStmtContext ctx) {
         ForStmt tmp = new ForStmt((Stmt)visit(ctx.stmt()),
                 new Position(ctx.getStart()));
-        tmp.add((Expr)visit(ctx.first));
-        tmp.add((Expr)visit(ctx.second));
-        tmp.add((Expr)visit(ctx.third));
+        if (ctx.first != null) tmp.add((Expr)visit(ctx.first));
+        else tmp.add(new ConstExpr(new NullType(tmp.pos)));
+        if (ctx.second != null) tmp.add((Expr)visit(ctx.second));
+        else tmp.add(new ConstExpr(new NullType(tmp.pos)));
+        if (ctx.third != null) tmp.add((Expr)visit(ctx.third));
+        else tmp.add(new ConstExpr(new NullType(tmp.pos)));
         return tmp;
     }
 
