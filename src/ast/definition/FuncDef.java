@@ -1,9 +1,10 @@
 package ast.definition;
 
 import ast.stmt.Stmt;
-import ast.type.Type;
-import ast.type.TypeClassifier;
+import ast.type.*;
 import parser.MxstarParser;
+import utils.CompileError;
+import utils.GlobalClass;
 import utils.Pair;
 import utils.Position;
 
@@ -15,6 +16,7 @@ public class FuncDef extends Def{
     public Type type;
     public List<Pair<Type, String>> params = new LinkedList<>();
     public List<Stmt> stmts = new LinkedList<>();
+    public String getname() {return name;}
     public FuncDef(String _name, Type _type) {
         name = _name;
         type = _type;
@@ -24,9 +26,13 @@ public class FuncDef extends Def{
         pos = new Position(ctx.name);
         name = ctx.name.getText();
         type = tc.Classify(ctx.type());
+        int tot = 0;
         for (MxstarParser.ParameterContext tmp : ctx.parameterList().parameter()) {
             addparam(tc.Classify(tmp.type()), tmp.Identifier().getText());
+            ++tot;
         }
+        if (name.equals("main") && (tot != 0 || !(type instanceof IntType)))
+            throw new CompileError("Main can't have parameter", new Position(-1, -1));
     }
     public void addparam(Type _t, String _s) {
         params.add(new Pair<>(_t, _s));
@@ -36,5 +42,26 @@ public class FuncDef extends Def{
     }
     public Position getpos() {
         return pos;
+    }
+    public void check() {
+        GlobalClass.infunc = true;
+        GlobalClass.st.enterScope();
+        if (type instanceof ClassType) GlobalClass.st.now.check(((ClassType) type).name);
+        for (Pair<Type, String> u : params) {
+            Type t = u.getFirst();
+            if (t instanceof ClassType) GlobalClass.st.now.check(((ClassType) t).name);
+            if (t instanceof ArrayType){
+                if (((ArrayType) t).type instanceof ClassType) {
+                    GlobalClass.st.now.check(((ClassType) ((ArrayType) t).type).name);
+                }
+            }
+            VarDef tmp = new VarDef(pos);
+            tmp.setName(u.getSecond());
+            tmp.setType(u.getFirst());
+            GlobalClass.st.addObj(tmp.name, tmp);
+        }
+       // for (Stmt s : stmts) s.check();
+        GlobalClass.st.exitScope();
+        GlobalClass.infunc = false;
     }
 }

@@ -1,9 +1,10 @@
 package ast.definition;
 
 import ast.expr.Expr;
-import ast.type.Type;
-import ast.type.TypeClassifier;
+import ast.type.*;
 import parser.MxstarParser;
+import utils.CompileError;
+import utils.GlobalClass;
 import utils.Position;
 
 public class VarDef extends Def {
@@ -21,8 +22,22 @@ public class VarDef extends Def {
     public void setName(String _name) {name = _name;}
     public void setType(Type _type) {type = _type;}
     public void setExpr(Expr _expr) {expr = _expr;}
-    public String getName() {return name;}
+    public String getname() {return name;}
     public Type getType() {return type;}
     public Position getpos() {return pos;}
     public Expr getExpr() {return expr;}
+    public void check() {
+        if (type instanceof ClassType) {
+            Def d = GlobalClass.st.now.check(((ClassType) type).name);
+            if (!(d instanceof ClassDef))
+                throw new CompileError("Undefined Class", pos);
+        }
+        if (type instanceof ArrayType) {
+            Type t = ((ArrayType)type).type;
+            if (t instanceof ClassType) GlobalClass.st.now.check(((ClassType) t).name);
+        }
+        if (type instanceof VoidType)
+            throw new CompileError("Void ?!!", pos);
+
+    }
 }

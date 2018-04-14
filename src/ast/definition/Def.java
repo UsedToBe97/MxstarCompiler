@@ -3,9 +3,9 @@ package ast.definition;
 import ast.stmt.Stmt;
 import utils.Position;
 
-public class Def extends Stmt {
+public abstract class Def extends Stmt {
     public Position pos;
-    public Position getpos() {
-        return pos;
-    }
+    public abstract Position getpos();
+    public abstract String getname();
+    public abstract void check();
 }

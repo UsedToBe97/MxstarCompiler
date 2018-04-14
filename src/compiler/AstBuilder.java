@@ -65,7 +65,7 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
         if (ctx.expr() != null) {
             tmp.setExpr((Expr) (visit(ctx.expr())));
         }
-        if (inclass && !infunc) tree.addObj(classname + "." + tmp.getName(), tmp);
+        if (inclass && !infunc) tree.addObj(classname + "." + tmp.getname(), tmp);
 
         System.err.println("???");
         if (!inclass && !infunc) tree.addObj(tmp.name, tmp);

@@ -1,14 +1,12 @@
-
-int main() {
-    if ("20" && "16") {
-    }
+int main(int main) {
+    main(7);
 }
 
 
 
 /*!! metadata:
 === comment ===
-boop-1-5120309049-liaochao.mx
+func-6-5130309059-lijiajun.mx
 === assert ===
 failure_compile
 === phase ===

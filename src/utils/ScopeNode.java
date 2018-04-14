@@ -11,6 +11,14 @@ public class ScopeNode {
 
     public ScopeNode(){}
     public boolean contains(String _s) {return objmap.containsKey(_s);}
+    public Def check(String _s) {
+        ScopeNode p = this;
+        while (p != null) {
+            if (p.objmap.containsKey(_s)) return p.objmap.get(_s);
+            p = p.parent;
+        }
+        throw new CompileError("Undefined", new Position(-1, -1));
+    }
     public void addChild(ScopeNode obj) {
         if (child.contains(obj))
             throw new CompileError("Redefine Child", new Position(-1,-1));
