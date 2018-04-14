@@ -7,9 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/compiler/AstBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/AstBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/1.test" beforeDir="false" afterPath="$PROJECT_DIR$/test/1.test" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -46,11 +44,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AstBuilder.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="113" column="41" selection-start-line="113" selection-start-column="41" selection-end-line="113" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AstBuilder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/compiler/AstBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="120" column="12" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="12" />
+            <state relative-caret-position="345">
+              <caret line="93" column="68" lean-forward="true" selection-start-line="93" selection-start-column="68" selection-end-line="93" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4329#4330#0" expanded="true" />
@@ -60,41 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AstBuilder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Complier-2017-d8c03173bc6548ebd422bb1f171527c1b8d7e6f4/cn/chips/MAPLE/compiler/AstBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="166" column="43" lean-forward="true" selection-start-line="166" selection-start-column="43" selection-end-line="166" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConstExpr.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ast/expr/ConstExpr.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="4" column="37" lean-forward="true" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="NullType.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ast/type/NullType.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="92">
               <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConstantExpr.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Complier-2017-d8c03173bc6548ebd422bb1f171527c1b8d7e6f4/cn/chips/MAPLE/ast/expression/ConstantExpr.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -213,9 +193,9 @@
         <option value="$PROJECT_DIR$/src/ast/expr/FuncExpr.java" />
         <option value="$PROJECT_DIR$/src/ast/stmt/IfStmt.java" />
         <option value="$PROJECT_DIR$/src/parser/Mxstar.g4" />
-        <option value="$PROJECT_DIR$/src/compiler/Main.java" />
         <option value="$PROJECT_DIR$/src/ast/expr/ConstExpr.java" />
         <option value="$PROJECT_DIR$/src/compiler/AstBuilder.java" />
+        <option value="$PROJECT_DIR$/src/compiler/Main.java" />
       </list>
     </option>
   </component>
@@ -448,12 +428,12 @@
       <workItem from="1523598164625" duration="16820000" />
       <workItem from="1523630151400" duration="7000" />
       <workItem from="1523674275886" duration="1988000" />
-      <workItem from="1523676570174" duration="7757000" />
+      <workItem from="1523676570174" duration="7830000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89016000" />
+    <option name="totallyTimeSpent" value="89089000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -479,11 +459,11 @@
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.32897604" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.32897604" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32897604" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16791044" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16791044" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="bottom" id="ANTLR Preview" order="12" weight="0.32897604" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -845,16 +825,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="130" column="37" selection-start-line="130" selection-start-column="37" selection-end-line="130" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/expr/FuncExpr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -938,12 +908,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/AstBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="120" column="12" selection-start-line="120" selection-start-column="12" selection-end-line="120" selection-end-column="12" />
+        <state relative-caret-position="345">
+          <caret line="93" column="68" lean-forward="true" selection-start-line="93" selection-start-column="68" selection-end-line="93" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4329#4330#0" expanded="true" />
             <element signature="e#4369#4370#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="113" column="41" selection-start-line="113" selection-start-column="41" selection-end-line="113" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
