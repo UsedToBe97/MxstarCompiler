@@ -8,4 +8,6 @@ import java.util.List;
 public class Root extends Atom {
     public List<Def> deflist = new LinkedList<>();
     public void add(Def _def) {deflist.add(_def);}
+    public void check() {
+    }
 }

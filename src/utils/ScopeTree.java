@@ -1,31 +1,44 @@
 package utils;
 
-import ast.definition.*;
-import ast.type.*;
+import ast.definition.Def;
+import ast.definition.FuncDef;
+import ast.type.IntType;
+import ast.type.StringType;
+import ast.type.VoidType;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Stack;
 
 public class ScopeTree {
+    public ScopeNode root, now;
+    public ScopeTree() {
+        root = new ScopeNode();
+        ScopeTreeInit();
+        now = root;
+    }
+
     public Stack<HashSet<String>> scope = new Stack<>();
     public Map<String, Stack<Def>> objmap = new HashMap<>();
 
-    public ScopeTree() {
+    public void ScopeTreeInit() {
         scope.push(new HashSet<String>());
         FuncDef tmp = new FuncDef("print", new VoidType());
         tmp.addparam(new StringType(), "str");
-        addObj("print", tmp);
+        root.addObj("print", tmp);
         tmp = new FuncDef("println", new VoidType());
         tmp.addparam(new StringType(), "str");
-        addObj("println", tmp);
-        addObj("getString", new FuncDef("getString", new StringType()));
-        addObj("getInt", new FuncDef("getInt", new IntType()));
-        addObj("parseInt", new FuncDef("parseInt", new IntType()));
+        root.addObj("println", tmp);
+        root.addObj("getString", new FuncDef("getString", new StringType()));
+        root.addObj("getInt", new FuncDef("getInt", new IntType()));
+        root.addObj("parseInt", new FuncDef("parseInt", new IntType()));
         tmp = new FuncDef("toString", new StringType());
         tmp.addparam(new IntType(), "i");
-        addObj("toString", tmp);
+        root.addObj("toString", tmp);
         tmp = new FuncDef("ord", new IntType());
         tmp.addparam(new IntType(), "pos");
-        addObj("ord", tmp);
+        root.addObj("ord", tmp);
     }
 
     public void addObj(String _s, Def _d) {
@@ -41,15 +54,31 @@ public class ScopeTree {
         } else objmap.get(_s).push(_d);
     }
 
-    public void enterScope() {
-        scope.push(new HashSet<String>());
+    public ScopeNode enterScope() {
+        ScopeNode p = now;
+        now = new ScopeNode();
+        p.addChild(now);
+        now.addParent(p);
+        return now;
     }
 
-    public void exitScope() {
-        HashSet<String> tmp = scope.peek();
-        for (String s : tmp) {
-            objmap.get(s).pop();
-        }
-        scope.pop();
+    public ScopeNode exitScope() {
+        ScopeNode p = now;
+        if (p.parent == null)
+            throw new CompileError("Null Parent", new Position(-1,-1));
+        now = p.parent;
+        return now;
     }
+    public ScopeNode peek() {return now;}
+    public boolean contains(String _s) {
+        if (now == null)
+            throw new CompileError("Null ptr", new Position(-1,-1));
+        ScopeNode p = now;
+        while (p.parent != null){
+            if (p.contains(_s)) return true;
+            p = p.parent;
+        }
+        return false;
+    }
+
 }

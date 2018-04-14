@@ -10,7 +10,7 @@ import parser.*;
 import utils.*;
 
 public class AstBuilder extends MxstarBaseVisitor<Atom> {
-    public ScopeTree tree = Main.st;
+    public ScopeTree tree = GlobalClass.st;
     public String classname = "";
     public boolean inclass = false;
     public boolean infunc = false;
