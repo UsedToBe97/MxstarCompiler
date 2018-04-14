@@ -8,7 +8,7 @@ import java.util.List;
 
 public class FuncExpr extends Expr {
     public String name;
-    public List<Expr> exprList;
+    public List<Expr> exprList = new LinkedList<>();
     public FuncExpr(MxstarParser.FuncExprContext ctx) {
         name = ctx.Identifier().getText();
         pos = new Position(ctx.getStart());

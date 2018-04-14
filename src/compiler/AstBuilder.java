@@ -19,10 +19,10 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
         int tot = 0;
         for (ParserRuleContext child : ctx.def()) {
             ++tot;
-            System.out.println(tot);
+            System.err.println(tot);
             prog.add((Def)visit(child));
         }
-        System.out.println("ExitProg");
+        System.err.println("ExitProg");
 
         return prog;
     }
@@ -41,34 +41,35 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
 
     @Override
     public Atom visitFuncDef(MxstarParser.FuncDefContext ctx) {
-        System.out.println("EnterFunc");
+        System.err.println("EnterFunc");
         FuncDef tmp = new FuncDef(ctx);
         infunc = true;
         int tot = 0;
         for (ParserRuleContext child : ctx.block().stmt()) {
             ++tot;
-            System.out.println(tot);
+            System.err.println(tot);
             tmp.addstmt((Stmt)visit(child));
         }
         if (inclass) tree.addObj(classname + "." + tmp.name, tmp);
         else tree.addObj(tmp.name, tmp);
         infunc = false;
-        System.out.println("ExitFunc");
+        System.err.println("ExitFunc");
         return tmp;
     }
 
     @Override
     public Atom visitVarDef(MxstarParser.VarDefContext ctx) {
-
-        System.out.println("EnterVarDef");
+        System.err.println("EnterVarDef");
         VarDef tmp = new VarDef(ctx);
-        if (ctx.expr() != null) tmp.setExpr((Expr)(visit(ctx.expr())));
+        if (ctx.expr() != null) {
+            tmp.setExpr((Expr) (visit(ctx.expr())));
+        }
         if (inclass && !infunc) tree.addObj(classname + "." + tmp.getName(), tmp);
 
-        System.out.println("???");
+        System.err.println("???");
         if (!inclass && !infunc) tree.addObj(tmp.name, tmp);
 
-        System.out.println("ExitVarDef");
+        System.err.println("ExitVarDef");
         return tmp;
     }
 
@@ -118,6 +119,8 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
 
     @Override
     public Atom visitWhileStmt(MxstarParser.WhileStmtContext ctx) {
+        if (ctx.expr() == null) System.err.println("FUCK1");
+        if (ctx.stmt() == null) System.err.println("FUCK2");
         return new WhileStmt((Expr)visit(ctx.expr()),
                 (Stmt)visit(ctx.stmt()),
                 new Position(ctx.getStart()));
@@ -149,8 +152,10 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
     @Override
     public Atom visitFuncExpr(MxstarParser.FuncExprContext ctx) {
         FuncExpr tmp = new FuncExpr(ctx);
-        for (ParserRuleContext child : ctx.exprList().expr()) {
-            tmp.add((Expr)visit(child));
+        if (ctx.exprList() != null) {
+            for (ParserRuleContext child : ctx.exprList().expr()) {
+                tmp.add((Expr) visit(child));
+            }
         }
         return tmp;
     }
@@ -186,6 +191,7 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
 
     @Override
     public Atom visitNewExpr(MxstarParser.NewExprContext ctx) {
+        System.err.println("EnterNewExpr");
         NewExpr tmp = new NewExpr(ctx.baseType());
         int d1 = 0, d2 = 0;
         for (ParserRuleContext _e : ctx.expr()) {

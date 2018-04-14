@@ -5,11 +5,12 @@ import ast.type.TypeClassifier;
 import parser.MxstarParser;
 import utils.Position;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class NewExpr extends Expr {
     public Type type;
-    public List<Expr> exprList;
+    public List<Expr> exprList = new LinkedList<>();
     public int d;
     public int d1;
     public int d2;

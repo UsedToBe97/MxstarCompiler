@@ -19,9 +19,13 @@ public class ScopeTree {
         addObj("println", tmp);
         addObj("getString", new FuncDef("getString", new StringType()));
         addObj("getInt", new FuncDef("getInt", new IntType()));
+        addObj("parseInt", new FuncDef("parseInt", new IntType()));
         tmp = new FuncDef("toString", new StringType());
         tmp.addparam(new IntType(), "i");
         addObj("toString", tmp);
+        tmp = new FuncDef("ord", new IntType());
+        tmp.addparam(new IntType(), "pos");
+        addObj("ord", tmp);
     }
 
     public void addObj(String _s, Def _d) {

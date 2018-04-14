@@ -41,7 +41,7 @@ stmt:
     | block                                                            # BlockStmt
     | 'if' '(' expr ')' stmt
            ('else' 'if' '(' expr ')' stmt)* ('else' stmt )?            # IfStmt
-    | 'while' '(' expr ')' (block | stmt)                              # WhileStmt
+    | 'while' '(' expr ')' (stmt)                                      # WhileStmt
     | 'for' '(' first=expr? ';' second=expr? ';' third=expr? ')'
             (block | stmt)                                             # ForStmt
     | varDef                                                           # VarDefStmt
