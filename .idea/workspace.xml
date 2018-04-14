@@ -7,17 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/Root.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/Root.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/definition/Def.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/definition/Def.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/definition/FuncDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/definition/FuncDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/AstBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/AstBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ScopeTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ScopeTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/Mxstar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/Mxstar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/Mxstar.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/Mxstar.tokens" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarLexer.tokens" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -36,7 +26,7 @@
       <file leaf-file-name="Mxstar.g4" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/parser/Mxstar.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="115">
               <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
@@ -46,7 +36,7 @@
         <entry file="file://$PROJECT_DIR$/src/ast/definition/FuncDef.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="115">
-              <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+              <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -54,8 +44,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="112" column="37" lean-forward="true" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
+            <state relative-caret-position="477">
+              <caret line="122" column="42" lean-forward="true" selection-start-line="122" selection-start-column="42" selection-end-line="122" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -66,8 +56,8 @@
       <file leaf-file-name="AstBuilder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/compiler/AstBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="44" column="39" lean-forward="true" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="39" />
+            <state relative-caret-position="874">
+              <caret line="44" column="39" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -79,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/src/ast/definition/Def.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="115">
-              <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+              <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -87,8 +77,8 @@
       <file leaf-file-name="ScopeTree.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/ScopeTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="23" column="32" lean-forward="true" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+            <state relative-caret-position="460">
+              <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -204,6 +194,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -290,7 +281,6 @@
       </pane>
       <pane id="AndroidView" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -454,11 +444,12 @@
       <workItem from="1523598164625" duration="16820000" />
       <workItem from="1523630151400" duration="7000" />
       <workItem from="1523674275886" duration="1988000" />
+      <workItem from="1523676570174" duration="8000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81259000" />
+    <option name="totallyTimeSpent" value="81267000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -471,11 +462,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.3297062" />
       <window_info anchor="bottom" id="Tool Output" order="13" weight="0.32946634" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49946696" weight="0.32897604" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -487,7 +478,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1663113" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16791044" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="bottom" id="ANTLR Preview" order="12" weight="0.3297062" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -496,12 +487,13 @@
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934713" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49946696" weight="0.32897604" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3297062" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3297062" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -516,6 +508,33 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/ast/definition/Def.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/ScopeTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="23" column="32" lean-forward="true" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2323">
+          <caret line="112" column="37" lean-forward="true" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/expr/SignExpr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -717,7 +736,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/parser/Mxstar.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="115">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
@@ -746,7 +765,7 @@
     <entry file="file://$PROJECT_DIR$/src/ast/definition/FuncDef.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
-          <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -757,19 +776,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Complier-2017-d8c03173bc6548ebd422bb1f171527c1b8d7e6f4/cn/chips/MAPLE/ast/declare/Declare.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Complier-2017-d8c03173bc6548ebd422bb1f171527c1b8d7e6f4/cn/chips/MAPLE/ast/expression/Expr.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Complier-2017-d8c03173bc6548ebd422bb1f171527c1b8d7e6f4/cn/chips/MAPLE/ast/statement/Statement.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/AstBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="44" column="39" lean-forward="true" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="39" />
+        <state relative-caret-position="874">
+          <caret line="44" column="39" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -779,14 +789,14 @@
     <entry file="file://$PROJECT_DIR$/src/ast/definition/Def.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
-          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/ScopeTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="23" column="32" lean-forward="true" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+        <state relative-caret-position="460">
+          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -797,9 +807,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-480">
           <caret line="46" column="24" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -847,8 +854,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="112" column="37" lean-forward="true" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
+        <state relative-caret-position="477">
+          <caret line="122" column="42" lean-forward="true" selection-start-line="122" selection-start-column="42" selection-end-line="122" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

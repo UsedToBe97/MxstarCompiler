@@ -116,10 +116,8 @@ public class Main {
         System.out.println(input);
         MxstarLexer lexer = new MxstarLexer(input);
 
-        //用词法分析器 lexer 构造一个记号流 tokens
         CommonTokenStream tokens = new CommonTokenStream(lexer);
 
-        //再使用 tokens 构造语法分析器 parser,至此已经完成词法分析和语法分析的准备工作
         MxstarParser parser = new MxstarParser(tokens);
         ParseTree tree = parser.prog();
         AstBuilder AST = new AstBuilder();
