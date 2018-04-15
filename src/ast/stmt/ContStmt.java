@@ -11,6 +11,6 @@ public class ContStmt extends Stmt {
     }
     public void check() {
         if (GlobalClass.circnt == 0)
-            throw new CompileError("No Cir to break.", pos);
+            throw new CompileError("No Cir to break(ContStmt)", pos);
     }
 }

@@ -59,6 +59,9 @@ baseType:
 
 expr:
      '(' expr ')'                                                      # BracketExpr
+    | 'new' (baseType)
+         ('[' expr ']')* brackets                                      # NewExpr
+    | expr ('[' expr ']')+                                             # ArrayExpr
     | op=('++' | '--' | '+' | '-') expr                                # LUnaryExpr
     | expr op=('++' | '--')                                            # RUnaryExpr
     | op=('~' | '!' ) expr                                             # LUnaryExpr
@@ -67,9 +70,7 @@ expr:
     | Identifier '(' exprList? ')'                                     # FuncExpr
     | expr '.' Identifier                                              # MemberExpr
     | expr '.' Identifier '(' exprList? ')'                            # MemberFuncExpr
-    | 'new' (baseType)
-        ('[' expr ']')* brackets                                       # NewExpr
-    | expr ('[' expr ']')+                                             # ArrayExpr
+
 
 
     | expr op=('*' | '/' | '%') expr                                   # BinaryExpr

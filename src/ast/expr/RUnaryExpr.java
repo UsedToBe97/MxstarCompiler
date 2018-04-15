@@ -18,7 +18,7 @@ public class RUnaryExpr extends Expr {
     }
     public Type gettype() {
         if (!(expr.gettype() instanceof IntType))
-            throw new CompileError("Type Error", pos);
+            throw new CompileError("Type Error(RUnaryExpr)", pos);
         return expr.gettype();
     }
 }

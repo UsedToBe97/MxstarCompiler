@@ -20,10 +20,11 @@ public class LUnaryExpr extends Expr {
     public Type gettype() {
         if (op.equals("!") || op.equals('~')) {
             if (!(expr.gettype() instanceof IntType || expr.gettype() instanceof BoolType))
-                throw new CompileError("Type Error", pos);
+                throw new CompileError("Type Error(LUnaryExpr)", pos);
         } else {
+            System.err.println(expr.gettype().typename());
             if (!(expr.gettype() instanceof IntType))
-                throw new CompileError("Type Error", pos);
+                throw new CompileError("Type Error(LUnaryExpr)", pos);
         }
         return expr.gettype();
     }

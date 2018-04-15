@@ -11,7 +11,7 @@ import java.util.List;
 public class ForStmt extends Stmt {
     public Stmt stmt;
     public List<Expr> exprs;
-    public List<Type> types;
+    public List<Type> types = new LinkedList<>();
     public ForStmt(Position _pos) {
         exprs = new LinkedList<>();
         pos = _pos;
@@ -28,7 +28,11 @@ public class ForStmt extends Stmt {
     public void check() {
         GlobalClass.circnt++;
         if (!(stmt instanceof BlockStmt)) GlobalClass.st.enterScope();
-        for (int i = 0; i < exprs.size(); i++) types.add(exprs.get(i).gettype());
+        for (int i = 0; i < exprs.size(); i++) {
+            System.err.println(i);
+            //System.err.println(exprs.get(i).gettype().typename());
+            types.add(exprs.get(i).gettype());
+        }
 
         if(stmt != null) stmt.check();
 

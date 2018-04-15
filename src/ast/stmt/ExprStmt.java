@@ -19,7 +19,7 @@ public class ExprStmt extends Stmt {
     public void check() {
         System.err.println("Go Check ExprStmt");
         if (expr == null)
-            throw new CompileError("Null Expr", pos);
+            throw new CompileError("Null Expr(ExprStmt)", pos);
         type = expr.gettype();
     }
 

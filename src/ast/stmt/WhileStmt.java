@@ -23,7 +23,7 @@ public class WhileStmt extends Stmt {
         GlobalClass.circnt++;
         if (!(stmt instanceof BlockStmt)) GlobalClass.st.enterScope();
         if (!(expr.gettype() instanceof BoolType))
-            throw new CompileError("Not Bool Type", pos);
+            throw new CompileError("Not Bool Type(WhileStmt)", pos);
 
         if(stmt != null) stmt.check();
 

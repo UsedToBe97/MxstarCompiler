@@ -27,9 +27,9 @@ public class BlockStmt extends Stmt {
         for (Stmt s : Stmts) {
             if (s instanceof Def) {
                 if (s instanceof ClassDef || s instanceof FuncDef)
-                    throw new CompileError("Can't define class or func here", pos);
+                    throw new CompileError("Can't define class or func here(BlockStmt)", pos);
                 else if (s instanceof VarDef) s.check();
-                else new CompileError("WTF", pos);
+                else new CompileError("WTF(BlockStmt)", pos);
             } else s.check();
         }
         GlobalClass.st.exitScope();

@@ -32,7 +32,7 @@ public class NewExpr extends Expr {
         System.err.println("New!");
         for (Expr e : exprList) {
             if (!(e.gettype() instanceof IntType))
-                throw new CompileError("Expr Not Int", pos);
+                throw new CompileError("Expr Not Int(NewExpr)", pos);
         }
         if (d == 0) return type;
         return new ArrayType(d, type, pos);

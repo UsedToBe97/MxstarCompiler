@@ -39,17 +39,17 @@ public class MemberFuncExpr extends Expr {
             String tmp = ((ClassType) t).name + '.' + name;
             Def d = GlobalClass.st.now.check(tmp);
             if (!(d instanceof FuncDef))
-                throw new CompileError("No Member", pos);
+                throw new CompileError("No Member(MemberFuncExpr)", pos);
             if (((FuncDef) d).params.size() != exprList.size()) {
-                throw new CompileError("MemFunc Number Not Match", pos);
+                throw new CompileError("MemFunc Number Not Match(MemberFuncExpr)", pos);
             } else {
                 for (int i = 0; i < exprList.size(); ++i) {
                     if (!Objects.equals(exprList.get(i).gettype(), ((FuncDef) d).params.get(i).getFirst())) {
-                        throw new CompileError("MemFunc Parameter Not Match", pos);
+                        throw new CompileError("MemFunc Parameter Not Match(MemberFuncExpr)", pos);
                     }
                 }
             }
             return ((FuncDef) d).type;
-        } else throw new CompileError("No This Class", pos);
+        } else throw new CompileError("No This Class(MemberFuncExpr)", pos);
     }
 }

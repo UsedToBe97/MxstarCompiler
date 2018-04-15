@@ -37,7 +37,7 @@ public class FuncExpr extends Expr {
                     throw new CompileError("Number Not Match(FuncExpr)", pos);
                 } else {
                     for (int i = 0; i < exprList.size(); ++i) {
-                        if (!Objects.equals(exprList.get(i).gettype(), ((FuncDef) d).params.get(i).getFirst())) {
+                        if (!Objects.equals(exprList.get(i).gettype().typename(), ((FuncDef) d).params.get(i).getFirst().typename())) {
                             throw new CompileError("Parameter Not Match(FuncExpr)", pos);
                         }
                     }

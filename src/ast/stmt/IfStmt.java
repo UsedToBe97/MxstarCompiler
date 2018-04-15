@@ -22,7 +22,7 @@ public class IfStmt extends Stmt {
         System.err.println("Check IfStmt");
         for (Pair<Expr, Stmt> u : ifList) {
             if (!(u.getFirst().gettype() instanceof BoolType))
-                throw new CompileError("Not bool type", pos);
+                throw new CompileError("Not bool type(If Stmt)", pos);
             if (u.getSecond() != null) u.getSecond().check();
         }
         if (elsestmt != null) elsestmt.check();

@@ -24,14 +24,19 @@ public class ArrayExpr extends Expr {
     }
 
     public Type gettype() {
+        System.err.println("Get Type ArrayExpr");
+        //System.err.println(pos.toString());
         int tmpd = 0;
+        System.err.println(Leftexpr.gettype().typename());
         for (Expr u : exprList) {
             ++tmpd;
             if (!(u.gettype() instanceof IntType))
                 throw new CompileError("Index Error(ArrayExpr)", pos);
         }
+        System.err.println(Leftexpr.gettype().typename());
         if (Leftexpr.gettype() instanceof ArrayType) {
             int ff = tmpd - ((ArrayType) Leftexpr.gettype()).d;
+            System.err.println(ff);
             if (ff == 0)
                 return ((ArrayType) Leftexpr.gettype()).type;
             else if (ff > 0) return new ArrayType(ff, ((ArrayType) Leftexpr.gettype()).type, pos);

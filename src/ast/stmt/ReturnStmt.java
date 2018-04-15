@@ -27,7 +27,7 @@ public class ReturnStmt extends Stmt {
                 type = new VoidType(pos);
                 return;
             } else throw new CompileError("Type Now Match", pos);
-        } else if (!Objects.equals(expr.gettype(), GlobalClass.nowfunc.type))
+        } else if (!Objects.equals(expr.gettype().typename(), GlobalClass.nowfunc.type.typename()))
             throw new CompileError("Type Now Match", pos);
     }
 }

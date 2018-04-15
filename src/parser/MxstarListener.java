@@ -262,18 +262,6 @@ public interface MxstarListener extends ParseTreeListener {
 	 */
 	void exitBinaryExpr(MxstarParser.BinaryExprContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ConstantExpr}
-	 * labeled alternative in {@link MxstarParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterConstantExpr(MxstarParser.ConstantExprContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code ConstantExpr}
-	 * labeled alternative in {@link MxstarParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitConstantExpr(MxstarParser.ConstantExprContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code NewExpr}
 	 * labeled alternative in {@link MxstarParser#expr}.
 	 * @param ctx the parse tree
@@ -285,6 +273,18 @@ public interface MxstarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitNewExpr(MxstarParser.NewExprContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ConstantExpr}
+	 * labeled alternative in {@link MxstarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterConstantExpr(MxstarParser.ConstantExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ConstantExpr}
+	 * labeled alternative in {@link MxstarParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitConstantExpr(MxstarParser.ConstantExprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code BracketExpr}
 	 * labeled alternative in {@link MxstarParser#expr}.

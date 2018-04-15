@@ -161,19 +161,19 @@ public interface MxstarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBinaryExpr(MxstarParser.BinaryExprContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code ConstantExpr}
-	 * labeled alternative in {@link MxstarParser#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitConstantExpr(MxstarParser.ConstantExprContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code NewExpr}
 	 * labeled alternative in {@link MxstarParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitNewExpr(MxstarParser.NewExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ConstantExpr}
+	 * labeled alternative in {@link MxstarParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitConstantExpr(MxstarParser.ConstantExprContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code BracketExpr}
 	 * labeled alternative in {@link MxstarParser#expr}.

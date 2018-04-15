@@ -19,6 +19,7 @@ public class AssignExpr extends Expr {
         if (!(expr1 instanceof IDExpr || expr1 instanceof ArrayExpr || expr1 instanceof MemberExpr))
             throw new CompileError("Left Expr Error(AssignExpr)", pos);
         Type t1 = expr1.gettype(), t2 = expr2.gettype();
+        System.err.println(t1.typename() + " = " + t2.typename());
         if (!t1.typename().equals(t2.typename()))
             throw new CompileError("Type Error(AssignExpr)", pos);
         return t1;

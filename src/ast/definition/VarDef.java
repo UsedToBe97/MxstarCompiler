@@ -33,7 +33,6 @@ public class VarDef extends Def {
             System.err.println("next ");
             if (!(d instanceof ClassDef))
                 throw new CompileError("Undefined Class(VarDef)", pos);
-            GlobalClass.st.now.addObj(name, this);
         }
         if (type instanceof ArrayType) {
             Type t = ((ArrayType)type).type;
@@ -41,5 +40,8 @@ public class VarDef extends Def {
         }
         if (type instanceof VoidType)
             throw new CompileError("Void ?!!(VarDef)", pos);
+
+        if (GlobalClass.infunc)
+            GlobalClass.st.now.addObj(name, this);
     }
 }
