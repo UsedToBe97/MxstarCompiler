@@ -6,6 +6,7 @@ import utils.Position;
 public class StringType extends Type{
     public String data;
     public StringType() {}
+    public String typename() {return "String";}
     public StringType(Position _pos) {
         pos = _pos;
     }

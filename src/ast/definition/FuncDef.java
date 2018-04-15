@@ -32,7 +32,7 @@ public class FuncDef extends Def{
             ++tot;
         }
         if (name.equals("main") && (tot != 0 || !(type instanceof IntType)))
-            throw new CompileError("Main can't have parameter", new Position(-1, -1));
+            throw new CompileError("Main can't have parameter(FuncDef)", new Position(-1, -1));
     }
     public void addparam(Type _t, String _s) {
         params.add(new Pair<>(_t, _s));
@@ -47,6 +47,7 @@ public class FuncDef extends Def{
         GlobalClass.infunc = true;
         GlobalClass.nowfunc = this;
         GlobalClass.st.enterScope();
+        System.err.println("Go Check FuncDef");
         if (type instanceof ClassType) GlobalClass.st.now.check(((ClassType) type).name);
         for (Pair<Type, String> u : params) {
             Type t = u.getFirst();
@@ -61,6 +62,7 @@ public class FuncDef extends Def{
             tmp.setType(u.getFirst());
             GlobalClass.st.addObj(tmp.name, tmp);
         }
+        GlobalClass.st.print();
         for (Stmt s : stmts) s.check();
         GlobalClass.st.exitScope();
         GlobalClass.infunc = false;

@@ -1,12 +1,25 @@
-int main(int main) {
-    main(7);
+class A {
+    int x;
+}
+
+class B {
+    int x;
+}
+
+int main() {
+    A a = new A;
+    a.x = 20;
+    B b = new B;
+    b.x = 16;
+    if (a == b) {}
+    return 0;
 }
 
 
 
 /*!! metadata:
 === comment ===
-func-6-5130309059-lijiajun.mx
+relop-1-5120309049-liaochao.mx
 === assert ===
 failure_compile
 === phase ===

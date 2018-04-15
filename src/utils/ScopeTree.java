@@ -6,11 +6,6 @@ import ast.type.IntType;
 import ast.type.StringType;
 import ast.type.VoidType;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Stack;
-
 public class ScopeTree {
     public ScopeNode root, now;
     public ScopeTree() {
@@ -19,11 +14,11 @@ public class ScopeTree {
         now = root;
     }
 
-    public Stack<HashSet<String>> scope = new Stack<>();
-    public Map<String, Stack<Def>> objmap = new HashMap<>();
+    //public Stack<HashSet<String>> scope = new Stack<>();
+    //public Map<String, Stack<Def>> objmap = new HashMap<>();
 
     public void ScopeTreeInit() {
-        scope.push(new HashSet<String>());
+        //scope.push(new HashSet<String>());
         FuncDef tmp = new FuncDef("print", new VoidType());
         tmp.addparam(new StringType(), "str");
         root.addObj("print", tmp);
@@ -40,9 +35,21 @@ public class ScopeTree {
         tmp.addparam(new IntType(), "pos");
         root.addObj("ord", tmp);
     }
-
+    public void print() {
+        System.err.println("\n\n---------------print----------");
+        ScopeNode p = now;
+        do {
+            for (String s : p.objmap.keySet()) {
+                System.err.println(s);
+            }
+            System.err.println("\n---------------next----------\n");
+            p = p.parent;
+        } while (p != null);
+        System.err.println("---------------print----------\n\n");
+    }
     public void addObj(String _s, Def _d) {
-        if (scope.peek().contains(_s))
+        now.addObj(_s, _d);
+        /*if (scope.peek().contains(_s))
             throw new CompileError("Var Already Defined.", _d.pos);
         System.out.println(_s);
         scope.peek().add(_s);
@@ -51,7 +58,7 @@ public class ScopeTree {
             tmp = new Stack<>();
             tmp.push(_d);
             objmap.put(_s, tmp);
-        } else objmap.get(_s).push(_d);
+        } else objmap.get(_s).push(_d);*/
     }
 
     public ScopeNode enterScope() {
@@ -65,19 +72,19 @@ public class ScopeTree {
     public ScopeNode exitScope() {
         ScopeNode p = now;
         if (p.parent == null)
-            throw new CompileError("Null Parent", new Position(-1,-1));
+            throw new CompileError("Null Parent(ScopeTree)", new Position(-1,-1));
         now = p.parent;
         return now;
     }
     public ScopeNode peek() {return now;}
     public boolean contains(String _s) {
         if (now == null)
-            throw new CompileError("Null ptr", new Position(-1,-1));
+            throw new CompileError("Null ptr(ScopeTree)", new Position(-1,-1));
         ScopeNode p = now;
-        while (p.parent != null){
+        do {
             if (p.nodeContain(_s)) return true;
             p = p.parent;
-        }
+        } while (p != null);
         return false;
     }
 

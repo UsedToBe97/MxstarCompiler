@@ -28,14 +28,14 @@ public class ArrayExpr extends Expr {
         for (Expr u : exprList) {
             ++tmpd;
             if (!(u.gettype() instanceof IntType))
-                throw new CompileError("Index Error", pos);
+                throw new CompileError("Index Error(ArrayExpr)", pos);
         }
         if (Leftexpr.gettype() instanceof ArrayType) {
             int ff = tmpd - ((ArrayType) Leftexpr.gettype()).d;
             if (ff == 0)
                 return ((ArrayType) Leftexpr.gettype()).type;
             else if (ff > 0) return new ArrayType(ff, ((ArrayType) Leftexpr.gettype()).type, pos);
-            else throw new CompileError("Index Too Many", pos);
-        } else throw new CompileError("LeftExpr Error", pos);
+            else throw new CompileError("Index Too Many(ArrayExpr)", pos);
+        } else throw new CompileError("LeftExpr Error(ArrayExpr)", pos);
     }
 }

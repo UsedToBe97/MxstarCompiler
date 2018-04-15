@@ -17,6 +17,7 @@ public class ExprStmt extends Stmt {
         return pos;
     }
     public void check() {
+        System.err.println("Go Check ExprStmt");
         if (expr == null)
             throw new CompileError("Null Expr", pos);
         type = expr.gettype();

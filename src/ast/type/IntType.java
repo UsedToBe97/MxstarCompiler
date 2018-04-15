@@ -5,6 +5,7 @@ import utils.Position;
 
 public class IntType extends Type{
     public int data;
+
     public IntType(Position _pos) {
         pos = _pos;
     }
@@ -14,6 +15,7 @@ public class IntType extends Type{
     public IntType(int _data) {
         data = _data;
     }
+    public String typename() {return "int";}
     public IntType(TerminalNode ctx) {
         data = Integer.parseInt(ctx.getText());
         pos = new Position(ctx.getSymbol());

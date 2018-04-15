@@ -27,16 +27,19 @@ public class VarDef extends Def {
     public Position getpos() {return pos;}
     public Expr getExpr() {return expr;}
     public void check() {
+        System.err.println("Go Check VarDef   " + name);
         if (type instanceof ClassType) {
             Def d = GlobalClass.st.now.check(((ClassType) type).name);
+            System.err.println("next ");
             if (!(d instanceof ClassDef))
-                throw new CompileError("Undefined Class", pos);
+                throw new CompileError("Undefined Class(VarDef)", pos);
+            GlobalClass.st.now.addObj(name, this);
         }
         if (type instanceof ArrayType) {
             Type t = ((ArrayType)type).type;
             if (t instanceof ClassType) GlobalClass.st.now.check(((ClassType) t).name);
         }
         if (type instanceof VoidType)
-            throw new CompileError("Void ?!!", pos);
+            throw new CompileError("Void ?!!(VarDef)", pos);
     }
 }

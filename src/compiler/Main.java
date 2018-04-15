@@ -107,8 +107,8 @@ class MyVisitor extends MxstarBaseVisitor<atom>
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        //String inputFile = "D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/1.test";
-        String inputFile = "program.txt";
+        String inputFile = "D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/1.test";
+        //String inputFile = "program.txt";
         InputStream is = new FileInputStream(inputFile);
         CharStream input = CharStreams.fromStream(is);
         System.out.println(input);
@@ -121,8 +121,9 @@ public class Main {
         AstBuilder AST = new AstBuilder();
         try {
             Root rt = (Root) AST.visit(tree);
+            rt.check();
         } catch(CompileError ce) {
-            System.out.println(ce.getMessage());
+            System.err.println(ce.getMessage());
             System.exit(-1);
         }
         System.exit(0);

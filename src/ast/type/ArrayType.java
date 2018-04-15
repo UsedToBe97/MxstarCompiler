@@ -10,6 +10,7 @@ public class ArrayType extends Type{
        d = _d;
        type = _t;
     }
+    public String typename() {return "Array";}
     public String msg() {
         return "ArrayType " + pos.toString() + "\tDimension: " + d;
     }

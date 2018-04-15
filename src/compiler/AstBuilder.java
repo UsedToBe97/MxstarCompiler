@@ -48,14 +48,12 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
         System.err.println("EnterFunc");
         FuncDef tmp = new FuncDef(ctx);
         infunc = true;
-        int tot = 0;
-        for (ParserRuleContext child : ctx.block().stmt()) {
-            ++tot;
-            System.err.println(tot);
-            tmp.addstmt((Stmt)visit(child));
-        }
+        System.err.println(tmp.name + "!!!!!!!");
         if (inclass) tree.addObj(classname + "." + tmp.name, tmp);
         else tree.addObj(tmp.name, tmp);
+        for (ParserRuleContext child : ctx.block().stmt()) {
+            tmp.addstmt((Stmt)visit(child));
+        }
         infunc = false;
         System.err.println("ExitFunc");
         return tmp;
@@ -93,6 +91,7 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
 
     @Override
     public Atom visitIfStmt(MxstarParser.IfStmtContext ctx) {
+        System.err.println("Enter IfStmt");
         IfStmt tmp = new IfStmt(new Position(ctx.getStart()));
         tmp.add((Expr)visit(ctx.expr(0)), (Stmt)visit(ctx.stmt(0)));
         int k = 1;
@@ -233,6 +232,7 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
 
     @Override
     public Atom visitBinaryExpr(MxstarParser.BinaryExprContext ctx) {
+        System.err.println("Enter Binary Expr");
         return new BinaryExpr((Expr)visit(ctx.expr(0)),
                 (Expr)visit(ctx.expr(1)),
                 ctx.op.getText(), new Position(ctx.getStart()));

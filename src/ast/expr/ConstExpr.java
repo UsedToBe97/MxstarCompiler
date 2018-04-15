@@ -9,6 +9,6 @@ public class ConstExpr extends Expr {
         pos = _t.getpos();
     }
     public Type gettype() {
-        return null;
+        return type;
     }
 }

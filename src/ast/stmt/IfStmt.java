@@ -19,6 +19,7 @@ public class IfStmt extends Stmt {
         return pos;
     }
     public void check() {
+        System.err.println("Check IfStmt");
         for (Pair<Expr, Stmt> u : ifList) {
             if (!(u.getFirst().gettype() instanceof BoolType))
                 throw new CompileError("Not bool type", pos);

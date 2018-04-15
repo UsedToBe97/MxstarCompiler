@@ -4,8 +4,6 @@ import ast.type.Type;
 import utils.CompileError;
 import utils.Position;
 
-import java.util.Objects;
-
 public class AssignExpr extends Expr {
     public Expr expr1, expr2;
     public AssignExpr(Expr _e1, Expr _e2, Position _pos) {
@@ -17,11 +15,12 @@ public class AssignExpr extends Expr {
         return pos;
     }
     public Type gettype() {
+        System.err.println("Assign!");
         if (!(expr1 instanceof IDExpr || expr1 instanceof ArrayExpr || expr1 instanceof MemberExpr))
-            throw new CompileError("Left Expr Error", pos);
+            throw new CompileError("Left Expr Error(AssignExpr)", pos);
         Type t1 = expr1.gettype(), t2 = expr2.gettype();
-        if (!Objects.equals(t1, t2))
-            throw new CompileError("Type Error", pos);
+        if (!t1.typename().equals(t2.typename()))
+            throw new CompileError("Type Error(AssignExpr)", pos);
         return t1;
     }
 

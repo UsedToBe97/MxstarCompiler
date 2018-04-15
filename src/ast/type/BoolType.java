@@ -7,6 +7,7 @@ public class BoolType extends Type{
     public BoolType(Position _pos) {
         pos = _pos;
     }
+    public String typename() {return "bool";}
     public BoolType(String _s) {
         data = _s.equals("false") ? false : true;
     }

@@ -7,4 +7,5 @@ public class VoidType extends Type{
         pos = _pos;
     }
     public VoidType() {}
+    public String typename() {return "void";}
 }

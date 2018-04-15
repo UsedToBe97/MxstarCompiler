@@ -23,23 +23,24 @@ public class BinaryExpr extends Expr {
     }
 
     public Type gettype() {
+        System.err.println("FUCK!!!!!!");
         Type t1 = expr1.gettype(), t2 = expr2.gettype();
         if (op.equals("+")) {
             if (!(t1 instanceof IntType || t1 instanceof StringType))
-                throw new CompileError("Type Error", pos);
+                throw new CompileError("Type Error(Binary Expr)", pos);
             if (!(t2 instanceof IntType || t2 instanceof StringType))
-                throw new CompileError("Type Error", pos);
+                throw new CompileError("Type Error(Binary Expr)", pos);
         } else if (op.equals("&&") || op.equals("||")) {
             if (!(t1 instanceof BoolType))
-                throw new CompileError("Type Error", pos);
+                throw new CompileError("Type Error(Binary Expr)", pos);
             if (!(t2 instanceof BoolType))
-                throw new CompileError("Type Error", pos);
+                throw new CompileError("Type Error(Binary Expr)", pos);
         } else {
-            if (!(t1 instanceof IntType && t2 instanceof IntType))
-                throw new CompileError("Type Error", pos);
+            if (!(t1 instanceof IntType || t2 instanceof IntType))
+                throw new CompileError("Type Error(Binary Expr)", pos);
         }
         if (!(Objects.equals(t1, t2)))
-            throw new CompileError("Type Error", pos);
+            throw new CompileError("Type Error(Binary Expr)", pos);
         return t1;
     }
 }
