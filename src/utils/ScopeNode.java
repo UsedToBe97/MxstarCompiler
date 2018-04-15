@@ -10,7 +10,7 @@ public class ScopeNode {
     public List<ScopeNode> child = new LinkedList<>();
 
     public ScopeNode(){}
-    public boolean contains(String _s) {return objmap.containsKey(_s);}
+    public boolean nodeContain(String _s) {return objmap.containsKey(_s);}
     public Def check(String _s) {
         ScopeNode p = this;
         while (p != null) {

@@ -1,5 +1,9 @@
 package ast.expr;
 
+import ast.type.BoolType;
+import ast.type.IntType;
+import ast.type.Type;
+import utils.CompileError;
 import utils.Position;
 
 public class LUnaryExpr extends Expr {
@@ -12,5 +16,15 @@ public class LUnaryExpr extends Expr {
     }
     public Position getpos() {
         return pos;
+    }
+    public Type gettype() {
+        if (op.equals("!") || op.equals('~')) {
+            if (!(expr.gettype() instanceof IntType || expr.gettype() instanceof BoolType))
+                throw new CompileError("Type Error", pos);
+        } else {
+            if (!(expr.gettype() instanceof IntType))
+                throw new CompileError("Type Error", pos);
+        }
+        return expr.gettype();
     }
 }

@@ -38,6 +38,5 @@ public class VarDef extends Def {
         }
         if (type instanceof VoidType)
             throw new CompileError("Void ?!!", pos);
-
     }
 }

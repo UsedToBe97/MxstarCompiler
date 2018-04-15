@@ -1,6 +1,9 @@
 package ast.stmt;
 
 import ast.expr.Expr;
+import ast.type.BoolType;
+import utils.CompileError;
+import utils.GlobalClass;
 import utils.Position;
 
 public class WhileStmt extends Stmt {
@@ -15,4 +18,17 @@ public class WhileStmt extends Stmt {
     public Position getpos() {
         return pos;
     }
+
+    public void check() {
+        GlobalClass.circnt++;
+        if (!(stmt instanceof BlockStmt)) GlobalClass.st.enterScope();
+        if (!(expr.gettype() instanceof BoolType))
+            throw new CompileError("Not Bool Type", pos);
+
+        if(stmt != null) stmt.check();
+
+        if (!(stmt instanceof BlockStmt)) GlobalClass.st.exitScope();
+        GlobalClass.circnt--;
+    }
+
 }

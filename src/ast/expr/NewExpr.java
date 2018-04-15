@@ -1,8 +1,11 @@
 package ast.expr;
 
+import ast.type.ArrayType;
+import ast.type.IntType;
 import ast.type.Type;
 import ast.type.TypeClassifier;
 import parser.MxstarParser;
+import utils.CompileError;
 import utils.Position;
 
 import java.util.LinkedList;
@@ -23,5 +26,14 @@ public class NewExpr extends Expr {
 
     public Position getpos() {
         return pos;
+    }
+
+    public Type gettype() {
+        for (Expr e : exprList) {
+            if (!(e.gettype() instanceof IntType))
+                throw new CompileError("Expr Not Int", pos);
+        }
+        if (d == 0) return type;
+        return new ArrayType(d, type, pos);
     }
 }

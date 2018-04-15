@@ -4,7 +4,10 @@ import ast.*;
 import ast.definition.*;
 import ast.expr.*;
 import ast.stmt.*;
+import ast.type.BoolType;
+import ast.type.IntType;
 import ast.type.NullType;
+import ast.type.StringType;
 import org.antlr.v4.runtime.ParserRuleContext;
 import parser.*;
 import utils.*;
@@ -214,6 +217,18 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
     public Atom visitLUnaryExpr(MxstarParser.LUnaryExprContext ctx) {
         return new LUnaryExpr((Expr)visit(ctx.expr()),
                 ctx.op.getText(), new Position(ctx.getStart()));
+    }
+
+    @Override
+    public Atom visitConstantExpr(MxstarParser.ConstantExprContext ctx) {
+        MxstarParser.ConstantContext tmp = ctx.constant();
+        if (tmp.ConstInteger() != null){
+            return new ConstExpr(new IntType(tmp.ConstInteger()));
+        } else if (tmp.ConstString() != null) {
+            return new ConstExpr(new StringType(tmp.ConstString()));
+        } else if (tmp.getText().equals("true") || tmp.getText().equals("false")) {
+            return new ConstExpr(new BoolType((tmp.getText())));
+        } else return new ConstExpr(new NullType(new Position(tmp.getStart())));
     }
 
     @Override

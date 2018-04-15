@@ -45,6 +45,7 @@ public class FuncDef extends Def{
     }
     public void check() {
         GlobalClass.infunc = true;
+        GlobalClass.nowfunc = this;
         GlobalClass.st.enterScope();
         if (type instanceof ClassType) GlobalClass.st.now.check(((ClassType) type).name);
         for (Pair<Type, String> u : params) {
@@ -60,8 +61,9 @@ public class FuncDef extends Def{
             tmp.setType(u.getFirst());
             GlobalClass.st.addObj(tmp.name, tmp);
         }
-       // for (Stmt s : stmts) s.check();
+        for (Stmt s : stmts) s.check();
         GlobalClass.st.exitScope();
         GlobalClass.infunc = false;
+        GlobalClass.nowfunc = null;
     }
 }

@@ -1,5 +1,8 @@
 package ast.expr;
 
+import ast.type.IntType;
+import ast.type.Type;
+import utils.CompileError;
 import utils.Position;
 
 public class RUnaryExpr extends Expr {
@@ -12,5 +15,10 @@ public class RUnaryExpr extends Expr {
     }
     public Position getpos() {
         return pos;
+    }
+    public Type gettype() {
+        if (!(expr.gettype() instanceof IntType))
+            throw new CompileError("Type Error", pos);
+        return expr.gettype();
     }
 }

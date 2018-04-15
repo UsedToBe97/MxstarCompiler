@@ -100,19 +100,6 @@ constant:
     | 'true'
     | 'false'
 ;
-/*
-someType:
-    ConstInteger
-    | ConstString
-    | 'true'
-    | 'false'
-    | 'null'
-    | 'this'
-    | Identifier
-;*/
-
-
-
 //lexer
 
 ConstInteger:

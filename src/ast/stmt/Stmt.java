@@ -10,5 +10,5 @@ public abstract class Stmt extends Atom {
     public Position getpos() {
         return pos;
     }
-    //public abstract void check();
+    public abstract void check();
 }

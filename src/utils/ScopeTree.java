@@ -75,7 +75,7 @@ public class ScopeTree {
             throw new CompileError("Null ptr", new Position(-1,-1));
         ScopeNode p = now;
         while (p.parent != null){
-            if (p.contains(_s)) return true;
+            if (p.nodeContain(_s)) return true;
             p = p.parent;
         }
         return false;

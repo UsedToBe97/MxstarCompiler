@@ -1,5 +1,11 @@
 package ast.stmt;
 
+import ast.definition.ClassDef;
+import ast.definition.Def;
+import ast.definition.FuncDef;
+import ast.definition.VarDef;
+import utils.CompileError;
+import utils.GlobalClass;
 import utils.Position;
 
 import java.util.LinkedList;
@@ -14,6 +20,19 @@ public class BlockStmt extends Stmt {
     public void add(Stmt _s) {Stmts.add(_s);}
     public Position getpos() {
         return pos;
+    }
+
+    public void check() {
+        GlobalClass.st.enterScope();
+        for (Stmt s : Stmts) {
+            if (s instanceof Def) {
+                if (s instanceof ClassDef || s instanceof FuncDef)
+                    throw new CompileError("Can't define class or func here", pos);
+                else if (s instanceof VarDef) s.check();
+                else new CompileError("WTF", pos);
+            } else s.check();
+        }
+        GlobalClass.st.exitScope();
     }
 
 }

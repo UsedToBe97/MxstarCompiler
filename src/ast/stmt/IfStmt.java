@@ -1,6 +1,8 @@
 package ast.stmt;
 
 import ast.expr.Expr;
+import ast.type.BoolType;
+import utils.CompileError;
 import utils.Pair;
 import utils.Position;
 
@@ -15,5 +17,13 @@ public class IfStmt extends Stmt {
     public void addElse(Stmt _s) {elsestmt = _s;}
     public Position getpos() {
         return pos;
+    }
+    public void check() {
+        for (Pair<Expr, Stmt> u : ifList) {
+            if (!(u.getFirst().gettype() instanceof BoolType))
+                throw new CompileError("Not bool type", pos);
+            if (u.getSecond() != null) u.getSecond().check();
+        }
+        if (elsestmt != null) elsestmt.check();
     }
 }
