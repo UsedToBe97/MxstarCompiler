@@ -2,63 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/definition/FuncDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/definition/FuncDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/ArrayExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/ArrayExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/AssignExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/AssignExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/BinaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/BinaryExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/FuncExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/FuncExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/MemberFuncExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/MemberFuncExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/BlockStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/BlockStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/ExprStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/ExprStmt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/Mxstar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Mxstar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/MxstarParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/MxstarParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/definition/FuncDef.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/ArrayExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/ArrayExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/AssignExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/AssignExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/BinaryExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/BinaryExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/FuncExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/FuncExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/MemberFuncExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/MemberFuncExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/stmt/BlockStmt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/stmt/BlockStmt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/stmt/ExprStmt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/stmt/ExprStmt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/Mxstar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/Mxstar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarBaseListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarBaseVisitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ArrayExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ArrayExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$AssignExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$AssignExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BaseTypeContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BaseTypeContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BinaryExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BinaryExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BlockContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BlockContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BlockStmtContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BlockStmtContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BracketExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BracketExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BracketsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BracketsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ConstantContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ConstantContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ConstantExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ConstantExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$CtrlStmtContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$CtrlStmtContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ExprListContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ExprListContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ExprStmtContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ExprStmtContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ForStmtContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ForStmtContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$FuncDefContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$FuncDefContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$FuncExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$FuncExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$IDExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$IDExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$IfStmtContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$IfStmtContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$LUnaryExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$LUnaryExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$MemberExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$MemberExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$MemberFuncExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$MemberFuncExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$NewExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$NewExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ParameterContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ParameterContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ParameterListContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ParameterListContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$RUnaryExprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$RUnaryExprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ReturnStmtContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ReturnStmtContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$StmtContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$StmtContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$TypeContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$TypeContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$VarDefStmtContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$VarDefStmtContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$WhileStmtContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$WhileStmtContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/1.test" beforeDir="false" afterPath="$PROJECT_DIR$/test/1.test" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -117,11 +61,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="BinaryExpr.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ast/expr/BinaryExpr.java">
+          <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="322">
-                  <caret line="47" column="30" lean-forward="true" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
+                <state relative-caret-position="368">
+                  <caret line="118" column="26" lean-forward="true" selection-start-line="118" selection-start-column="26" selection-end-line="118" selection-end-column="26" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -161,11 +105,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="FuncDef.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="FuncDef.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/ast/definition/FuncDef.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="280">
-                  <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+                <state relative-caret-position="368">
+                  <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -289,7 +233,6 @@
         <option value="$PROJECT_DIR$/src/ast/stmt/IfStmt.java" />
         <option value="$PROJECT_DIR$/src/compiler/AstBuilder.java" />
         <option value="$PROJECT_DIR$/src/ast/definition/VarDef.java" />
-        <option value="$PROJECT_DIR$/src/compiler/Main.java" />
         <option value="$PROJECT_DIR$/src/ast/expr/MemberFuncExpr.java" />
         <option value="$PROJECT_DIR$/src/ast/expr/ArrayExpr.java" />
         <option value="$PROJECT_DIR$/src/ast/expr/BinaryExpr.java" />
@@ -299,6 +242,7 @@
         <option value="$PROJECT_DIR$/src/ast/expr/AssignExpr.java" />
         <option value="$PROJECT_DIR$/src/parser/Mxstar.g4" />
         <option value="$PROJECT_DIR$/src/ast/definition/FuncDef.java" />
+        <option value="$PROJECT_DIR$/src/compiler/Main.java" />
       </list>
     </option>
   </component>
@@ -536,12 +480,12 @@
       <workItem from="1523713917466" duration="2505000" />
       <workItem from="1523755551690" duration="5072000" />
       <workItem from="1523778093235" duration="18958000" />
-      <workItem from="1523800776573" duration="2017000" />
+      <workItem from="1523800776573" duration="2055000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130783000" />
+    <option name="totallyTimeSpent" value="130821000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -559,7 +503,7 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.3297062" />
       <window_info anchor="bottom" id="Tool Output" order="13" weight="0.32897604" />
-      <window_info active="true" anchor="bottom" id="Messages" order="11" sideWeight="0.49946696" visible="true" weight="0.32897604" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49946696" weight="0.32897604" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -567,7 +511,7 @@
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.32897604" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.32897604" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32897604" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
@@ -861,16 +805,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/expr/ArrayExpr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -979,8 +913,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/definition/FuncDef.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+        <state relative-caret-position="368">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="118" column="26" lean-forward="true" selection-start-line="118" selection-start-column="26" selection-end-line="118" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
