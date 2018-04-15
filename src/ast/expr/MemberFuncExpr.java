@@ -2,8 +2,7 @@ package ast.expr;
 
 import ast.definition.Def;
 import ast.definition.FuncDef;
-import ast.type.ClassType;
-import ast.type.Type;
+import ast.type.*;
 import parser.MxstarParser;
 import utils.CompileError;
 import utils.GlobalClass;
@@ -34,7 +33,9 @@ public class MemberFuncExpr extends Expr {
     }
 
     public Type gettype() {
+        System.err.println("Get Type MemberFunc");
         Type t = who.gettype();
+        System.err.println(t.typename());
         if (t instanceof ClassType) {
             String tmp = ((ClassType) t).name + '.' + name;
             Def d = GlobalClass.st.now.check(tmp);
@@ -50,6 +51,21 @@ public class MemberFuncExpr extends Expr {
                 }
             }
             return ((FuncDef) d).type;
-        } else throw new CompileError("No This Class(MemberFuncExpr)", pos);
+        } else if (t instanceof ArrayType) {
+            if (name.equals("size") && exprList.size() == 0)
+                return new IntType(pos);
+            else throw new CompileError("No This MemFunc(MemberFuncExpr)", pos);
+        } else if (t instanceof StringType) {
+            if (name.equals("length") && exprList.size() == 0)
+                return new IntType(pos);
+            else if (name.equals("substring") && exprList.size() == 2)
+                return new StringType(pos);
+            else if (name.equals("parseInt") && exprList.size() == 0)
+                return new IntType(pos);
+            else if (name.equals("ord") && exprList.size() == 1)
+                return new IntType(pos);
+            else throw new CompileError("No This MemFunc(MemberFuncExpr)", pos);
+        } else
+            throw new CompileError("No This Class(MemberFuncExpr)", pos);
     }
 }

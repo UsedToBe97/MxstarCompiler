@@ -15,6 +15,7 @@ public class ArrayExpr extends Expr {
     public ArrayExpr(Expr _e) {
         Leftexpr = _e;
         exprList = new LinkedList<>();
+        pos = _e.getpos();
     }
     public void add(Expr _e) {
         exprList.add(_e);
@@ -33,6 +34,7 @@ public class ArrayExpr extends Expr {
             if (!(u.gettype() instanceof IntType))
                 throw new CompileError("Index Error(ArrayExpr)", pos);
         }
+        System.err.println("Here");
         System.err.println(Leftexpr.gettype().typename());
         if (Leftexpr.gettype() instanceof ArrayType) {
             int ff = tmpd - ((ArrayType) Leftexpr.gettype()).d;
@@ -41,6 +43,9 @@ public class ArrayExpr extends Expr {
                 return ((ArrayType) Leftexpr.gettype()).type;
             else if (ff > 0) return new ArrayType(ff, ((ArrayType) Leftexpr.gettype()).type, pos);
             else throw new CompileError("Index Too Many(ArrayExpr)", pos);
-        } else throw new CompileError("LeftExpr Error(ArrayExpr)", pos);
+        } else {
+            System.err.println("Go There");
+            throw new CompileError("LeftExpr Error(ArrayExpr)", pos);
+        }
     }
 }

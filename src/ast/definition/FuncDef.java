@@ -63,7 +63,7 @@ public class FuncDef extends Def{
             GlobalClass.st.addObj(tmp.name, tmp);
         }
         GlobalClass.st.print();
-        for (Stmt s : stmts) s.check();
+        for (Stmt s : stmts) if (s != null) s.check();
         GlobalClass.st.exitScope();
         GlobalClass.infunc = false;
         GlobalClass.nowfunc = null;

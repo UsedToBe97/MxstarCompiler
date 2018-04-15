@@ -1,7 +1,10 @@
 package ast.stmt;
 
 import ast.expr.Expr;
+import ast.type.BoolType;
+import ast.type.NullType;
 import ast.type.Type;
+import utils.CompileError;
 import utils.GlobalClass;
 import utils.Position;
 
@@ -33,6 +36,8 @@ public class ForStmt extends Stmt {
             //System.err.println(exprs.get(i).gettype().typename());
             types.add(exprs.get(i).gettype());
         }
+        if (!(types.get(1) instanceof NullType || types.get(1) instanceof BoolType))
+            throw new CompileError("Error condition(ForStmt)", pos);
 
         if(stmt != null) stmt.check();
 

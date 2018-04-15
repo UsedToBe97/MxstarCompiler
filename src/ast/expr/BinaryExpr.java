@@ -23,14 +23,14 @@ public class BinaryExpr extends Expr {
     }
 
     public Type gettype() {
-        System.err.println("FUCK!!!!!!");
+        System.err.println("Binary FUCK!!!!!! op " + op);
+
         Type t1 = expr1.gettype(), t2 = expr2.gettype();
-        if (op.equals("+")) {
+        if (op.equals("+") || op.equals("==") || op.equals("!=")) {
             if (!(t1 instanceof IntType || t1 instanceof StringType))
                 throw new CompileError("Type Error(Binary Expr)", pos);
             if (!(t2 instanceof IntType || t2 instanceof StringType))
                 throw new CompileError("Type Error(Binary Expr)", pos);
-            return t1;
         } else if (op.equals("&&") || op.equals("||")) {
             if (!(t1 instanceof BoolType))
                 throw new CompileError("Type Error(Binary Expr)", pos);
@@ -41,6 +41,7 @@ public class BinaryExpr extends Expr {
             if (!(t1 instanceof IntType || t2 instanceof IntType))
                 throw new CompileError("Type Error(Binary Expr)", pos);
         }
+        System.err.println(t1 + "    " + t2);
         if (!(Objects.equals(t1.typename(), t2.typename())))
             throw new CompileError("Type Error(Binary Expr)", pos);
         if (op.equals("&&") || op.equals("||") || op.equals(">=") ||

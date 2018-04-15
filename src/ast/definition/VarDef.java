@@ -1,5 +1,6 @@
 package ast.definition;
 
+import ast.expr.ConstExpr;
 import ast.expr.Expr;
 import ast.type.*;
 import parser.MxstarParser;
@@ -40,7 +41,14 @@ public class VarDef extends Def {
         }
         if (type instanceof VoidType)
             throw new CompileError("Void ?!!(VarDef)", pos);
-
+        if (type instanceof StringType && expr != null) {
+            if (expr instanceof ConstExpr)
+                if (expr.gettype() instanceof NullType)
+                    throw new CompileError("String = null(VarDef)", pos);
+        }
+        if (expr != null) {
+            System.err.println(expr.gettype());
+        }
         if (GlobalClass.infunc)
             GlobalClass.st.now.addObj(name, this);
     }

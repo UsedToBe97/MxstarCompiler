@@ -3,6 +3,7 @@ package ast.stmt;
 import ast.expr.Expr;
 import ast.type.BoolType;
 import utils.CompileError;
+import utils.GlobalClass;
 import utils.Pair;
 import utils.Position;
 
@@ -21,10 +22,20 @@ public class IfStmt extends Stmt {
     public void check() {
         System.err.println("Check IfStmt");
         for (Pair<Expr, Stmt> u : ifList) {
+            System.err.println(u.getFirst().toString());
+            System.err.println(u.getFirst().gettype().typename() + " ????? ");
             if (!(u.getFirst().gettype() instanceof BoolType))
                 throw new CompileError("Not bool type(If Stmt)", pos);
-            if (u.getSecond() != null) u.getSecond().check();
+            if (u.getSecond() != null) {
+                GlobalClass.st.enterScope();
+                u.getSecond().check();
+                GlobalClass.st.exitScope();
+            }
         }
-        if (elsestmt != null) elsestmt.check();
+        if (elsestmt != null) {
+            GlobalClass.st.enterScope();
+            elsestmt.check();
+            GlobalClass.st.exitScope();
+        }
     }
 }
