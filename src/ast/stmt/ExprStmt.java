@@ -20,7 +20,10 @@ public class ExprStmt extends Stmt {
         System.err.println("Go Check ExprStmt");
         if (expr == null)
             throw new CompileError("Null Expr(ExprStmt)", pos);
+
+        System.err.println(expr.toString());
         type = expr.gettype();
+        System.err.println("End Check ExprStmt");
     }
 
 }

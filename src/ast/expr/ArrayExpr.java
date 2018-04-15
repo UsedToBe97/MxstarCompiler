@@ -36,8 +36,9 @@ public class ArrayExpr extends Expr {
         }
         System.err.println("Here");
         System.err.println(Leftexpr.gettype().typename());
+        System.err.println(((ArrayType) Leftexpr.gettype()).d);
         if (Leftexpr.gettype() instanceof ArrayType) {
-            int ff = tmpd - ((ArrayType) Leftexpr.gettype()).d;
+            int ff =((ArrayType) Leftexpr.gettype()).d - tmpd;
             System.err.println(ff);
             if (ff == 0)
                 return ((ArrayType) Leftexpr.gettype()).type;

@@ -1,9 +1,6 @@
 package ast.expr;
 
-import ast.type.BoolType;
-import ast.type.IntType;
-import ast.type.StringType;
-import ast.type.Type;
+import ast.type.*;
 import utils.CompileError;
 import utils.Position;
 
@@ -26,12 +23,18 @@ public class BinaryExpr extends Expr {
         System.err.println("Binary FUCK!!!!!! op " + op);
 
         Type t1 = expr1.gettype(), t2 = expr2.gettype();
-        if (op.equals("+") || op.equals("==") || op.equals("!=")) {
+        if (op.equals("+")) {
             if (!(t1 instanceof IntType || t1 instanceof StringType))
                 throw new CompileError("Type Error(Binary Expr)", pos);
             if (!(t2 instanceof IntType || t2 instanceof StringType))
                 throw new CompileError("Type Error(Binary Expr)", pos);
-        } else if (op.equals("&&") || op.equals("||")) {
+        } else if (op.equals("==") || op.equals("!=")) {
+            if (!(t1 instanceof IntType || t1 instanceof StringType || t1 instanceof ClassType || t1 instanceof NullType))
+                throw new CompileError("Type Error(Binary Expr)", pos);
+            if (!(t2 instanceof IntType || t2 instanceof StringType || t2 instanceof ClassType || t2 instanceof NullType))
+                throw new CompileError("Type Error(Binary Expr)", pos);
+        }
+        else if (op.equals("&&") || op.equals("||")) {
             if (!(t1 instanceof BoolType))
                 throw new CompileError("Type Error(Binary Expr)", pos);
             if (!(t2 instanceof BoolType))
@@ -42,8 +45,10 @@ public class BinaryExpr extends Expr {
                 throw new CompileError("Type Error(Binary Expr)", pos);
         }
         System.err.println(t1 + "    " + t2);
-        if (!(Objects.equals(t1.typename(), t2.typename())))
-            throw new CompileError("Type Error(Binary Expr)", pos);
+        if (!(Objects.equals(t1.typename(), t2.typename())) &&
+                !(t1 instanceof NullType && t2 instanceof ClassType) &&
+                !(t2 instanceof NullType && t1 instanceof ClassType)
+                ) throw new CompileError("Type Error(Binary Expr)", pos);
         if (op.equals("&&") || op.equals("||") || op.equals(">=") ||
                 op.equals("<=") || op.equals("<") || op.equals(">")) return new BoolType(pos);
         if (op.equals("==") || op.equals("!=")) return new BoolType(pos);

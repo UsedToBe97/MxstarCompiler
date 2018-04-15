@@ -2,6 +2,8 @@ package ast.expr;
 
 import ast.definition.Def;
 import ast.definition.FuncDef;
+import ast.type.ClassType;
+import ast.type.NullType;
 import ast.type.Type;
 import parser.MxstarParser;
 import utils.CompileError;
@@ -38,7 +40,9 @@ public class FuncExpr extends Expr {
                 } else {
                     for (int i = 0; i < exprList.size(); ++i) {
                         if (!Objects.equals(exprList.get(i).gettype().typename(), ((FuncDef) d).params.get(i).getFirst().typename())) {
-                            throw new CompileError("Parameter Not Match(FuncExpr)", pos);
+                            if (!(exprList.get(i).gettype() instanceof ClassType && ((FuncDef) d).params.get(i).getFirst() instanceof NullType))
+                                if (!(exprList.get(i).gettype() instanceof NullType && ((FuncDef) d).params.get(i).getFirst() instanceof ClassType))
+                                    throw new CompileError("Parameter Not Match(FuncExpr)", pos);
                         }
                     }
                 }

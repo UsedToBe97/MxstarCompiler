@@ -25,7 +25,9 @@ public class FuncDef extends Def{
         TypeClassifier tc = new TypeClassifier();
         pos = new Position(ctx.name);
         name = ctx.name.getText();
-        type = tc.Classify(ctx.type());
+        if (ctx.type() != null)
+            type = tc.Classify(ctx.type());
+        else type = new NullType(pos);
         int tot = 0;
         for (MxstarParser.ParameterContext tmp : ctx.parameterList().parameter()) {
             addparam(tc.Classify(tmp.type()), tmp.Identifier().getText());

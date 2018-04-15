@@ -1,7 +1,9 @@
 package ast.expr;
 
+import ast.type.NullType;
 import ast.type.Type;
 import utils.CompileError;
+import utils.GlobalClass;
 import utils.Position;
 
 public class AssignExpr extends Expr {
@@ -18,9 +20,12 @@ public class AssignExpr extends Expr {
         System.err.println("Assign!");
         if (!(expr1 instanceof IDExpr || expr1 instanceof ArrayExpr || expr1 instanceof MemberExpr))
             throw new CompileError("Left Expr Error(AssignExpr)", pos);
-        Type t1 = expr1.gettype(), t2 = expr2.gettype();
+
+        System.err.println(GlobalClass.classname);
+        Type t1 = expr1.gettype();
+        Type t2 = expr2.gettype();
         System.err.println(t1.typename() + " = " + t2.typename());
-        if (!t1.typename().equals(t2.typename()))
+        if (!t1.typename().equals(t2.typename()) && !(t2 instanceof NullType))
             throw new CompileError("Type Error(AssignExpr)", pos);
         return t1;
     }

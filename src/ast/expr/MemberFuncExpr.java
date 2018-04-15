@@ -45,7 +45,7 @@ public class MemberFuncExpr extends Expr {
                 throw new CompileError("MemFunc Number Not Match(MemberFuncExpr)", pos);
             } else {
                 for (int i = 0; i < exprList.size(); ++i) {
-                    if (!Objects.equals(exprList.get(i).gettype(), ((FuncDef) d).params.get(i).getFirst())) {
+                    if (!Objects.equals(exprList.get(i).gettype().typename(), ((FuncDef) d).params.get(i).getFirst().typename())) {
                         throw new CompileError("MemFunc Parameter Not Match(MemberFuncExpr)", pos);
                     }
                 }

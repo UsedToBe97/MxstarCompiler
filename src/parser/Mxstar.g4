@@ -21,7 +21,7 @@ varDef:
 ;
 
 funcDef:
-    type name=Identifier '(' parameterList ')' block
+    type? name=Identifier '(' parameterList ')' block
 ;
 
 parameterList:
