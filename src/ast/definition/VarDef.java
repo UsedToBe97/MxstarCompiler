@@ -49,7 +49,6 @@ public class VarDef extends Def {
         if (expr != null) {
             System.err.println(expr.gettype());
         }
-        if (GlobalClass.infunc)
-            GlobalClass.st.now.addObj(name, this);
+        GlobalClass.st.now.addObj(name, this);
     }
 }

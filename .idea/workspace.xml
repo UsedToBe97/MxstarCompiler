@@ -7,24 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/definition/FuncDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/definition/FuncDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/definition/VarDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/definition/VarDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/ArrayExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/ArrayExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/BinaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/BinaryExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/MemberFuncExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/MemberFuncExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/ForStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/ForStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/IfStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/IfStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/AstBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/AstBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/Mxstar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Mxstar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/MxstarLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/MxstarLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/definition/FuncDef.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/definition/FuncDef.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/BinaryExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/BinaryExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/MemberFuncExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/MemberFuncExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/stmt/ForStmt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/stmt/ForStmt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/stmt/IfStmt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/stmt/IfStmt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/Mxstar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/Mxstar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarLexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarLexer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/1.test" beforeDir="false" afterPath="$PROJECT_DIR$/test/1.test" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -79,20 +62,20 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="VarDef.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="VarDef.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ast/definition/VarDef.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="184">
-                  <caret line="38" column="44" lean-forward="true" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
+                <state relative-caret-position="414">
+                  <caret line="51" column="31" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="371">
-                  <caret line="111" column="34" lean-forward="true" selection-start-line="111" selection-start-column="34" selection-end-line="111" selection-end-column="34" />
+                <state relative-caret-position="256">
+                  <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -347,11 +330,11 @@
         <option value="$PROJECT_DIR$/src/ast/stmt/ForStmt.java" />
         <option value="$PROJECT_DIR$/src/ast/expr/MemberExpr.java" />
         <option value="$PROJECT_DIR$/src/ast/expr/MemberFuncExpr.java" />
-        <option value="$PROJECT_DIR$/src/ast/definition/VarDef.java" />
         <option value="$PROJECT_DIR$/src/ast/expr/ArrayExpr.java" />
         <option value="$PROJECT_DIR$/src/ast/stmt/IfStmt.java" />
         <option value="$PROJECT_DIR$/src/compiler/AstBuilder.java" />
         <option value="$PROJECT_DIR$/src/compiler/Main.java" />
+        <option value="$PROJECT_DIR$/src/ast/definition/VarDef.java" />
       </list>
     </option>
   </component>
@@ -361,7 +344,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="492" />
     <option name="y" value="32" />
     <option name="width" value="1400" />
@@ -588,12 +571,12 @@
       <workItem from="1523695836780" duration="10684000" />
       <workItem from="1523713917466" duration="2505000" />
       <workItem from="1523755551690" duration="5072000" />
-      <workItem from="1523778093235" duration="17630000" />
+      <workItem from="1523778093235" duration="18289000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127438000" />
+    <option name="totallyTimeSpent" value="128097000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -619,11 +602,11 @@
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.32897604" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.32897604" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32897604" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17430703" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17430703" />
       <window_info anchor="right" id="Database" order="6" weight="0.32995737" />
       <window_info anchor="bottom" id="ANTLR Preview" order="12" weight="0.32897604" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1029,20 +1012,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/definition/VarDef.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="38" column="44" lean-forward="true" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="111" column="34" lean-forward="true" selection-start-line="111" selection-start-column="34" selection-end-line="111" selection-end-column="34" />
+        <state relative-caret-position="256">
+          <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/definition/VarDef.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="51" column="31" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
         </state>
       </provider>
     </entry>
