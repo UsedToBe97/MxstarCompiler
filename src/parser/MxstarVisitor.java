@@ -217,6 +217,24 @@ public interface MxstarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAssignExpr(MxstarParser.AssignExprContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MxstarParser#bracketsexpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBracketsexpr(MxstarParser.BracketsexprContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MxstarParser#rawbr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRawbr(MxstarParser.RawbrContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MxstarParser#exprbr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExprbr(MxstarParser.ExprbrContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link MxstarParser#exprList}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

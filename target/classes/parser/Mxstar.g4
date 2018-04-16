@@ -59,8 +59,7 @@ baseType:
 
 expr:
      '(' expr ')'                                                      # BracketExpr
-    | 'new' (baseType)
-         ('[' expr ']')* brackets                                      # NewExpr
+    | 'new' (baseType) bracketsexpr*                                   # NewExpr
     | expr ('[' expr ']')+                                             # ArrayExpr
     | op=('++' | '--' | '+' | '-') expr                                # LUnaryExpr
     | expr op=('++' | '--')                                            # RUnaryExpr
@@ -84,6 +83,18 @@ expr:
     | expr op=('&&' | '||') expr                                       # BinaryExpr
 
     | <assoc=right> expr '=' expr                                      # AssignExpr
+;
+
+bracketsexpr:
+    (rawbr | exprbr)
+;
+
+rawbr:
+    '[' ']'
+;
+
+exprbr:
+    '[' expr ']'
 ;
 
 exprList:

@@ -30,7 +30,11 @@ public class ArrayExpr extends Expr {
         int tmpd = 0;
         System.err.println(Leftexpr);
         System.err.println(exprList.size());
-        //if (Leftexpr instanceof NewExpr) throw new CompileError("Index Error(ArrayExpr)", pos);
+        if (Leftexpr instanceof NewExpr) {
+            System.err.println(Leftexpr.gettype());
+            //if (((NewExpr) Leftexpr).d1 != ((NewExpr) Leftexpr).d)
+            //    throw new CompileError("Index Error(ArrayExpr)", pos);
+        }
         for (Expr u : exprList) {
             ++tmpd;
             if (!(u.gettype() instanceof IntType))

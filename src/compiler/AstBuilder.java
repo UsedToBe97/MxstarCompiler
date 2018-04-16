@@ -1,7 +1,11 @@
 package compiler;
 
-import ast.*;
-import ast.definition.*;
+import ast.Atom;
+import ast.Root;
+import ast.definition.ClassDef;
+import ast.definition.Def;
+import ast.definition.FuncDef;
+import ast.definition.VarDef;
 import ast.expr.*;
 import ast.stmt.*;
 import ast.type.BoolType;
@@ -9,8 +13,12 @@ import ast.type.IntType;
 import ast.type.NullType;
 import ast.type.StringType;
 import org.antlr.v4.runtime.ParserRuleContext;
-import parser.*;
-import utils.*;
+import parser.MxstarBaseVisitor;
+import parser.MxstarParser;
+import utils.CompileError;
+import utils.GlobalClass;
+import utils.Position;
+import utils.ScopeTree;
 
 public class AstBuilder extends MxstarBaseVisitor<Atom> {
     public ScopeTree tree = GlobalClass.st;
@@ -200,12 +208,19 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
         System.err.println("EnterNewExpr");
         NewExpr tmp = new NewExpr(ctx.baseType());
         int d1 = 0, d2 = 0;
-        for (ParserRuleContext _e : ctx.expr()) {
-            tmp.add((Expr)visit(_e));
-            ++d1;
+        //int d1 = ctx.bracketsexpr().exprbr().size(), d2 = ctx.bracketsexpr().rawbr().size();
+        //System.err.println(ctx.bracketsexpr().expr().size());
+        for (MxstarParser.BracketsexprContext _e : ctx.bracketsexpr()) {
+            System.err.println(d1 + " ///// " + d2);
+            if (_e.rawbr() == null) {
+                tmp.add((Expr) visit(_e.exprbr()));
+                ++d1;
+                if (d2 > 0)
+                    throw new CompileError("New Error(Astbuilder)", new Position(ctx.getStart()));
+            } else ++d2;
         }
-        if (ctx.brackets() != null)
-            d2 = ctx.brackets().getText().length() / 2;
+        //if (ctx.brackets() != null)
+        //    d2 = ctx.brackets().getText().length() / 2;
         tmp.d1 = d1;
         tmp.d2 = d2;
         tmp.d = d1 + d2;

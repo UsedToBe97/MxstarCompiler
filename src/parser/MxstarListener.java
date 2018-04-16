@@ -358,6 +358,36 @@ public interface MxstarListener extends ParseTreeListener {
 	 */
 	void exitAssignExpr(MxstarParser.AssignExprContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MxstarParser#bracketsexpr}.
+	 * @param ctx the parse tree
+	 */
+	void enterBracketsexpr(MxstarParser.BracketsexprContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MxstarParser#bracketsexpr}.
+	 * @param ctx the parse tree
+	 */
+	void exitBracketsexpr(MxstarParser.BracketsexprContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MxstarParser#rawbr}.
+	 * @param ctx the parse tree
+	 */
+	void enterRawbr(MxstarParser.RawbrContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MxstarParser#rawbr}.
+	 * @param ctx the parse tree
+	 */
+	void exitRawbr(MxstarParser.RawbrContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MxstarParser#exprbr}.
+	 * @param ctx the parse tree
+	 */
+	void enterExprbr(MxstarParser.ExprbrContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MxstarParser#exprbr}.
+	 * @param ctx the parse tree
+	 */
+	void exitExprbr(MxstarParser.ExprbrContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link MxstarParser#exprList}.
 	 * @param ctx the parse tree
 	 */
