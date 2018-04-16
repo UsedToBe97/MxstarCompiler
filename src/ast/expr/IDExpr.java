@@ -26,7 +26,10 @@ public class IDExpr extends Expr {
                 return new ClassType(GlobalClass.classname, pos);
             }
         }
-        Def d = GlobalClass.st.now.check(name);
+        String tmp = GlobalClass.classname + "." + name;
+        Def d;
+        if (GlobalClass.st.contains(name)) d = GlobalClass.st.now.check(name);
+        else d = GlobalClass.st.now.check(tmp);
         if (d instanceof VarDef) {
             return ((VarDef) d).type;
         } else return new ClassType(d.getname(), pos);

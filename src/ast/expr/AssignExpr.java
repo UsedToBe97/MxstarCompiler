@@ -18,10 +18,11 @@ public class AssignExpr extends Expr {
     }
     public Type gettype() {
         System.err.println("Assign!");
+        System.err.println(pos.toString());
         if (!(expr1 instanceof IDExpr || expr1 instanceof ArrayExpr || expr1 instanceof MemberExpr))
             throw new CompileError("Left Expr Error(AssignExpr)", pos);
-
         System.err.println(GlobalClass.classname);
+        System.err.println(expr1);
         Type t1 = expr1.gettype();
         Type t2 = expr2.gettype();
         System.err.println(t1.typename() + " = " + t2.typename());

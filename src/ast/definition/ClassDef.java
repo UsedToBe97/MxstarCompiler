@@ -35,7 +35,7 @@ public class ClassDef extends Def {
                 if (((FuncDef) d).type instanceof NullType && !((FuncDef) d).name.equals(name))
                     throw new CompileError("Construct Func Error(ClassDef)", pos);
             }
-                //GlobalClass.st.addObj(d.getname(), d);
+            //if (d instanceof VarDef) GlobalClass.st.addObj(d.getname(), d);
         }
         for (Def d : Deflist) if (d != null) d.check();
         GlobalClass.st.exitScope();
