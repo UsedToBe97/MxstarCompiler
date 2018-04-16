@@ -31,8 +31,8 @@ public class ClassDef extends Def {
         GlobalClass.st.enterScope();
         for (Def d : Deflist) {
             if (d instanceof FuncDef) {
-                System.err.println(((FuncDef) d).type);
-                if (((FuncDef) d).type instanceof NullType && ((FuncDef) d).name != name)
+                System.err.println(((FuncDef) d).name + "///" + name);
+                if (((FuncDef) d).type instanceof NullType && !((FuncDef) d).name.equals(name))
                     throw new CompileError("Construct Func Error(ClassDef)", pos);
             }
                 //GlobalClass.st.addObj(d.getname(), d);

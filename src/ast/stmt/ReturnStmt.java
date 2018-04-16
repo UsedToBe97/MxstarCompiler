@@ -1,6 +1,7 @@
 package ast.stmt;
 
 import ast.expr.Expr;
+import ast.type.NullType;
 import ast.type.Type;
 import ast.type.VoidType;
 import utils.CompileError;
@@ -28,7 +29,8 @@ public class ReturnStmt extends Stmt {
                 type = new VoidType(pos);
                 return;
             } else throw new CompileError("Type Now Match(ReturnStmt)", pos);
-        } else if (!Objects.equals(expr.gettype().typename(), GlobalClass.nowfunc.type.typename()))
+        } else if (!Objects.equals(expr.gettype().typename(), GlobalClass.nowfunc.type.typename())
+                && !(expr.gettype() instanceof NullType))
             throw new CompileError("Type Now Match(ReturnStmt)", pos);
     }
 }
