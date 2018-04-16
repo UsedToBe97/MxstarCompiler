@@ -28,8 +28,9 @@ public class ArrayExpr extends Expr {
         System.err.println("Get Type ArrayExpr");
         //System.err.println(pos.toString());
         int tmpd = 0;
-        if (Leftexpr instanceof NewExpr)
-            throw new CompileError("Index Error(ArrayExpr)", pos);
+        System.err.println(Leftexpr);
+        System.err.println(exprList.size());
+        //if (Leftexpr instanceof NewExpr) throw new CompileError("Index Error(ArrayExpr)", pos);
         for (Expr u : exprList) {
             ++tmpd;
             if (!(u.gettype() instanceof IntType))
