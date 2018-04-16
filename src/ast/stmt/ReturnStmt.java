@@ -21,13 +21,14 @@ public class ReturnStmt extends Stmt {
     }
     public void check() {
         if (!GlobalClass.infunc)
-            throw new CompileError("Can't Return", pos);
+            throw new CompileError("Can't Return(ReturnStmt)", pos);
+        System.err.println(expr.gettype().typename() + "     " + GlobalClass.nowfunc.type.typename());
         if (expr == null){
             if (GlobalClass.nowfunc.type instanceof VoidType) {
                 type = new VoidType(pos);
                 return;
-            } else throw new CompileError("Type Now Match", pos);
+            } else throw new CompileError("Type Now Match(ReturnStmt)", pos);
         } else if (!Objects.equals(expr.gettype().typename(), GlobalClass.nowfunc.type.typename()))
-            throw new CompileError("Type Now Match", pos);
+            throw new CompileError("Type Now Match(ReturnStmt)", pos);
     }
 }

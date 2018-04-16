@@ -1,6 +1,8 @@
 package ast.definition;
 
+import ast.type.NullType;
 import parser.MxstarParser;
+import utils.CompileError;
 import utils.GlobalClass;
 import utils.Position;
 
@@ -23,12 +25,19 @@ public class ClassDef extends Def {
     public String getname() {return name;}
     public Position getpos() {return pos;}
     public void check() {
+        System.err.println("Go Check ClassDef " + name);
         GlobalClass.classname = name;
         GlobalClass.inclass = true;
         GlobalClass.st.enterScope();
         for (Def d : Deflist) {
-            if (d instanceof VarDef) GlobalClass.st.addObj(d.getname(), d);
+            if (d instanceof FuncDef) {
+                System.err.println(((FuncDef) d).type);
+                if (((FuncDef) d).type instanceof NullType && ((FuncDef) d).name != name)
+                    throw new CompileError("Construct Func Error(ClassDef)", pos);
+            }
+                //GlobalClass.st.addObj(d.getname(), d);
         }
+        for (Def d : Deflist) if (d != null) d.check();
         GlobalClass.st.exitScope();
         GlobalClass.classname = "";
         GlobalClass.inclass = false;

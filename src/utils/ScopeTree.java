@@ -3,6 +3,7 @@ package utils;
 import ast.definition.Def;
 import ast.definition.FuncDef;
 import ast.type.IntType;
+import ast.type.NullType;
 import ast.type.StringType;
 import ast.type.VoidType;
 
@@ -34,6 +35,7 @@ public class ScopeTree {
         tmp = new FuncDef("ord", new IntType());
         tmp.addparam(new IntType(), "pos");
         root.addObj("ord", tmp);
+        root.addObj("this", new FuncDef("this", new NullType(new Position(-1, -1))));
     }
     public void print() {
         System.err.println("\n\n---------------print----------");

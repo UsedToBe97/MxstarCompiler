@@ -23,15 +23,21 @@ public class BinaryExpr extends Expr {
         System.err.println("Binary FUCK!!!!!! op " + op);
 
         Type t1 = expr1.gettype(), t2 = expr2.gettype();
+        System.err.println(t1 + "  :::  " + t2);
         if (op.equals("+")) {
             if (!(t1 instanceof IntType || t1 instanceof StringType))
                 throw new CompileError("Type Error(Binary Expr)", pos);
             if (!(t2 instanceof IntType || t2 instanceof StringType))
                 throw new CompileError("Type Error(Binary Expr)", pos);
         } else if (op.equals("==") || op.equals("!=")) {
-            if (!(t1 instanceof IntType || t1 instanceof StringType || t1 instanceof ClassType || t1 instanceof NullType))
+            if (!(t1 instanceof IntType || t1 instanceof StringType || t1 instanceof ClassType || t1 instanceof NullType || t1 instanceof BoolType))
                 throw new CompileError("Type Error(Binary Expr)", pos);
-            if (!(t2 instanceof IntType || t2 instanceof StringType || t2 instanceof ClassType || t2 instanceof NullType))
+            if (!(t2 instanceof IntType || t2 instanceof StringType || t2 instanceof ClassType || t2 instanceof NullType || t2 instanceof BoolType))
+                throw new CompileError("Type Error(Binary Expr)", pos);
+        }else if (op.equals("<=") || op.equals(">") || op.equals(">=") || op.equals("<")) {
+            if (!(t1 instanceof IntType || t1 instanceof StringType))
+                throw new CompileError("Type Error(Binary Expr)", pos);
+            if (!(t2 instanceof IntType || t2 instanceof StringType))
                 throw new CompileError("Type Error(Binary Expr)", pos);
         }
         else if (op.equals("&&") || op.equals("||")) {

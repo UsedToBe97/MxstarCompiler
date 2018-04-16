@@ -31,9 +31,11 @@ public class FuncExpr extends Expr {
         String tmp;
         if (GlobalClass.inclass) tmp = GlobalClass.classname + "." + name;
         else tmp = name;
-
-        if (GlobalClass.st.contains(tmp)) {
-            Def d = GlobalClass.st.now.check(tmp);
+        System.err.println(tmp);
+        if (GlobalClass.st.contains(tmp) || GlobalClass.st.contains(name)) {
+            Def d;
+            if (!GlobalClass.st.contains(tmp)) d = GlobalClass.st.now.check(name);
+            else d = GlobalClass.st.now.check(tmp);
             if (d instanceof FuncDef) {
                 if (((FuncDef) d).params.size() != exprList.size()) {
                     throw new CompileError("Number Not Match(FuncExpr)", pos);

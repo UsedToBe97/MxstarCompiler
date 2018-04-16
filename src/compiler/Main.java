@@ -1,6 +1,7 @@
 package compiler;
 
 import ast.Root;
+import org.antlr.v4.runtime.BailErrorStrategy;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -117,12 +118,13 @@ public class Main {
         CommonTokenStream tokens = new CommonTokenStream(lexer);
 
         MxstarParser parser = new MxstarParser(tokens);
+        parser.setErrorHandler(new BailErrorStrategy());
         ParseTree tree = parser.prog();
         AstBuilder AST = new AstBuilder();
         try {
             Root rt = (Root) AST.visit(tree);
             rt.check();
-        } catch(CompileError ce) {
+        } catch (CompileError ce) {
             System.err.println(ce.getMessage());
             System.exit(-1);
         }

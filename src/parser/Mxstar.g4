@@ -91,7 +91,7 @@ exprList:
 ;
 
 brackets:
-    ('[]')*
+    ('[' ']')*
 ;
 
 constant:

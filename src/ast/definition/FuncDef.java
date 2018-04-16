@@ -13,7 +13,7 @@ import java.util.List;
 
 public class FuncDef extends Def{
     public String name;
-    public Type type;
+    public Type type = new NullType(pos);
     public List<Pair<Type, String>> params = new LinkedList<>();
     public List<Stmt> stmts = new LinkedList<>();
     public String getname() {return name;}
@@ -49,7 +49,10 @@ public class FuncDef extends Def{
         GlobalClass.infunc = true;
         GlobalClass.nowfunc = this;
         GlobalClass.st.enterScope();
+        if ("this".equals(name))
+            throw new CompileError("this is a reverse word(FuncDef)", pos);
         System.err.println("Go Check FuncDef");
+        System.err.println(GlobalClass.nowfunc.name);
         if (type instanceof ClassType) GlobalClass.st.now.check(((ClassType) type).name);
         for (Pair<Type, String> u : params) {
             Type t = u.getFirst();
