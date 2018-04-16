@@ -209,11 +209,11 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
         NewExpr tmp = new NewExpr(ctx.baseType());
         int d1 = 0, d2 = 0;
         //int d1 = ctx.bracketsexpr().exprbr().size(), d2 = ctx.bracketsexpr().rawbr().size();
-        //System.err.println(ctx.bracketsexpr().expr().size());
+        System.err.println(ctx.bracketsexpr().size());
         for (MxstarParser.BracketsexprContext _e : ctx.bracketsexpr()) {
             System.err.println(d1 + " ///// " + d2);
             if (_e.rawbr() == null) {
-                tmp.add((Expr) visit(_e.exprbr()));
+                tmp.add((Expr) visit(_e.exprbr().expr()));
                 ++d1;
                 if (d2 > 0)
                     throw new CompileError("New Error(Astbuilder)", new Position(ctx.getStart()));
