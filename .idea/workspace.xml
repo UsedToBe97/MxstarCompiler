@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ast/stmt/IfStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/IfStmt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/1.test" beforeDir="false" afterPath="$PROJECT_DIR$/test/1.test" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -61,11 +62,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="IfStmt.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="IfStmt.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ast/stmt/IfStmt.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="690">
-                  <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="61" selection-end-column="5" />
+                <state relative-caret-position="345">
+                  <caret line="53" column="36" lean-forward="true" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
                 </state>
               </provider>
             </entry>
@@ -73,8 +74,8 @@
           <file leaf-file-name="1.test" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test/1.test">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3634">
-                  <caret line="158" column="1" selection-start-line="158" selection-start-column="1" selection-end-line="158" selection-end-column="1" />
+                <state relative-caret-position="2806">
+                  <caret line="122" column="1" selection-start-line="122" selection-start-column="1" selection-end-line="122" selection-end-column="1" />
                 </state>
               </provider>
             </entry>
@@ -106,7 +107,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="WhileStmt.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="WhileStmt.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/ast/stmt/WhileStmt.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="382">
@@ -140,8 +141,8 @@
           <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="414">
-                  <caret line="117" column="23" lean-forward="true" selection-start-line="117" selection-start-column="23" selection-end-line="117" selection-end-column="23" />
+                <state relative-caret-position="391">
+                  <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -296,7 +297,6 @@
         <option value="$PROJECT_DIR$/src/ast/stmt/ContStmt.java" />
         <option value="$PROJECT_DIR$/src/ast/stmt/ExprStmt.java" />
         <option value="$PROJECT_DIR$/src/ast/stmt/ForStmt.java" />
-        <option value="$PROJECT_DIR$/src/ast/stmt/IfStmt.java" />
         <option value="$PROJECT_DIR$/src/ast/stmt/ReturnStmt.java" />
         <option value="$PROJECT_DIR$/src/ast/type/ArrayType.java" />
         <option value="$PROJECT_DIR$/src/ast/expr/AssignExpr.java" />
@@ -313,6 +313,7 @@
         <option value="$PROJECT_DIR$/src/ast/expr/IDExpr.java" />
         <option value="$PROJECT_DIR$/src/ast/stmt/BlockStmt.java" />
         <option value="$PROJECT_DIR$/src/ast/stmt/WhileStmt.java" />
+        <option value="$PROJECT_DIR$/src/ast/stmt/IfStmt.java" />
         <option value="$PROJECT_DIR$/src/compiler/Main.java" />
       </list>
     </option>
@@ -566,12 +567,12 @@
       <workItem from="1524658704539" duration="1099000" />
       <workItem from="1524705814053" duration="10132000" />
       <workItem from="1525146619504" duration="5258000" />
-      <workItem from="1525158215902" duration="3627000" />
+      <workItem from="1525158215902" duration="3988000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="165459000" />
+    <option name="totallyTimeSpent" value="165820000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -597,11 +598,11 @@
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.32897604" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.32897604" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32897604" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20575693" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20575693" />
       <window_info anchor="right" id="Database" order="6" weight="0.32995737" />
       <window_info anchor="bottom" id="ANTLR Preview" order="12" weight="0.32897604" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -808,13 +809,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/stmt/IfStmt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="61" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/stmt/ForStmt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="874">
@@ -838,8 +832,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/1.test">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3634">
-          <caret line="158" column="1" selection-start-line="158" selection-start-column="1" selection-end-line="158" selection-end-column="1" />
+        <state relative-caret-position="2806">
+          <caret line="122" column="1" selection-start-line="122" selection-start-column="1" selection-end-line="122" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -978,13 +972,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/stmt/WhileStmt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/stmt/BlockStmt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="690">
@@ -992,10 +979,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/stmt/WhileStmt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/stmt/IfStmt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="53" column="36" lean-forward="true" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="117" column="23" lean-forward="true" selection-start-line="117" selection-start-column="23" selection-end-line="117" selection-end-column="23" />
+        <state relative-caret-position="391">
+          <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

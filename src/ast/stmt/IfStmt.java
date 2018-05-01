@@ -49,11 +49,16 @@ public class IfStmt extends Stmt {
         System.out.println(s + "IfStmt");
         int cc = 0;
         for (Pair<Expr, Stmt> u : ifList) {
+            if (u == null) continue;
             ++cc;
-            System.out.println(ss + "Expr " + cc);
-            u.getFirst().output(dep + 1);
-            System.out.println(ss + "Stmt " + cc);
-            u.getSecond().output(dep + 1);
+            if (u.getFirst() != null) {
+                System.out.println(ss + "Expr " + cc);
+                u.getFirst().output(dep + 1);
+            }
+            if (u.getSecond() != null) {
+                System.out.println(ss + "Stmt " + cc);
+                u.getSecond().output(dep + 1);
+            }
         }
         if (elsestmt != null) {
             System.out.println(ss + "ElseStmt: ");
