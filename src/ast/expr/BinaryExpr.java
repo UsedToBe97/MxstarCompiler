@@ -79,6 +79,8 @@ public class BinaryExpr extends Expr {
         System.out.println(ss + " op: " + op);
         System.out.println(ss + "Expr2:");
         expr2.output(dep + 1);;
-        System.out.println(ss + "RES_Type:" + type.typename());
+        if (type != null)
+            System.out.println(ss + "RES_Type:" + type.typename());
+        System.out.println(s + "EndBinaryExpr:");
     }
 }

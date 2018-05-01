@@ -35,5 +35,6 @@ public class ExprStmt extends Stmt {
         ss = s + "\t";
         System.out.println(s + "ExprStmt");
         expr.output(dep + 1);
+        System.out.println(s + "EndExprStmt");
     }
 }

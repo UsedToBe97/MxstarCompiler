@@ -64,5 +64,6 @@ public class IfStmt extends Stmt {
             System.out.println(ss + "ElseStmt: ");
             elsestmt.output(dep + 1);
         }
+        System.out.println(s + "EndIfStmt");
     }
 }

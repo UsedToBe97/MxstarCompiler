@@ -54,6 +54,7 @@ public class NewExpr extends Expr {
             e.output(dep + 1);
         }
         System.out.println(ss + "RetType:" + rettype.typename());
+        System.out.println(s + "EndNewExpr:");
     }
 
 }

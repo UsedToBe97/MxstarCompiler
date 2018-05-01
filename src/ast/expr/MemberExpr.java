@@ -44,6 +44,8 @@ public class MemberExpr extends Expr {
         System.out.println(ss + "Who: ");
         who.output(dep + 1);
         System.out.println(ss + "name:" + name);
-        System.out.println(ss + "Type:" + type.typename());
+        if (type != null)
+            System.out.println(ss + "Type:" + type.typename());
+        System.out.println(s + "EndMemberExpr:");
     }
 }

@@ -46,5 +46,6 @@ public class BlockStmt extends Stmt {
         for (Stmt st : Stmts) {
             if (st != null) st.output(dep + 1);
         }
+        System.out.println(s + "EndBlockStmt:");
     }
 }

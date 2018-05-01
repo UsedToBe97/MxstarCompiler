@@ -52,7 +52,7 @@ public class MemberFuncExpr extends Expr {
                     }
                 }
             }
-            return ((FuncDef) d).type;
+            return type = ((FuncDef) d).type;
         } else if (t instanceof ArrayType) {
             if (name.equals("size") && exprList.size() == 0)
                 return type = new IntType(pos);
@@ -87,5 +87,6 @@ public class MemberFuncExpr extends Expr {
         }
         System.out.println(ss + "---End of Param(s)---");
         System.out.println(ss + "Type : "+ type);
+        System.out.println(s + "EndMemberFuncExpr : " + name + " at " + pos.toString());
     }
 }

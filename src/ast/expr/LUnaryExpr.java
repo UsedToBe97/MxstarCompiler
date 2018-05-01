@@ -39,10 +39,11 @@ public class LUnaryExpr extends Expr {
             s += "\t";
         }
         ss = s + "\t";
-        System.out.println(s + "LUaryExpr:");
+        System.out.println(s + "LUnaryExpr:");
         System.out.println(ss + "Op: " + op);
         System.out.println(ss + "Expr:");
         expr.output(dep + 1);
         System.out.println(ss + "Type:" + type.typename());
+        System.out.println(s + "EndLUnaryExpr:");
     }
 }

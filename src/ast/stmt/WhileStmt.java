@@ -44,5 +44,6 @@ public class WhileStmt extends Stmt {
         expr.output(dep + 1);
         System.out.println(ss + "Stmt");
         if (stmt != null) stmt.output(dep + 1);
+        System.out.println(s + "EndWhileStmt");
     }
 }

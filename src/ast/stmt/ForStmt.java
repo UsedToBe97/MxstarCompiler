@@ -59,5 +59,6 @@ public class ForStmt extends Stmt {
         exprs.get(1).output(dep + 1);
         System.out.println(ss + "Expr3: with type " + types.get(2).typename());
         exprs.get(2).output(dep + 1);
+        System.out.println(s + "EndForStmt");
     }
 }

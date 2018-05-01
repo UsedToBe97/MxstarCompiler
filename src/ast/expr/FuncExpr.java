@@ -17,6 +17,7 @@ import java.util.Objects;
 public class FuncExpr extends Expr {
     public String name;
     public List<Expr> exprList = new LinkedList<>();
+    public Type type = null;
     public FuncExpr(MxstarParser.FuncExprContext ctx) {
         name = ctx.Identifier().getText();
         pos = new Position(ctx.getStart());
@@ -47,7 +48,7 @@ public class FuncExpr extends Expr {
                         }
                     }
                 }
-                return (((FuncDef) d).type);
+                return type = (((FuncDef) d).type);
             }
             else throw new CompileError("Error Func(FuncExpr)", pos);
         } else throw new CompileError("No This Func(FuncExpr)", pos);
@@ -59,12 +60,13 @@ public class FuncExpr extends Expr {
             tmp--;
             s += "\t";
         }
-        System.out.println(s + "Func_call : " + name + " at " + pos.toString());
+        System.out.println(s + "FuncExpr : " + name + " with Type " + type.typename());
         ss = s + "\t";
         System.out.println(ss + "---Param(s)---");
         for (Expr p : exprList) {
             p.output(dep + 1);
         }
         System.out.println(ss + "---End of Param(s)---");
+        System.out.println(s + "EndFuncExpr : " + name + " at " + pos.toString());
     }
 }

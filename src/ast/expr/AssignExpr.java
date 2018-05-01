@@ -43,5 +43,6 @@ public class AssignExpr extends Expr {
         expr1.output(dep + 1);
         System.out.println(ss + "RightExpr:");
         expr2.output(dep + 1);;
+        System.out.println(s + "EndAssignExpr:");
     }
 }

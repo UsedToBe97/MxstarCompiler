@@ -72,6 +72,7 @@ public class ArrayExpr extends Expr {
         for(Expr e : exprList) {
             e.output(dep + 1);
         }
+        System.out.println(s + "EndArrayExpr:");
     }
 
 }
