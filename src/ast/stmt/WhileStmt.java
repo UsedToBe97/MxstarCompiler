@@ -43,6 +43,6 @@ public class WhileStmt extends Stmt {
         System.out.println(ss + "Expr");
         expr.output(dep + 1);
         System.out.println(ss + "Stmt");
-        stmt.output(dep + 1);
+        if (stmt != null) stmt.output(dep + 1);
     }
 }

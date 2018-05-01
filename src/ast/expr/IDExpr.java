@@ -47,6 +47,5 @@ public class IDExpr extends Expr {
         ss = s + "\t";
         System.out.println(s + "IDExpr:");
         System.out.println(ss + "Name: " + name);
-        System.out.println(ss + "RES_Type:" + type.typename());
     }
 }

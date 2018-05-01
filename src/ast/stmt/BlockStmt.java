@@ -44,7 +44,7 @@ public class BlockStmt extends Stmt {
         ss = s + "\t";
         System.out.println(s + "BlockStmt:");
         for (Stmt st : Stmts) {
-            st.output(dep + 1);
+            if (st != null) st.output(dep + 1);
         }
     }
 }

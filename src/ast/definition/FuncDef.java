@@ -88,7 +88,7 @@ public class FuncDef extends Def{
         }
         System.out.println(ss + "---End of Param(s)---");
         for (Stmt st : stmts) {
-            st.output(dep + 1);
+            if (st != null) st.output(dep + 1);
         }
     }
 }
