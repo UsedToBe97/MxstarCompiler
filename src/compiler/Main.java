@@ -122,7 +122,7 @@ public class Main {
         AstBuilder AST = new AstBuilder();
         Root rt = (Root) AST.visit(tree);
         rt.check();
-        rt.output();
+        //rt.output();
 
         /*} catch (CompileError ce) {
             System.err.println(ce.getMessage());

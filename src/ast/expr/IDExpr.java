@@ -10,7 +10,7 @@ import utils.Position;
 
 public class IDExpr extends Expr {
     public String name;
-    public Type type = gettype();
+    public Type type = null;
     public IDExpr(String _s, Position _p) {
         name = _s;
         pos = _p;

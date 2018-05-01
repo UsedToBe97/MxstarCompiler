@@ -9,7 +9,7 @@ import java.util.Objects;
 public class BinaryExpr extends Expr {
     public Expr expr1, expr2;
     public String op;
-    public Type type = gettype();
+    public Type type = null;
     public BinaryExpr(Expr _e1, Expr _e2, String _op, Position _pos) {
         expr1 = _e1;
         expr2 = _e2;

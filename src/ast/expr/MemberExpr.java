@@ -11,7 +11,7 @@ import utils.Position;
 public class MemberExpr extends Expr {
     public Expr who;
     public String name;
-    public Type type = gettype();
+    public Type type;
     public Position getpos() {
         return pos;
     }

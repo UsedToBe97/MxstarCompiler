@@ -16,7 +16,7 @@ public class MemberFuncExpr extends Expr {
     public Expr who;
     public String name;
     public List<Expr> exprList;
-    public Type type = gettype();
+    public Type type;
     public MemberFuncExpr(MxstarParser.MemberFuncExprContext ctx) {
         name = ctx.Identifier().getText();
         pos = new Position(ctx.getStart());

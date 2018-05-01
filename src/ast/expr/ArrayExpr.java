@@ -12,7 +12,7 @@ import java.util.List;
 public class ArrayExpr extends Expr {
     public Expr Leftexpr;
     public List<Expr> exprList;
-    public Type type = gettype();
+    public Type type = null;
     public ArrayExpr(Expr _e) {
         Leftexpr = _e;
         exprList = new LinkedList<>();

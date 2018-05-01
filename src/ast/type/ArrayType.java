@@ -12,6 +12,6 @@ public class ArrayType extends Type{
     }
     public String typename() {return msg();}
     public String msg() {
-        return "ArrayType " + pos.toString() + "\tDimension: " + d;
+        return "ArrayType\tDimension: " + d;
     }
 }

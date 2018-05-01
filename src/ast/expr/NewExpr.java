@@ -17,7 +17,7 @@ public class NewExpr extends Expr {
     public int d;
     public int d1;
     public int d2;
-    public Type rettype = gettype();
+    public Type rettype;
     public NewExpr(MxstarParser.BaseTypeContext ctx) {
         TypeClassifier tc = new TypeClassifier();
         type = tc.Classify(ctx);
