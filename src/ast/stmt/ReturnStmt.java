@@ -7,6 +7,7 @@ import ast.type.VoidType;
 import utils.CompileError;
 import utils.GlobalClass;
 import utils.Position;
+
 import java.util.Objects;
 
 public class ReturnStmt extends Stmt {
@@ -32,5 +33,18 @@ public class ReturnStmt extends Stmt {
         } else if (!Objects.equals(expr.gettype().typename(), GlobalClass.nowfunc.type.typename())
                 && !(expr.gettype() instanceof NullType))
             throw new CompileError("Type Now Match(ReturnStmt)", pos);
+    }
+    public void output(int dep) {
+        int tmp = dep;
+        String s = "", ss = "";
+        while (tmp > 0) {
+            tmp--;
+            s += "\t";
+        }
+        ss = s + "\t";
+        System.out.println(s + "ReturnStmt");
+        System.out.println(ss + "Expr: ");
+        expr.output(dep + 1);
+        System.out.println(ss + "ReturnType: " + expr.gettype().typename());
     }
 }

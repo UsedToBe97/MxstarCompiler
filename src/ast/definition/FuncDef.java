@@ -73,4 +73,22 @@ public class FuncDef extends Def{
         GlobalClass.infunc = false;
         GlobalClass.nowfunc = null;
     }
+    public void output(int dep) {
+        int tmp = dep;
+        String s = "", ss = "";
+        while (tmp > 0) {
+            tmp--;
+            s += "\t";
+        }
+        System.out.println(s + "Func : " + name + " at " + pos.toString());
+        ss = s + "\t";
+        System.out.println(ss + "---Param(s)---");
+        for (Pair<Type, String> p : params) {
+            System.out.println(ss + p.getFirst().typename() + " with name " + p.getSecond());
+        }
+        System.out.println(ss + "---End of Param(s)---");
+        for (Stmt st : stmts) {
+            st.output(dep + 1);
+        }
+    }
 }

@@ -16,6 +16,7 @@ public class MemberFuncExpr extends Expr {
     public Expr who;
     public String name;
     public List<Expr> exprList;
+    public Type type = gettype();
     public MemberFuncExpr(MxstarParser.MemberFuncExprContext ctx) {
         name = ctx.Identifier().getText();
         pos = new Position(ctx.getStart());
@@ -33,6 +34,7 @@ public class MemberFuncExpr extends Expr {
     }
 
     public Type gettype() {
+        if (type != null) return type;
         System.err.println("Get Type MemberFunc");
         Type t = who.gettype();
         System.err.println(t.typename());
@@ -67,5 +69,23 @@ public class MemberFuncExpr extends Expr {
             else throw new CompileError("No This MemFunc(MemberFuncExpr)", pos);
         } else
             throw new CompileError("No This Class(MemberFuncExpr)", pos);
+    }
+    public void output(int dep) {
+        int tmp = dep;
+        String s = "", ss = "";
+        while (tmp > 0) {
+            tmp--;
+            s += "\t";
+        }
+        ss = s + "\t";
+        System.out.println(s + "MemberFuncExpr : " + name + " at " + pos.toString());
+        System.out.println(ss + "Who :");
+        who.output(dep + 1);
+        System.out.println(ss + "---Param(s)---");
+        for (Expr p : exprList) {
+            p.output(dep + 1);
+        }
+        System.out.println(ss + "---End of Param(s)---");
+        System.out.println(ss + "Type : "+ type);
     }
 }

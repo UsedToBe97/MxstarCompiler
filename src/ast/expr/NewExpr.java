@@ -17,6 +17,7 @@ public class NewExpr extends Expr {
     public int d;
     public int d1;
     public int d2;
+    public Type rettype = gettype();
     public NewExpr(MxstarParser.BaseTypeContext ctx) {
         TypeClassifier tc = new TypeClassifier();
         type = tc.Classify(ctx);
@@ -29,6 +30,7 @@ public class NewExpr extends Expr {
     }
 
     public Type gettype() {
+        if (rettype != null) return rettype;
         System.err.println("New!");
         //System.err.println(exprList.get(0));
         for (Expr e : exprList) {
@@ -38,4 +40,20 @@ public class NewExpr extends Expr {
         if (d == 0) return type;
         return new ArrayType(d, type, pos);
     }
+    public void output(int dep) {
+        int tmp = dep;
+        String s = "", ss = "";
+        while (tmp > 0) {
+            tmp--;
+            s += "\t";
+        }
+        ss = s + "\t";
+        System.out.println(s + "NewExpr:");
+        System.out.println(ss + "ExprList:");
+        for (Expr e : exprList) {
+            e.output(dep + 1);
+        }
+        System.out.println(ss + "RetType:" + rettype.typename());
+    }
+
 }

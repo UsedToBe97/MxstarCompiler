@@ -38,4 +38,26 @@ public class IfStmt extends Stmt {
             GlobalClass.st.exitScope();
         }
     }
+    public void output(int dep) {
+        int tmp = dep;
+        String s = "", ss = "";
+        while (tmp > 0) {
+            tmp--;
+            s += "\t";
+        }
+        ss = s + "\t";
+        System.out.println(s + "IfStmt");
+        int cc = 0;
+        for (Pair<Expr, Stmt> u : ifList) {
+            ++cc;
+            System.out.println(ss + "Expr " + cc);
+            u.getFirst().output(dep + 1);
+            System.out.println(ss + "Stmt " + cc);
+            u.getSecond().output(dep + 1);
+        }
+        if (elsestmt != null) {
+            System.out.println(ss + "ElseStmt: ");
+            elsestmt.output(dep + 1);
+        }
+    }
 }

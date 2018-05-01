@@ -9,6 +9,7 @@ import java.util.Objects;
 public class BinaryExpr extends Expr {
     public Expr expr1, expr2;
     public String op;
+    public Type type = gettype();
     public BinaryExpr(Expr _e1, Expr _e2, String _op, Position _pos) {
         expr1 = _e1;
         expr2 = _e2;
@@ -20,6 +21,7 @@ public class BinaryExpr extends Expr {
     }
 
     public Type gettype() {
+        if (type != null) return type;
         System.err.println("Binary FUCK!!!!!! op " + op);
 
         Type t1 = expr1.gettype(), t2 = expr2.gettype();
@@ -61,5 +63,22 @@ public class BinaryExpr extends Expr {
                 op.equals("<=") || op.equals("<") || op.equals(">")) return new BoolType(pos);
         if (op.equals("==") || op.equals("!=")) return new BoolType(pos);
         return t1;
+    }
+
+    public void output(int dep) {
+        int tmp = dep;
+        String s = "", ss = "";
+        while (tmp > 0) {
+            tmp--;
+            s += "\t";
+        }
+        ss = s + "\t";
+        System.out.println(s + "BinaryExpr:");
+        System.out.println(ss + "Expr1:");
+        expr1.output(dep + 1);
+        System.out.println(ss + " op: " + op);
+        System.out.println(ss + "Expr2:");
+        expr2.output(dep + 1);;
+        System.out.println(ss + "RES_Type:" + type.typename());
     }
 }

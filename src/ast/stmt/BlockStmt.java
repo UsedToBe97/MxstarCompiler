@@ -34,5 +34,17 @@ public class BlockStmt extends Stmt {
         }
         GlobalClass.st.exitScope();
     }
-
+    public void output(int dep) {
+        int tmp = dep;
+        String s = "", ss = "";
+        while (tmp > 0) {
+            tmp--;
+            s += "\t";
+        }
+        ss = s + "\t";
+        System.out.println(s + "BlockStmt:");
+        for (Stmt st : Stmts) {
+            st.output(dep + 1);
+        }
+    }
 }

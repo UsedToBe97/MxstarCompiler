@@ -10,6 +10,7 @@ import utils.Position;
 
 public class IDExpr extends Expr {
     public String name;
+    public Type type = gettype();
     public IDExpr(String _s, Position _p) {
         name = _s;
         pos = _p;
@@ -18,6 +19,7 @@ public class IDExpr extends Expr {
         return pos;
     }
     public Type gettype() {
+        if (type != null) return type;
         if ("null".equals((name))) {
             return new NullType(pos);
         }
@@ -33,5 +35,18 @@ public class IDExpr extends Expr {
         if (d instanceof VarDef) {
             return ((VarDef) d).type;
         } else return new ClassType(d.getname(), pos);
+    }
+
+    public void output(int dep) {
+        int tmp = dep;
+        String s = "", ss = "";
+        while (tmp > 0) {
+            tmp--;
+            s += "\t";
+        }
+        ss = s + "\t";
+        System.out.println(s + "IDExpr:");
+        System.out.println(ss + "Name: " + name);
+        System.out.println(ss + "RES_Type:" + type.typename());
     }
 }

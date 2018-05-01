@@ -51,4 +51,16 @@ public class VarDef extends Def {
         }
         GlobalClass.st.now.addObj(name, this);
     }
+    public void output(int dep) {
+        int tmp = dep;
+        String s = "", ss = "";
+        while (tmp > 0) {
+            tmp--;
+            s += "\t";
+        }
+        System.out.println(s + "Var: " + type.typename() + " with name " + name);
+        if (expr != null) {
+            expr.output(dep + 1);
+        }
+    }
 }

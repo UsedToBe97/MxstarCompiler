@@ -30,5 +30,18 @@ public class AssignExpr extends Expr {
             throw new CompileError("Type Error(AssignExpr)", pos);
         return t1;
     }
-
+    public void output(int dep) {
+        int tmp = dep;
+        String s = "", ss = "";
+        while (tmp > 0) {
+            tmp--;
+            s += "\t";
+        }
+        ss = s + "\t";
+        System.out.println(s + "AssignExpr:");
+        System.out.println(ss + "LeftExpr:");
+        expr1.output(dep + 1);
+        System.out.println(ss + "RightExpr:");
+        expr2.output(dep + 1);;
+    }
 }

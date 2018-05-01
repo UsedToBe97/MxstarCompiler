@@ -11,6 +11,7 @@ import utils.Position;
 public class MemberExpr extends Expr {
     public Expr who;
     public String name;
+    public Type type = gettype();
     public Position getpos() {
         return pos;
     }
@@ -20,6 +21,7 @@ public class MemberExpr extends Expr {
         pos = _p;
     }
     public Type gettype() {
+        if (type != null) return type;
         Type t = who.gettype();
         if (t instanceof ClassType) {
             String tmp = ((ClassType) t).name + '.' + name;
@@ -28,5 +30,20 @@ public class MemberExpr extends Expr {
                 throw new CompileError("No Member(MemberExpr)", pos);
             return ((VarDef) d).type;
         } else throw new CompileError("No This Class(MemberExpr)", pos);
+    }
+
+    public void output(int dep) {
+        int tmp = dep;
+        String s = "", ss = "";
+        while (tmp > 0) {
+            tmp--;
+            s += "\t";
+        }
+        ss = s + "\t";
+        System.out.println(s + "MemberExpr:");
+        System.out.println(ss + "Who: ");
+        who.output(dep + 1);
+        System.out.println(ss + "name:" + name);
+        System.out.println(ss + "Type:" + type.typename());
     }
 }

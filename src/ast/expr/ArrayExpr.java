@@ -12,6 +12,7 @@ import java.util.List;
 public class ArrayExpr extends Expr {
     public Expr Leftexpr;
     public List<Expr> exprList;
+    public Type type = gettype();
     public ArrayExpr(Expr _e) {
         Leftexpr = _e;
         exprList = new LinkedList<>();
@@ -25,6 +26,7 @@ public class ArrayExpr extends Expr {
     }
 
     public Type gettype() {
+        if (type != null) return type;
         System.err.println("Get Type ArrayExpr");
         //System.err.println(pos.toString());
         int tmpd = 0;
@@ -55,4 +57,21 @@ public class ArrayExpr extends Expr {
             throw new CompileError("LeftExpr Error(ArrayExpr)", pos);
         }
     }
+    public void output(int dep) {
+        int tmp = dep;
+        String s = "", ss = "";
+        while (tmp > 0) {
+            tmp--;
+            s += "\t";
+        }
+        ss = s + "\t";
+        System.out.println(s + "ArrayExpr:");
+        System.out.println(ss + "LeftExpr:");
+        Leftexpr.output(dep + 1);
+        System.out.println(ss + "exprList:");
+        for(Expr e : exprList) {
+            e.output(dep + 1);
+        }
+    }
+
 }

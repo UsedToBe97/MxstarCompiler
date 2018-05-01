@@ -25,5 +25,15 @@ public class ExprStmt extends Stmt {
         type = expr.gettype();
         System.err.println("End Check ExprStmt");
     }
-
+    public void output(int dep) {
+        int tmp = dep;
+        String s = "", ss = "";
+        while (tmp > 0) {
+            tmp--;
+            s += "\t";
+        }
+        ss = s + "\t";
+        System.out.println(s + "ExprStmt");
+        expr.output(dep + 1);
+    }
 }

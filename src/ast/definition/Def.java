@@ -8,4 +8,5 @@ public abstract class Def extends Stmt {
     public abstract Position getpos();
     public abstract String getname();
     public abstract void check();
+    public abstract void output(int d);
 }

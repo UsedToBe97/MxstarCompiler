@@ -30,5 +30,19 @@ public class WhileStmt extends Stmt {
         if (!(stmt instanceof BlockStmt)) GlobalClass.st.exitScope();
         GlobalClass.circnt--;
     }
+    public void output(int dep) {
+        int tmp = dep;
+        String s = "", ss = "";
+        while (tmp > 0) {
+            tmp--;
+            s += "\t";
+        }
+        ss = s + "\t";
+        System.out.println(s + "WhileStmt");
 
+        System.out.println(ss + "Expr");
+        expr.output(dep + 1);
+        System.out.println(ss + "Stmt");
+        stmt.output(dep + 1);
+    }
 }

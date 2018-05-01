@@ -10,4 +10,5 @@ public abstract class Expr extends Atom {
         return pos;
     }
     public abstract Type gettype();
+    public abstract void output(int dep);
 }

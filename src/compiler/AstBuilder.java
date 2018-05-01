@@ -93,8 +93,8 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
     @Override
     public Atom visitExprStmt(MxstarParser.ExprStmtContext ctx) {
         return (ctx.expr() != null)
-                ? new ExprStmt((Expr)visit(ctx.expr()), new Position(ctx.getStart()))
-                : null;
+            ? new ExprStmt((Expr)visit(ctx.expr()), new Position(ctx.getStart()))
+            : null;
     }
 
     @Override
@@ -114,8 +114,8 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
     @Override
     public Atom visitReturnStmt(MxstarParser.ReturnStmtContext ctx) {
         return (ctx.expr() != null)
-                ? new ReturnStmt((Expr)visit(ctx.expr()), new Position(ctx.getStart()))
-                : null;
+            ? new ReturnStmt((Expr)visit(ctx.expr()), new Position(ctx.getStart()))
+            : null;
     }
 
     @Override
@@ -160,7 +160,7 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
     @Override
     public Atom visitIDExpr(MxstarParser.IDExprContext ctx) {
         return new IDExpr(ctx.Identifier().getText(),
-                new Position(ctx.Identifier().getSymbol()));
+                new Position(ctx.getStart()));
     }
 
     @Override

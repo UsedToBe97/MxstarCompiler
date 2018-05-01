@@ -17,4 +17,8 @@ public class Root extends Atom {
             throw new CompileError("Lost Main (Root)", new Position(-1, -1));
         for (Def d : deflist) d.check();
     }
+    public void output() {
+        System.out.println("-------- Output --------");
+        for (Def d : deflist) d.output(1);
+    }
 }

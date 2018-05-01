@@ -42,4 +42,14 @@ public class ClassDef extends Def {
         GlobalClass.classname = "";
         GlobalClass.inclass = false;
     }
+    public void output(int dep) {
+        int tmp = dep;
+        String s = "";
+        while (tmp > 0) {
+            tmp--;
+            s += "\t";
+        }
+        System.out.println(s + "Class : " + name + " at " + pos.toString());
+        for (Def d : Deflist) d.output(dep + 1);
+    }
 }

@@ -20,7 +20,6 @@ public class FuncExpr extends Expr {
     public FuncExpr(MxstarParser.FuncExprContext ctx) {
         name = ctx.Identifier().getText();
         pos = new Position(ctx.getStart());
-        exprList = new LinkedList<>();
     }
     public void add(Expr _e) {exprList.add(_e);}
 
@@ -52,5 +51,20 @@ public class FuncExpr extends Expr {
             }
             else throw new CompileError("Error Func(FuncExpr)", pos);
         } else throw new CompileError("No This Func(FuncExpr)", pos);
+    }
+    public void output(int dep) {
+        int tmp = dep;
+        String s = "", ss = "";
+        while (tmp > 0) {
+            tmp--;
+            s += "\t";
+        }
+        System.out.println(s + "Func_call : " + name + " at " + pos.toString());
+        ss = s + "\t";
+        System.out.println(ss + "---Param(s)---");
+        for (Expr p : exprList) {
+            p.output(dep + 1);
+        }
+        System.out.println(ss + "---End of Param(s)---");
     }
 }
