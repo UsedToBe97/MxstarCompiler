@@ -60,6 +60,7 @@ public class FuncExpr extends Expr {
             tmp--;
             s += "\t";
         }
+        if (type == null) type = gettype();
         System.out.println(s + "FuncExpr : " + name + " with Type " + type.typename());
         ss = s + "\t";
         System.out.println(ss + "---Param(s)---");

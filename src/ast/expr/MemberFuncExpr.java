@@ -83,7 +83,7 @@ public class MemberFuncExpr extends Expr {
         who.output(dep + 1);
         System.out.println(ss + "---Param(s)---");
         for (Expr p : exprList) {
-            p.output(dep + 1);
+            if (p != null) p.output(dep + 1);
         }
         System.out.println(ss + "---End of Param(s)---");
         System.out.println(ss + "Type : "+ type);

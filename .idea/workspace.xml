@@ -3,41 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/ArrayExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/ArrayExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/AssignExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/AssignExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/BinaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/BinaryExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/ConstExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/ConstExpr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ast/expr/FuncExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/FuncExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/IDExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/IDExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/LUnaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/LUnaryExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/MemberExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/MemberExpr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ast/expr/MemberFuncExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/MemberFuncExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/NewExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/NewExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/RUnaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/RUnaryExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/BlockStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/BlockStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/ExprStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/ExprStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/ForStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/ForStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/IfStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/IfStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/ReturnStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/ReturnStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/WhileStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/WhileStmt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/ArrayExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/ArrayExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/AssignExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/AssignExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/BinaryExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/BinaryExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/ConstExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/ConstExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/FuncExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/FuncExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/IDExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/IDExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/LUnaryExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/LUnaryExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/MemberExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/MemberExpr.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/MemberFuncExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/MemberFuncExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/NewExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/NewExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/RUnaryExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/RUnaryExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/stmt/BlockStmt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/stmt/BlockStmt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/stmt/ExprStmt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/stmt/ExprStmt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/stmt/ForStmt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/stmt/ForStmt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/stmt/IfStmt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/stmt/IfStmt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/stmt/ReturnStmt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/stmt/ReturnStmt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/stmt/WhileStmt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/stmt/WhileStmt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/compiler/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/1.test" beforeDir="false" afterPath="$PROJECT_DIR$/test/1.test" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -173,11 +143,23 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="MemberFuncExpr.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="MemberFuncExpr.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/ast/expr/MemberFuncExpr.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="414">
-                  <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
+                <state relative-caret-position="276">
+                  <caret line="85" column="34" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="276">
+                  <caret line="111" column="10" selection-start-line="111" selection-start-column="10" selection-end-line="111" selection-end-column="10" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -212,15 +194,6 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ConstExpr.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ast/expr/ConstExpr.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="483">
-                  <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="Expr.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/ast/expr/Expr.java">
               <provider selected="true" editor-type-id="text-editor">
@@ -230,11 +203,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="FuncExpr.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="FuncExpr.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ast/expr/FuncExpr.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="763">
-                  <caret line="53" selection-start-line="53" selection-end-line="53" />
+                <state relative-caret-position="391">
+                  <caret line="62" column="42" selection-start-line="62" selection-start-column="42" selection-end-line="62" selection-end-column="42" />
                 </state>
               </provider>
             </entry>
@@ -334,7 +307,6 @@
         <option value="$PROJECT_DIR$/src/ast/stmt/ContStmt.java" />
         <option value="$PROJECT_DIR$/src/ast/type/ArrayType.java" />
         <option value="$PROJECT_DIR$/src/ast/definition/FuncDef.java" />
-        <option value="$PROJECT_DIR$/src/compiler/Main.java" />
         <option value="$PROJECT_DIR$/src/ast/stmt/WhileStmt.java" />
         <option value="$PROJECT_DIR$/src/ast/stmt/IfStmt.java" />
         <option value="$PROJECT_DIR$/src/ast/stmt/ReturnStmt.java" />
@@ -350,8 +322,9 @@
         <option value="$PROJECT_DIR$/src/ast/expr/MemberExpr.java" />
         <option value="$PROJECT_DIR$/src/ast/expr/NewExpr.java" />
         <option value="$PROJECT_DIR$/src/ast/expr/RUnaryExpr.java" />
-        <option value="$PROJECT_DIR$/src/ast/expr/FuncExpr.java" />
+        <option value="$PROJECT_DIR$/src/compiler/Main.java" />
         <option value="$PROJECT_DIR$/src/ast/expr/MemberFuncExpr.java" />
+        <option value="$PROJECT_DIR$/src/ast/expr/FuncExpr.java" />
       </list>
     </option>
   </component>
@@ -604,12 +577,12 @@
       <workItem from="1524658704539" duration="1099000" />
       <workItem from="1524705814053" duration="10132000" />
       <workItem from="1525146619504" duration="5258000" />
-      <workItem from="1525158215902" duration="5299000" />
+      <workItem from="1525158215902" duration="5841000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167131000" />
+    <option name="totallyTimeSpent" value="167673000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -880,16 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="111" column="10" selection-start-line="111" selection-start-column="10" selection-end-line="111" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/stmt/Stmt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -1026,17 +989,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/expr/FuncExpr.java">
+    <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="763">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        <state relative-caret-position="276">
+          <caret line="111" column="10" selection-start-line="111" selection-start-column="10" selection-end-line="111" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/expr/MemberFuncExpr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
+        <state relative-caret-position="276">
+          <caret line="85" column="34" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/expr/FuncExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="62" column="42" selection-start-line="62" selection-start-column="42" selection-end-line="62" selection-end-column="42" />
         </state>
       </provider>
     </entry>
