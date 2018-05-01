@@ -21,11 +21,11 @@ public class IDExpr extends Expr {
     public Type gettype() {
         if (type != null) return type;
         if ("null".equals((name))) {
-            return new NullType(pos);
+            return type = new NullType(pos);
         }
         if (GlobalClass.inclass) {
             if ("this".equals(name)) {
-                return new ClassType(GlobalClass.classname, pos);
+                return type = new ClassType(GlobalClass.classname, pos);
             }
         }
         String tmp = GlobalClass.classname + "." + name;
@@ -33,8 +33,8 @@ public class IDExpr extends Expr {
         if (GlobalClass.st.contains(name)) d = GlobalClass.st.now.check(name);
         else d = GlobalClass.st.now.check(tmp);
         if (d instanceof VarDef) {
-            return ((VarDef) d).type;
-        } else return new ClassType(d.getname(), pos);
+            return type = ((VarDef) d).type;
+        } else return type = new ClassType(d.getname(), pos);
     }
 
     public void output(int dep) {

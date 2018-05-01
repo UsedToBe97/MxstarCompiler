@@ -37,8 +37,8 @@ public class NewExpr extends Expr {
             if (!(e.gettype() instanceof IntType))
                 throw new CompileError("Expr Not Int(NewExpr)", pos);
         }
-        if (d == 0) return type;
-        return new ArrayType(d, type, pos);
+        if (d == 0) return rettype = type;
+        return rettype = new ArrayType(d, type, pos);
     }
     public void output(int dep) {
         int tmp = dep;

@@ -28,7 +28,7 @@ public class MemberExpr extends Expr {
             Def d = GlobalClass.st.now.check(tmp);
             if (!(d instanceof VarDef))
                 throw new CompileError("No Member(MemberExpr)", pos);
-            return ((VarDef) d).type;
+            return type = ((VarDef) d).type;
         } else throw new CompileError("No This Class(MemberExpr)", pos);
     }
 

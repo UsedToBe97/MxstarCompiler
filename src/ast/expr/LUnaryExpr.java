@@ -28,7 +28,7 @@ public class LUnaryExpr extends Expr {
             if (!(expr.gettype() instanceof IntType))
                 throw new CompileError("Type Error(LUnaryExpr)", pos);
         }
-        return expr.gettype();
+        return type = expr.gettype();
     }
 
     public void output(int dep) {

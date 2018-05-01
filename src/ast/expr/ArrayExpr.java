@@ -49,8 +49,8 @@ public class ArrayExpr extends Expr {
             int ff =((ArrayType) Leftexpr.gettype()).d - tmpd;
             System.err.println(ff);
             if (ff == 0)
-                return ((ArrayType) Leftexpr.gettype()).type;
-            else if (ff > 0) return new ArrayType(ff, ((ArrayType) Leftexpr.gettype()).type, pos);
+                return type = ((ArrayType) Leftexpr.gettype()).type;
+            else if (ff > 0) return type = new ArrayType(ff, ((ArrayType) Leftexpr.gettype()).type, pos);
             else throw new CompileError("Index Too Many(ArrayExpr)", pos);
         } else {
             System.err.println("Go There");

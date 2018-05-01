@@ -31,6 +31,7 @@ public class RUnaryExpr extends Expr {
             s += "\t";
         }
         ss = s + "\t";
+        if (type == null) type = gettype();
         System.out.println(s + "RUnaryExpr:");
         System.out.println(ss + "Op: " + op);
         System.out.println(ss + "Expr:");

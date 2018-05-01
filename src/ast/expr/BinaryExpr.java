@@ -60,9 +60,9 @@ public class BinaryExpr extends Expr {
                 !(t2 instanceof NullType && t1 instanceof ArrayType)
                 ) throw new CompileError("Type Error(Binary Expr)", pos);
         if (op.equals("&&") || op.equals("||") || op.equals(">=") ||
-                op.equals("<=") || op.equals("<") || op.equals(">")) return new BoolType(pos);
-        if (op.equals("==") || op.equals("!=")) return new BoolType(pos);
-        return t1;
+                op.equals("<=") || op.equals("<") || op.equals(">")) return type = new BoolType(pos);
+        if (op.equals("==") || op.equals("!=")) return type = new BoolType(pos);
+        return type = t1;
     }
 
     public void output(int dep) {

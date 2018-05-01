@@ -55,17 +55,17 @@ public class MemberFuncExpr extends Expr {
             return ((FuncDef) d).type;
         } else if (t instanceof ArrayType) {
             if (name.equals("size") && exprList.size() == 0)
-                return new IntType(pos);
+                return type = new IntType(pos);
             else throw new CompileError("No This MemFunc(MemberFuncExpr)", pos);
         } else if (t instanceof StringType) {
             if (name.equals("length") && exprList.size() == 0)
-                return new IntType(pos);
+                return type = new IntType(pos);
             else if (name.equals("substring") && exprList.size() == 2)
-                return new StringType(pos);
+                return type = new StringType(pos);
             else if (name.equals("parseInt") && exprList.size() == 0)
-                return new IntType(pos);
+                return type = new IntType(pos);
             else if (name.equals("ord") && exprList.size() == 1)
-                return new IntType(pos);
+                return type = new IntType(pos);
             else throw new CompileError("No This MemFunc(MemberFuncExpr)", pos);
         } else
             throw new CompileError("No This Class(MemberFuncExpr)", pos);

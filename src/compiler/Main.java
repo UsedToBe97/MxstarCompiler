@@ -121,14 +121,14 @@ public class Main {
         parser.setErrorHandler(new BailErrorStrategy());
         ParseTree tree = parser.prog();
         AstBuilder AST = new AstBuilder();
+        Root rt = (Root) AST.visit(tree);
         try{
-            Root rt = (Root) AST.visit(tree);
             rt.check();
         } catch (CompileError ce) {
             System.err.println(ce.getMessage());
             System.exit(-1);
         }
-        //rt.output();
+        rt.output();
         //System.exit(0);
         //System.out.println(tree.toStringTree(parser));
         //System.out.println("FUCK");
