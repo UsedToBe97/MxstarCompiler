@@ -33,6 +33,9 @@ public class ReturnStmt extends Stmt {
         } else if (!Objects.equals(expr.gettype().typename(), GlobalClass.nowfunc.type.typename())
                 && !(expr.gettype() instanceof NullType))
             throw new CompileError("Type Now Match(ReturnStmt)", pos);
+        else if (Objects.equals(expr.gettype().typename(), GlobalClass.nowfunc.type.typename()) &&
+                GlobalClass.nowfunc.type instanceof VoidType)
+            throw new CompileError("Can't return void(ReturnStmt)", pos);
     }
     public void output(int dep) {
         int tmp = dep;
