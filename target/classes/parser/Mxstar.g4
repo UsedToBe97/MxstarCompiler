@@ -59,7 +59,7 @@ baseType:
 
 expr:
      '(' expr ')'                                                      # BracketExpr
-    | 'new' (baseType) bracketsexpr*                                   # NewExpr
+    | 'new' ((baseType bracketsexpr*) | (baseType '(' parameterList ')'))                                # NewExpr
     | expr ('[' expr ']')+                                             # ArrayExpr
     | op=('++' | '--' | '+' | '-') expr                                # LUnaryExpr
     | expr op=('++' | '--')                                            # RUnaryExpr

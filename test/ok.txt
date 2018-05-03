@@ -1,23 +1,34 @@
-int main() {
+// class 'this'
+// scope in class
+bool a;
+bool b;
+class A {
     int a;
     int b;
-    a = a + b;
-    foo();
-    return 0;
+    A () {
+        a = 1;
+        b = a + 1;
+        this.a = b;
+        this.b = this.a + 1;
+        {
+            string a = toString(this.b);
+            string b = a;
+        }
+    }
 }
-
-void foo(){
-    return foo();
+int main() {
+    A a = new A();
+	println("too young too simple.");
+	return 0;
 }
-
 
 /*!! metadata:
 === comment ===
-吴章昊 Cannot return void
+刘啸远 test scope in class, 'this'
 === is_public ===
 True
 === assert ===
-failure_compile
+success_compile
 === timeout ===
 0
 === input ===

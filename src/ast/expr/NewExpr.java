@@ -1,9 +1,6 @@
 package ast.expr;
 
-import ast.type.ArrayType;
-import ast.type.IntType;
-import ast.type.Type;
-import ast.type.TypeClassifier;
+import ast.type.*;
 import parser.MxstarParser;
 import utils.CompileError;
 import utils.Position;
@@ -37,6 +34,8 @@ public class NewExpr extends Expr {
             if (!(e.gettype() instanceof IntType))
                 throw new CompileError("Expr Not Int(NewExpr)", pos);
         }
+        if (type instanceof VoidType)
+            throw new CompileError("Can't new void type(NewExpr)", pos);
         if (d == 0) return rettype = type;
         return rettype = new ArrayType(d, type, pos);
     }

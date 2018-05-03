@@ -37,6 +37,8 @@ public class VarDef extends Def {
         }
         if (type instanceof ArrayType) {
             Type t = ((ArrayType)type).type;
+            if (t instanceof VoidType)
+                throw new CompileError("Void Array(VarDef)", pos);
             if (t instanceof ClassType) GlobalClass.st.now.check(((ClassType) t).name);
         }
         if (type instanceof VoidType)
