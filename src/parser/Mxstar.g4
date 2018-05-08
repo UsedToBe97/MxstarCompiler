@@ -63,12 +63,13 @@ expr:
     | expr ('[' expr ']')+                                             # ArrayExpr
     | op=('++' | '--' | '+' | '-') expr                                # LUnaryExpr
     | expr op=('++' | '--')                                            # RUnaryExpr
+
+    | expr '.' Identifier                                              # MemberExpr
+    | expr '.' Identifier '(' exprList? ')'                            # MemberFuncExpr
     | op=('~' | '!' ) expr                                             # LUnaryExpr
     | constant                                                         # ConstantExpr
     | Identifier                                                       # IDExpr
     | Identifier '(' exprList? ')'                                     # FuncExpr
-    | expr '.' Identifier                                              # MemberExpr
-    | expr '.' Identifier '(' exprList? ')'                            # MemberFuncExpr
 
 
 

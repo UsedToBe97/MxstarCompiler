@@ -19,6 +19,7 @@ public class IDExpr extends Expr {
         return pos;
     }
     public Type gettype() {
+        System.err.println("Get Type ID");
         if (type != null) return type;
         if ("null".equals((name))) {
             return type = new NullType(pos);
@@ -29,10 +30,12 @@ public class IDExpr extends Expr {
             }
         }
         String tmp = GlobalClass.classname + "." + name;
+        System.err.println(tmp);
         Def d;
         if (GlobalClass.st.contains(name)) d = GlobalClass.st.now.check(name);
         else d = GlobalClass.st.now.check(tmp);
         if (d instanceof VarDef) {
+            System.err.println("type is " + ((VarDef) d).type);
             return type = ((VarDef) d).type;
         } else return type = new ClassType(d.getname(), pos);
     }

@@ -41,7 +41,7 @@ public class MxstarParser extends Parser {
 		null, "'class'", "'{'", "'}'", "'='", "';'", "'('", "')'", "','", "'if'", 
 		"'else'", "'while'", "'for'", "'return'", "'break'", "'continue'", "'int'", 
 		"'bool'", "'string'", "'void'", "'new'", "'['", "']'", "'++'", "'--'", 
-		"'+'", "'-'", "'~'", "'!'", "'.'", "'*'", "'/'", "'%'", "'<<'", "'>>'", 
+		"'+'", "'-'", "'.'", "'~'", "'!'", "'*'", "'/'", "'%'", "'<<'", "'>>'", 
 		"'<'", "'>'", "'>='", "'<='", "'=='", "'!='", "'&'", "'^'", "'|'", "'&&'", 
 		"'||'", "'null'", "'true'", "'false'"
 	};
@@ -659,7 +659,7 @@ public class MxstarParser extends Parser {
 			setState(100);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__4) | (1L << T__5) | (1L << T__8) | (1L << T__10) | (1L << T__11) | (1L << T__12) | (1L << T__13) | (1L << T__14) | (1L << T__15) | (1L << T__16) | (1L << T__17) | (1L << T__18) | (1L << T__19) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__26) | (1L << T__27) | (1L << T__45) | (1L << T__46) | (1L << T__47) | (1L << ConstInteger) | (1L << ConstString) | (1L << Identifier))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__1) | (1L << T__4) | (1L << T__5) | (1L << T__8) | (1L << T__10) | (1L << T__11) | (1L << T__12) | (1L << T__13) | (1L << T__14) | (1L << T__15) | (1L << T__16) | (1L << T__17) | (1L << T__18) | (1L << T__19) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__27) | (1L << T__28) | (1L << T__45) | (1L << T__46) | (1L << T__47) | (1L << ConstInteger) | (1L << ConstString) | (1L << Identifier))) != 0)) {
 				{
 				{
 				setState(97);
@@ -884,7 +884,7 @@ public class MxstarParser extends Parser {
 				setState(106);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__19) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__26) | (1L << T__27) | (1L << T__45) | (1L << T__46) | (1L << T__47) | (1L << ConstInteger) | (1L << ConstString) | (1L << Identifier))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__19) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__27) | (1L << T__28) | (1L << T__45) | (1L << T__46) | (1L << T__47) | (1L << ConstInteger) | (1L << ConstString) | (1L << Identifier))) != 0)) {
 					{
 					setState(105);
 					expr(0);
@@ -986,7 +986,7 @@ public class MxstarParser extends Parser {
 				setState(140);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__19) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__26) | (1L << T__27) | (1L << T__45) | (1L << T__46) | (1L << T__47) | (1L << ConstInteger) | (1L << ConstString) | (1L << Identifier))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__19) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__27) | (1L << T__28) | (1L << T__45) | (1L << T__46) | (1L << T__47) | (1L << ConstInteger) | (1L << ConstString) | (1L << Identifier))) != 0)) {
 					{
 					setState(139);
 					((ForStmtContext)_localctx).first = expr(0);
@@ -998,7 +998,7 @@ public class MxstarParser extends Parser {
 				setState(144);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__19) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__26) | (1L << T__27) | (1L << T__45) | (1L << T__46) | (1L << T__47) | (1L << ConstInteger) | (1L << ConstString) | (1L << Identifier))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__19) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__27) | (1L << T__28) | (1L << T__45) | (1L << T__46) | (1L << T__47) | (1L << ConstInteger) | (1L << ConstString) | (1L << Identifier))) != 0)) {
 					{
 					setState(143);
 					((ForStmtContext)_localctx).second = expr(0);
@@ -1010,7 +1010,7 @@ public class MxstarParser extends Parser {
 				setState(148);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__19) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__26) | (1L << T__27) | (1L << T__45) | (1L << T__46) | (1L << T__47) | (1L << ConstInteger) | (1L << ConstString) | (1L << Identifier))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__19) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__27) | (1L << T__28) | (1L << T__45) | (1L << T__46) | (1L << T__47) | (1L << ConstInteger) | (1L << ConstString) | (1L << Identifier))) != 0)) {
 					{
 					setState(147);
 					((ForStmtContext)_localctx).third = expr(0);
@@ -1040,7 +1040,7 @@ public class MxstarParser extends Parser {
 				setState(155);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__19) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__26) | (1L << T__27) | (1L << T__45) | (1L << T__46) | (1L << T__47) | (1L << ConstInteger) | (1L << ConstString) | (1L << Identifier))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__19) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__27) | (1L << T__28) | (1L << T__45) | (1L << T__46) | (1L << T__47) | (1L << ConstInteger) | (1L << ConstString) | (1L << Identifier))) != 0)) {
 					{
 					setState(154);
 					expr(0);
@@ -1562,7 +1562,7 @@ public class MxstarParser extends Parser {
 				setState(189);
 				((LUnaryExprContext)_localctx).op = _input.LT(1);
 				_la = _input.LA(1);
-				if ( !(_la==T__26 || _la==T__27) ) {
+				if ( !(_la==T__27 || _la==T__28) ) {
 					((LUnaryExprContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 				}
 				else {
@@ -1571,7 +1571,7 @@ public class MxstarParser extends Parser {
 					consume();
 				}
 				setState(190);
-				expr(14);
+				expr(12);
 				}
 				break;
 			case 5:
@@ -1604,7 +1604,7 @@ public class MxstarParser extends Parser {
 				setState(196);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__19) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__26) | (1L << T__27) | (1L << T__45) | (1L << T__46) | (1L << T__47) | (1L << ConstInteger) | (1L << ConstString) | (1L << Identifier))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__19) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__27) | (1L << T__28) | (1L << T__45) | (1L << T__46) | (1L << T__47) | (1L << ConstInteger) | (1L << ConstString) | (1L << Identifier))) != 0)) {
 					{
 					setState(195);
 					exprList();
@@ -1843,9 +1843,9 @@ public class MxstarParser extends Parser {
 						_localctx = new MemberExprContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(236);
-						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
+						if (!(precpred(_ctx, 14))) throw new FailedPredicateException(this, "precpred(_ctx, 14)");
 						setState(237);
-						match(T__28);
+						match(T__26);
 						setState(238);
 						match(Identifier);
 						}
@@ -1855,9 +1855,9 @@ public class MxstarParser extends Parser {
 						_localctx = new MemberFuncExprContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
 						setState(239);
-						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
+						if (!(precpred(_ctx, 13))) throw new FailedPredicateException(this, "precpred(_ctx, 13)");
 						setState(240);
-						match(T__28);
+						match(T__26);
 						setState(241);
 						match(Identifier);
 						setState(242);
@@ -1865,7 +1865,7 @@ public class MxstarParser extends Parser {
 						setState(244);
 						_errHandler.sync(this);
 						_la = _input.LA(1);
-						if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__19) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__26) | (1L << T__27) | (1L << T__45) | (1L << T__46) | (1L << T__47) | (1L << ConstInteger) | (1L << ConstString) | (1L << Identifier))) != 0)) {
+						if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__5) | (1L << T__19) | (1L << T__22) | (1L << T__23) | (1L << T__24) | (1L << T__25) | (1L << T__27) | (1L << T__28) | (1L << T__45) | (1L << T__46) | (1L << T__47) | (1L << ConstInteger) | (1L << ConstString) | (1L << Identifier))) != 0)) {
 							{
 							setState(243);
 							exprList();
@@ -2250,9 +2250,9 @@ public class MxstarParser extends Parser {
 		case 9:
 			return precpred(_ctx, 15);
 		case 10:
-			return precpred(_ctx, 10);
+			return precpred(_ctx, 14);
 		case 11:
-			return precpred(_ctx, 9);
+			return precpred(_ctx, 13);
 		}
 		return true;
 	}
@@ -2281,7 +2281,7 @@ public class MxstarParser extends Parser {
 		"\3\20\3\21\3\21\3\21\3\21\3\22\3\22\3\22\7\22\u010d\n\22\f\22\16\22\u0110"+
 		"\13\22\3\23\3\23\7\23\u0114\n\23\f\23\16\23\u0117\13\23\3\24\3\24\3\24"+
 		"\2\3\32\25\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&\2\17\3\2\20\21"+
-		"\4\2\22\25\65\65\3\2\31\34\3\2\35\36\3\2 \"\3\2\33\34\3\2#$\3\2%(\3\2"+
+		"\4\2\22\25\65\65\3\2\31\34\3\2\36\37\3\2 \"\3\2\33\34\3\2#$\3\2%(\3\2"+
 		")*\3\2+-\3\2./\3\2\31\32\3\2\60\64\2\u0139\2+\3\2\2\2\4\63\3\2\2\2\6\65"+
 		"\3\2\2\2\bB\3\2\2\2\nD\3\2\2\2\fM\3\2\2\2\16]\3\2\2\2\20_\3\2\2\2\22b"+
 		"\3\2\2\2\24\u00a2\3\2\2\2\26\u00a4\3\2\2\2\30\u00a7\3\2\2\2\32\u00c9\3"+
@@ -2324,7 +2324,7 @@ public class MxstarParser extends Parser {
 		"\u00b3\3\2\2\2\u00b6\u00b7\5\30\r\2\u00b7\u00b8\7\b\2\2\u00b8\u00b9\5"+
 		"\16\b\2\u00b9\u00ba\7\t\2\2\u00ba\u00bc\3\2\2\2\u00bb\u00af\3\2\2\2\u00bb"+
 		"\u00b6\3\2\2\2\u00bc\u00ca\3\2\2\2\u00bd\u00be\t\4\2\2\u00be\u00ca\5\32"+
-		"\16\22\u00bf\u00c0\t\5\2\2\u00c0\u00ca\5\32\16\20\u00c1\u00ca\5&\24\2"+
+		"\16\22\u00bf\u00c0\t\5\2\2\u00c0\u00ca\5\32\16\16\u00c1\u00ca\5&\24\2"+
 		"\u00c2\u00ca\7\65\2\2\u00c3\u00c4\7\65\2\2\u00c4\u00c6\7\b\2\2\u00c5\u00c7"+
 		"\5\"\22\2\u00c6\u00c5\3\2\2\2\u00c6\u00c7\3\2\2\2\u00c7\u00c8\3\2\2\2"+
 		"\u00c8\u00ca\7\t\2\2\u00c9\u00a9\3\2\2\2\u00c9\u00ae\3\2\2\2\u00c9\u00bd"+
@@ -2340,11 +2340,11 @@ public class MxstarParser extends Parser {
 		"\7\27\2\2\u00e5\u00e6\5\32\16\2\u00e6\u00e7\7\30\2\2\u00e7\u00e9\3\2\2"+
 		"\2\u00e8\u00e4\3\2\2\2\u00e9\u00ea\3\2\2\2\u00ea\u00e8\3\2\2\2\u00ea\u00eb"+
 		"\3\2\2\2\u00eb\u00fa\3\2\2\2\u00ec\u00ed\f\21\2\2\u00ed\u00fa\t\r\2\2"+
-		"\u00ee\u00ef\f\f\2\2\u00ef\u00f0\7\37\2\2\u00f0\u00fa\7\65\2\2\u00f1\u00f2"+
-		"\f\13\2\2\u00f2\u00f3\7\37\2\2\u00f3\u00f4\7\65\2\2\u00f4\u00f6\7\b\2"+
-		"\2\u00f5\u00f7\5\"\22\2\u00f6\u00f5\3\2\2\2\u00f6\u00f7\3\2\2\2\u00f7"+
-		"\u00f8\3\2\2\2\u00f8\u00fa\7\t\2\2\u00f9\u00cb\3\2\2\2\u00f9\u00ce\3\2"+
-		"\2\2\u00f9\u00d1\3\2\2\2\u00f9\u00d4\3\2\2\2\u00f9\u00d7\3\2\2\2\u00f9"+
+		"\u00ee\u00ef\f\20\2\2\u00ef\u00f0\7\35\2\2\u00f0\u00fa\7\65\2\2\u00f1"+
+		"\u00f2\f\17\2\2\u00f2\u00f3\7\35\2\2\u00f3\u00f4\7\65\2\2\u00f4\u00f6"+
+		"\7\b\2\2\u00f5\u00f7\5\"\22\2\u00f6\u00f5\3\2\2\2\u00f6\u00f7\3\2\2\2"+
+		"\u00f7\u00f8\3\2\2\2\u00f8\u00fa\7\t\2\2\u00f9\u00cb\3\2\2\2\u00f9\u00ce"+
+		"\3\2\2\2\u00f9\u00d1\3\2\2\2\u00f9\u00d4\3\2\2\2\u00f9\u00d7\3\2\2\2\u00f9"+
 		"\u00da\3\2\2\2\u00f9\u00dd\3\2\2\2\u00f9\u00e0\3\2\2\2\u00f9\u00e3\3\2"+
 		"\2\2\u00f9\u00ec\3\2\2\2\u00f9\u00ee\3\2\2\2\u00f9\u00f1\3\2\2\2\u00fa"+
 		"\u00fd\3\2\2\2\u00fb\u00f9\3\2\2\2\u00fb\u00fc\3\2\2\2\u00fc\33\3\2\2"+

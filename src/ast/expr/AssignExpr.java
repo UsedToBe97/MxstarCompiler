@@ -25,6 +25,9 @@ public class AssignExpr extends Expr {
         System.err.println(expr1);
         Type t1 = expr1.gettype();
         Type t2 = expr2.gettype();
+        if (expr1 instanceof IDExpr)
+            if (((IDExpr) expr1).name.equals("this"))
+                throw new CompileError("This is a reversed word(AssignExpr)", pos);
         System.err.println(t1.typename() + " = " + t2.typename());
         if (!t1.typename().equals(t2.typename()) && !(t2 instanceof NullType))
             throw new CompileError("Type Error(AssignExpr)", pos);

@@ -49,7 +49,8 @@ public class VarDef extends Def {
                     throw new CompileError("String = null(VarDef)", pos);
         }
         if (expr != null) {
-            System.err.println(expr.gettype());
+            if (!expr.gettype().typename().equals(type.typename()))
+                throw new CompileError("Can't def(VarDef)", pos);
         }
         GlobalClass.st.now.addObj(name, this);
     }

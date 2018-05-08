@@ -1,43 +1,114 @@
-// class 'this'
-// scope in class
-bool a;
-bool b;
-class A {
-    int a;
-    int b;
-    A () {
-        a = 1;
-        b = a + 1;
-        this.a = b;
-        this.b = this.a + 1;
-        {
-            string a = toString(this.b);
-            string b = a;
-        }
-    }
-}
-int main() {
-    A a = new A();
-	println("too young too simple.");
-	return 0;
-}
-
-/*!! metadata:
-=== comment ===
-刘啸远 test scope in class, 'this'
-=== is_public ===
-True
-=== assert ===
-success_compile
-=== timeout ===
-0
-=== input ===
-
-=== phase ===
-semantic pretest
-=== output ===
-
-=== exitcode ===
-0
-
-!!*/
+-------- Output --------
+	Func : main at Line : 1	Column ; 4
+		---Param(s)---
+		---End of Param(s)---
+		Var: int with name a
+			ConstExpr:
+				 Type: int
+			EndConstExpr:
+		Var: int with name b
+			ConstExpr:
+				 Type: int
+			EndConstExpr:
+		Var: int with name c
+			ConstExpr:
+				 Type: int
+			EndConstExpr:
+		Var: int with name d
+			ConstExpr:
+				 Type: int
+			EndConstExpr:
+		Var: int with name e
+			ConstExpr:
+				 Type: int
+			EndConstExpr:
+		Var: ArrayType	Dimension: 1 with name f
+			NewExpr:
+				ExprList:
+				ConstExpr:
+					 Type: int
+				EndConstExpr:
+				RetType:ArrayType	Dimension: 1
+			EndNewExpr:
+		Var: int with name g
+			ConstExpr:
+				 Type: int
+			EndConstExpr:
+		ForStmt
+			Expr1: with type null
+			ConstExpr:
+				 Type: null
+			EndConstExpr:
+			Expr2: with type bool
+			BinaryExpr:
+				Expr1:
+				BinaryExpr:
+					Expr1:
+					IDExpr:
+						Name: b
+					EndIDExpr:
+					 op: -
+					Expr2:
+					IDExpr:
+						Name: c
+					EndIDExpr:
+					RES_Type:int
+				EndBinaryExpr:
+				 op: !=
+				Expr2:
+				ConstExpr:
+					 Type: int
+				EndConstExpr:
+				RES_Type:bool
+			EndBinaryExpr:
+			Expr3: with type null
+			ConstExpr:
+				 Type: null
+			EndConstExpr:
+		EndForStmt
+		ForStmt
+			Expr1: with type null
+			ConstExpr:
+				 Type: null
+			EndConstExpr:
+			Expr2: with type null
+			ConstExpr:
+				 Type: null
+			EndConstExpr:
+			Expr3: with type int
+			AssignExpr:
+				LeftExpr:
+				IDExpr:
+					Name: e
+				EndIDExpr:
+				RightExpr:
+				BinaryExpr:
+					Expr1:
+					IDExpr:
+						Name: d
+					EndIDExpr:
+					 op: %
+					Expr2:
+					IDExpr:
+						Name: a
+					EndIDExpr:
+					RES_Type:int
+				EndBinaryExpr:
+			EndAssignExpr:
+		EndForStmt
+		ExprStmt
+			FuncExpr : print with Type void
+				---Param(s)---
+				ConstExpr:
+					 Type: String
+				EndConstExpr:
+				---End of Param(s)---
+			EndFuncExpr : print at Line : 28	Column ; 2
+		EndExprStmt
+		ReturnStmt
+			Expr:
+			ConstExpr:
+				 Type: int
+			EndConstExpr:
+			ReturnType: int
+		EndReturnStmt

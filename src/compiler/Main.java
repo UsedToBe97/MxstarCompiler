@@ -108,7 +108,7 @@ class MyVisitor extends MxstarBaseVisitor<atom>
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        //String inputFile = "D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/ok.txt";
+        //String inputFile = "D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/1.test";
         String inputFile = "program.txt";
         InputStream is = new FileInputStream(inputFile);
         CharStream input = CharStreams.fromStream(is);

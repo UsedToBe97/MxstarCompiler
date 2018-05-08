@@ -28,6 +28,8 @@ public class FuncExpr extends Expr {
         return pos;
     }
     public Type gettype() {
+        if (name.substring(0,1).contains("_"))
+            throw new CompileError("Name Error(FuncExpr)", pos);
         String tmp;
         if (GlobalClass.inclass) tmp = GlobalClass.classname + "." + name;
         else tmp = name;
