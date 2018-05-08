@@ -19,7 +19,7 @@ public class LUnaryExpr extends Expr {
         return pos;
     }
     public Type gettype() {
-        System.err.println("LUnary！"+ op);
+        System.err.println("LUnary"+ op);
         if (type != null) return type;
         if (op.equals("!") || op.equals("~")) {
             System.err.println("FUCK");
