@@ -8,10 +8,7 @@ import ast.definition.FuncDef;
 import ast.definition.VarDef;
 import ast.expr.*;
 import ast.stmt.*;
-import ast.type.BoolType;
-import ast.type.IntType;
-import ast.type.NullType;
-import ast.type.StringType;
+import ast.type.*;
 import org.antlr.v4.runtime.ParserRuleContext;
 import parser.MxstarBaseVisitor;
 import parser.MxstarParser;
@@ -34,8 +31,6 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
             System.err.println(tot);
             prog.add((Def)visit(child));
         }
-        System.err.println("ExitProg");
-
         return prog;
     }
 
@@ -57,7 +52,10 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
         FuncDef tmp = new FuncDef(ctx);
         infunc = true;
         System.err.println(tmp.name + "!!!!!!!");
-        if (inclass) tree.addObj(classname + "." + tmp.name, tmp);
+        if (inclass) {
+            tree.addObj(classname + "." + tmp.name, tmp);
+            tmp.name = classname + "." + tmp.name;
+        }
         else tree.addObj(tmp.name, tmp);
         for (ParserRuleContext child : ctx.block().stmt()) {
             tmp.addstmt((Stmt)visit(child));
@@ -76,7 +74,6 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
         }
         if (inclass && !infunc) tree.addObj(classname + "." + tmp.getname(), tmp);
 
-        System.err.println("???");
         //if (!inclass && !infunc) tree.addObj(tmp.name, tmp);
 
         System.err.println("ExitVarDef");
@@ -133,8 +130,6 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
 
     @Override
     public Atom visitWhileStmt(MxstarParser.WhileStmtContext ctx) {
-        if (ctx.expr() == null) System.err.println("FUCK1");
-        if (ctx.stmt() == null) System.err.println("FUCK2");
         return new WhileStmt((Expr)visit(ctx.expr()),
                 (Stmt)visit(ctx.stmt()),
                 new Position(ctx.getStart()));
@@ -186,6 +181,7 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
     public Atom visitMemberFuncExpr(MxstarParser.MemberFuncExprContext ctx) {
         MemberFuncExpr tmp = new MemberFuncExpr(ctx);
         tmp.who = (Expr) visit(ctx.expr());
+
         if (ctx.exprList() != null) {
             for (ParserRuleContext child : ctx.exprList().expr()) tmp.add((Expr)visit(child));
         }

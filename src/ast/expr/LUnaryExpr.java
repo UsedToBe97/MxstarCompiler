@@ -3,6 +3,7 @@ package ast.expr;
 import ast.type.BoolType;
 import ast.type.IntType;
 import ast.type.Type;
+import compiler.IrBuilder;
 import utils.CompileError;
 import utils.Position;
 
@@ -47,5 +48,8 @@ public class LUnaryExpr extends Expr {
         expr.output(dep + 1);
         System.out.println(ss + "Type:" + type.typename());
         System.out.println(s + "EndLUnaryExpr:");
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }

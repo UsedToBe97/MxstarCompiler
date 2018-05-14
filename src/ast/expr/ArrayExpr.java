@@ -3,6 +3,8 @@ package ast.expr;
 import ast.type.ArrayType;
 import ast.type.IntType;
 import ast.type.Type;
+import compiler.IrBuilder;
+import ir.operand.addr.MemAddr;
 import utils.CompileError;
 import utils.Position;
 
@@ -13,6 +15,7 @@ public class ArrayExpr extends Expr {
     public Expr Leftexpr;
     public List<Expr> exprList;
     public Type type = null;
+    public List<MemAddr> MemList;//ID ex : r17 = qword[r10 + r16 * 8]
     public ArrayExpr(Expr _e) {
         Leftexpr = _e;
         exprList = new LinkedList<>();
@@ -73,6 +76,9 @@ public class ArrayExpr extends Expr {
             e.output(dep + 1);
         }
         System.out.println(s + "EndArrayExpr:");
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 
 }

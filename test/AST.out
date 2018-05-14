@@ -1,0 +1,11 @@
+class A {
+}
+int A_get(A this) [upclass : A]
+{
+}
+int main()
+{
+	A a
+	int x = A_get(a)
+	return 0
+}

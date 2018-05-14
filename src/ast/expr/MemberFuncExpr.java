@@ -3,6 +3,7 @@ package ast.expr;
 import ast.definition.Def;
 import ast.definition.FuncDef;
 import ast.type.*;
+import compiler.IrBuilder;
 import parser.MxstarParser;
 import utils.CompileError;
 import utils.GlobalClass;
@@ -17,6 +18,7 @@ public class MemberFuncExpr extends Expr {
     public String name;
     public List<Expr> exprList;
     public Type type;
+    public FuncDef funcDef;
     public MemberFuncExpr(MxstarParser.MemberFuncExprContext ctx) {
         name = ctx.Identifier().getText();
         pos = new Position(ctx.getStart());
@@ -37,6 +39,14 @@ public class MemberFuncExpr extends Expr {
         if (type != null) return type;
         System.err.println("Get Type MemberFunc");
         Type t = who.gettype();
+        if (t instanceof ClassType) {
+            this.funcDef = (FuncDef) GlobalClass.st.now.check(((ClassType) t).name + "." + name);
+        } else if (t instanceof StringType) {
+            this.funcDef = (FuncDef) GlobalClass.st.now.check("String." + name);
+        } else if (t instanceof ArrayType) {
+            this.funcDef = (FuncDef) GlobalClass.st.now.check("Array." + name);
+        }
+
         System.err.println(t + "!!!!!!432423432!!!!!!!!");
         if (t instanceof ClassType) {
             String tmp = ((ClassType) t).name + '.' + name;
@@ -72,6 +82,7 @@ public class MemberFuncExpr extends Expr {
             else throw new CompileError("No This MemFunc(MemberFuncExpr)", pos);
         } else
             throw new CompileError("No This Class(MemberFuncExpr)", pos);
+
     }
     public void output(int dep) {
         int tmp = dep;
@@ -91,5 +102,8 @@ public class MemberFuncExpr extends Expr {
         System.out.println(ss + "---End of Param(s)---");
         System.out.println(ss + "Type : "+ type);
         System.out.println(s + "EndMemberFuncExpr : " + name + " at " + pos.toString());
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }

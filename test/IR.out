@@ -1,0 +1,19 @@
+A_get[you need to fix]:
+	reg16 	= 0 [][]
+	reg16 	= rdi [][]
+_0_Label: [][]
+
+
+main[you need to fix]:
+	reg16 	= 0 [][]
+
+		rdi 	= reg16 [][]
+		call A_get[size : 1] [][]
+		reg17 	= rax [][]
+
+	reg18 	= reg17 [][]
+	rax 	= 0 [][]
+	jump _1_Label [][]
+_1_Label: [][]
+
+

@@ -4,6 +4,7 @@ import ast.expr.Expr;
 import ast.type.NullType;
 import ast.type.Type;
 import ast.type.VoidType;
+import compiler.IrBuilder;
 import utils.CompileError;
 import utils.GlobalClass;
 import utils.Position;
@@ -50,5 +51,8 @@ public class ReturnStmt extends Stmt {
         expr.output(dep + 1);
         System.out.println(ss + "ReturnType: " + expr.gettype().typename());
         System.out.println(s + "EndReturnStmt");
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }

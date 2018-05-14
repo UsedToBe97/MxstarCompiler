@@ -1,6 +1,7 @@
 package ast.expr;
 
 import ast.type.*;
+import compiler.IrBuilder;
 import parser.MxstarParser;
 import utils.CompileError;
 import utils.Position;
@@ -54,6 +55,9 @@ public class NewExpr extends Expr {
         }
         System.out.println(ss + "RetType:" + rettype.typename());
         System.out.println(s + "EndNewExpr:");
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 
 }

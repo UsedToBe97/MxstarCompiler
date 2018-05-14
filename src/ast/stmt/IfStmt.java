@@ -2,6 +2,7 @@ package ast.stmt;
 
 import ast.expr.Expr;
 import ast.type.BoolType;
+import compiler.IrBuilder;
 import utils.CompileError;
 import utils.GlobalClass;
 import utils.Pair;
@@ -65,5 +66,8 @@ public class IfStmt extends Stmt {
             elsestmt.output(dep + 1);
         }
         System.out.println(s + "EndIfStmt");
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }

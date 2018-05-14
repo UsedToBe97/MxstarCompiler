@@ -1,6 +1,7 @@
 package ast.stmt;
 
 import ast.Atom;
+import compiler.IrBuilder;
 import utils.Position;
 
 public abstract class Stmt extends Atom {
@@ -12,4 +13,5 @@ public abstract class Stmt extends Atom {
     }
     public abstract void check();
     public abstract void output(int dep);
+    public abstract void accept(IrBuilder ib);
 }

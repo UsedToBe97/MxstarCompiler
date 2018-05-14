@@ -2,6 +2,7 @@ package ast.stmt;
 
 import ast.expr.Expr;
 import ast.type.Type;
+import compiler.IrBuilder;
 import utils.CompileError;
 import utils.Position;
 
@@ -36,5 +37,8 @@ public class ExprStmt extends Stmt {
         System.out.println(s + "ExprStmt");
         expr.output(dep + 1);
         System.out.println(s + "EndExprStmt");
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }

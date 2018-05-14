@@ -4,6 +4,7 @@ import ast.expr.Expr;
 import ast.type.BoolType;
 import ast.type.NullType;
 import ast.type.Type;
+import compiler.IrBuilder;
 import utils.CompileError;
 import utils.GlobalClass;
 import utils.Position;
@@ -61,5 +62,8 @@ public class ForStmt extends Stmt {
         exprs.get(2).output(dep + 1);
         if (stmt != null) stmt.output(dep + 1);
         System.out.println(s + "EndForStmt");
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }

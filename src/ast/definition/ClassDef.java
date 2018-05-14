@@ -1,6 +1,7 @@
 package ast.definition;
 
 import ast.type.NullType;
+import compiler.IrBuilder;
 import parser.MxstarParser;
 import utils.CompileError;
 import utils.GlobalClass;
@@ -12,6 +13,8 @@ import java.util.List;
 public class ClassDef extends Def {
     public String name;
     public List<Def> Deflist;
+    public FuncDef conFunc = null;
+    public int size = 0; // IR
 
     public ClassDef(MxstarParser.ClassDefContext ctx) {
         name = ctx.Identifier().getText();
@@ -34,6 +37,9 @@ public class ClassDef extends Def {
                 System.err.println(((FuncDef) d).name + "///" + name);
                 if (((FuncDef) d).type instanceof NullType && !((FuncDef) d).name.equals(name))
                     throw new CompileError("Construct Func Error(ClassDef)", pos);
+                if (((FuncDef) d).type instanceof NullType)
+                    conFunc = (FuncDef) d;
+
             }
             //if (d instanceof VarDef) GlobalClass.st.addObj(d.getname(), d);
         }
@@ -51,5 +57,8 @@ public class ClassDef extends Def {
         }
         System.out.println(s + "Class : " + name + " at " + pos.toString());
         for (Def d : Deflist) d.output(dep + 1);
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }

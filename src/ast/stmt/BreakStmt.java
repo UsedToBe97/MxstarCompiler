@@ -1,5 +1,6 @@
 package ast.stmt;
 
+import compiler.IrBuilder;
 import utils.CompileError;
 import utils.GlobalClass;
 import utils.Position;
@@ -22,5 +23,8 @@ public class BreakStmt extends Stmt {
         }
         ss = s + "\t";
         System.out.println(s + "BreakStmt");
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }

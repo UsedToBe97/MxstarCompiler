@@ -2,6 +2,7 @@ package ast.expr;
 
 import ast.type.NullType;
 import ast.type.Type;
+import compiler.IrBuilder;
 import utils.CompileError;
 import utils.GlobalClass;
 import utils.Position;
@@ -47,5 +48,8 @@ public class AssignExpr extends Expr {
         System.out.println(ss + "RightExpr:");
         expr2.output(dep + 1);;
         System.out.println(s + "EndAssignExpr:");
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }

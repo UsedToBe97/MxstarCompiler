@@ -1,6 +1,7 @@
 package ast.expr;
 
 import ast.type.*;
+import compiler.IrBuilder;
 import utils.CompileError;
 import utils.Position;
 
@@ -82,5 +83,8 @@ public class BinaryExpr extends Expr {
         if (type != null)
             System.out.println(ss + "RES_Type:" + type.typename());
         System.out.println(s + "EndBinaryExpr:");
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }

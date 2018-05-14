@@ -5,6 +5,7 @@ import ast.definition.FuncDef;
 import ast.type.ClassType;
 import ast.type.NullType;
 import ast.type.Type;
+import compiler.IrBuilder;
 import parser.MxstarParser;
 import utils.CompileError;
 import utils.GlobalClass;
@@ -71,5 +72,8 @@ public class FuncExpr extends Expr {
         }
         System.out.println(ss + "---End of Param(s)---");
         System.out.println(s + "EndFuncExpr : " + name + " at " + pos.toString());
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }

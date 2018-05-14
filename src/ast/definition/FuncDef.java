@@ -2,6 +2,8 @@ package ast.definition;
 
 import ast.stmt.Stmt;
 import ast.type.*;
+import compiler.IrBuilder;
+import ir.inst.Label;
 import parser.MxstarParser;
 import utils.CompileError;
 import utils.GlobalClass;
@@ -15,8 +17,10 @@ public class FuncDef extends Def{
     public String name;
     public Type type = new NullType(pos);
     public List<Pair<Type, String>> params = new LinkedList<>();
+    public List<VarDef> paramList = new LinkedList<>();
     public List<Stmt> stmts = new LinkedList<>();
     public String getname() {return name;}
+    public Label label = null; // IR;
     public FuncDef(String _name, Type _type) {
         name = _name;
         type = _type;
@@ -38,6 +42,7 @@ public class FuncDef extends Def{
     }
     public void addparam(Type _t, String _s) {
         params.add(new Pair<>(_t, _s));
+        paramList.add(new VarDef(_t, _s));
     }
     public void addstmt(Stmt _s) {
         stmts.add(_s);
@@ -90,5 +95,8 @@ public class FuncDef extends Def{
         for (Stmt st : stmts) {
             if (st != null) st.output(dep + 1);
         }
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }

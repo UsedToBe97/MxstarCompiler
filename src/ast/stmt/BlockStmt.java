@@ -4,6 +4,7 @@ import ast.definition.ClassDef;
 import ast.definition.Def;
 import ast.definition.FuncDef;
 import ast.definition.VarDef;
+import compiler.IrBuilder;
 import utils.CompileError;
 import utils.GlobalClass;
 import utils.Position;
@@ -47,5 +48,8 @@ public class BlockStmt extends Stmt {
             if (st != null) st.output(dep + 1);
         }
         System.out.println(s + "EndBlockStmt:");
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }

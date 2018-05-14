@@ -3,6 +3,7 @@ package ast.definition;
 import ast.expr.ConstExpr;
 import ast.expr.Expr;
 import ast.type.*;
+import compiler.IrBuilder;
 import parser.MxstarParser;
 import utils.CompileError;
 import utils.GlobalClass;
@@ -10,14 +11,22 @@ import utils.Position;
 
 public class VarDef extends Def {
     public String name;
-    public Expr expr;
+    public Expr expr = null;
     public Type type;
+    public boolean inClass = false; // IR;
+    public boolean isGlobal = false; // IR;
+    public int offset = 0; //IR;
 
     public VarDef(MxstarParser.VarDefContext ctx) {
         pos = new Position(ctx.getStart());
         setName(ctx.Identifier().getText());
         setType(new TypeClassifier().Classify(ctx.type()));
     }
+    public VarDef(Type _t, String _name) {
+        type = _t;
+        name = _name;
+    }
+
 
     public VarDef(Position _pos) {pos = _pos;}
     public void setName(String _name) {name = _name;}
@@ -55,6 +64,7 @@ public class VarDef extends Def {
                     throw new CompileError("Can't def(VarDef)", pos);
         }
         GlobalClass.st.now.addObj(name, this);
+        GlobalClass.st.print();
     }
     public void output(int dep) {
         int tmp = dep;
@@ -67,5 +77,8 @@ public class VarDef extends Def {
         if (expr != null) {
             expr.output(dep + 1);
         }
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }

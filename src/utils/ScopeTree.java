@@ -23,15 +23,21 @@ public class ScopeTree {
         FuncDef tmp = new FuncDef("print", new VoidType());
         tmp.addparam(new StringType(), "str");
         root.addObj("print", tmp);
+
         tmp = new FuncDef("println", new VoidType());
         tmp.addparam(new StringType(), "str");
         root.addObj("println", tmp);
+
         root.addObj("getString", new FuncDef("getString", new StringType()));
+
         root.addObj("getInt", new FuncDef("getInt", new IntType()));
+
         root.addObj("parseInt", new FuncDef("parseInt", new IntType()));
+        
         tmp = new FuncDef("toString", new StringType());
         tmp.addparam(new IntType(), "i");
         root.addObj("toString", tmp);
+
         tmp = new FuncDef("ord", new IntType());
         tmp.addparam(new IntType(), "pos");
         root.addObj("ord", tmp);

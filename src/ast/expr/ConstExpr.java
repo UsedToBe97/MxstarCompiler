@@ -2,6 +2,7 @@ package ast.expr;
 
 import ast.type.IntType;
 import ast.type.Type;
+import compiler.IrBuilder;
 
 public class ConstExpr extends Expr {
     public Type type;
@@ -26,5 +27,8 @@ public class ConstExpr extends Expr {
             System.out.println(ss + " Val: " + ((IntType) type).data);
         }
         System.out.println(s + "EndConstExpr:");
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }

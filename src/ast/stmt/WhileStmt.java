@@ -2,6 +2,7 @@ package ast.stmt;
 
 import ast.expr.Expr;
 import ast.type.BoolType;
+import compiler.IrBuilder;
 import utils.CompileError;
 import utils.GlobalClass;
 import utils.Position;
@@ -45,5 +46,8 @@ public class WhileStmt extends Stmt {
         System.out.println(ss + "Stmt");
         if (stmt != null) stmt.output(dep + 1);
         System.out.println(s + "EndWhileStmt");
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }

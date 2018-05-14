@@ -5,10 +5,12 @@ import ast.definition.VarDef;
 import ast.type.ClassType;
 import ast.type.NullType;
 import ast.type.Type;
+import compiler.IrBuilder;
 import utils.GlobalClass;
 import utils.Position;
 
 public class IDExpr extends Expr {
+    public VarDef varDef;
     public String name;
     public Type type = null;
     public IDExpr(String _s, Position _p) {
@@ -20,6 +22,8 @@ public class IDExpr extends Expr {
     }
     public Type gettype() {
         System.err.println("Get Type ID");
+        GlobalClass.st.print();
+        //varDef = (VarDef) GlobalClass.st.now.check(name);
         if (type != null) return type;
         if ("null".equals((name))) {
             return type = new NullType(pos);
@@ -51,5 +55,8 @@ public class IDExpr extends Expr {
         System.out.println(s + "IDExpr:");
         System.out.println(ss + "Name: " + name);
         System.out.println(s + "EndIDExpr:");
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }

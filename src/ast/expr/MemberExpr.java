@@ -4,6 +4,7 @@ import ast.definition.Def;
 import ast.definition.VarDef;
 import ast.type.ClassType;
 import ast.type.Type;
+import compiler.IrBuilder;
 import utils.CompileError;
 import utils.GlobalClass;
 import utils.Position;
@@ -12,6 +13,7 @@ public class MemberExpr extends Expr {
     public Expr who;
     public String name;
     public Type type;
+    public VarDef varDef;
     public Position getpos() {
         return pos;
     }
@@ -19,6 +21,7 @@ public class MemberExpr extends Expr {
         who = _e;
         name = _s;
         pos = _p;
+        varDef = (VarDef) GlobalClass.st.now.check(_s);
     }
     public Type gettype() {
         if (type != null) return type;
@@ -47,5 +50,8 @@ public class MemberExpr extends Expr {
         if (type != null)
             System.out.println(ss + "Type:" + type.typename());
         System.out.println(s + "EndMemberExpr:");
+    }
+    public void accept(IrBuilder ib){
+        ib.visit(this);
     }
 }
