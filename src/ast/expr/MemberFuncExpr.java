@@ -42,9 +42,9 @@ public class MemberFuncExpr extends Expr {
         if (t instanceof ClassType) {
             this.funcDef = (FuncDef) GlobalClass.st.now.check(((ClassType) t).name + "." + name);
         } else if (t instanceof StringType) {
-            this.funcDef = (FuncDef) GlobalClass.st.now.check("String." + name);
+            this.funcDef = (FuncDef) GlobalClass.st.now.check("string." + name);
         } else if (t instanceof ArrayType) {
-            this.funcDef = (FuncDef) GlobalClass.st.now.check("Array." + name);
+            this.funcDef = (FuncDef) GlobalClass.st.now.check("array." + name);
         }
 
         System.err.println(t + "!!!!!!432423432!!!!!!!!");

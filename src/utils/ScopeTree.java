@@ -32,23 +32,23 @@ public class ScopeTree {
 
         root.addObj("getInt", new FuncDef("getInt", new IntType()));
 
-        root.addObj("String.parseInt", new FuncDef("String.parseInt", new IntType()));
-        root.addObj("String.length", new FuncDef("String.length", new IntType()));
+        root.addObj("string.parseInt", new FuncDef("string.parseInt", new IntType()));
+        root.addObj("string.length", new FuncDef("string.length", new IntType()));
 
-        root.addObj("Array.size", new FuncDef("Array.size", new IntType()));
+        root.addObj("array.size", new FuncDef("array.size", new IntType()));
 
-        tmp = new FuncDef("String.substring", new StringType());
+        tmp = new FuncDef("string.substring", new StringType());
         tmp.addparam(new IntType(), "left");
         tmp.addparam(new IntType(), "right");
-        root.addObj("String.substring", tmp);
+        root.addObj("string.substring", tmp);
 
         tmp = new FuncDef("toString", new StringType());
         tmp.addparam(new IntType(), "i");
         root.addObj("toString", tmp);
 
-        tmp = new FuncDef("String.ord", new IntType());
+        tmp = new FuncDef("string.ord", new IntType());
         tmp.addparam(new IntType(), "pos");
-        root.addObj("String.ord", tmp);
+        root.addObj("string.ord", tmp);
 
         root.addObj("this", new FuncDef("this", new NullType(new Position(-1, -1))));
     }

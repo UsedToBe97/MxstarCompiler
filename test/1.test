@@ -1,27 +1,16 @@
-class A {
-  B t;
-  A() {
-    t = new B();
-  }
+class Array{
+    int size(){
+    }
 }
 
-class B {
-  A t;
-  B() {
-    t = new A();
-  }
-}
-
-int main() {
-  A a = new A;
-  B b = new B;
-  a.t = b;
-  b.t = a;
+int main(){
+    Array a = null;
+    a.size();
 }
 
 /*!! metadata:
 === comment ===
-金之涵 516030910578-Zhihan Jin
+李怿铠 Test conflict between Built-in Function & Class.Function
 === is_public ===
 True
 === assert ===
