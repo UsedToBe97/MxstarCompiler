@@ -1,5 +1,6 @@
 package ast.expr;
 
+import ast.definition.ClassDef;
 import ast.definition.Def;
 import ast.definition.VarDef;
 import ast.type.ClassType;
@@ -30,7 +31,7 @@ public class IDExpr extends Expr {
         }
         if (GlobalClass.inclass) {
             if ("this".equals(name)) {
-                return type = new ClassType(GlobalClass.classname, pos);
+                return type = new ClassType(GlobalClass.classname, pos, (ClassDef) GlobalClass.st.now.check(GlobalClass.classname));
             }
         }
         String tmp = GlobalClass.classname + "." + name;
@@ -41,7 +42,7 @@ public class IDExpr extends Expr {
         if (d instanceof VarDef) {
             System.err.println("type is " + ((VarDef) d).type);
             return type = ((VarDef) d).type;
-        } else return type = new ClassType(d.getname(), pos);
+        } else return type = new ClassType(d.getname(), pos, (ClassDef) GlobalClass.st.now.check(d.getname()));
     }
 
     public void output(int dep) {

@@ -1,7 +1,7 @@
 package ast.type;
 
-import parser.*;
-import utils.*;
+import parser.MxstarParser;
+import utils.Position;
 
 public class TypeClassifier {
     private Type output = null;

@@ -21,11 +21,14 @@ public class MemberExpr extends Expr {
         who = _e;
         name = _s;
         pos = _p;
-        varDef = (VarDef) GlobalClass.st.now.check(_s);
+
     }
     public Type gettype() {
         if (type != null) return type;
         Type t = who.gettype();
+        //varDef = (VarDef) GlobalClass.st.now.check(_s
+        if (t instanceof ClassType)
+            this.varDef = (VarDef) GlobalClass.st.now.check(((ClassType) t).name + "." + name);
         if (t instanceof ClassType) {
             String tmp = ((ClassType) t).name + '.' + name;
             Def d = GlobalClass.st.now.check(tmp);

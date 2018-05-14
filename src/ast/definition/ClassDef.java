@@ -35,7 +35,7 @@ public class ClassDef extends Def {
         for (Def d : Deflist) {
             if (d instanceof FuncDef) {
                 System.err.println(((FuncDef) d).name + "///" + name);
-                if (((FuncDef) d).type instanceof NullType && !((FuncDef) d).name.equals(name))
+                if (((FuncDef) d).type instanceof NullType && !((FuncDef) d).name.equals(name + "." + name))
                     throw new CompileError("Construct Func Error(ClassDef)", pos);
                 if (((FuncDef) d).type instanceof NullType)
                     conFunc = (FuncDef) d;
