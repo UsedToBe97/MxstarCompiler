@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/IDExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/IDExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/MemberExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/MemberExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/type/ClassType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/type/ClassType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/type/TypeClassifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/type/TypeClassifier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ScopeTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ScopeTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/IDExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/IDExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/expr/MemberExpr.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/expr/MemberExpr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ast/type/ClassType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ast/type/ClassType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/1.test" beforeDir="false" afterPath="$PROJECT_DIR$/test/1.test" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -63,6 +52,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="349">
               <caret line="26" column="21" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="362">
+              <caret line="121" column="24" lean-forward="true" selection-start-line="121" selection-start-column="24" selection-end-line="121" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -118,29 +116,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FuncDef.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ast/definition/FuncDef.java">
+      <file leaf-file-name="ClassDef.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ast/definition/ClassDef.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="86" column="9" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
+            <state relative-caret-position="497">
+              <caret line="37" column="94" selection-start-line="37" selection-start-column="94" selection-end-line="37" selection-end-column="94" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GlobalClass.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/GlobalClass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScopeTree.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ScopeTree.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/ScopeTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="50" column="28" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+            <state relative-caret-position="207">
+              <caret line="38" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
         </entry>
@@ -233,18 +222,18 @@
         <option value="$PROJECT_DIR$/src/ast/stmt/Stmt.java" />
         <option value="$PROJECT_DIR$/src/compiler/IrBuilder.java" />
         <option value="$PROJECT_DIR$/src/ast/definition/Def.java" />
-        <option value="$PROJECT_DIR$/src/ast/definition/ClassDef.java" />
         <option value="$PROJECT_DIR$/src/ast/definition/FuncDef.java" />
         <option value="$PROJECT_DIR$/src/ast/definition/VarDef.java" />
         <option value="$PROJECT_DIR$/src/ast/Root.java" />
         <option value="$PROJECT_DIR$/src/compiler/AstBuilder.java" />
         <option value="$PROJECT_DIR$/src/ast/expr/MemberFuncExpr.java" />
-        <option value="$PROJECT_DIR$/src/compiler/Main.java" />
         <option value="$PROJECT_DIR$/src/ast/expr/MemberExpr.java" />
         <option value="$PROJECT_DIR$/src/ast/expr/IDExpr.java" />
         <option value="$PROJECT_DIR$/src/ast/type/ClassType.java" />
         <option value="$PROJECT_DIR$/src/ast/type/TypeClassifier.java" />
         <option value="$PROJECT_DIR$/src/utils/ScopeTree.java" />
+        <option value="$PROJECT_DIR$/src/ast/definition/ClassDef.java" />
+        <option value="$PROJECT_DIR$/src/compiler/Main.java" />
       </list>
     </option>
   </component>
@@ -265,7 +254,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="468" />
     <option name="y" value="121" />
     <option name="width" value="1400" />
@@ -546,12 +535,12 @@
       <workItem from="1526213205036" duration="493000" />
       <workItem from="1526214388583" duration="8716000" />
       <workItem from="1526262411231" duration="5724000" />
-      <workItem from="1526274059314" duration="8296000" />
+      <workItem from="1526274059314" duration="9005000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="227112000" />
+    <option name="totallyTimeSpent" value="227821000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -577,11 +566,11 @@
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.32897604" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989339" visible="true" weight="0.32897604" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32897604" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24786781" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24786781" />
       <window_info anchor="right" id="Database" order="6" weight="0.32995737" />
       <window_info anchor="bottom" id="ANTLR Preview" order="12" weight="0.32897604" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -923,20 +912,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/definition/ClassDef.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="30" column="51" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/expr/MemberExpr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="487">
@@ -1018,8 +993,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/ScopeTree.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="50" column="28" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+        <state relative-caret-position="207">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/definition/ClassDef.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="37" column="94" selection-start-line="37" selection-start-column="94" selection-end-line="37" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="121" column="24" lean-forward="true" selection-start-line="121" selection-start-column="24" selection-end-line="121" selection-end-column="24" />
         </state>
       </provider>
     </entry>
