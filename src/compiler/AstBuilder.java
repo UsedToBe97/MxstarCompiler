@@ -52,6 +52,8 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
         FuncDef tmp = new FuncDef(ctx);
         infunc = true;
         System.err.println(tmp.name + "!!!!!!!");
+        if (tmp.name.equals("this"))
+            throw new CompileError("This is a reversed word", new Position(ctx.name));
         if (inclass) {
             tree.addObj(classname + "." + tmp.name, tmp);
             tmp.name = classname + "." + tmp.name;
