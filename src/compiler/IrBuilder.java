@@ -22,15 +22,12 @@ import utils.GlobalClass;
 import utils.Pair;
 import utils.Position;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class IrBuilder {
     public Ir root = new Ir();
     public Func nowfunc = null;
-    public List<VarDef> vdExpr;
+    public List<VarDef> vdExpr = new LinkedList<>();
     public Label breakLabel, contLabel, returnLabel;
     public String nowclass = "";
     public Operand baseaddr;
