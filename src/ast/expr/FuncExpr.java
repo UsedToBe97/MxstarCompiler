@@ -2,9 +2,7 @@ package ast.expr;
 
 import ast.definition.Def;
 import ast.definition.FuncDef;
-import ast.type.ClassType;
-import ast.type.NullType;
-import ast.type.Type;
+import ast.type.*;
 import compiler.IrBuilder;
 import parser.MxstarParser;
 import utils.CompileError;
@@ -19,9 +17,15 @@ public class FuncExpr extends Expr {
     public String name;
     public List<Expr> exprList = new LinkedList<>();
     public Type type = null;
+    public Boolean isMemFunc = false;
     public FuncExpr(MxstarParser.FuncExprContext ctx) {
         name = ctx.Identifier().getText();
         pos = new Position(ctx.getStart());
+    }
+    public FuncExpr(MxstarParser.MemberFuncExprContext ctx) {
+        name = ctx.Identifier().getText();
+        pos = new Position(ctx.getStart());
+        exprList = new LinkedList<>();
     }
     public void add(Expr _e) {exprList.add(_e);}
 
@@ -34,10 +38,28 @@ public class FuncExpr extends Expr {
         String tmp;
         if (GlobalClass.inclass) tmp = GlobalClass.classname + "." + name;
         else tmp = name;
-        System.err.println(tmp);
-        if (GlobalClass.st.contains(tmp) || GlobalClass.st.contains(name)) {
+        if (exprList.size() > 0 && exprList.get(0).gettype() instanceof ClassType) {
+            //GlobalClass.inclass = true;
+            //GlobalClass.classname = ((ClassType) exprList.get(0).gettype()).name;
+            tmp = ((ClassType) exprList.get(0).gettype()).name + "." + name;
+        }
+
+        String _name = name;
+        if (isMemFunc) {
+            System.err.println(tmp);
+            Type t = exprList.get(0).gettype();
+            if (t instanceof ClassType) {
+                _name = ((ClassType) t).name + "." + name;
+            } else if (t instanceof StringType) {
+                _name = "string." + name;
+            } else if (t instanceof ArrayType) {
+                _name = "array." + name;
+            }
+        }
+
+        if (GlobalClass.st.contains(tmp) || GlobalClass.st.contains(_name)) {
             Def d;
-            if (!GlobalClass.st.contains(tmp)) d = GlobalClass.st.now.check(name);
+            if (!GlobalClass.st.contains(tmp)) d = GlobalClass.st.now.check(_name);
             else d = GlobalClass.st.now.check(tmp);
             if (d instanceof FuncDef) {
                 if (((FuncDef) d).params.size() != exprList.size()) {

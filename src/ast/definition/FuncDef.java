@@ -17,7 +17,7 @@ public class FuncDef extends Def{
     public String name;
     public Type type = new NullType(pos);
     public List<Pair<Type, String>> params = new LinkedList<>();
-    public List<VarDef> paramList = new LinkedList<>();
+    public List<Def> paramList = new LinkedList<>();
     public List<Stmt> stmts = new LinkedList<>();
     public String getname() {return name;}
     public Label label = null; // IR;
@@ -25,13 +25,16 @@ public class FuncDef extends Def{
         name = _name;
         type = _type;
     }
-    public FuncDef(MxstarParser.FuncDefContext ctx) {
+    public FuncDef(MxstarParser.FuncDefContext ctx, boolean inclass, String classname) {
         TypeClassifier tc = new TypeClassifier();
         pos = new Position(ctx.name);
         name = ctx.name.getText();
         if (ctx.type() != null)
             type = tc.Classify(ctx.type());
         else type = new NullType(pos);
+        if (inclass) {
+            addparam(new ClassType(classname, pos), "this");
+        }
         int tot = 0;
         for (MxstarParser.ParameterContext tmp : ctx.parameterList().parameter()) {
             addparam(tc.Classify(tmp.type()), tmp.Identifier().getText());
@@ -53,6 +56,10 @@ public class FuncDef extends Def{
     public void check() {
         GlobalClass.infunc = true;
         GlobalClass.nowfunc = this;
+        if (paramList.size() > 0 && params.get(0).getFirst() instanceof ClassType) {
+            GlobalClass.inclass = true;
+            GlobalClass.classname = ((ClassType) params.get(0).getFirst()).name;
+        }
         GlobalClass.st.enterScope();
         if ("this".equals(name))
             throw new CompileError("this is a reverse word(FuncDef)", pos);
@@ -77,6 +84,8 @@ public class FuncDef extends Def{
         GlobalClass.st.exitScope();
         GlobalClass.infunc = false;
         GlobalClass.nowfunc = null;
+        GlobalClass.inclass = false;
+        GlobalClass.classname = "";
     }
     public void output(int dep) {
         int tmp = dep;

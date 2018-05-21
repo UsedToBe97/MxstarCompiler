@@ -14,6 +14,9 @@ public class Label extends Inst{
         name = "Label_" + Integer.toString(tot);
         tot++;
     }
-
+    public String toString() {
+        String tmp = name + ":\n";
+        return tmp;
+    }
 
 }

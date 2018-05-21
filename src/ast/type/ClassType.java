@@ -16,6 +16,6 @@ public class ClassType extends Type{
     public ClassType(String _name, Position _pos) {
         name = _name;
         pos = _pos;
-        //(ClassDef) GlobalClass.st.now.check(name);
+        //classDef = (ClassDef) GlobalClass.st.now.check(name);
     }
 }

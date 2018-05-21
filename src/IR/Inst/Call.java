@@ -16,6 +16,13 @@ public class Call extends Inst {
             else Insts.add(new Move(new MemAddr(X86Reg.rsp, null, 0, 8 * (i - 6)), t));
         }
         Insts.add(new FuncCall(_name, param.size()));
-        Insts.add(new Move(dest, X86Reg.rax));
+        if (dest != null) Insts.add(new Move(dest, X86Reg.rax));
+    }
+    public String toString() {
+        String tmp = "";
+        for (Inst t : Insts) {
+            tmp += "\t" + t.toString();
+        }
+        return tmp;
     }
 }

@@ -23,4 +23,14 @@ public class Ir {
 
 
     public void add(Func t) {Funcs.add(t);}
+
+    public String toString() {
+        String tmp = "";
+        for (VarDef u : GV) tmp += u.name + " [GV]\n";
+        tmp += "\n";
+        for (int i = 0; i < SC.size(); ++i) tmp += "string[ " + Integer.toString(i) + " ] " + SC.get(i) + "\n";
+        tmp += "\n";
+        for (Func u : Funcs) tmp += u.toString();
+        return tmp;
+    }
 }

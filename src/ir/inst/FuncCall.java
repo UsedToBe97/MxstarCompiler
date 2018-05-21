@@ -8,4 +8,9 @@ public class FuncCall extends Inst {
         n = _n;
     }
 
+    public String toString() {
+        String tmp = "\t" + "FuncCall " + name + " Param_size : " + n + "\n";
+        return tmp;
+    }
+
 }

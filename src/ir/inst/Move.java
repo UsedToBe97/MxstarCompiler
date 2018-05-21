@@ -8,4 +8,12 @@ public class Move extends Inst {
         dest = _d;
         src = _s;
     }
+    public String toString() {
+        String tmp = "\t";
+        if (dest == null) {
+            tmp += " FUCK!!! " + src.toString() + "\n";
+        }else
+        tmp += dest.toString() + " = " + src.toString() + "\n";
+        return tmp;
+    }
 }

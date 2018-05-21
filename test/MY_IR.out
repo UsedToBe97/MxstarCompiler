@@ -1,0 +1,407 @@
+
+string[ 0 ] "( "
+string[ 1 ] ", "
+string[ 2 ] " )"
+string[ 3 ] "vector x: "
+string[ 4 ] "excited!"
+string[ 5 ] "vector y: "
+string[ 6 ] "x + y: "
+string[ 7 ] "x * y: "
+string[ 8 ] "(1 << 3) * y: "
+
+vector.dot [Func]:
+	r16 = rdi
+	r17 = rsi
+	r18 = 0
+	r19 = 0
+Label_4:
+		rdi = r16
+		FuncCall getDim Param_size : 1
+		r21 = rax
+	r20 = r18 < r21
+	jump Label_3 if r20 je 1
+	jump Label_2
+Label_3:
+	r23 = qword [r16]
+	r24 = qword [r17]
+	r22 = qword [r23 + r18 * 8] * qword [r24 + r18 * 8]
+	r19 = r22
+	r18 = r18 + 1
+Label_1:
+	jump Label_4
+Label_2:
+	rax = r19
+	jump Label_0
+Label_0:
+
+
+vector.init [Func]:
+	r16 = rdi
+	r17 = rsi
+	r18 = r17 == 0
+	jump Label_7 if r18 je 1
+	jump Label_8
+Label_7:
+	jump Label_5
+	jump Label_6
+Label_8:
+Label_6:
+		rdi = r17
+		FuncCall size Param_size : 1
+		r19 = rax
+	r20 = r19
+	r20 = r20 + 1
+	r20 = r20 * 8
+		rdi = r20
+		FuncCall malloc Param_size : 1
+		r21 = rax
+	qword [r21] = r19
+	r21 = r21 + 8
+	qword [r16] = r21
+	r22 = 0
+Label_12:
+		rdi = r17
+		FuncCall size Param_size : 1
+		r24 = rax
+	r23 = r22 < r24
+	jump Label_11 if r23 je 1
+	jump Label_10
+Label_11:
+	r25 = qword [r16]
+	qword [r25 + r22 * 8] = qword [r17 + r22 * 8]
+Label_9:
+	r22 = r22 + 1
+	jump Label_12
+Label_10:
+Label_5:
+
+vector.getDim [Func]:
+	r16 = rdi
+	r17 = qword [r16] == 0
+	jump Label_15 if r17 je 1
+	jump Label_16
+Label_15:
+	rax = 0
+	jump Label_13
+	jump Label_14
+Label_16:
+Label_14:
+		rdi = qword [r16]
+		FuncCall size Param_size : 1
+		r18 = rax
+	rax = r18
+	jump Label_13
+Label_13:
+vector.scalarInPlaceMultiply [Func]:
+	r16 = rdi
+	r17 = rsi
+	r18 = qword [r16] == 0
+	jump Label_19 if r18 je 1
+	jump Label_20
+Label_19:
+	rax = 0
+	jump Label_17
+	jump Label_18
+Label_20:
+Label_18:
+	r19 = 0
+Label_24:
+		rdi = r16
+		FuncCall getDim Param_size : 1
+		r21 = rax
+	r20 = r19 < r21
+	jump Label_23 if r20 je 1
+	jump Label_22
+Label_23:
+	r22 = qword [r16]
+	r24 = qword [r16]
+	r23 = r17 * qword [r24 + r19 * 8]
+	qword [r22 + r19 * 8] = r23
+Label_21:
+	r19 = r19 + 1
+	jump Label_24
+Label_22:
+	rax = r16
+	jump Label_17
+Label_17:
+vector.add [Func]:
+	r16 = rdi
+	r17 = rsi
+		rdi = r16
+		FuncCall getDim Param_size : 1
+		r20 = rax
+		rdi = r17
+		FuncCall getDim Param_size : 1
+		r21 = rax
+	r19 = r20 != r21
+	jump Label_29 if r19 je 1
+		rdi = r16
+		FuncCall getDim Param_size : 1
+		r23 = rax
+	r22 = r23 == 0
+	r18 = r22
+	jump Label_30
+Label_29:
+	r18 = 1
+Label_30:
+	jump Label_27 if r18 je 1
+	jump Label_28
+Label_27:
+	rax = 0
+	jump Label_25
+	jump Label_26
+Label_28:
+Label_26:
+		rdi = 8
+		FuncCall malloc Param_size : 1
+		r24 = rax
+	r25 = r24
+	r26 = 0
+Label_34:
+		rdi = r16
+		FuncCall getDim Param_size : 1
+		r28 = rax
+	r27 = r26 < r28
+	jump Label_33 if r27 je 1
+	jump Label_32
+Label_33:
+	r29 = qword [r25]
+	r31 = qword [r16]
+	r32 = qword [r17]
+	r30 = qword [r31 + r26 * 8] + qword [r32 + r26 * 8]
+	qword [r29 + r26 * 8] = r30
+Label_31:
+	r26 = r26 + 1
+	jump Label_34
+Label_32:
+	rax = r25
+	jump Label_25
+Label_25:
+vector.set [Func]:
+	r16 = rdi
+	r17 = rsi
+	r18 = rdx
+		rdi = r16
+		FuncCall getDim Param_size : 1
+		r20 = rax
+	r19 = r20 < r17
+	jump Label_37 if r19 je 1
+	jump Label_38
+Label_37:
+	rax = 0
+	jump Label_35
+	jump Label_36
+Label_38:
+Label_36:
+	r21 = qword [r16]
+	qword [r21 + r17 * 8] = r18
+	rax = 1
+	jump Label_35
+Label_35:
+vector.toString [Func]:
+	r16 = rdi
+	r17 = str__0
+		rdi = r16
+		FuncCall getDim Param_size : 1
+		r19 = rax
+	r18 = r19 > 0
+	jump Label_41 if r18 je 1
+	jump Label_42
+Label_41:
+		rdi = r16
+		FuncCall toString Param_size : 1
+		r21 = rax
+	r20 = r17 + r21
+	r17 = r20
+	jump Label_40
+Label_42:
+Label_40:
+	r22 = 1
+Label_46:
+		rdi = r16
+		FuncCall getDim Param_size : 1
+		r24 = rax
+	r23 = r22 < r24
+	jump Label_45 if r23 je 1
+	jump Label_44
+Label_45:
+	r26 = r17 + str__1
+		rdi = r16
+		FuncCall toString Param_size : 1
+		r27 = rax
+	r25 = r26 + r27
+	r17 = r25
+Label_43:
+	r22 = r22 + 1
+	jump Label_46
+Label_44:
+	r28 = r17 + str__2
+	r17 = r28
+	rax = r17
+	jump Label_39
+Label_39:
+vector.copy [Func]:
+	r16 = rdi
+	r17 = rsi
+	r18 = r17 == 0
+	jump Label_49 if r18 je 1
+	jump Label_50
+Label_49:
+	rax = 0
+	jump Label_47
+	jump Label_48
+Label_50:
+Label_48:
+		rdi = r17
+		FuncCall getDim Param_size : 1
+		r20 = rax
+	r19 = r20 == 0
+	jump Label_52 if r19 je 1
+	jump Label_53
+Label_52:
+	qword [r16] = 0
+	jump Label_51
+Label_53:
+		rdi = r17
+		FuncCall getDim Param_size : 1
+		r21 = rax
+	r22 = r21
+	r22 = r22 + 1
+	r22 = r22 * 8
+		rdi = r22
+		FuncCall malloc Param_size : 1
+		r23 = rax
+	qword [r23] = r21
+	r23 = r23 + 8
+	qword [r16] = r23
+	r24 = 0
+Label_57:
+		rdi = r16
+		FuncCall getDim Param_size : 1
+		r26 = rax
+	r25 = r24 < r26
+	jump Label_56 if r25 je 1
+	jump Label_55
+Label_56:
+	r27 = qword [r16]
+	r28 = qword [r17]
+	qword [r27 + r24 * 8] = qword [r28 + r24 * 8]
+Label_54:
+	r24 = r24 + 1
+	jump Label_57
+Label_55:
+Label_51:
+	rax = 1
+	jump Label_47
+Label_47:
+main [Func]:
+		rdi = 8
+		FuncCall malloc Param_size : 1
+		r16 = rax
+	r17 = r16
+	r18 = 10
+	r18 = r18 + 1
+	r18 = r18 * 8
+		rdi = r18
+		FuncCall malloc Param_size : 1
+		r19 = rax
+	qword [r19] = 10
+	r19 = r19 + 8
+	r20 = r19
+	r21 = 0
+Label_62:
+	r22 = r21 < 10
+	jump Label_61 if r22 je 1
+	jump Label_60
+Label_61:
+	r23 = 9 - r21
+	qword [r20 + r21 * 8] = r23
+Label_59:
+	r21 = r21 + 1
+	jump Label_62
+Label_60:
+		rdi = r17
+		rsi = r20
+		FuncCall init Param_size : 2
+		r24 = rax
+		rdi = str__3
+		FuncCall print Param_size : 1
+		r25 = rax
+		rdi = r17
+		FuncCall toString Param_size : 1
+		r26 = rax
+		rdi = r26
+		FuncCall println Param_size : 1
+		r27 = rax
+		rdi = 8
+		FuncCall malloc Param_size : 1
+		r28 = rax
+	r29 = r28
+		rdi = r29
+		rsi = r17
+		FuncCall copy Param_size : 2
+		r30 = rax
+		rdi = r29
+		rsi = 3
+		rdx = 817
+		FuncCall set Param_size : 3
+		r31 = rax
+	jump Label_64 if r31 je 1
+	jump Label_65
+Label_64:
+		rdi = str__4
+		FuncCall println Param_size : 1
+		r32 = rax
+	jump Label_63
+Label_65:
+Label_63:
+		rdi = str__5
+		FuncCall print Param_size : 1
+		r33 = rax
+		rdi = r29
+		FuncCall toString Param_size : 1
+		r34 = rax
+		rdi = r34
+		FuncCall println Param_size : 1
+		r35 = rax
+		rdi = str__6
+		FuncCall print Param_size : 1
+		r36 = rax
+		rdi = r17
+		rsi = r29
+		FuncCall add Param_size : 2
+		r37 = rax
+		rdi = r37
+		FuncCall toString Param_size : 1
+		r38 = rax
+		rdi = r38
+		FuncCall println Param_size : 1
+		r39 = rax
+		rdi = str__7
+		FuncCall print Param_size : 1
+		r40 = rax
+		rdi = r17
+		rsi = r29
+		FuncCall dot Param_size : 2
+		r41 = rax
+		rdi = r41
+		FuncCall toString Param_size : 1
+		r42 = rax
+		rdi = r42
+		FuncCall println Param_size : 1
+		r43 = rax
+		rdi = str__8
+		FuncCall print Param_size : 1
+		r44 = rax
+	r45 = 1 << 3
+		rdi = r17
+		rsi = r45
+		FuncCall scalarInPlaceMultiply Param_size : 2
+		r46 = rax
+		rdi = r46
+		FuncCall toString Param_size : 1
+		r47 = rax
+		rdi = r47
+		FuncCall println Param_size : 1
+		r48 = rax
+Label_58:

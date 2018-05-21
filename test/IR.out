@@ -1,19 +1,36 @@
-A_get[you need to fix]:
+C2_C2[you need to fix]:
 	reg16 	= 0 [][]
 	reg16 	= rdi [][]
+	qword [reg16] 	= 1 [][]
+	qword [reg16 + 8] 	= 2 [][]
 _0_Label: [][]
 
 
 main[you need to fix]:
-	reg16 	= 0 [][]
+
+		rdi 	= 32 [][]
+		call malloc[size : 1] [][]
+		reg16 	= rax [][]
+
 
 		rdi 	= reg16 [][]
-		call A_get[size : 1] [][]
-		reg17 	= rax [][]
+		call C2_C2[size : 1] [][]
+		qword [reg16] 	= rax [][]
 
-	reg18 	= reg17 [][]
-	rax 	= 0 [][]
-	jump _1_Label [][]
+	reg17 	= reg16 [][]
+	qword [reg17] 	= 10 [][]
+
+		rdi 	= 32 [][]
+		call malloc[size : 1] [][]
+		reg18 	= rax [][]
+
+
+		rdi 	= reg18 [][]
+		call C2_C2[size : 1] [][]
+		qword [reg18] 	= rax [][]
+
+	reg19 	= reg18 [][]
+	qword [reg17 + 8] 	= 10 [][]
 _1_Label: [][]
 
 

@@ -10,4 +10,10 @@ public class CJump extends Inst{
         lhs = _lhs; rhs = _rhs;
         op = _op; dest = _dest;
     }
+    public String toString() {
+        String tmp = "\t";
+        tmp += "jump " + dest.name + " if ";
+        tmp += lhs.toString() + " " + op + " " + rhs.toString() + "\n";
+        return tmp;
+    }
 }

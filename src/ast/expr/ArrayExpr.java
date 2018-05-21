@@ -8,6 +8,7 @@ import ir.operand.addr.MemAddr;
 import utils.CompileError;
 import utils.Position;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class ArrayExpr extends Expr {
     public Expr Leftexpr;
     public List<Expr> exprList;
     public Type type = null;
-    public List<MemAddr> MemList;//ID ex : r17 = qword[r10 + r16 * 8]
+    public List<MemAddr> MemList = new ArrayList<>();//ID ex : r17 = qword[r10 + r16 * 8]
     public ArrayExpr(Expr _e) {
         Leftexpr = _e;
         exprList = new LinkedList<>();

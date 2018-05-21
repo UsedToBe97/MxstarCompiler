@@ -9,4 +9,9 @@ public class GlobalAddr extends Operand {
         name = _s;
         isConst = b;
     }
+    public String toString() {
+        if (isConst) return name;
+        else return "qword [ " + name + " ]";
+    }
+
 }

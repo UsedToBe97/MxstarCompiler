@@ -55,4 +55,8 @@ public class X86Reg extends Reg{
         throw new CompileError("RegParam Error", new Position(0,0));
     }
 
+    public String toString() {
+        return name;
+    }
+
 }

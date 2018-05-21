@@ -5,4 +5,7 @@ public class VirtualReg extends Reg {
         idx = x;
         name = "r" + Integer.toString(x);
     }
+    public String toString() {
+        return name;
+    }
 }

@@ -1,11 +1,18 @@
-class A {
+class C2 {
+	int x [upclass : C2]
+	int y [upclass : C2]
+	bool b [upclass : C2]
+	int z [upclass : C2]
 }
-int A_get(A this) [upclass : A]
+null C2_C2(C2 this) [upclass : C2]
 {
+	this.x = 1
+	this.y = 2
 }
 int main()
 {
-	A a
-	int x = A_get(a)
-	return 0
+	C2 obj = new C2
+	obj.x = 10
+	C2 obj2 = new C2
+	obj.y = 10
 }

@@ -29,11 +29,11 @@ public class MemberFuncExpr extends Expr {
     public Position getpos() {
         return pos;
     }
-    public MemberFuncExpr(Expr _e, String _s, Position _p) {
+    /*public MemberFuncExpr(Expr _e, String _s, Position _p) {
         who = _e;
         name = _s;
         pos = _p;
-    }
+    }*/
 
     public Type gettype() {
         if (type != null) return type;

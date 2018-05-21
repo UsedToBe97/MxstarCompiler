@@ -19,6 +19,7 @@ public class TypeClassifier {
         } else {
             String name = ctx.baseType().Identifier().getText();
             Position pos = new Position(ctx.getStart());
+            //GlobalClass.st.print();
             output = new ClassType(name, pos);
 
         }

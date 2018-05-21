@@ -16,4 +16,17 @@ public class MemAddr extends Operand {
         this.scale = x.scale;
         this.disp = x.disp;
     }
+    public String toString() {
+        String tmp = "qword [" ;
+        if(base != null) tmp += base.toString();
+        if(index != null) {
+            tmp += " + " + index.toString() + " * " + Integer.toString(scale);
+        }
+        if(disp != 0) {
+            if(disp < 0) tmp += " - " + Integer.toString(-disp);
+            else tmp += " + " + Integer.toString(disp);
+        }
+        tmp += "]";
+        return tmp;
+    }
 }

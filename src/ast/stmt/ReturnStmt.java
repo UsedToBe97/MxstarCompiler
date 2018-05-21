@@ -25,7 +25,7 @@ public class ReturnStmt extends Stmt {
     public void check() {
         if (!GlobalClass.infunc)
             throw new CompileError("Can't Return(ReturnStmt)", pos);
-        System.err.println(expr.gettype().typename() + "     " + GlobalClass.nowfunc.type.typename());
+        //System.err.println(expr.gettype().typename() + "     " + GlobalClass.nowfunc.type.typename());
         if (expr == null){
             if (GlobalClass.nowfunc.type instanceof VoidType) {
                 type = new VoidType(pos);
@@ -48,8 +48,10 @@ public class ReturnStmt extends Stmt {
         ss = s + "\t";
         System.out.println(s + "ReturnStmt");
         System.out.println(ss + "Expr: ");
-        expr.output(dep + 1);
-        System.out.println(ss + "ReturnType: " + expr.gettype().typename());
+        if (expr != null) {
+            expr.output(dep + 1);
+            System.out.println(ss + "ReturnType: " + expr.gettype().typename());
+        }
         System.out.println(s + "EndReturnStmt");
     }
     public void accept(IrBuilder ib){

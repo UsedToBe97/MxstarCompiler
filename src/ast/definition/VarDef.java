@@ -41,6 +41,7 @@ public class VarDef extends Def {
         if (type instanceof ClassType) {
             Def d = GlobalClass.st.now.check(((ClassType) type).name);
             System.err.println("next ");
+            GlobalClass.st.print();
             if (!(d instanceof ClassDef))
                 throw new CompileError("Undefined Class(VarDef)", pos);
         }

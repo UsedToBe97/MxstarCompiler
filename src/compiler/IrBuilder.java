@@ -18,37 +18,50 @@ import ir.operand.reg.Reg;
 import ir.operand.reg.VirtualReg;
 import ir.operand.reg.X86Reg;
 import utils.CompileError;
+import utils.GlobalClass;
 import utils.Pair;
 import utils.Position;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class IrBuilder {
     public Ir root = new Ir();
     public Func nowfunc = null;
     public List<VarDef> vdExpr;
     public Label breakLabel, contLabel, returnLabel;
+    public String nowclass = "";
+    public Operand baseaddr;
+    public Map<String, VarDef> varMap = new HashMap<>();
 
     public Ir visit(Root x) {
         for (Def d : x.deflist) {
             if (d instanceof ClassDef) {
                 int tmp = 0;
+                nowclass = ((ClassDef) d).name;
                 for (Def t : ((ClassDef) d).Deflist) if (t instanceof VarDef){
                     ((VarDef) t).inClass = true;
                     ((VarDef) t).offset = tmp;
+                    varMap.put(nowclass + "." + ((VarDef) t).name, (VarDef) t);
                     tmp += 8;
+                } else if (t instanceof FuncDef) {
+                    //visit2((FuncDef) t);
                 }
                 ((ClassDef) d).size = tmp;
             } else if (d instanceof VarDef){
+                nowclass = "";
                 ((VarDef) d).isGlobal = true;
                 ((VarDef) d).addr = root.add((VarDef) d);
                 if (((VarDef) d).expr != null) {
                     vdExpr.add((VarDef) d);
                 }
-            } else if (d instanceof FuncDef){
-                visit((FuncDef) d);
             }
+        }
+        for (Def d : x.deflist) if (d instanceof FuncDef){
+            nowclass = "";
+            visit((FuncDef) d);
         }
         return root;
     }
@@ -61,20 +74,47 @@ public class IrBuilder {
         x.label = new Label(x.name);
         nowfunc = new Func(x.name);
         root.add(nowfunc);
+        if (x.paramList.size() > 0 && x.params.get(0).getFirst() instanceof ClassType)
+            nowclass = ((ClassType) x.params.get(0).getFirst()).name;
         for (int i = 0; i < x.paramList.size(); ++i) {
-            VarDef t = x.paramList.get(i);
+            Def t = x.paramList.get(i);
             if (i < 6) {
                 visit(t);
+                if (i == 0) baseaddr = t.addr;
                 nowfunc.addInst(new Move(t.addr, X86Reg.getparam(i)));
             } else t.addr = new MemAddr(X86Reg.rbp, null, 0, 16 + (i - 6) * 8);
         }
         x.stmts.forEach(xx -> visit(xx));
         nowfunc.addInst(returnLabel);
+        nowclass = "";
     }
+    /*public void visit2(FuncDef x) {
+        returnLabel = new Label();
+        x.label = new Label(x.name);
+        nowfunc = new Func(x.name);
+        root.add(nowfunc);
+
+        if (!x.name.contains("."))
+            throw new CompileError("where is .", new Position(-1, -1));
+        VirtualReg tmp = nowfunc.newReg();
+        nowfunc.addInst(new Move(tmp, X86Reg.getparam(0)));
+        for (int i = 0; i < x.paramList.size(); ++i) {
+            VarDef t = x.paramList.get(i);
+            if (i + 1 < 6) {
+                visit(t);
+                nowfunc.addInst(new Move(t.addr, X86Reg.getparam(i + 1)));
+            } else t.addr = new MemAddr(X86Reg.rbp, null, 0, 16 + (i + 1 - 6) * 8);
+        }
+        x.stmts.forEach(xx -> visit(xx));
+        nowfunc.addInst(returnLabel);
+    }*/
 
     public void visit(VarDef x) {
         if (x.expr != null) visit(x.expr);
-        if (!x.isGlobal) x.addr = nowfunc.newReg();
+        if (!x.isGlobal) {
+            x.addr = nowfunc.newReg();
+            nowfunc.defMap.put(x.name, x.addr);
+        }
         if (x.expr != null) nowfunc.addInst(new Move(x.addr, x.expr.operand));
     }
 
@@ -95,7 +135,7 @@ public class IrBuilder {
             Reg ind = getReg(u.operand);
             MemAddr tmp = new MemAddr(base, ind, 8, 0);
             x.MemList.add(tmp);
-            base = getReg(tmp);
+            //base = getReg(tmp);
             x.operand = tmp;
             //base = new MemAddr(base, ind, 8, 0);
         }
@@ -108,6 +148,7 @@ public class IrBuilder {
     }
 
     public void visit(BinaryExpr x) {
+        x.operand = nowfunc.newReg();
         visit(x.expr1);
         if (x.op.equals("||")) {
             Label okLabel = new Label(), toLabel = new Label();
@@ -161,7 +202,15 @@ public class IrBuilder {
         nowfunc.addInst(call);
     }
     public void visit(IDExpr x) {
-        x.operand = x.varDef.addr;
+        if (x.varDef != null && x.varDef.addr != null) x.operand = x.varDef.addr;
+        else if (nowfunc.defMap.containsKey(x.name)) {
+            x.operand = nowfunc.defMap.get(x.name);
+        }else {
+            VarDef vd = varMap.get(nowclass + "." + x.name);
+            Reg base = getReg(baseaddr);
+            if (x.name.equals("this")) x.operand = base;
+            else x.operand = new MemAddr(base, null, 0, vd.offset);
+        }
     }
 
     public void visit(LUnaryExpr x) {
@@ -186,8 +235,11 @@ public class IrBuilder {
         x.operand = new MemAddr(base, null, 0, x.varDef.offset);
     }
 
-    public void visit(MemberFuncExpr x) {
+    /*public void visit(MemberFuncExpr x) {
+        throw new CompileError("Ridiculous", new Position(-1, -1));
         List<Operand> params = new ArrayList<>();
+        if (x.who.operand == null) visit(x.who);
+        params.add(x.who.operand);
         for (Expr e : x.exprList) {
             visit(e);
             params.add(e.operand);
@@ -195,17 +247,17 @@ public class IrBuilder {
         x.operand = nowfunc.newReg();
         Call call = new Call(x.funcDef.name, params, x.operand);
         nowfunc.addInst(call);
-    }
+    }*/
 
     public void visit(RUnaryExpr x) {
         visit(x.expr);
         x.operand = nowfunc.newReg();
         nowfunc.addInst(new Move(x.operand, x.expr.operand));
         if (x.op.equals("--")) {
-            x.operand = x.expr.operand;
+            //x.operand = x.expr.operand;
             nowfunc.addInst(new Binop(x.expr.operand, "-", x.expr.operand, new INum(1)));
         } else if (x.op.equals("++")) {
-            x.operand = x.expr.operand;
+            //x.operand = x.expr.operand;
             nowfunc.addInst(new Binop(x.expr.operand, "+", x.expr.operand, new INum(1)));
         }
     }
@@ -213,6 +265,8 @@ public class IrBuilder {
     public Operand buildClass(Type x) {
         VirtualReg dest = nowfunc.newReg();
         if (x instanceof ClassType) {
+           if (((ClassType) x).classDef == null)
+                ((ClassType) x).classDef = (ClassDef) GlobalClass.st.now.check(((ClassType) x).name);
             Operand tmp = new INum(((ClassType) x).classDef.size);
             ArrayList<Operand> tt = new ArrayList<>();
             tt.add(tmp);
@@ -230,7 +284,7 @@ public class IrBuilder {
                         new Call(
                                 name,
                                 tt,
-                                new MemAddr(dest, null, 0, 0)
+                                null
                         )
                 );
             }

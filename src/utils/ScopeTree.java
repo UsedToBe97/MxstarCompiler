@@ -2,10 +2,7 @@ package utils;
 
 import ast.definition.Def;
 import ast.definition.FuncDef;
-import ast.type.IntType;
-import ast.type.NullType;
-import ast.type.StringType;
-import ast.type.VoidType;
+import ast.type.*;
 
 public class ScopeTree {
     public ScopeNode root, now;
@@ -32,12 +29,26 @@ public class ScopeTree {
 
         root.addObj("getInt", new FuncDef("getInt", new IntType()));
 
-        root.addObj("string.parseInt", new FuncDef("string.parseInt", new IntType()));
-        root.addObj("string.length", new FuncDef("string.length", new IntType()));
+        //root.addObj("string.parseInt", new FuncDef("string.parseInt", new IntType()));
+        tmp = new FuncDef("string.parseInt", new IntType());
+        tmp.addparam(new StringType(), "this");
+        root.addObj("string.parseInt", tmp);
 
-        root.addObj("array.size", new FuncDef("array.size", new IntType()));
+        //root.addObj("string.length", new FuncDef("string.length", new IntType()));
+        tmp = new FuncDef("string.length", new IntType());
+        tmp.addparam(new StringType(), "this");
+        root.addObj("string.length", tmp);
+
+        //root.addObj("array.size", new FuncDef("array.size", new IntType()));
+
+        tmp = new FuncDef("array.size", new IntType());
+        tmp.addparam(new ArrayType(1), "this");
+        root.addObj("array.size", tmp);
+
+
 
         tmp = new FuncDef("string.substring", new StringType());
+        tmp.addparam(new StringType(), "this");
         tmp.addparam(new IntType(), "left");
         tmp.addparam(new IntType(), "right");
         root.addObj("string.substring", tmp);
@@ -47,6 +58,7 @@ public class ScopeTree {
         root.addObj("toString", tmp);
 
         tmp = new FuncDef("string.ord", new IntType());
+        tmp.addparam(new StringType(), "this");
         tmp.addparam(new IntType(), "pos");
         root.addObj("string.ord", tmp);
 

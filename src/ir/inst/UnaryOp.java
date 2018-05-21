@@ -9,4 +9,9 @@ public class UnaryOp extends Inst {
         src = _src;
         op = _op;
     }
+    public String toString() {
+        String tmp = "\t";
+        tmp += op + " " + src.toString() + "\n";
+        return tmp;
+    }
 }

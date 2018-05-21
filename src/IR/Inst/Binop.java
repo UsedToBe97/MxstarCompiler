@@ -13,4 +13,10 @@ public class Binop extends Inst {
         lhs = _lhs;
         rhs = _rhs;
     }
+    public String toString() {
+        String tmp = "\t" + dest.toString();
+        tmp += " = " + lhs.toString();
+        tmp += " " + op + " " + rhs.toString() + "\n";
+        return tmp;
+    }
 }

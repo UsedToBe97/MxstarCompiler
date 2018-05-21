@@ -2,5 +2,6 @@ package ir.operand;
 
 import ast.Atom;
 
-public class Operand extends Atom {
+public abstract class Operand extends Atom {
+    public abstract String toString();
 }

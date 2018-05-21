@@ -5,4 +5,7 @@ public class INum extends Operand{
     public INum(int _v) {
         v = _v;
     }
+    public String toString() {
+        return Integer.toString(v);
+    }
 }
