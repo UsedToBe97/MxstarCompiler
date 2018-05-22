@@ -19,7 +19,7 @@ public class Root extends Atom {
         for (Def d : deflist) d.check();
     }
     public void output() {
-        System.out.println("-------- Output --------");
+        System.err.println("-------- Output --------");
         for (Def d : deflist) d.output(1);
     }
 }

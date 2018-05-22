@@ -3,7 +3,7 @@ package ir.inst;
 import compiler.CodeGenerator;
 
 public class Jump extends Inst {
-    Label label;
+    public Label label;
     public Jump(Label _label) {label = _label;}
 
     public String toString() {

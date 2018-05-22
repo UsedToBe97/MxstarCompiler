@@ -90,14 +90,14 @@ public class FuncExpr extends Expr {
             s += "\t";
         }
         if (type == null) type = gettype();
-        System.out.println(s + "FuncExpr : " + name + " with Type " + type.typename());
+        System.err.println(s + "FuncExpr : " + name + " with Type " + type.typename());
         ss = s + "\t";
-        System.out.println(ss + "---Param(s)---");
+        System.err.println(ss + "---Param(s)---");
         for (Expr p : exprList) {
             p.output(dep + 1);
         }
-        System.out.println(ss + "---End of Param(s)---");
-        System.out.println(s + "EndFuncExpr : " + name + " at " + pos.toString());
+        System.err.println(ss + "---End of Param(s)---");
+        System.err.println(s + "EndFuncExpr : " + name + " at " + pos.toString());
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

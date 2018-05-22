@@ -1,280 +1,50 @@
 
-string[ 0 ] "aha"
-string[ 1 ] "what's this?"
-string[ 2 ] "x is: "
-string[ 3 ] "\"\"\"\n"
-string[ 4 ] "false"
-string[ 5 ] "asd"
-string[ 6 ] "sad"
-string[ 7 ] "fads"
-string[ 8 ] "wow"
 
-bad_func_0 [Func]:
-	r16 = 0
+main [Func]:
+	r16 = 5
+	r17 = 0
+	r20 = r17 != 0
+	jump Label_4 if r20 je 1
+	r19 = 0
+	jump Label_5
 Label_4:
-	r17 = r16 <= 10
-	jump Label_3 if r17 je 1
-	jump Label_2
-Label_3:
-		rdi = str__0
-		FuncCall println Param_size : 1
-		r18 = rax
-	r19 = str__1
-		rdi = r19
-		FuncCall println Param_size : 1
-		r20 = rax
-Label_1:
-	r21 = r16 + 1
-	r16 = r21
-	jump Label_4
+	r22 = r16 / r17
+	r21 = r22 != 1
+	r19 = r21
+Label_5:
+	jump Label_2 if r19 je 1
+	jump Label_3
 Label_2:
-Label_0:
-bad_func_1 [Func]:
-	r16 = rdi
-	r17 = rsi
-	r18 = rdx
-	r19 = r17 == r18
-	jump Label_7 if r19 je 1
+	r18 = 10
+	jump Label_1
+Label_3:
+	r18 = 20
+Label_1:
+	r25 = r18 == 10
+	jump Label_9 if r25 je 1
+	r24 = 0
+	jump Label_10
+Label_9:
+	r27 = r16 / r17
+	r26 = r27 == 0
+	r24 = r26
+Label_10:
+	jump Label_11 if r24 je 1
+	r23 = 0
+	jump Label_12
+Label_11:
+	r28 = r16 == 5
+	r23 = r28
+Label_12:
+	r29 = r23
+	! r29
+	jump Label_7 if r29 je 1
 	jump Label_8
 Label_7:
-		rdi = r16
-		FuncCall toString Param_size : 1
-		r21 = rax
-	r20 = str__2 + r21
-		rdi = r20
-		FuncCall println Param_size : 1
-		r22 = rax
-	jump Label_5
+	r18 = 30
 	jump Label_6
 Label_8:
 Label_6:
-	r24 = r17 + r18
-	r23 = r24 >> 1
-	r25 = r23
-	r26 = r16 << 1
-		rdi = r26
-		rsi = r17
-		rdx = r25
-		FuncCall bad_func_1 Param_size : 3
-		r27 = rax
-	r29 = r16 << 1
-	r28 = r29 | 1
-	r30 = r25 + 1
-		rdi = r28
-		rsi = r30
-		rdx = r18
-		FuncCall bad_func_1 Param_size : 3
-		r31 = rax
-Label_5:
-bad_func_2 [Func]:
-	r16 = 2
-	r16 = r16 + 1
-	r16 = r16 * 8
-		rdi = r16
-		FuncCall malloc Param_size : 1
-		r17 = rax
-	qword [r17] = 2
-	r17 = r17 + 8
-	r16 = 2
-Label_10:
-	r16 = r16 - 1
-	r18 = 3
-	r18 = r18 + 1
-	r18 = r18 * 8
-		rdi = r18
-		FuncCall malloc Param_size : 1
-		r19 = rax
-	qword [r19] = 3
-	r19 = r19 + 8
-	qword [r17 + r16 * 8] = r19
-	jump Label_10 if r16 jne 0
-	r20 = r17
-		rdi = r20
-		FuncCall size Param_size : 1
-		r21 = rax
-	r22 = r21
-		rdi = str__3
-		FuncCall print Param_size : 1
-		r23 = rax
-	r24 = 0
-	r29 = 223
-	- r29
-	r30 = r29
-	r31 = str__4
-Label_9:
-E.E [Func]:
-	r16 = rdi
-	r17 = 7
-	- r17
-	r18 = r17
-	- r18
-	qword [r16] = r18
-Label_11:
-E.getSelf [Func]:
-	r16 = rdi
-	rax = r16
-	jump Label_12
-Label_12:
-bad_func_3 [Func]:
-Label_17:
-	jump Label_18 if 1 je 1
-	r17 = 0
-Label_19:
-	r17 = 0
-Label_19:
-	jump Label_20 if r17 je 1
-	r18 = 1
-	! r18
-	r16 = r18
-	jump Label_21
-Label_20:
-	r16 = 1
-Label_21:
-	jump Label_16 if r16 je 1
-	jump Label_15
-Label_16:
-	jump Label_14
-	jump Label_15
-	jump Label_13
-Label_14:
-	jump Label_17
-Label_15:
-		rdi = 8
-		FuncCall malloc Param_size : 1
-		r19 = rax
-		rdi = r19
-		FuncCall E.E Param_size : 1
-	r20 = r19
-		rdi = r20
-		FuncCall getSelf Param_size : 1
-		r21 = rax
-		rdi = r21
-		FuncCall getSelf Param_size : 1
-		r22 = rax
-		rdi = r22
-		FuncCall getSelf Param_size : 1
-		r23 = rax
-		rdi = r23
-		FuncCall getSelf Param_size : 1
-		r24 = rax
-		rdi = qword [r24]
-		FuncCall toString Param_size : 1
-		r25 = rax
-		rdi = r25
-		FuncCall println Param_size : 1
-		r26 = rax
-Label_13:
-bad_func_4 [Func]:
-		FuncCall getInt Param_size : 0
-		r16 = rax
-	r17 = r16
-		rdi = r17
-		FuncCall toString Param_size : 1
-		r18 = rax
-Label_26:
-	jump Label_25 if 1 je 1
-	jump Label_24
-Label_25:
-		FuncCall getString Param_size : 0
-		r19 = rax
-	r20 = r19
-		rdi = r20
-		rsi = 3
-		FuncCall ord Param_size : 2
-		r21 = rax
-		rdi = r21
-		FuncCall toString Param_size : 1
-		r22 = rax
-		rdi = r22
-		FuncCall println Param_size : 1
-		r23 = rax
-		rdi = r20
-		FuncCall length Param_size : 1
-		r24 = rax
-	r25 = r24
-	~ r25
-	r26 = r25
-	~ r26
-	r27 = r26
-Label_30:
-	jump Label_29 if 1 je 1
-	jump Label_28
-Label_29:
-		rdi = r28
-		FuncCall toString Param_size : 1
-		r29 = rax
-Label_34:
-	r31 = str__5 + str__6
-	r30 = r31 >= str__7
-	jump Label_33 if r30 je 1
-	jump Label_32
-Label_33:
-	r32 = 3
-	r32 = r32 + 1
-	r32 = r32 * 8
-		rdi = r32
-		FuncCall malloc Param_size : 1
-		r33 = rax
-	qword [r33] = 3
-	r33 = r33 + 8
-	r32 = 3
-Label_35:
-	r32 = r32 - 1
-	r34 = 3
-	r34 = r34 + 1
-	r34 = r34 * 8
-		rdi = r34
-		FuncCall malloc Param_size : 1
-		r35 = rax
-	qword [r35] = 3
-	r35 = r35 + 8
-	qword [r33 + r32 * 8] = r35
-	jump Label_35 if r32 jne 0
-	r36 = r33
-		rdi = r36
-		FuncCall size Param_size : 1
-		r37 = rax
-	r38 = r36 != 0
-	jump Label_37 if r38 je 1
-	jump Label_38
-Label_37:
-	jump Label_36
-Label_38:
-Label_36:
-	r39 = 1
-	r40 = qword [r36 + r39 * 8]
-	r41 = 2
-	jump Label_40 if qword [r40 + r41 * 8] je 1
-	jump Label_41
-Label_40:
-		rdi = str__8
-		FuncCall println Param_size : 1
-		r42 = rax
-	jump Label_39
-Label_41:
-Label_39:
-Label_31:
-	jump Label_34
-Label_32:
-Label_27:
-	jump Label_30
-Label_28:
-Label_23:
-	jump Label_26
-Label_24:
-Label_22:
-main [Func]:
-	r16 = 1
-	jump Label_44 if 1 je 1
-	jump Label_45
-Label_44:
-		rdi = r16
-		FuncCall toString Param_size : 1
-		r17 = rax
-		rdi = r18
-		FuncCall parseInt Param_size : 1
-		r19 = rax
-	jump Label_43
-Label_45:
-Label_43:
-Label_42:
+	rax = r18
+	jump Label_0
+Label_0:

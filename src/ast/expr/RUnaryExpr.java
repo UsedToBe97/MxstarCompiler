@@ -33,12 +33,12 @@ public class RUnaryExpr extends Expr {
         }
         ss = s + "\t";
         if (type == null) type = gettype();
-        System.out.println(s + "RUnaryExpr:");
-        System.out.println(ss + "Op: " + op);
-        System.out.println(ss + "Expr:");
+        System.err.println(s + "RUnaryExpr:");
+        System.err.println(ss + "Op: " + op);
+        System.err.println(ss + "Expr:");
         expr.output(dep + 1);
-        System.out.println(ss + "Type:" + type.typename());
-        System.out.println(s + "EndRUnaryExpr:");
+        System.err.println(ss + "Type:" + type.typename());
+        System.err.println(s + "EndRUnaryExpr:");
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

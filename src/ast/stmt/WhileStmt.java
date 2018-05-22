@@ -39,13 +39,13 @@ public class WhileStmt extends Stmt {
             s += "\t";
         }
         ss = s + "\t";
-        System.out.println(s + "WhileStmt");
+        System.err.println(s + "WhileStmt");
 
-        System.out.println(ss + "Expr");
+        System.err.println(ss + "Expr");
         expr.output(dep + 1);
-        System.out.println(ss + "Stmt");
+        System.err.println(ss + "Stmt");
         if (stmt != null) stmt.output(dep + 1);
-        System.out.println(s + "EndWhileStmt");
+        System.err.println(s + "EndWhileStmt");
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

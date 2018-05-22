@@ -48,13 +48,13 @@ public class NewExpr extends Expr {
             s += "\t";
         }
         ss = s + "\t";
-        System.out.println(s + "NewExpr:");
-        System.out.println(ss + "ExprList:");
+        System.err.println(s + "NewExpr:");
+        System.err.println(ss + "ExprList:");
         for (Expr e : exprList) {
             e.output(dep + 1);
         }
-        System.out.println(ss + "RetType:" + rettype.typename());
-        System.out.println(s + "EndNewExpr:");
+        System.err.println(ss + "RetType:" + rettype.typename());
+        System.err.println(s + "EndNewExpr:");
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

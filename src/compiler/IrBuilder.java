@@ -164,11 +164,11 @@ public class IrBuilder {
             return;
         }
         if (x.op.equals("&&")) {
-            Label failLabel = new Label(), toLabel = new Label();
-            nowfunc.addInst(new CJump(x.expr1.operand, new INum(1), "je", failLabel));
+            Label okLabel = new Label(), toLabel = new Label();
+            nowfunc.addInst(new CJump(x.expr1.operand, new INum(1), "je", okLabel));
             nowfunc.addInst(new Move(x.operand, new INum(0)));
-            nowfunc.addInst(toLabel);
-
+            nowfunc.addInst(new Jump(toLabel));
+            nowfunc.addInst(okLabel);
             visit(x.expr2);
             nowfunc.addInst(new Move(x.operand, x.expr2.operand));
 

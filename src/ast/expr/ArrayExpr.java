@@ -69,14 +69,14 @@ public class ArrayExpr extends Expr {
             s += "\t";
         }
         ss = s + "\t";
-        System.out.println(s + "ArrayExpr:");
-        System.out.println(ss + "LeftExpr:");
+        System.err.println(s + "ArrayExpr:");
+        System.err.println(ss + "LeftExpr:");
         Leftexpr.output(dep + 1);
-        System.out.println(ss + "exprList:");
+        System.err.println(ss + "exprList:");
         for(Expr e : exprList) {
             e.output(dep + 1);
         }
-        System.out.println(s + "EndArrayExpr:");
+        System.err.println(s + "EndArrayExpr:");
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

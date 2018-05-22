@@ -42,12 +42,12 @@ public class LUnaryExpr extends Expr {
             s += "\t";
         }
         ss = s + "\t";
-        System.out.println(s + "LUnaryExpr:");
-        System.out.println(ss + "Op: " + op);
-        System.out.println(ss + "Expr:");
+        System.err.println(s + "LUnaryExpr:");
+        System.err.println(ss + "Op: " + op);
+        System.err.println(ss + "Expr:");
         expr.output(dep + 1);
-        System.out.println(ss + "Type:" + type.typename());
-        System.out.println(s + "EndLUnaryExpr:");
+        System.err.println(ss + "Type:" + type.typename());
+        System.err.println(s + "EndLUnaryExpr:");
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

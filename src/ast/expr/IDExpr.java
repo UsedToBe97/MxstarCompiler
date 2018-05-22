@@ -68,10 +68,10 @@ public class IDExpr extends Expr {
             s += "\t";
         }
         ss = s + "\t";
-        System.out.println(s + "IDExpr:");
-        System.out.println(ss + "Name: " + name);
-        if (varDef != null)System.out.println(ss + "VarDef !!!!");
-        System.out.println(s + "EndIDExpr:");
+        System.err.println(s + "IDExpr:");
+        System.err.println(ss + "Name: " + name);
+        if (varDef != null)System.err.println(ss + "VarDef !!!!");
+        System.err.println(s + "EndIDExpr:");
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

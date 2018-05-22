@@ -46,13 +46,13 @@ public class MemberExpr extends Expr {
             s += "\t";
         }
         ss = s + "\t";
-        System.out.println(s + "MemberExpr:");
-        System.out.println(ss + "Who: ");
+        System.err.println(s + "MemberExpr:");
+        System.err.println(ss + "Who: ");
         who.output(dep + 1);
-        System.out.println(ss + "name:" + name);
+        System.err.println(ss + "name:" + name);
         if (type != null)
-            System.out.println(ss + "Type:" + type.typename());
-        System.out.println(s + "EndMemberExpr:");
+            System.err.println(ss + "Type:" + type.typename());
+        System.err.println(s + "EndMemberExpr:");
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

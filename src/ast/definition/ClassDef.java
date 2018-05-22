@@ -55,7 +55,7 @@ public class ClassDef extends Def {
             tmp--;
             s += "\t";
         }
-        System.out.println(s + "Class : " + name + " at " + pos.toString());
+        System.err.println(s + "Class : " + name + " at " + pos.toString());
         for (Def d : Deflist) d.output(dep + 1);
     }
     public void accept(IrBuilder ib){

@@ -34,9 +34,9 @@ public class ExprStmt extends Stmt {
             s += "\t";
         }
         ss = s + "\t";
-        System.out.println(s + "ExprStmt");
+        System.err.println(s + "ExprStmt");
         expr.output(dep + 1);
-        System.out.println(s + "EndExprStmt");
+        System.err.println(s + "EndExprStmt");
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

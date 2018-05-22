@@ -49,13 +49,13 @@ public class ReturnStmt extends Stmt {
             s += "\t";
         }
         ss = s + "\t";
-        System.out.println(s + "ReturnStmt");
-        System.out.println(ss + "Expr: ");
+        System.err.println(s + "ReturnStmt");
+        System.err.println(ss + "Expr: ");
         if (expr != null) {
             expr.output(dep + 1);
-            System.out.println(ss + "ReturnType: " + expr.gettype().typename());
+            System.err.println(ss + "ReturnType: " + expr.gettype().typename());
         }
-        System.out.println(s + "EndReturnStmt");
+        System.err.println(s + "EndReturnStmt");
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

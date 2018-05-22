@@ -22,7 +22,7 @@ public class BreakStmt extends Stmt {
             s += "\t";
         }
         ss = s + "\t";
-        System.out.println(s + "BreakStmt");
+        System.err.println(s + "BreakStmt");
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

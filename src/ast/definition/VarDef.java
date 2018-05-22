@@ -74,7 +74,7 @@ public class VarDef extends Def {
             tmp--;
             s += "\t";
         }
-        System.out.println(s + "Var: " + type.typename() + " with name " + name);
+        System.err.println(s + "Var: " + type.typename() + " with name " + name);
         if (expr != null) {
             expr.output(dep + 1);
         }

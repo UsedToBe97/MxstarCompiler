@@ -74,15 +74,15 @@ public class BinaryExpr extends Expr {
             s += "\t";
         }
         ss = s + "\t";
-        System.out.println(s + "BinaryExpr:");
-        System.out.println(ss + "Expr1:");
+        System.err.println(s + "BinaryExpr:");
+        System.err.println(ss + "Expr1:");
         expr1.output(dep + 1);
-        System.out.println(ss + " op: " + op);
-        System.out.println(ss + "Expr2:");
+        System.err.println(ss + " op: " + op);
+        System.err.println(ss + "Expr2:");
         expr2.output(dep + 1);;
         if (type != null)
-            System.out.println(ss + "RES_Type:" + type.typename());
-        System.out.println(s + "EndBinaryExpr:");
+            System.err.println(ss + "RES_Type:" + type.typename());
+        System.err.println(s + "EndBinaryExpr:");
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

@@ -1,6 +1,17 @@
 int main()
 {
-	string b = 123
-	string a = String_add(b, 456)
-	return 0
+	int a = 5
+	int b = 0
+	int c
+	if (((b != 0) && ((a / b) != 1)))
+	{
+		c = 10
+	}	
+	else
+	{
+		c = 20
+	}
+	if (!(((c == 10) && ((a / b) == 0)) && (a == 5)))
+		c = 30
+	return c
 }

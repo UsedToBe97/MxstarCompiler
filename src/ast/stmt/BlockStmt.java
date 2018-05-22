@@ -43,11 +43,11 @@ public class BlockStmt extends Stmt {
             s += "\t";
         }
         ss = s + "\t";
-        System.out.println(s + "BlockStmt:");
+        System.err.println(s + "BlockStmt:");
         for (Stmt st : Stmts) {
             if (st != null) st.output(dep + 1);
         }
-        System.out.println(s + "EndBlockStmt:");
+        System.err.println(s + "EndBlockStmt:");
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

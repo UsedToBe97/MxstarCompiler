@@ -21,12 +21,12 @@ public class ConstExpr extends Expr {
             s += "\t";
         }
         ss = s + "\t";
-        System.out.println(s + "ConstExpr:");
-        System.out.println(ss + " Type: " + type.typename());
+        System.err.println(s + "ConstExpr:");
+        System.err.println(ss + " Type: " + type.typename());
         if (type instanceof IntType){
-            System.out.println(ss + " Val: " + ((IntType) type).data);
+            System.err.println(ss + " Val: " + ((IntType) type).data);
         }
-        System.out.println(s + "EndConstExpr:");
+        System.err.println(s + "EndConstExpr:");
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

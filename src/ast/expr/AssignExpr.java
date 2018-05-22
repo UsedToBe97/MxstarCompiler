@@ -42,12 +42,12 @@ public class AssignExpr extends Expr {
             s += "\t";
         }
         ss = s + "\t";
-        System.out.println(s + "AssignExpr:");
-        System.out.println(ss + "LeftExpr:");
+        System.err.println(s + "AssignExpr:");
+        System.err.println(ss + "LeftExpr:");
         expr1.output(dep + 1);
-        System.out.println(ss + "RightExpr:");
+        System.err.println(ss + "RightExpr:");
         expr2.output(dep + 1);;
-        System.out.println(s + "EndAssignExpr:");
+        System.err.println(s + "EndAssignExpr:");
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

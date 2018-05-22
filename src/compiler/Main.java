@@ -113,7 +113,7 @@ public class Main {
         else inputFile = "program.txt";
         InputStream is = new FileInputStream(inputFile);
         CharStream input = CharStreams.fromStream(is);
-        System.out.println(input);
+        //System.out.println(input);
         MxstarLexer lexer = new MxstarLexer(input);
 
         CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -139,6 +139,14 @@ public class Main {
             PrintStream fout = new PrintStream(new FileOutputStream(f));
             fout.print(ir.toString());
         }
+        CodeGenerator cg = new CodeGenerator();
+        cg.translate(ir);
+        if (Submit == false) {
+            File f = new File("D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/MY_X86.out");
+            PrintStream fout = new PrintStream(new FileOutputStream(f));
+            fout.print(cg.ans);
+        }
+        System.out.println(cg.ans);
 
     }
 }

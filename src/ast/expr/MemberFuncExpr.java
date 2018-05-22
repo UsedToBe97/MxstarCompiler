@@ -92,16 +92,16 @@ public class MemberFuncExpr extends Expr {
             s += "\t";
         }
         ss = s + "\t";
-        System.out.println(s + "MemberFuncExpr : " + name + " at " + pos.toString());
-        System.out.println(ss + "Who :");
+        System.err.println(s + "MemberFuncExpr : " + name + " at " + pos.toString());
+        System.err.println(ss + "Who :");
         who.output(dep + 1);
-        System.out.println(ss + "---Param(s)---");
+        System.err.println(ss + "---Param(s)---");
         for (Expr p : exprList) {
             if (p != null) p.output(dep + 1);
         }
-        System.out.println(ss + "---End of Param(s)---");
-        System.out.println(ss + "Type : "+ type);
-        System.out.println(s + "EndMemberFuncExpr : " + name + " at " + pos.toString());
+        System.err.println(ss + "---End of Param(s)---");
+        System.err.println(ss + "Type : "+ type);
+        System.err.println(s + "EndMemberFuncExpr : " + name + " at " + pos.toString());
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

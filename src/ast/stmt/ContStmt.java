@@ -22,7 +22,7 @@ public class ContStmt extends Stmt {
             s += "\t";
         }
         ss = s + "\t";
-        System.out.println(s + "ContinueStmt");
+        System.err.println(s + "ContinueStmt");
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

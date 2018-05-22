@@ -94,13 +94,13 @@ public class FuncDef extends Def{
             tmp--;
             s += "\t";
         }
-        System.out.println(s + "Func : " + name + " at " + pos.toString());
+        System.err.println(s + "Func : " + name + " at " + pos.toString());
         ss = s + "\t";
-        System.out.println(ss + "---Param(s)---");
+        System.err.println(ss + "---Param(s)---");
         for (Pair<Type, String> p : params) {
-            System.out.println(ss + p.getFirst().typename() + " with name " + p.getSecond());
+            System.err.println(ss + p.getFirst().typename() + " with name " + p.getSecond());
         }
-        System.out.println(ss + "---End of Param(s)---");
+        System.err.println(ss + "---End of Param(s)---");
         for (Stmt st : stmts) {
             if (st != null) st.output(dep + 1);
         }
