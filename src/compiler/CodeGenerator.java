@@ -128,7 +128,7 @@ public class CodeGenerator {
     public void visit(Move x) {
         x.dest = getOp(x.dest);
         x.src = getOp(x.src);
-        ans += "\tmov\trax," + x.src.toString() + "\n";
+        ans += "\tmov\trax, " + x.src.toString() + "\n";
         ans += "\tmov\t" + x.dest.toString() + ", rax\n";
     }
 
