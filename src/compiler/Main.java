@@ -107,8 +107,10 @@ class MyVisitor extends MxstarBaseVisitor<atom>
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        //String inputFile = "D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/1.test";
-        String inputFile = "program.txt";
+        boolean Submit = true;
+        String inputFile;
+        if (Submit == false) inputFile = "D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/1.test";
+        else inputFile = "program.txt";
         InputStream is = new FileInputStream(inputFile);
         CharStream input = CharStreams.fromStream(is);
         System.out.println(input);
@@ -132,11 +134,11 @@ public class Main {
 
         IrBuilder irbuilder = new IrBuilder();
         Ir ir = irbuilder.visit(rt);
-        ir.toString();
-        File f = new File("D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/MY_IR.out");
-        PrintStream fout = new PrintStream(new FileOutputStream(f));
-        fout.print(ir);
-
+        if (Submit == false) {
+            File f = new File("D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/MY_IR.out");
+            PrintStream fout = new PrintStream(new FileOutputStream(f));
+            fout.print(ir.toString());
+        }
 
     }
 }

@@ -37,4 +37,5 @@ public class CodeGenerator {
     public void visit(Label x) {}
     public void visit(Move x) {}
     public void visit(UnaryOp x) {}
+    //public Operand getOp(Operand)
 }
