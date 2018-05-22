@@ -30,7 +30,10 @@ public class ReturnStmt extends Stmt {
             if (GlobalClass.nowfunc.type instanceof VoidType) {
                 type = new VoidType(pos);
                 return;
-            } else throw new CompileError("Type Now Match(ReturnStmt)", pos);
+            } else if (GlobalClass.nowfunc.type instanceof NullType) {
+                type = new NullType(pos);
+                return;
+            }else throw new CompileError("Type Now Match(ReturnStmt)", pos);
         } else if (!Objects.equals(expr.gettype().typename(), GlobalClass.nowfunc.type.typename())
                 && !(expr.gettype() instanceof NullType))
             throw new CompileError("Type Now Match(ReturnStmt)", pos);
