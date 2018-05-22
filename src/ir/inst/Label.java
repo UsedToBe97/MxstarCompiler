@@ -1,5 +1,7 @@
 package ir.inst;
 
+import compiler.CodeGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,9 @@ public class Label extends Inst{
     public String toString() {
         String tmp = name + ":\n";
         return tmp;
+    }
+    public void accept(CodeGenerator cg) {
+        cg.visit(this);
     }
 
 }

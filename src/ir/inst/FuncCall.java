@@ -1,5 +1,7 @@
 package ir.inst;
 
+import compiler.CodeGenerator;
+
 public class FuncCall extends Inst {
     public String name;
     public int n;
@@ -11,6 +13,9 @@ public class FuncCall extends Inst {
     public String toString() {
         String tmp = "\t" + "FuncCall " + name + " Param_size : " + n + "\n";
         return tmp;
+    }
+    public void accept(CodeGenerator cg) {
+        cg.visit(this);
     }
 
 }

@@ -127,12 +127,13 @@ public class IrBuilder {
     public void visit(ArrayExpr x) {
         visit(x.Leftexpr);
         Reg base = getReg(x.Leftexpr.operand);
+        int cnt = 0;
         for (Expr u : x.exprList) {
             visit(u);
             Reg ind = getReg(u.operand);
             MemAddr tmp = new MemAddr(base, ind, 8, 0);
             x.MemList.add(tmp);
-            //base = getReg(tmp);
+            if (++cnt != x.exprList.size()) base = getReg(tmp);
             x.operand = tmp;
             //base = new MemAddr(base, ind, 8, 0);
         }

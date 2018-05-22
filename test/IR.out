@@ -1,36 +1,20 @@
-C2_C2[you need to fix]:
-	reg16 	= 0 [][]
-	reg16 	= rdi [][]
-	qword [reg16] 	= 1 [][]
-	qword [reg16 + 8] 	= 2 [][]
-_0_Label: [][]
+string__0:
+123
 
+string__1:
+456
 
 main[you need to fix]:
+	reg16 	= string__0 [][]
 
-		rdi 	= 32 [][]
-		call malloc[size : 1] [][]
-		reg16 	= rax [][]
-
-
+		rsi 	= string__1 [][]
 		rdi 	= reg16 [][]
-		call C2_C2[size : 1] [][]
-		qword [reg16] 	= rax [][]
+		call String_add[size : 2] [][]
+		reg17 	= rax [][]
 
-	reg17 	= reg16 [][]
-	qword [reg17] 	= 10 [][]
-
-		rdi 	= 32 [][]
-		call malloc[size : 1] [][]
-		reg18 	= rax [][]
-
-
-		rdi 	= reg18 [][]
-		call C2_C2[size : 1] [][]
-		qword [reg18] 	= rax [][]
-
-	reg19 	= reg18 [][]
-	qword [reg17 + 8] 	= 10 [][]
-_1_Label: [][]
+	reg18 	= reg17 [][]
+	rax 	= 0 [][]
+	jump _0_Label [][]
+_0_Label: [][]
 
 

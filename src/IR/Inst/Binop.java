@@ -1,6 +1,7 @@
 package ir.inst;
 
 
+import compiler.CodeGenerator;
 import ir.operand.Operand;
 
 public class Binop extends Inst {
@@ -18,5 +19,8 @@ public class Binop extends Inst {
         tmp += " = " + lhs.toString();
         tmp += " " + op + " " + rhs.toString() + "\n";
         return tmp;
+    }
+    public void accept(CodeGenerator cg) {
+        cg.visit(this);
     }
 }

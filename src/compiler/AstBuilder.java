@@ -167,7 +167,7 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
     @Override
     public Atom visitFuncExpr(MxstarParser.FuncExprContext ctx) {
         FuncExpr tmp = new FuncExpr(ctx);
-        if (inclass) tmp.add(new IDExpr("this", new Position(ctx.getStart())));
+        if (inclass && !GlobalClass.st.contains(ctx.Identifier().getText())) tmp.add(new IDExpr("this", new Position(ctx.getStart())));
         if (ctx.exprList() != null) {
             for (ParserRuleContext child : ctx.exprList().expr()) {
                 tmp.add((Expr) visit(child));

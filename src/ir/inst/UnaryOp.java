@@ -1,5 +1,6 @@
 package ir.inst;
 
+import compiler.CodeGenerator;
 import ir.operand.Operand;
 
 public class UnaryOp extends Inst {
@@ -13,5 +14,8 @@ public class UnaryOp extends Inst {
         String tmp = "\t";
         tmp += op + " " + src.toString() + "\n";
         return tmp;
+    }
+    public void accept(CodeGenerator cg) {
+        cg.visit(this);
     }
 }

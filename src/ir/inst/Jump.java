@@ -1,5 +1,7 @@
 package ir.inst;
 
+import compiler.CodeGenerator;
+
 public class Jump extends Inst {
     Label label;
     public Jump(Label _label) {label = _label;}
@@ -8,5 +10,8 @@ public class Jump extends Inst {
         String tmp = "\t";
         tmp += "jump " + label.name + "\n";
         return tmp;
+    }
+    public void accept(CodeGenerator cg) {
+        cg.visit(this);
     }
 }

@@ -14,7 +14,7 @@ public class Func {
     public String name;
     public List<Inst> Insts = new ArrayList<>();
     public List<Reg> Regs = new ArrayList<>();
-    public int num = 16;
+    public int num = 16, size;
     public HashMap<String, Operand> defMap = new HashMap<>();
     public Func(String _name) {
         name = _name;

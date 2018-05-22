@@ -1,7 +1,8 @@
 package ir.inst;
 
+import compiler.CodeGenerator;
 import ir.operand.Operand;
-import ir.operand.addr.*;
+import ir.operand.addr.MemAddr;
 import ir.operand.reg.X86Reg;
 
 import java.util.ArrayList;
@@ -24,5 +25,8 @@ public class Call extends Inst {
             tmp += "\t" + t.toString();
         }
         return tmp;
+    }
+    public void accept(CodeGenerator cg) {
+        cg.visit(this);
     }
 }

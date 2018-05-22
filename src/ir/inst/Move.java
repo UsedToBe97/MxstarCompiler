@@ -1,5 +1,6 @@
 package ir.inst;
 
+import compiler.CodeGenerator;
 import ir.operand.Operand;
 
 public class Move extends Inst {
@@ -15,5 +16,8 @@ public class Move extends Inst {
         }else
         tmp += dest.toString() + " = " + src.toString() + "\n";
         return tmp;
+    }
+    public void accept(CodeGenerator cg) {
+        cg.visit(this);
     }
 }
