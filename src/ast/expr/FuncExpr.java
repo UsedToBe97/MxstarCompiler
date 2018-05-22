@@ -69,7 +69,7 @@ public class FuncExpr extends Expr {
                 if (((FuncDef) d).params.size() != exprList.size()) {
                     throw new CompileError("Number Not Match(FuncExpr)", pos);
                 } else {
-                    for (int i = 0; i < exprList.size(); ++i) {
+                    if (!_name.equals("array.size")) for (int i = 0; i < exprList.size(); ++i) {
                         if (!Objects.equals(exprList.get(i).gettype().typename(), ((FuncDef) d).params.get(i).getFirst().typename())) {
                             if (!(exprList.get(i).gettype() instanceof ClassType && ((FuncDef) d).params.get(i).getFirst() instanceof NullType))
                                 if (!(exprList.get(i).gettype() instanceof NullType && ((FuncDef) d).params.get(i).getFirst() instanceof ClassType))
