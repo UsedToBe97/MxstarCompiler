@@ -81,6 +81,10 @@ public class IrBuilder {
                 nowfunc.addInst(new Move(t.addr, X86Reg.getparam(i)));
             } else t.addr = new MemAddr(X86Reg.rbp, null, 0, 16 + (i - 6) * 8);
         }
+        for (int i = 0; i < x.paramList.size(); ++i) {
+            Def t = x.paramList.get(i);
+            nowfunc.defMap.put(t.getname(), t.addr);
+        }
         x.stmts.forEach(xx -> visit(xx));
         nowfunc.addInst(returnLabel);
         nowclass = "";

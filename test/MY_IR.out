@@ -1,404 +1,933 @@
+maxr [GV]
+maxc [GV]
+INF [GV]
+ltree [GV]
+matrix [GV]
+r [GV]
+c [GV]
+m [GV]
 
-string[ 0 ] "( "
-string[ 1 ] ", "
-string[ 2 ] " )"
-string[ 3 ] "vector x: "
-string[ 4 ] "excited!"
-string[ 5 ] "vector y: "
-string[ 6 ] "x + y: "
-string[ 7 ] "x * y: "
-string[ 8 ] "(1 << 3) * y: "
+string[ 0 ] "\n"
+string[ 1 ] " "
+string[ 2 ] "\n"
 
-vector.init [Func]:
+mmin [Func]:
 	r16 = rdi
 	r17 = rsi
-	r18 = r17 == 0
+	r18 = r16 < r17
 	jump Label_2 if r18 je 1
 	jump Label_3
 Label_2:
+	rax = r16
 	jump Label_0
 	jump Label_1
 Label_3:
+	rax = r17
+	jump Label_0
 Label_1:
-		rdi = r17
-		FuncCall size Param_size : 1
-		r19 = rax
-	r20 = r19
-	r20 = r20 + 1
-	r20 = r20 * 8
-		rdi = r20
-		FuncCall malloc Param_size : 1
-		r21 = rax
-	qword [r21] = r19
-	r21 = r21 + 8
-	qword [r16] = r21
-	r22 = 0
-Label_7:
-		rdi = r17
-		FuncCall size Param_size : 1
-		r24 = rax
-	r23 = r22 < r24
-	jump Label_6 if r23 je 1
-	jump Label_5
-Label_6:
-	r25 = qword [r16]
-	qword [r25 + r22 * 8] = qword [r17 + r22 * 8]
-Label_4:
-	r22 = r22 + 1
-	jump Label_7
-Label_5:
 Label_0:
-vector.getDim [Func]:
-	r16 = rdi
-	r17 = qword [r16] == 0
-	jump Label_10 if r17 je 1
-	jump Label_11
-Label_10:
-	rax = 0
-	jump Label_8
-	jump Label_9
-Label_11:
-Label_9:
-		rdi = qword [r16]
-		FuncCall size Param_size : 1
-		r18 = rax
-	rax = r18
-	jump Label_8
-Label_8:
-vector.dot [Func]:
+mmax [Func]:
 	r16 = rdi
 	r17 = rsi
-	r18 = 0
-	r19 = 0
-Label_16:
-		rdi = r16
-		FuncCall getDim Param_size : 1
-		r21 = rax
-	r20 = r18 < r21
-	jump Label_15 if r20 je 1
-	jump Label_14
-Label_15:
-	r23 = qword [r16]
-	r24 = qword [r17]
-	r22 = qword [r23 + r18 * 8] * qword [r24 + r18 * 8]
-	r19 = r22
-	r18 = r18 + 1
-Label_13:
-	jump Label_16
-Label_14:
-	rax = r19
-	jump Label_12
-Label_12:
-vector.scalarInPlaceMultiply [Func]:
-	r16 = rdi
-	r17 = rsi
-	r18 = qword [r16] == 0
-	jump Label_19 if r18 je 1
-	jump Label_20
-Label_19:
-	rax = 0
-	jump Label_17
-	jump Label_18
-Label_20:
-Label_18:
-	r19 = 0
-Label_24:
-		rdi = r16
-		FuncCall getDim Param_size : 1
-		r21 = rax
-	r20 = r19 < r21
-	jump Label_23 if r20 je 1
-	jump Label_22
-Label_23:
-	r22 = qword [r16]
-	r24 = qword [r16]
-	r23 = r17 * qword [r24 + r19 * 8]
-	qword [r22 + r19 * 8] = r23
-Label_21:
-	r19 = r19 + 1
-	jump Label_24
-Label_22:
+	r18 = r16 < r17
+	jump Label_6 if r18 je 1
+	jump Label_7
+Label_6:
+	rax = r17
+	jump Label_4
+	jump Label_5
+Label_7:
 	rax = r16
-	jump Label_17
-Label_17:
-vector.add [Func]:
+	jump Label_4
+Label_5:
+Label_4:
+lnode.lnode [Func]:
 	r16 = rdi
-	r17 = rsi
-		rdi = r16
-		FuncCall getDim Param_size : 1
-		r20 = rax
-		rdi = r17
-		FuncCall getDim Param_size : 1
-		r21 = rax
-	r19 = r20 != r21
-	jump Label_29 if r19 je 1
-		rdi = r16
-		FuncCall getDim Param_size : 1
-		r23 = rax
-	r22 = r23 == 0
-	r18 = r22
-	jump Label_30
-Label_29:
-	r18 = 1
-Label_30:
-	jump Label_27 if r18 je 1
-	jump Label_28
-Label_27:
-	rax = 0
-	jump Label_25
-	jump Label_26
-Label_28:
-Label_26:
-		rdi = 8
-		FuncCall malloc Param_size : 1
-		r24 = rax
-	r25 = r24
-	r26 = 0
-Label_34:
-		rdi = r16
-		FuncCall getDim Param_size : 1
-		r28 = rax
-	r27 = r26 < r28
-	jump Label_33 if r27 je 1
-	jump Label_32
-Label_33:
-	r29 = qword [r25]
-	r31 = qword [r16]
-	r32 = qword [r17]
-	r30 = qword [r31 + r26 * 8] + qword [r32 + r26 * 8]
-	qword [r29 + r26 * 8] = r30
-Label_31:
-	r26 = r26 + 1
-	jump Label_34
-Label_32:
-	rax = r25
-	jump Label_25
-Label_25:
-vector.set [Func]:
+	qword [r16] = 0
+	qword [r16 + 8] = 0
+	qword [r16 + 16] = 0
+	qword [r16 + 24] = 0
+	qword [r16 + 32] = 1
+Label_8:
+pushdown [Func]:
 	r16 = rdi
 	r17 = rsi
 	r18 = rdx
-		rdi = r16
-		FuncCall getDim Param_size : 1
-		r20 = rax
-	r19 = r20 < r17
-	jump Label_37 if r19 je 1
-	jump Label_38
-Label_37:
-	rax = 0
-	jump Label_35
-	jump Label_36
-Label_38:
-Label_36:
-	r21 = qword [r16]
-	qword [r21 + r17 * 8] = r18
-	rax = 1
-	jump Label_35
-Label_35:
-vector.toString [Func]:
+	r19 = rcx
+	r20 = qword [ ltree ]
+	r21 = qword [r20 + r16 * 8]
+	r22 = qword [r21 + r17 * 8]
+	r23 = qword [r22 + 24]
+	r24 = qword [ ltree ]
+	r25 = qword [r24 + r16 * 8]
+	r26 = qword [r25 + r17 * 8]
+	r27 = qword [r26 + 32]
+	r29 = r18 + r19
+	r28 = r29 / 2
+	r30 = r28
+	r31 = qword [ ltree ]
+	r32 = qword [r31 + r16 * 8]
+	r33 = 2 * r17
+	r34 = qword [r32 + r33 * 8]
+	r36 = qword [ ltree ]
+	r37 = qword [r36 + r16 * 8]
+	r38 = 2 * r17
+	r39 = qword [r37 + r38 * 8]
+	r35 = qword [r39 + 32] * r27
+	qword [r34 + 32] = r35
+	r40 = qword [ ltree ]
+	r41 = qword [r40 + r16 * 8]
+	r42 = 2 * r17
+	r43 = qword [r41 + r42 * 8]
+	r46 = qword [ ltree ]
+	r47 = qword [r46 + r16 * 8]
+	r48 = 2 * r17
+	r49 = qword [r47 + r48 * 8]
+	r45 = qword [r49 + 24] * r27
+	r44 = r45 + r23
+	qword [r43 + 24] = r44
+	r50 = qword [ ltree ]
+	r51 = qword [r50 + r16 * 8]
+	r53 = 2 * r17
+	r52 = r53 + 1
+	r54 = qword [r51 + r52 * 8]
+	r56 = qword [ ltree ]
+	r57 = qword [r56 + r16 * 8]
+	r59 = 2 * r17
+	r58 = r59 + 1
+	r60 = qword [r57 + r58 * 8]
+	r55 = qword [r60 + 32] * r27
+	qword [r54 + 32] = r55
+	r61 = qword [ ltree ]
+	r62 = qword [r61 + r16 * 8]
+	r64 = 2 * r17
+	r63 = r64 + 1
+	r65 = qword [r62 + r63 * 8]
+	r68 = qword [ ltree ]
+	r69 = qword [r68 + r16 * 8]
+	r71 = 2 * r17
+	r70 = r71 + 1
+	r72 = qword [r69 + r70 * 8]
+	r67 = qword [r72 + 24] * r27
+	r66 = r67 + r23
+	qword [r65 + 24] = r66
+	r73 = qword [ ltree ]
+	r74 = qword [r73 + r16 * 8]
+	r75 = 2 * r17
+	r76 = qword [r74 + r75 * 8]
+	r79 = qword [ ltree ]
+	r80 = qword [r79 + r16 * 8]
+	r81 = 2 * r17
+	r82 = qword [r80 + r81 * 8]
+	r78 = qword [r82] * r27
+	r77 = r78 + r23
+	qword [r76] = r77
+	r83 = qword [ ltree ]
+	r84 = qword [r83 + r16 * 8]
+	r86 = 2 * r17
+	r85 = r86 + 1
+	r87 = qword [r84 + r85 * 8]
+	r90 = qword [ ltree ]
+	r91 = qword [r90 + r16 * 8]
+	r93 = 2 * r17
+	r92 = r93 + 1
+	r94 = qword [r91 + r92 * 8]
+	r89 = qword [r94] * r27
+	r88 = r89 + r23
+	qword [r87] = r88
+	r95 = qword [ ltree ]
+	r96 = qword [r95 + r16 * 8]
+	r97 = 2 * r17
+	r98 = qword [r96 + r97 * 8]
+	r101 = qword [ ltree ]
+	r102 = qword [r101 + r16 * 8]
+	r103 = 2 * r17
+	r104 = qword [r102 + r103 * 8]
+	r100 = qword [r104 + 8] * r27
+	r99 = r100 + r23
+	qword [r98 + 8] = r99
+	r105 = qword [ ltree ]
+	r106 = qword [r105 + r16 * 8]
+	r108 = 2 * r17
+	r107 = r108 + 1
+	r109 = qword [r106 + r107 * 8]
+	r112 = qword [ ltree ]
+	r113 = qword [r112 + r16 * 8]
+	r115 = 2 * r17
+	r114 = r115 + 1
+	r116 = qword [r113 + r114 * 8]
+	r111 = qword [r116 + 8] * r27
+	r110 = r111 + r23
+	qword [r109 + 8] = r110
+	r117 = qword [ ltree ]
+	r118 = qword [r117 + r16 * 8]
+	r119 = 2 * r17
+	r120 = qword [r118 + r119 * 8]
+	r123 = qword [ ltree ]
+	r124 = qword [r123 + r16 * 8]
+	r125 = 2 * r17
+	r126 = qword [r124 + r125 * 8]
+	r122 = qword [r126 + 16] * r27
+	r129 = r30 - r18
+	r128 = r129 + 1
+	r127 = r23 * r128
+	r121 = r122 + r127
+	qword [r120 + 16] = r121
+	r130 = qword [ ltree ]
+	r131 = qword [r130 + r16 * 8]
+	r133 = 2 * r17
+	r132 = r133 + 1
+	r134 = qword [r131 + r132 * 8]
+	r137 = qword [ ltree ]
+	r138 = qword [r137 + r16 * 8]
+	r140 = 2 * r17
+	r139 = r140 + 1
+	r141 = qword [r138 + r139 * 8]
+	r136 = qword [r141 + 16] * r27
+	r143 = r19 - r30
+	r142 = r23 * r143
+	r135 = r136 + r142
+	qword [r134 + 16] = r135
+	r23 = 0
+	r27 = 1
+Label_9:
+modifyadd [Func]:
 	r16 = rdi
-	r17 = str__0
+	r17 = rsi
+	r18 = rdx
+	r19 = rcx
+	r20 = r8
+	r21 = r9
+	r23 = r18 >= r20
+	jump Label_14 if r23 je 1
+	r22 = 0
+Label_15:
+	r24 = r19 <= r21
+	r22 = r24
+Label_15:
+	jump Label_12 if r22 je 1
+	jump Label_13
+Label_12:
+	r25 = qword [ ltree ]
+	r26 = qword [r25 + r16 * 8]
+	r27 = qword [r26 + r17 * 8]
+	r29 = qword [ ltree ]
+	r30 = qword [r29 + r16 * 8]
+	r31 = qword [r30 + r17 * 8]
+	r34 = r19 - r18
+	r33 = r34 + 1
+	r32 = r33 * qword [rbp + 16]
+	r28 = qword [r31 + 16] + r32
+	qword [r27 + 16] = r28
+	r35 = qword [ ltree ]
+	r36 = qword [r35 + r16 * 8]
+	r37 = qword [r36 + r17 * 8]
+	r39 = qword [ ltree ]
+	r40 = qword [r39 + r16 * 8]
+	r41 = qword [r40 + r17 * 8]
+	r38 = qword [r41 + 24] + qword [rbp + 16]
+	qword [r37 + 24] = r38
+	r42 = qword [ ltree ]
+	r43 = qword [r42 + r16 * 8]
+	r44 = qword [r43 + r17 * 8]
+	r46 = qword [ ltree ]
+	r47 = qword [r46 + r16 * 8]
+	r48 = qword [r47 + r17 * 8]
+	r45 = qword [r48] + qword [rbp + 16]
+	qword [r44] = r45
+	r49 = qword [ ltree ]
+	r50 = qword [r49 + r16 * 8]
+	r51 = qword [r50 + r17 * 8]
+	r53 = qword [ ltree ]
+	r54 = qword [r53 + r16 * 8]
+	r55 = qword [r54 + r17 * 8]
+	r52 = qword [r55 + 8] + qword [rbp + 16]
+	qword [r51 + 8] = r52
+	jump Label_10
+	jump Label_11
+Label_13:
+Label_11:
+	r57 = r18 + r19
+	r56 = r57 / 2
+	r58 = r56
 		rdi = r16
-		FuncCall getDim Param_size : 1
-		r19 = rax
-	r18 = r19 > 0
-	jump Label_41 if r18 je 1
+		rsi = r17
+		rdx = r18
+		rcx = r19
+		FuncCall pushdown Param_size : 4
+		r59 = rax
+	r60 = r20 <= r58
+	jump Label_17 if r60 je 1
+	jump Label_18
+Label_17:
+	r61 = 2 * r17
+		rdi = r16
+		rsi = r61
+		rdx = r18
+		rcx = r58
+		r8 = r20
+		r9 = r21
+		qword [rsp] = qword [rbp + 16]
+		FuncCall modifyadd Param_size : 7
+		r62 = rax
+	jump Label_16
+Label_18:
+Label_16:
+	r64 = r58 + 1
+	r63 = r21 >= r64
+	jump Label_20 if r63 je 1
+	jump Label_21
+Label_20:
+	r66 = 2 * r17
+	r65 = r66 + 1
+	r67 = r58 + 1
+		rdi = r16
+		rsi = r65
+		rdx = r67
+		rcx = r19
+		r8 = r20
+		r9 = r21
+		qword [rsp] = qword [rbp + 16]
+		FuncCall modifyadd Param_size : 7
+		r68 = rax
+	jump Label_19
+Label_21:
+Label_19:
+	r69 = qword [ ltree ]
+	r70 = qword [r69 + r16 * 8]
+	r71 = qword [r70 + r17 * 8]
+	r73 = qword [ ltree ]
+	r74 = qword [r73 + r16 * 8]
+	r75 = 2 * r17
+	r76 = qword [r74 + r75 * 8]
+	r77 = qword [ ltree ]
+	r78 = qword [r77 + r16 * 8]
+	r80 = 2 * r17
+	r79 = r80 + 1
+	r81 = qword [r78 + r79 * 8]
+	r72 = qword [r76 + 16] + qword [r81 + 16]
+	qword [r71 + 16] = r72
+	r82 = qword [ ltree ]
+	r83 = qword [r82 + r16 * 8]
+	r84 = qword [r83 + r17 * 8]
+	r85 = qword [ ltree ]
+	r86 = qword [r85 + r16 * 8]
+	r87 = 2 * r17
+	r88 = qword [r86 + r87 * 8]
+	r89 = qword [ ltree ]
+	r90 = qword [r89 + r16 * 8]
+	r92 = 2 * r17
+	r91 = r92 + 1
+	r93 = qword [r90 + r91 * 8]
+		rdi = qword [r88]
+		rsi = qword [r93]
+		FuncCall mmin Param_size : 2
+		r94 = rax
+	qword [r84] = r94
+	r95 = qword [ ltree ]
+	r96 = qword [r95 + r16 * 8]
+	r97 = qword [r96 + r17 * 8]
+	r98 = qword [ ltree ]
+	r99 = qword [r98 + r16 * 8]
+	r100 = 2 * r17
+	r101 = qword [r99 + r100 * 8]
+	r102 = qword [ ltree ]
+	r103 = qword [r102 + r16 * 8]
+	r105 = 2 * r17
+	r104 = r105 + 1
+	r106 = qword [r103 + r104 * 8]
+		rdi = qword [r101 + 8]
+		rsi = qword [r106 + 8]
+		FuncCall mmax Param_size : 2
+		r107 = rax
+	qword [r97 + 8] = r107
+Label_10:
+modifymulti [Func]:
+	r16 = rdi
+	r17 = rsi
+	r18 = rdx
+	r19 = rcx
+	r20 = r8
+	r21 = r9
+	r23 = r18 >= r20
+	jump Label_26 if r23 je 1
+	r22 = 0
+Label_27:
+	r24 = r19 <= r21
+	r22 = r24
+Label_27:
+	jump Label_24 if r22 je 1
+	jump Label_25
+Label_24:
+	r25 = qword [ ltree ]
+	r26 = qword [r25 + r16 * 8]
+	r27 = qword [r26 + r17 * 8]
+	r29 = qword [ ltree ]
+	r30 = qword [r29 + r16 * 8]
+	r31 = qword [r30 + r17 * 8]
+	r28 = qword [r31 + 16] * qword [rbp + 16]
+	qword [r27 + 16] = r28
+	r32 = qword [ ltree ]
+	r33 = qword [r32 + r16 * 8]
+	r34 = qword [r33 + r17 * 8]
+	r36 = qword [ ltree ]
+	r37 = qword [r36 + r16 * 8]
+	r38 = qword [r37 + r17 * 8]
+	r35 = qword [r38] * qword [rbp + 16]
+	qword [r34] = r35
+	r39 = qword [ ltree ]
+	r40 = qword [r39 + r16 * 8]
+	r41 = qword [r40 + r17 * 8]
+	r43 = qword [ ltree ]
+	r44 = qword [r43 + r16 * 8]
+	r45 = qword [r44 + r17 * 8]
+	r42 = qword [r45 + 8] * qword [rbp + 16]
+	qword [r41 + 8] = r42
+	r46 = qword [ ltree ]
+	r47 = qword [r46 + r16 * 8]
+	r48 = qword [r47 + r17 * 8]
+	r50 = qword [ ltree ]
+	r51 = qword [r50 + r16 * 8]
+	r52 = qword [r51 + r17 * 8]
+	r49 = qword [r52 + 32] * qword [rbp + 16]
+	qword [r48 + 32] = r49
+	r53 = qword [ ltree ]
+	r54 = qword [r53 + r16 * 8]
+	r55 = qword [r54 + r17 * 8]
+	r57 = qword [ ltree ]
+	r58 = qword [r57 + r16 * 8]
+	r59 = qword [r58 + r17 * 8]
+	r56 = qword [r59 + 24] * qword [rbp + 16]
+	qword [r55 + 24] = r56
+	jump Label_22
+	jump Label_23
+Label_25:
+Label_23:
+	r61 = r18 + r19
+	r60 = r61 / 2
+	r62 = r60
+		rdi = r16
+		rsi = r17
+		rdx = r18
+		rcx = r19
+		FuncCall pushdown Param_size : 4
+		r63 = rax
+	r64 = r20 <= r62
+	jump Label_29 if r64 je 1
+	jump Label_30
+Label_29:
+	r65 = 2 * r17
+		rdi = r16
+		rsi = r65
+		rdx = r18
+		rcx = r62
+		r8 = r20
+		r9 = r21
+		qword [rsp] = qword [rbp + 16]
+		FuncCall modifymulti Param_size : 7
+		r66 = rax
+	jump Label_28
+Label_30:
+Label_28:
+	r68 = r62 + 1
+	r67 = r21 >= r68
+	jump Label_32 if r67 je 1
+	jump Label_33
+Label_32:
+	r70 = 2 * r17
+	r69 = r70 + 1
+	r71 = r62 + 1
+		rdi = r16
+		rsi = r69
+		rdx = r71
+		rcx = r19
+		r8 = r20
+		r9 = r21
+		qword [rsp] = qword [rbp + 16]
+		FuncCall modifymulti Param_size : 7
+		r72 = rax
+	jump Label_31
+Label_33:
+Label_31:
+	r73 = qword [ ltree ]
+	r74 = qword [r73 + r16 * 8]
+	r75 = qword [r74 + r17 * 8]
+	r77 = qword [ ltree ]
+	r78 = qword [r77 + r16 * 8]
+	r79 = 2 * r17
+	r80 = qword [r78 + r79 * 8]
+	r81 = qword [ ltree ]
+	r82 = qword [r81 + r16 * 8]
+	r84 = 2 * r17
+	r83 = r84 + 1
+	r85 = qword [r82 + r83 * 8]
+	r76 = qword [r80 + 16] + qword [r85 + 16]
+	qword [r75 + 16] = r76
+	r86 = qword [ ltree ]
+	r87 = qword [r86 + r16 * 8]
+	r88 = qword [r87 + r17 * 8]
+	r89 = qword [ ltree ]
+	r90 = qword [r89 + r16 * 8]
+	r91 = 2 * r17
+	r92 = qword [r90 + r91 * 8]
+	r93 = qword [ ltree ]
+	r94 = qword [r93 + r16 * 8]
+	r96 = 2 * r17
+	r95 = r96 + 1
+	r97 = qword [r94 + r95 * 8]
+		rdi = qword [r92]
+		rsi = qword [r97]
+		FuncCall mmin Param_size : 2
+		r98 = rax
+	qword [r88] = r98
+	r99 = qword [ ltree ]
+	r100 = qword [r99 + r16 * 8]
+	r101 = qword [r100 + r17 * 8]
+	r102 = qword [ ltree ]
+	r103 = qword [r102 + r16 * 8]
+	r104 = 2 * r17
+	r105 = qword [r103 + r104 * 8]
+	r106 = qword [ ltree ]
+	r107 = qword [r106 + r16 * 8]
+	r109 = 2 * r17
+	r108 = r109 + 1
+	r110 = qword [r107 + r108 * 8]
+		rdi = qword [r105 + 8]
+		rsi = qword [r110 + 8]
+		FuncCall mmax Param_size : 2
+		r111 = rax
+	qword [r101 + 8] = r111
+Label_22:
+asksum [Func]:
+	r16 = rdi
+	r17 = rsi
+	r18 = rdx
+	r19 = rcx
+	r20 = r8
+	r21 = r9
+	r22 = 0
+	r24 = r18 >= r20
+	jump Label_38 if r24 je 1
+	r23 = 0
+Label_39:
+	r25 = r19 <= r21
+	r23 = r25
+Label_39:
+	jump Label_36 if r23 je 1
+	jump Label_37
+Label_36:
+	r27 = qword [ ltree ]
+	r28 = qword [r27 + r16 * 8]
+	r29 = qword [r28 + r17 * 8]
+	r26 = r22 + qword [r29 + 16]
+	r22 = r26
+	rax = r22
+	jump Label_34
+	jump Label_35
+Label_37:
+Label_35:
+		rdi = r16
+		rsi = r17
+		rdx = r18
+		rcx = r19
+		FuncCall pushdown Param_size : 4
+		r30 = rax
+	r32 = r18 + r19
+	r31 = r32 / 2
+	r33 = r31
+	r34 = r20 <= r33
+	jump Label_41 if r34 je 1
 	jump Label_42
 Label_41:
+	r36 = 2 * r17
 		rdi = r16
-		FuncCall toString Param_size : 1
-		r21 = rax
-	r20 = r17 + r21
-	r17 = r20
+		rsi = r36
+		rdx = r18
+		rcx = r33
+		r8 = r20
+		r9 = r21
+		FuncCall asksum Param_size : 6
+		r37 = rax
+	r35 = r22 + r37
+	r22 = r35
 	jump Label_40
 Label_42:
 Label_40:
-	r22 = 1
-Label_46:
-		rdi = r16
-		FuncCall getDim Param_size : 1
-		r24 = rax
-	r23 = r22 < r24
-	jump Label_45 if r23 je 1
-	jump Label_44
-Label_45:
-	r26 = r17 + str__1
-		rdi = r16
-		FuncCall toString Param_size : 1
-		r27 = rax
-	r25 = r26 + r27
-	r17 = r25
-Label_43:
-	r22 = r22 + 1
-	jump Label_46
+	r39 = r33 + 1
+	r38 = r21 >= r39
+	jump Label_44 if r38 je 1
+	jump Label_45
 Label_44:
-	r28 = r17 + str__2
-	r17 = r28
-	rax = r17
-	jump Label_39
-Label_39:
-vector.copy [Func]:
+	r42 = 2 * r17
+	r41 = r42 + 1
+	r43 = r33 + 1
+		rdi = r16
+		rsi = r41
+		rdx = r43
+		rcx = r19
+		r8 = r20
+		r9 = r21
+		FuncCall asksum Param_size : 6
+		r44 = rax
+	r40 = r22 + r44
+	r22 = r40
+	jump Label_43
+Label_45:
+Label_43:
+	rax = r22
+	jump Label_34
+Label_34:
+askmin [Func]:
 	r16 = rdi
 	r17 = rsi
-	r18 = r17 == 0
-	jump Label_49 if r18 je 1
-	jump Label_50
-Label_49:
-	rax = 0
-	jump Label_47
-	jump Label_48
-Label_50:
-Label_48:
-		rdi = r17
-		FuncCall getDim Param_size : 1
-		r20 = rax
-	r19 = r20 == 0
-	jump Label_52 if r19 je 1
-	jump Label_53
-Label_52:
-	qword [r16] = 0
-	jump Label_51
-Label_53:
-		rdi = r17
-		FuncCall getDim Param_size : 1
-		r21 = rax
-	r22 = r21
-	r22 = r22 + 1
-	r22 = r22 * 8
-		rdi = r22
-		FuncCall malloc Param_size : 1
-		r23 = rax
-	qword [r23] = r21
-	r23 = r23 + 8
-	qword [r16] = r23
-	r24 = 0
-Label_57:
-		rdi = r16
-		FuncCall getDim Param_size : 1
-		r26 = rax
-	r25 = r24 < r26
-	jump Label_56 if r25 je 1
-	jump Label_55
-Label_56:
-	r27 = qword [r16]
-	r28 = qword [r17]
-	qword [r27 + r24 * 8] = qword [r28 + r24 * 8]
-Label_54:
-	r24 = r24 + 1
-	jump Label_57
-Label_55:
+	r18 = rdx
+	r19 = rcx
+	r20 = r8
+	r21 = r9
+	r23 = r18 >= r20
+	jump Label_50 if r23 je 1
+	r22 = 0
 Label_51:
-	rax = 1
+	r24 = r19 <= r21
+	r22 = r24
+Label_51:
+	jump Label_48 if r22 je 1
+	jump Label_49
+Label_48:
+	r25 = qword [ ltree ]
+	r26 = qword [r25 + r16 * 8]
+	r27 = qword [r26 + r17 * 8]
+	rax = qword [r27]
+	jump Label_46
 	jump Label_47
+Label_49:
 Label_47:
-main [Func]:
-		rdi = 8
-		FuncCall malloc Param_size : 1
-		r16 = rax
-	r17 = r16
-	r18 = 10
-	r18 = r18 + 1
-	r18 = r18 * 8
-		rdi = r18
-		FuncCall malloc Param_size : 1
-		r19 = rax
-	qword [r19] = 10
-	r19 = r19 + 8
-	r20 = r19
-	r21 = 0
-Label_62:
-	r22 = r21 < 10
-	jump Label_61 if r22 je 1
-	jump Label_60
-Label_61:
-	r23 = 9 - r21
-	qword [r20 + r21 * 8] = r23
-Label_59:
-	r21 = r21 + 1
-	jump Label_62
-Label_60:
-		rdi = r17
-		rsi = r20
-		FuncCall init Param_size : 2
-		r24 = rax
-		rdi = str__3
-		FuncCall print Param_size : 1
-		r25 = rax
-		rdi = r17
-		FuncCall toString Param_size : 1
-		r26 = rax
-		rdi = r26
-		FuncCall println Param_size : 1
-		r27 = rax
-		rdi = 8
-		FuncCall malloc Param_size : 1
-		r28 = rax
-	r29 = r28
-		rdi = r29
+		rdi = r16
 		rsi = r17
-		FuncCall copy Param_size : 2
-		r30 = rax
-		rdi = r29
-		rsi = 3
-		rdx = 817
-		FuncCall set Param_size : 3
-		r31 = rax
-	jump Label_64 if r31 je 1
-	jump Label_65
-Label_64:
-		rdi = str__4
-		FuncCall println Param_size : 1
-		r32 = rax
-	jump Label_63
-Label_65:
-Label_63:
-		rdi = str__5
-		FuncCall print Param_size : 1
-		r33 = rax
-		rdi = r29
-		FuncCall toString Param_size : 1
-		r34 = rax
-		rdi = r34
-		FuncCall println Param_size : 1
+		rdx = r18
+		rcx = r19
+		FuncCall pushdown Param_size : 4
+		r28 = rax
+	r30 = r18 + r19
+	r29 = r30 / 2
+	r31 = r29
+	r32 = qword [ INF ]
+	r33 = r20 <= r31
+	jump Label_53 if r33 je 1
+	jump Label_54
+Label_53:
+	r34 = 2 * r17
+		rdi = r16
+		rsi = r34
+		rdx = r18
+		rcx = r31
+		r8 = r20
+		r9 = r21
+		FuncCall askmin Param_size : 6
 		r35 = rax
-		rdi = str__6
-		FuncCall print Param_size : 1
+		rdi = r35
+		rsi = r32
+		FuncCall mmin Param_size : 2
 		r36 = rax
-		rdi = r17
-		rsi = r29
-		FuncCall add Param_size : 2
-		r37 = rax
-		rdi = r37
-		FuncCall toString Param_size : 1
-		r38 = rax
-		rdi = r38
-		FuncCall println Param_size : 1
-		r39 = rax
-		rdi = str__7
-		FuncCall print Param_size : 1
-		r40 = rax
-		rdi = r17
-		rsi = r29
-		FuncCall dot Param_size : 2
-		r41 = rax
-		rdi = r41
-		FuncCall toString Param_size : 1
+	r32 = r36
+	jump Label_52
+Label_54:
+Label_52:
+	r38 = r31 + 1
+	r37 = r21 >= r38
+	jump Label_56 if r37 je 1
+	jump Label_57
+Label_56:
+	r40 = 2 * r17
+	r39 = r40 + 1
+	r41 = r31 + 1
+		rdi = r16
+		rsi = r39
+		rdx = r41
+		rcx = r19
+		r8 = r20
+		r9 = r21
+		FuncCall askmin Param_size : 6
 		r42 = rax
 		rdi = r42
-		FuncCall println Param_size : 1
+		rsi = r32
+		FuncCall mmin Param_size : 2
 		r43 = rax
-		rdi = str__8
-		FuncCall print Param_size : 1
-		r44 = rax
-	r45 = 1 << 3
-		rdi = r17
-		rsi = r45
-		FuncCall scalarInPlaceMultiply Param_size : 2
-		r46 = rax
-		rdi = r46
-		FuncCall toString Param_size : 1
-		r47 = rax
-		rdi = r47
-		FuncCall println Param_size : 1
-		r48 = rax
+	r32 = r43
+	jump Label_55
+Label_57:
+Label_55:
+	rax = r32
+	jump Label_46
+Label_46:
+askmax [Func]:
+	r16 = rdi
+	r17 = rsi
+	r18 = rdx
+	r19 = rcx
+	r20 = r8
+	r21 = r9
+	r23 = r18 >= r20
+	jump Label_62 if r23 je 1
+	r22 = 0
+Label_63:
+	r24 = r19 <= r21
+	r22 = r24
+Label_63:
+	jump Label_60 if r22 je 1
+	jump Label_61
+Label_60:
+	r25 = qword [ ltree ]
+	r26 = qword [r25 + r16 * 8]
+	r27 = qword [r26 + r17 * 8]
+	rax = qword [r27 + 8]
+	jump Label_58
+	jump Label_59
+Label_61:
+Label_59:
+		rdi = r16
+		rsi = r17
+		rdx = r18
+		rcx = r19
+		FuncCall pushdown Param_size : 4
+		r28 = rax
+	r30 = r18 + r19
+	r29 = r30 / 2
+	r31 = r29
+	r32 = 0
+	r33 = r20 <= r31
+	jump Label_65 if r33 je 1
+	jump Label_66
+Label_65:
+	r34 = 2 * r17
+		rdi = r16
+		rsi = r34
+		rdx = r18
+		rcx = r31
+		r8 = r20
+		r9 = r21
+		FuncCall askmax Param_size : 6
+		r35 = rax
+		rdi = r35
+		rsi = r32
+		FuncCall mmax Param_size : 2
+		r36 = rax
+	r32 = r36
+	jump Label_64
+Label_66:
+Label_64:
+	r38 = r31 + 1
+	r37 = r21 >= r38
+	jump Label_68 if r37 je 1
+	jump Label_69
+Label_68:
+	r40 = 2 * r17
+	r39 = r40 + 1
+	r41 = r31 + 1
+		rdi = r16
+		rsi = r39
+		rdx = r41
+		rcx = r19
+		r8 = r20
+		r9 = r21
+		FuncCall askmax Param_size : 6
+		r42 = rax
+		rdi = r42
+		rsi = r32
+		FuncCall mmax Param_size : 2
+		r43 = rax
+	r32 = r43
+	jump Label_67
+Label_69:
+Label_67:
+	rax = r32
+	jump Label_58
 Label_58:
+main [Func]:
+		FuncCall getInt Param_size : 0
+		r16 = rax
+	qword [ r ] = r16
+		FuncCall getInt Param_size : 0
+		r17 = rax
+	qword [ c ] = r17
+		FuncCall getInt Param_size : 0
+		r18 = rax
+	qword [ m ] = r18
+	r25 = 1
+Label_74:
+	r26 = r25 <= qword [ m ]
+	jump Label_73 if r26 je 1
+	jump Label_72
+Label_73:
+		FuncCall getInt Param_size : 0
+		r27 = rax
+	r19 = r27
+		FuncCall getInt Param_size : 0
+		r28 = rax
+	r20 = r28
+		FuncCall getInt Param_size : 0
+		r29 = rax
+	r21 = r29
+		FuncCall getInt Param_size : 0
+		r30 = rax
+	r22 = r30
+		FuncCall getInt Param_size : 0
+		r31 = rax
+	r23 = r31
+	r32 = r19 == 1
+	jump Label_76 if r32 je 1
+	jump Label_77
+Label_76:
+		FuncCall getInt Param_size : 0
+		r33 = rax
+	r24 = r33
+	r34 = r20
+Label_81:
+	r35 = r34 <= r22
+	jump Label_80 if r35 je 1
+	jump Label_79
+Label_80:
+		rdi = r34
+		rsi = 1
+		rdx = 1
+		rcx = qword [ c ]
+		r8 = r21
+		r9 = r23
+		qword [rsp] = r24
+		FuncCall modifyadd Param_size : 7
+		r36 = rax
+Label_78:
+	r34 = r34 + 1
+	jump Label_81
+Label_79:
+	jump Label_75
+Label_77:
+	r37 = r19 == 2
+	jump Label_82 if r37 je 1
+	jump Label_83
+Label_82:
+		FuncCall getInt Param_size : 0
+		r38 = rax
+	r24 = r38
+	r39 = r20
+Label_87:
+	r40 = r39 <= r22
+	jump Label_86 if r40 je 1
+	jump Label_85
+Label_86:
+		rdi = r39
+		rsi = 1
+		rdx = 1
+		rcx = qword [ c ]
+		r8 = r21
+		r9 = r23
+		qword [rsp] = 0
+		FuncCall modifymulti Param_size : 7
+		r41 = rax
+		rdi = r39
+		rsi = 1
+		rdx = 1
+		rcx = qword [ c ]
+		r8 = r21
+		r9 = r23
+		qword [rsp] = r24
+		FuncCall modifyadd Param_size : 7
+		r42 = rax
+Label_84:
+	r39 = r39 + 1
+	jump Label_87
+Label_85:
+	jump Label_75
+Label_83:
+	r43 = r19 == 3
+	jump Label_88 if r43 je 1
+	jump Label_89
+Label_88:
+	r44 = 0
+	r45 = r20
+Label_93:
+	r46 = r45 <= r22
+	jump Label_92 if r46 je 1
+	jump Label_91
+Label_92:
+		rdi = r45
+		rsi = 1
+		rdx = 1
+		rcx = qword [ c ]
+		r8 = r21
+		r9 = r23
+		FuncCall asksum Param_size : 6
+		r48 = rax
+	r47 = r44 + r48
+	r44 = r47
+Label_90:
+	r45 = r45 + 1
+	jump Label_93
+Label_91:
+		rdi = r44
+		FuncCall toString Param_size : 1
+		r50 = rax
+	r49 = r50 + str__0
+		rdi = r49
+		FuncCall println Param_size : 1
+		r51 = rax
+	jump Label_75
+Label_89:
+	r52 = qword [ INF ]
+	r53 = 0
+	r54 = r20
+Label_97:
+	r55 = r54 <= r22
+	jump Label_96 if r55 je 1
+	jump Label_95
+Label_96:
+		rdi = r54
+		rsi = 1
+		rdx = 1
+		rcx = qword [ c ]
+		r8 = r21
+		r9 = r23
+		FuncCall askmin Param_size : 6
+		r56 = rax
+		rdi = r52
+		rsi = r56
+		FuncCall mmin Param_size : 2
+		r57 = rax
+	r52 = r57
+		rdi = r54
+		rsi = 1
+		rdx = 1
+		rcx = qword [ c ]
+		r8 = r21
+		r9 = r23
+		FuncCall askmax Param_size : 6
+		r58 = rax
+		rdi = r53
+		rsi = r58
+		FuncCall mmax Param_size : 2
+		r59 = rax
+	r53 = r59
+Label_94:
+	r54 = r54 + 1
+	jump Label_97
+Label_95:
+		rdi = r52
+		FuncCall toString Param_size : 1
+		r63 = rax
+	r62 = r63 + str__1
+		rdi = r53
+		FuncCall toString Param_size : 1
+		r64 = rax
+	r61 = r62 + r64
+	r60 = r61 + str__2
+		rdi = r60
+		FuncCall println Param_size : 1
+		r65 = rax
+Label_75:
+Label_71:
+	r25 = r25 + 1
+	jump Label_74
+Label_72:
+	rax = 0
+	jump Label_70
+Label_70:
