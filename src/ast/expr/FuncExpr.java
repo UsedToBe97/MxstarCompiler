@@ -59,7 +59,11 @@ public class FuncExpr extends Expr {
 
         if (GlobalClass.st.contains(tmp) || GlobalClass.st.contains(_name)) {
             Def d;
+            /*if (!GlobalClass.st.contains(tmp)) d = GlobalClass.st.now.check(_name);
+            else d = GlobalClass.st.now.check(tmp);*/
             if (!GlobalClass.st.contains(tmp)) d = GlobalClass.st.now.check(_name);
+            else if (!GlobalClass.st.contains(_name)) d = GlobalClass.st.now.check(tmp);
+            else if (GlobalClass.st.now.getDep(_name) < GlobalClass.st.now.getDep(tmp)) d = GlobalClass.st.now.check(_name);
             else d = GlobalClass.st.now.check(tmp);
             if (d instanceof FuncDef) {
                 if (((FuncDef) d).params.size() != exprList.size()) {

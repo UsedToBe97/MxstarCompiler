@@ -63,8 +63,8 @@ public class IrBuilder {
         return root;
     }
 
-    public void visit(Expr x) {x.accept(this);}
-    public void visit(Stmt x) {x.accept(this);}
+    public void visit(Expr x) {if (x != null) x.accept(this);}
+    public void visit(Stmt x) {if (x != null) x.accept(this);}
 
     public void visit(FuncDef x) {
         returnLabel = new Label();

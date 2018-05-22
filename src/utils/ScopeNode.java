@@ -20,6 +20,17 @@ public class ScopeNode {
         }
         throw new CompileError("Undefined(ScopeNode)", new Position(-1, -1));
     }
+    public int getDep(String _s) {
+        ScopeNode p = this;
+        System.err.println("check to " + _s);
+        int d = 0;
+        while (p != null) {
+            if (p.objmap.containsKey(_s)) return d;
+            ++d;
+            p = p.parent;
+        }
+        throw new CompileError("Undefined(ScopeNode)", new Position(-1, -1));
+    }
     public void addChild(ScopeNode obj) {
         if (child.contains(obj))
             throw new CompileError("Redefine Child(ScopeNode)", new Position(-1,-1));

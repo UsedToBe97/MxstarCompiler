@@ -44,7 +44,9 @@ public class IDExpr extends Expr {
         String tmp = GlobalClass.classname + "." + name;
         System.err.println(tmp);
         Def d;
-        if (GlobalClass.st.contains(name)) d = GlobalClass.st.now.check(name);
+        if (!GlobalClass.st.contains(tmp)) d = GlobalClass.st.now.check(name);
+        else if (!GlobalClass.st.contains(name)) d = GlobalClass.st.now.check(tmp);
+        else if (GlobalClass.st.now.getDep(name) < GlobalClass.st.now.getDep(tmp)) d = GlobalClass.st.now.check(name);
         else d = GlobalClass.st.now.check(tmp);
         if (name.equals("rhs")) {
             int cnt2 = 0;
