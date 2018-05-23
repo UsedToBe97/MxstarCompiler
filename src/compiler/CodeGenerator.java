@@ -181,6 +181,7 @@ public class CodeGenerator {
         ans += "extern __stack_chk_fail\n";
         ans += "extern malloc\n";
         ans += "extern printf\n";
+        ans += "extern gets\n";
         ans += "extern __isoc99_scanf\n";
 
         ans += "section .data\n";
@@ -560,6 +561,98 @@ public class CodeGenerator {
         ans += "\t        leave\n";
         ans += "\tret\n";
 
+        //getString
+        ans += "getString:\n";
+        ans += "\tpush    rbp\n";
+        ans += "\tmov     rbp, rsp\n";
+        ans += "\tsub     rsp, 288\n";
+        ans += "\tmov     rax, qword [fs:abs 28H]\n";
+        ans += "\tmov     qword [rbp-8H], rax\n";
+        ans += "\txor     eax, eax\n";
+        ans += "\tlea     rax, [rbp-110H]\n";
+        ans += "\tmov     rdi, rax\n";
+        ans += "\tmov     eax, 0\n";
+        ans += "\tcall    gets\n";
+        ans += "\tmov     edi, 256\n";
+        ans += "\tcall    malloc\n";
+        ans += "\tmov     qword [rbp-118H], rax\n";
+        ans += "\tmov     dword [rbp-120H], 0\n";
+        ans += "\tjmp     Lgs_002\n";
+        ans += "Lgs_001:  add     dword [rbp-120H], 1\n";
+        ans += "Lgs_002:  mov     eax, dword [rbp-120H]\n";
+        ans += "\tcdqe\n";
+        ans += "\tmovzx   eax, byte [rbp+rax-110H]\n";
+        ans += "\ttest    al, al\n";
+        ans += "\tjnz     Lgs_001\n";
+        ans += "\tmov     dword [rbp-11CH], 0\n";
+        ans += "\tmov     dword [rbp-11CH], 0\n";
+        ans += "\tjmp     Lgs_004\n";
+        ans += "Lgs_003:  mov     eax, dword [rbp-11CH]\n";
+        ans += "\tmovsxd  rdx, eax\n";
+        ans += "\tmov     rax, qword [rbp-118H]\n";
+        ans += "\tadd     rdx, rax\n";
+        ans += "\tmov     eax, dword [rbp-11CH]\n";
+        ans += "\tcdqe\n";
+        ans += "\tmovzx   eax, byte [rbp+rax-110H]\n";
+        ans += "\tmov     byte [rdx], al\n";
+        ans += "\tadd     dword [rbp-11CH], 1\n";
+        ans += "Lgs_004:  mov     eax, dword [rbp-11CH]\n";
+        ans += "\tcmp     eax, dword [rbp-120H]\n";
+        ans += "\tjl      Lgs_003\n";
+        ans += "\tmov     eax, dword [rbp-120H]\n";
+        ans += "\tmovsxd  rdx, eax\n";
+        ans += "\tmov     rax, qword [rbp-118H]\n";
+        ans += "\tadd     rax, rdx\n";
+        ans += "\tmov     byte [rax], 0\n";
+        ans += "\tmov     rax, qword [rbp-118H]\n";
+        ans += "\tmov     rcx, qword [rbp-8H]\n";
+        ans += "\txor     rcx, qword [fs:abs 28H]\n";
+        ans += "\tjz      Lgs_005\n";
+        ans += "\tcall    __stack_chk_fail\n";
+        ans += "\tLgs_005:  leave\n";
+        ans += "\tret\n";
+
+        //string.substring
+        ans += "string.substring:\n";
+        ans += "\tpush    rbp\n";
+        ans += "\tmov     rbp, rsp\n";
+        ans += "\tsub     rsp, 32\n";
+        ans += "\tmov     qword [rbp-18H], rdi\n";
+        ans += "\tmov     dword [rbp-1CH], esi\n";
+        ans += "\tmov     dword [rbp-20H], edx\n";
+        ans += "\tmov     edi, 256\n";
+        ans += "\tcall    malloc\n";
+        ans += "\tmov     qword [rbp-8H], rax\n";
+        ans += "\tmov     eax, dword [rbp-20H]\n";
+        ans += "\tsub     eax, dword [rbp-1CH]\n";
+        ans += "\tadd     eax, 1\n";
+        ans += "\tmov     dword [rbp-0CH], eax\n";
+        ans += "\tmov     dword [rbp-10H], 0\n";
+        ans += "\tjmp     Lsub_002\n";
+        ans += "Lsub_001:  mov     eax, dword [rbp-10H]\n";
+        ans += "\tmovsxd  rdx, eax\n";
+        ans += "\tmov     rax, qword [rbp-8H]\n";
+        ans += "\tadd     rdx, rax\n";
+        ans += "\tmov     ecx, dword [rbp-10H]\n";
+        ans += "\tmov     eax, dword [rbp-1CH]\n";
+        ans += "\tadd     eax, ecx\n";
+        ans += "\tmovsxd  rcx, eax\n";
+        ans += "\tmov     rax, qword [rbp-18H]\n";
+        ans += "\tadd     rax, rcx\n";
+        ans += "\tmovzx   eax, byte [rax]\n";
+        ans += "\tmov     byte [rdx], al\n";
+        ans += "\tadd     dword [rbp-10H], 1\n";
+        ans += "Lsub_002:  mov     eax, dword [rbp-10H]\n";
+        ans += "\tcmp     eax, dword [rbp-0CH]\n";
+        ans += "\tjl      Lsub_001\n";
+        ans += "\tmov     eax, dword [rbp-0CH]\n";
+        ans += "\tmovsxd  rdx, eax\n";
+        ans += "\tmov     rax, qword [rbp-8H]\n";
+        ans += "\tadd     rax, rdx\n";
+        ans += "\tmov     byte [rax], 0\n";
+        ans += "\tmov     rax, qword [rbp-8H]\n";
+        ans += "\tleave\n";
+        ans += "\t        ret\n";
     }
 
 }

@@ -6,125 +6,56 @@
 
 default rel
 
-global print
+global stringsubstring
 global main
 
 extern __stack_chk_fail
+extern puts
 extern __isoc99_scanf
-extern putchar
+extern malloc
 
 
 SECTION .text   
 
-print:
+stringsubstring:
         push    rbp
         mov     rbp, rsp
         sub     rsp, 32
         mov     qword [rbp-18H], rdi
-        mov     dword [rbp-8H], 0
+        mov     dword [rbp-1CH], esi
+        mov     dword [rbp-20H], edx
+        mov     edi, 256
+        call    malloc
+        mov     qword [rbp-8H], rax
+        mov     eax, dword [rbp-20H]
+        sub     eax, dword [rbp-1CH]
+        add     eax, 1
+        mov     dword [rbp-0CH], eax
+        mov     dword [rbp-10H], 0
         jmp     L_002
 
-L_001:  add     dword [rbp-8H], 1
-L_002:  mov     eax, dword [rbp-8H]
+L_001:  mov     eax, dword [rbp-10H]
         movsxd  rdx, eax
+        mov     rax, qword [rbp-8H]
+        add     rdx, rax
+        mov     ecx, dword [rbp-10H]
+        mov     eax, dword [rbp-1CH]
+        add     eax, ecx
+        movsxd  rcx, eax
         mov     rax, qword [rbp-18H]
-        add     rax, rdx
+        add     rax, rcx
         movzx   eax, byte [rax]
-        test    al, al
-        jnz     L_001
-        mov     dword [rbp-4H], 0
-        jmp     L_010
-
-L_003:  mov     eax, dword [rbp-4H]
+        mov     byte [rdx], al
+        add     dword [rbp-10H], 1
+L_002:  mov     eax, dword [rbp-10H]
+        cmp     eax, dword [rbp-0CH]
+        jl      L_001
+        mov     eax, dword [rbp-0CH]
         movsxd  rdx, eax
-        mov     rax, qword [rbp-18H]
+        mov     rax, qword [rbp-8H]
         add     rax, rdx
-        movzx   eax, byte [rax]
-        cmp     al, 92
-        jne     L_008
-        mov     eax, dword [rbp-4H]
-        add     eax, 1
-        cmp     eax, dword [rbp-8H]
-        jge     L_008
-        mov     eax, dword [rbp-4H]
-        cdqe
-        lea     rdx, [rax+1H]
-        mov     rax, qword [rbp-18H]
-        add     rax, rdx
-        movzx   eax, byte [rax]
-        cmp     al, 110
-        jnz     L_004
-        mov     edi, 10
-        call    putchar
-        add     dword [rbp-4H], 1
-        jmp     L_009
-
-L_004:  mov     eax, dword [rbp-4H]
-        cdqe
-        lea     rdx, [rax+1H]
-        mov     rax, qword [rbp-18H]
-        add     rax, rdx
-        movzx   eax, byte [rax]
-        cmp     al, 116
-        jnz     L_005
-        mov     edi, 9
-        call    putchar
-        add     dword [rbp-4H], 1
-        jmp     L_009
-
-L_005:  mov     eax, dword [rbp-4H]
-        cdqe
-        lea     rdx, [rax+1H]
-        mov     rax, qword [rbp-18H]
-        add     rax, rdx
-        movzx   eax, byte [rax]
-        cmp     al, 92
-        jnz     L_006
-        mov     edi, 92
-        call    putchar
-        add     dword [rbp-4H], 1
-        jmp     L_009
-
-L_006:  mov     eax, dword [rbp-4H]
-        cdqe
-        lea     rdx, [rax+1H]
-        mov     rax, qword [rbp-18H]
-        add     rax, rdx
-        movzx   eax, byte [rax]
-        cmp     al, 34
-        jnz     L_007
-        mov     edi, 34
-        call    putchar
-        add     dword [rbp-4H], 1
-        jmp     L_009
-
-L_007:  mov     eax, dword [rbp-4H]
-        movsxd  rdx, eax
-        mov     rax, qword [rbp-18H]
-        add     rax, rdx
-        movzx   eax, byte [rax]
-        movsx   eax, al
-        mov     edi, eax
-        call    putchar
-        jmp     L_009
-
-L_008:  mov     eax, dword [rbp-4H]
-        movsxd  rdx, eax
-        mov     rax, qword [rbp-18H]
-        add     rax, rdx
-        movzx   eax, byte [rax]
-        movsx   eax, al
-        mov     edi, eax
-        call    putchar
-L_009:  add     dword [rbp-4H], 1
-L_010:  mov     eax, dword [rbp-4H]
-        movsxd  rdx, eax
-        mov     rax, qword [rbp-18H]
-        add     rax, rdx
-        movzx   eax, byte [rax]
-        test    al, al
-        jne     L_003
-        nop
+        mov     byte [rax], 0
+        mov     rax, qword [rbp-8H]
         leave
         ret
 
@@ -132,28 +63,32 @@ L_010:  mov     eax, dword [rbp-4H]
 main:
         push    rbp
         mov     rbp, rsp
-        sub     rsp, 32
+        add     rsp, -128
 
 
         mov     rax, qword [fs:abs 28H]
         mov     qword [rbp-8H], rax
         xor     eax, eax
-        lea     rax, [rbp-20H]
+        lea     rax, [rbp-80H]
         mov     rsi, rax
-        mov     edi, L_012
+        mov     edi, L_004
         mov     eax, 0
         call    __isoc99_scanf
-        lea     rax, [rbp-20H]
+        lea     rax, [rbp-80H]
+        mov     edx, 3
+        mov     esi, 1
         mov     rdi, rax
-        call    print
+        call    stringsubstring
+        mov     rdi, rax
+        call    puts
         mov     eax, 0
-        mov     rdx, qword [rbp-8H]
+        mov     rcx, qword [rbp-8H]
 
 
-        xor     rdx, qword [fs:abs 28H]
-        jz      L_011
+        xor     rcx, qword [fs:abs 28H]
+        jz      L_003
         call    __stack_chk_fail
-L_011:  leave
+L_003:  leave
         ret
 
 
@@ -166,7 +101,7 @@ SECTION .bss
 
 SECTION .rodata 
 
-L_012:
+L_004:
         db 25H, 73H, 00H
 
 

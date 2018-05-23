@@ -12,8 +12,9 @@ public class Ir {
     public List<String> SC = new ArrayList<>();
 
     public GlobalAddr add(VarDef t) {
+        t.name = t.name + "__";
         GV.add(t);
-        return new GlobalAddr(t.name ,false);
+        return new GlobalAddr(t.name,false);
     }
     public GlobalAddr add(String t) {
         SC.add(t);
