@@ -4,9 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/compiler/AstBuilder.java" line="169" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -103,7 +101,7 @@
           <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="502">
+                <state relative-caret-position="916">
                   <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
                 </state>
               </provider>
@@ -365,7 +363,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="316" />
     <option name="y" value="94" />
     <option name="width" value="1400" />
@@ -678,12 +676,12 @@
       <workItem from="1526976896378" duration="9734000" />
       <workItem from="1526989800448" duration="1001000" />
       <workItem from="1526994545786" duration="6438000" />
-      <workItem from="1527035408310" duration="7674000" />
+      <workItem from="1527035408310" duration="8129000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="321871000" />
+    <option name="totallyTimeSpent" value="322326000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -695,7 +693,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -1190,7 +1188,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="502">
+        <state relative-caret-position="916">
           <caret line="133" lean-forward="true" selection-start-line="133" selection-end-line="133" />
         </state>
       </provider>
