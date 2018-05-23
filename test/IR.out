@@ -1,184 +1,61 @@
-A is [global Variable]
-
-B is [global Variable]
-
-C is [global Variable]
-
-string__0:
- 
-
-string__1:
- 
-
-main[you need to fix]:
-	qword [A__] 	= 1 [][]
-	qword [B__] 	= 1 [][]
-	qword [C__] 	= 1 [][]
-_1_Label: [][]
-	reg17 	= qword [C__] < 536870912 [][]
-	jump _5_Label if reg17 je 1[ [][]
-	reg16 	= 0 [][]
-	jump _6_Label [][]
-_5_Label: [][]
-	reg19 	= 536870912 [][]
-	- reg19 [][]
-	reg18 	= qword [C__] > reg19 [][]
-	reg16 	= reg18 [][]
-_6_Label: [][]
-	jump _2_Label if reg16 je 1[ [][]
-	jump _4_Label [][]
-_2_Label: [][]
-	reg28 	= qword [C__] - qword [A__] [][]
-	reg27 	= reg28 + qword [B__] [][]
-	reg29 	= qword [A__] + qword [B__] [][]
-	reg26 	= reg27 - reg29 [][]
-	reg25 	= reg26 + reg26 [][]
-	reg30 	= reg26 + reg27 [][]
-	reg24 	= reg25 + reg30 [][]
-	reg33 	= reg29 + reg27 [][]
-	reg32 	= reg33 - reg29 [][]
-	reg31 	= reg32 + reg30 [][]
-	reg23 	= reg24 - reg31 [][]
-	reg36 	= reg33 - reg33 [][]
-	reg35 	= reg36 - reg32 [][]
-	reg37 	= reg30 - reg32 [][]
-	reg34 	= reg35 + reg37 [][]
-	reg22 	= reg23 - reg34 [][]
-	reg39 	= reg31 - reg31 [][]
-	reg38 	= reg23 - reg39 [][]
-	reg21 	= reg22 + reg38 [][]
-	reg42 	= reg37 + reg37 [][]
-	reg41 	= reg34 + reg42 [][]
-	reg40 	= reg41 + reg38 [][]
-	reg20 	= reg21 - reg40 [][]
-	qword [A__] 	= reg20 [][]
-	reg51 	= qword [C__] - qword [A__] [][]
-	reg50 	= reg51 + qword [B__] [][]
-	reg52 	= qword [A__] + qword [B__] [][]
-	reg49 	= reg50 - reg52 [][]
-	reg48 	= reg49 + reg49 [][]
-	reg53 	= reg49 + reg50 [][]
-	reg47 	= reg48 + reg53 [][]
-	reg56 	= reg52 + reg50 [][]
-	reg55 	= reg56 - reg52 [][]
-	reg54 	= reg55 + reg53 [][]
-	reg46 	= reg47 - reg54 [][]
-	reg59 	= reg56 - reg56 [][]
-	reg58 	= reg59 - reg55 [][]
-	reg60 	= reg53 - reg55 [][]
-	reg57 	= reg58 + reg60 [][]
-	reg45 	= reg46 - reg57 [][]
-	reg62 	= reg54 - reg54 [][]
-	reg61 	= reg46 - reg62 [][]
-	reg44 	= reg45 + reg61 [][]
-	reg65 	= reg60 + reg60 [][]
-	reg64 	= reg57 + reg65 [][]
-	reg63 	= reg64 + reg61 [][]
-	reg43 	= reg44 - reg63 [][]
-	qword [B__] 	= reg43 [][]
-	reg74 	= qword [C__] - qword [A__] [][]
-	reg73 	= reg74 + qword [B__] [][]
-	reg75 	= qword [A__] + qword [B__] [][]
-	reg72 	= reg73 - reg75 [][]
-	reg71 	= reg72 + reg72 [][]
-	reg76 	= reg72 + reg73 [][]
-	reg70 	= reg71 + reg76 [][]
-	reg79 	= reg75 + reg73 [][]
-	reg78 	= reg79 - reg75 [][]
-	reg77 	= reg78 + reg76 [][]
-	reg69 	= reg70 - reg77 [][]
-	reg82 	= reg79 - reg79 [][]
-	reg81 	= reg82 - reg78 [][]
-	reg83 	= reg76 - reg78 [][]
-	reg80 	= reg81 + reg83 [][]
-	reg68 	= reg69 - reg80 [][]
-	reg85 	= reg77 - reg77 [][]
-	reg84 	= reg69 - reg85 [][]
-	reg67 	= reg68 + reg84 [][]
-	reg88 	= reg83 + reg83 [][]
-	reg87 	= reg80 + reg88 [][]
-	reg86 	= reg87 + reg84 [][]
-	reg66 	= reg67 - reg86 [][]
-	qword [C__] 	= reg66 [][]
-
-		rdi 	= qword [A__] [][]
-		call toString[size : 1] [][]
-		reg89 	= rax [][]
-
-
-		rdi 	= reg89 [][]
-		call println[size : 1] [][]
-		reg90 	= rax [][]
-
-
-		rdi 	= qword [B__] [][]
-		call toString[size : 1] [][]
-		reg91 	= rax [][]
-
-
-		rdi 	= reg91 [][]
-		call println[size : 1] [][]
-		reg92 	= rax [][]
-
-
-		rdi 	= qword [C__] [][]
-		call toString[size : 1] [][]
-		reg93 	= rax [][]
-
-
-		rdi 	= reg93 [][]
-		call println[size : 1] [][]
-		reg94 	= rax [][]
-
-_3_Label: [][]
-	jump _1_Label [][]
-_4_Label: [][]
-
-		rdi 	= qword [A__] [][]
-		call toString[size : 1] [][]
-		reg95 	= rax [][]
-
-
-		rsi 	= string__0 [][]
-		rdi 	= reg95 [][]
-		call String_add[size : 2] [][]
-		reg96 	= rax [][]
-
-
-		rdi 	= qword [B__] [][]
-		call toString[size : 1] [][]
-		reg97 	= rax [][]
-
-
-		rsi 	= reg97 [][]
-		rdi 	= reg96 [][]
-		call String_add[size : 2] [][]
-		reg98 	= rax [][]
-
-
-		rsi 	= string__1 [][]
-		rdi 	= reg98 [][]
-		call String_add[size : 2] [][]
-		reg99 	= rax [][]
-
-
-		rdi 	= qword [C__] [][]
-		call toString[size : 1] [][]
-		reg100 	= rax [][]
-
-
-		rsi 	= reg100 [][]
-		rdi 	= reg99 [][]
-		call String_add[size : 2] [][]
-		reg101 	= rax [][]
-
-
-		rdi 	= reg101 [][]
-		call println[size : 1] [][]
-		reg102 	= rax [][]
-
-	rax 	= 0 [][]
+a[you need to fix]:
+	reg16 	= rdi [][]
+	reg17 	= rsi [][]
+	reg18 	= rdx [][]
+	reg19 	= rcx [][]
+	reg20 	= r8 [][]
+	reg21 	= r9 [][]
+	reg35 	= reg16 + reg17 [][]
+	reg34 	= reg35 + reg18 [][]
+	reg33 	= reg34 + reg19 [][]
+	reg32 	= reg33 + reg20 [][]
+	reg31 	= reg32 + reg21 [][]
+	reg30 	= reg31 + qword [rbp + 16] [][]
+	reg29 	= reg30 + qword [rbp + 24] [][]
+	reg28 	= reg29 + qword [rbp + 32] [][]
+	reg27 	= reg28 + qword [rbp + 40] [][]
+	reg26 	= reg27 + qword [rbp + 48] [][]
+	reg25 	= reg26 + qword [rbp + 56] [][]
+	reg24 	= reg25 + qword [rbp + 64] [][]
+	reg23 	= reg24 + qword [rbp + 72] [][]
+	reg22 	= reg23 + qword [rbp + 80] [][]
+	rax 	= reg22 [][]
 	jump _0_Label [][]
 _0_Label: [][]
+
+
+main[you need to fix]:
+
+		qword [rsp + 64] 	= 15 [][]
+		qword [rsp + 56] 	= 14 [][]
+		qword [rsp + 48] 	= 13 [][]
+		qword [rsp + 40] 	= 12 [][]
+		qword [rsp + 32] 	= 11 [][]
+		qword [rsp + 24] 	= 10 [][]
+		qword [rsp + 16] 	= 9 [][]
+		qword [rsp + 8] 	= 8 [][]
+		qword [rsp] 	= 7 [][]
+		r9 	= 6 [][]
+		r8 	= 5 [][]
+		rcx 	= 4 [][]
+		rdx 	= 3 [][]
+		rsi 	= 2 [][]
+		rdi 	= 1 [][]
+		call a[size : 15] [][]
+		reg16 	= rax [][]
+
+
+		rdi 	= reg16 [][]
+		call toString[size : 1] [][]
+		reg17 	= rax [][]
+
+
+		rdi 	= reg17 [][]
+		call println[size : 1] [][]
+		reg18 	= rax [][]
+
+	rax 	= 0 [][]
+	jump _1_Label [][]
+_1_Label: [][]
 
 

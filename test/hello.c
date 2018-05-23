@@ -1,17 +1,20 @@
 #include<stdio.h>
 
-char* stringsubstring(char *s, int a, int b) {
+int parseInt(char *s) {
 	char *c = malloc(256);
-	int t = b - a + 1, i;
-	for (i = 0; i < t; ++i) c[i] = s[i + a];
-	c[t] = 0;
-	return c;
+	int t = 0, x = 0;
+	while (s[t] != 0 && !(s[t] >= 0 && s[t] <= '9')) ++t;
+	while (s[t] >= '0' && s[t] <= '9') {
+		x = x * 10 + s[t] - '0';
+		++t;
+	}
+	return x;
 }
 
 
 int main(){
 	char s[111];
 	scanf("%s", s);
-	puts(stringsubstring(s, 1, 3));
+	printf("%d\n", parseInt(s));
 	//puts();
 }

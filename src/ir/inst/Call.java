@@ -10,7 +10,9 @@ import java.util.List;
 
 public class Call extends Inst {
     public List<Inst> Insts = new ArrayList<>();
+    public int size;
     public Call(String _name, List<Operand> param, Operand dest) {
+        size = param.size();
         for (int i = 0; i < param.size(); ++i) {
             Operand t = param.get(i);
             if (i < 6) Insts.add(new Move(X86Reg.getparam(i), t));
