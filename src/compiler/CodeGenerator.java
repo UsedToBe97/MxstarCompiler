@@ -1,5 +1,6 @@
 package compiler;
 
+import ast.definition.VarDef;
 import ir.Func;
 import ir.Ir;
 import ir.inst.*;
@@ -26,6 +27,11 @@ public class CodeGenerator {
         ans += "extern puts\n";
         ans += "extern __stack_chk_fail\n";
         ans += "extern malloc\n";
+
+        ans += "section .data\n";
+        for (VarDef u : rt.GV) ans += u.name + ":\n\tdq\t0\n";
+
+
         ans += "section .text\n";
 
         for (Func u : rt.Funcs) {

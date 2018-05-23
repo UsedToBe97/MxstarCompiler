@@ -3,65 +3,19 @@ global main
 extern puts
 extern __stack_chk_fail
 extern malloc
+section .data
+x:
+	dq	0
 section .text
 main:
 	push	rbp
 	mov	rbp, rsp
-	sub	rsp, 72
+	sub	rsp, 0
 	mov	rax, 10
-	mov	qword [rbp - 8], rax
-	mov	rax, 0
-	mov	qword [rbp - 16], rax
-	mov	rax, 1
-	mov	qword [rbp - 24], rax
-Label_4:
-	mov	rcx, qword [rbp - 24]
-	cmp	rcx, qword [rbp - 8]
-	setle	cl
-	movzx	rcx, cl
-	mov	qword [rbp - 32], rcx
-	cmp	qword [rbp - 32], 1
-	je	Label_3
-	jmp	Label_2
-Label_3:
-	mov	rdx, qword [rbp - 16]
-	add	rdx, qword [rbp - 24]
-	mov	qword [rbp - 40], rdx
-	mov	rax, qword [rbp - 40]
-	mov	qword [rbp - 16], rax
-Label_1:
-	mov	rdx, qword [rbp - 24]
-	add	rdx, 1
-	mov	qword [rbp - 24], rdx
-	jmp	Label_4
-Label_2:
-	mov	rax, 1
-	mov	qword [rbp - 48], rax
-Label_8:
-	mov	rcx, qword [rbp - 48]
-	cmp	rcx, qword [rbp - 8]
-	setle	cl
-	movzx	rcx, cl
-	mov	qword [rbp - 56], rcx
-	cmp	qword [rbp - 56], 1
-	je	Label_7
-	jmp	Label_6
-Label_7:
-	mov	rdx, qword [rbp - 16]
-	add	rdx, 10
-	mov	qword [rbp - 72], rdx
-	mov	rdx, qword [rbp - 72]
-	add	rdx, qword [rbp - 48]
-	mov	qword [rbp - 64], rdx
-	mov	rax, qword [rbp - 64]
-	mov	qword [rbp - 16], rax
-Label_5:
-	mov	rdx, qword [rbp - 48]
-	add	rdx, 1
-	mov	qword [rbp - 48], rdx
-	jmp	Label_8
-Label_6:
-	mov	rax, qword [rbp - 16]
+	mov	qword [ x ], rax
+	mov	rax, 20
+	mov	qword [ x ], rax
+	mov	rax, qword [ x ]
 	jmp	Label_0
 Label_0:
 	mov	rsp, rbp

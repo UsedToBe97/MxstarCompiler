@@ -1,22 +1,15 @@
+int x = 10;
 int main() {
-    int n = 10;
-    int sum = 0;
-    int i;
-    for (i = 1; i <= n; ++i) {
-		sum = sum + i;
-	}
-    int j;
-    for (j = 1; j <= n; ++j) {
-		sum = sum + 10 + j;
-	}
-    return sum;
+    x = 20;
+    return x;
 }
+
 
 
 
 /*!! metadata:
 === comment ===
-loop2.mx
+symtable2.mx
 === assert ===
 exitcode
 === timeout ===
@@ -28,6 +21,6 @@ codegen pretest
 === is_public ===
 True
 === exitcode ===
-210
+20
 
 !!*/

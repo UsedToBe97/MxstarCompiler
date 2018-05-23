@@ -1,33 +1,9 @@
+x [GV]
 
 
 main [Func]:
-	r16 = 10
-	r17 = 0
-	r18 = 1
-Label_4:
-	r19 = r18 <= r16
-	jump Label_3 if r19 je 1
-	jump Label_2
-Label_3:
-	r20 = r17 + r18
-	r17 = r20
-Label_1:
-	r18 = r18 + 1
-	jump Label_4
-Label_2:
-	r21 = 1
-Label_8:
-	r22 = r21 <= r16
-	jump Label_7 if r22 je 1
-	jump Label_6
-Label_7:
-	r24 = r17 + 10
-	r23 = r24 + r21
-	r17 = r23
-Label_5:
-	r21 = r21 + 1
-	jump Label_8
-Label_6:
-	rax = r17
+	qword [ x ] = 10
+	qword [ x ] = 20
+	rax = qword [ x ]
 	jump Label_0
 Label_0:

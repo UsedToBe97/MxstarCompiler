@@ -85,6 +85,8 @@ public class IrBuilder {
             Def t = x.paramList.get(i);
             nowfunc.defMap.put(t.getname(), t.addr);
         }
+        if (x.name.equals("main"))
+            for (VarDef u : vdExpr) visit(u);
         x.stmts.forEach(xx -> visit(xx));
         nowfunc.addInst(returnLabel);
         nowclass = "";
