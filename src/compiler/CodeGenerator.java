@@ -23,7 +23,11 @@ public class CodeGenerator {
     public String ans = "";
     void translate(Ir rt) {
         ans += "global main\n\n";
+        ans += "extern puts\n";
+        ans += "extern __stack_chk_fail\n";
+        ans += "extern malloc\n";
         ans += "section .text\n";
+
         for (Func u : rt.Funcs) {
             nowfunc = u;
             nowfunc.size = nowfunc.num > 16 ? nowfunc.num - 16 : 0;
@@ -33,6 +37,7 @@ public class CodeGenerator {
             for (Inst v : u.Insts) visit(v);
             exitFunc();
         }
+        Builtin();
     }
     public void enterFunc() {
         ans += "\tpush\trbp\n";
@@ -174,4 +179,96 @@ public class CodeGenerator {
 
         return x;
     }
+    public void Builtin() {
+        //toString
+        ans += "toString:\n";
+        ans += "\tpush    rbp\n";
+        ans += "\tmov     rbp, rsp\n";
+        ans += "\tsub     rsp, 1088\n";
+        ans += "\tmov     dword [rbp-434H], edi\n";
+
+
+        ans += "\tmov     rax, qword [fs:abs 28H]\n";
+        ans += "\tmov     qword [rbp-8H], rax\n";
+        ans += "\txor     eax, eax\n";
+        ans += "\tmov     edi, 256\n";
+        ans += "\tcall    malloc\n";
+        ans += "\tmov     qword [rbp-418H], rax\n";
+        ans += "\tmov     dword [rbp-424H], 0\n";
+        ans += "\tmov     dword [rbp-420H], 0\n";
+        ans += "\tjmp     L_002\n";
+
+        ans += "L_001:  mov     ecx, dword [rbp-434H]\n";
+        ans += "\tmov     edx, 1717986919\n";
+        ans += "\tmov     eax, ecx\n";
+        ans += "\timul    edx\n";
+        ans += "\tsar     edx, 2\n";
+        ans += "\tmov     eax, ecx\n";
+        ans += "\tsar     eax, 31\n";
+        ans += "\tsub     edx, eax\n";
+        ans += "\tmov     eax, edx\n";
+        ans += "\tshl     eax, 2\n";
+        ans += "\tadd     eax, edx\n";
+        ans += "\tadd     eax, eax\n";
+        ans += "\tsub     ecx, eax\n";
+        ans += "\tmov     eax, ecx\n";
+        ans += "\tmov     dword [rbp-41CH], eax\n";
+        ans += "\tmov     ecx, dword [rbp-434H]\n";
+        ans += "\tmov     edx, 1717986919\n";
+        ans += "\tmov     eax, ecx\n";
+        ans += "\timul    edx\n";
+        ans += "\tsar     edx, 2\n";
+        ans += "\tmov     eax, ecx\n";
+        ans += "\tsar     eax, 31\n";
+        ans += "\tsub     edx, eax\n";
+        ans += "\tmov     eax, edx\n";
+        ans += "\tmov     dword [rbp-434H], eax\n";
+        ans += "\tmov     eax, dword [rbp-424H]\n";
+        ans += "\tlea     edx, [rax+1H]\n";
+        ans += "\tmov     dword [rbp-424H], edx\n";
+        ans += "\t        cdqe\n";
+        ans += "\tmov     edx, dword [rbp-41CH]\n";
+        ans += "\tmov     dword [rbp+rax*4-410H], edx\n";
+        ans += "L_002:  cmp     dword [rbp-434H], 0\n";
+        ans += "\tjnz     L_001\n";
+        ans += "\tmov     dword [rbp-420H], 0\n";
+        ans += "\tjmp     L_004\n";
+
+        ans += "L_003:  mov     eax, dword [rbp-420H]\n";
+        ans += "\tmovsxd  rdx, eax\n";
+        ans += "\tmov     rax, qword [rbp-418H]\n";
+        ans += "\tadd     rdx, rax\n";
+        ans += "\tmov     eax, dword [rbp-424H]\n";
+        ans += "\tsub     eax, 1\n";
+        ans += "\tsub     eax, dword [rbp-420H]\n";
+        ans += "\tcdqe\n";
+        ans += "\tmov     eax, dword [rbp+rax*4-410H]\n";
+        ans += "\tadd     eax, 48\n";
+        ans += "\tmov     byte [rdx], al\n";
+        ans += "\tadd     dword [rbp-420H], 1\n";
+        ans += "L_004:  mov     eax, dword [rbp-420H]\n";
+        ans += "\tcmp     eax, dword [rbp-424H]\n";
+        ans += "\tjl      L_003\n";
+        ans += "\tmov     eax, dword [rbp-424H]\n";
+        ans += "\tmovsxd  rdx, eax\n";
+        ans += "\tmov     rax, qword [rbp-418H]\n";
+        ans += "\tadd     rax, rdx\n";
+        ans += "\tmov     byte [rax], 0\n";
+        ans += "\tmov     rax, qword [rbp-418H]\n";
+        ans += "\tmov     rsi, qword [rbp-8H]\n";
+
+
+        ans += "\txor     rsi, qword [fs:abs 28H]\n";
+        ans += "\tjz      L_005\n";
+        ans += "\tcall    __stack_chk_fail\n";
+        ans += "L_005:  leave\n";
+        ans += "\tret\n\n";
+
+        //println
+        ans += "println:\n";
+        ans += "\tcall puts\n";
+        ans += "\tret\n\n";
+
+    }
+
 }

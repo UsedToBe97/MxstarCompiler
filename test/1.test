@@ -2,9 +2,15 @@ int main() {
     int n = 10;
     int sum = 0;
     int i;
-    for (i = 1; i <= n; ++i) sum = sum + i;
+    for (i = 1; i <= n; ++i) {
+		sum = sum + i;
+		println(toString(sum));
+	}
     int j;
-    for (j = 1; j <= n; ++j) sum = sum + 10 + j;
+    for (j = 1; j <= n; ++j) {
+		sum = sum + 10 + j;
+		println(toString(sum));
+	}
     return sum;
 }
 
