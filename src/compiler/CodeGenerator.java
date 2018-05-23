@@ -128,8 +128,10 @@ public class CodeGenerator {
     public void visit(Move x) {
         x.dest = getOp(x.dest);
         x.src = getOp(x.src);
-        ans += "\tmov\trax, " + x.src.toString() + "\n";
-        ans += "\tmov\t" + x.dest.toString() + ", rax\n";
+        if (!x.src.toString().equals("rax"))
+            ans += "\tmov\trax, " + x.src.toString() + "\n";
+        if (!x.dest.toString().equals("rax"))
+            ans += "\tmov\t" + x.dest.toString() + ", rax\n";
     }
 
     public void visit(UnaryOp x) {

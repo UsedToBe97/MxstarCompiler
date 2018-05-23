@@ -1,50 +1,33 @@
 
 
 main [Func]:
-	r16 = 5
+	r16 = 10
 	r17 = 0
-	r20 = r17 != 0
-	jump Label_4 if r20 je 1
-	r19 = 0
-	jump Label_5
+	r18 = 1
 Label_4:
-	r22 = r16 / r17
-	r21 = r22 != 1
-	r19 = r21
-Label_5:
-	jump Label_2 if r19 je 1
-	jump Label_3
-Label_2:
-	r18 = 10
-	jump Label_1
+	r19 = r18 <= r16
+	jump Label_3 if r19 je 1
+	jump Label_2
 Label_3:
-	r18 = 20
+	r20 = r17 + r18
+	r17 = r20
 Label_1:
-	r25 = r18 == 10
-	jump Label_9 if r25 je 1
-	r24 = 0
-	jump Label_10
-Label_9:
-	r27 = r16 / r17
-	r26 = r27 == 0
-	r24 = r26
-Label_10:
-	jump Label_11 if r24 je 1
-	r23 = 0
-	jump Label_12
-Label_11:
-	r28 = r16 == 5
-	r23 = r28
-Label_12:
-	r29 = r23
-	! r29
-	jump Label_7 if r29 je 1
-	jump Label_8
-Label_7:
-	r18 = 30
-	jump Label_6
+	r18 = r18 + 1
+	jump Label_4
+Label_2:
+	r21 = 1
 Label_8:
+	r22 = r21 <= r16
+	jump Label_7 if r22 je 1
+	jump Label_6
+Label_7:
+	r24 = r17 + 10
+	r23 = r24 + r21
+	r17 = r23
+Label_5:
+	r21 = r21 + 1
+	jump Label_8
 Label_6:
-	rax = r18
+	rax = r17
 	jump Label_0
 Label_0:
