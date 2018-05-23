@@ -53,15 +53,15 @@ public class ForStmt extends Stmt {
             s += "\t";
         }
         ss = s + "\t";
-        System.out.println(s + "ForStmt");
-        System.out.println(ss + "Expr1: with type " + types.get(0).typename());
+        System.err.println(s + "ForStmt");
+        System.err.println(ss + "Expr1: with type " + types.get(0).typename());
         exprs.get(0).output(dep + 1);
-        System.out.println(ss + "Expr2: with type " + types.get(1).typename());
+        System.err.println(ss + "Expr2: with type " + types.get(1).typename());
         exprs.get(1).output(dep + 1);
-        System.out.println(ss + "Expr3: with type " + types.get(2).typename());
+        System.err.println(ss + "Expr3: with type " + types.get(2).typename());
         exprs.get(2).output(dep + 1);
         if (stmt != null) stmt.output(dep + 1);
-        System.out.println(s + "EndForStmt");
+        System.err.println(s + "EndForStmt");
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

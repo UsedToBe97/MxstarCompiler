@@ -11,33 +11,21 @@ Label_4:
 Label_3:
 	r20 = r17 + r18
 	r17 = r20
-		rdi = r17
-		FuncCall toString Param_size : 1
-		r21 = rax
-		rdi = r21
-		FuncCall println Param_size : 1
-		r22 = rax
 Label_1:
 	r18 = r18 + 1
 	jump Label_4
 Label_2:
-	r23 = 1
+	r21 = 1
 Label_8:
-	r24 = r23 <= r16
-	jump Label_7 if r24 je 1
+	r22 = r21 <= r16
+	jump Label_7 if r22 je 1
 	jump Label_6
 Label_7:
-	r26 = r17 + 10
-	r25 = r26 + r23
-	r17 = r25
-		rdi = r17
-		FuncCall toString Param_size : 1
-		r27 = rax
-		rdi = r27
-		FuncCall println Param_size : 1
-		r28 = rax
+	r24 = r17 + 10
+	r23 = r24 + r21
+	r17 = r23
 Label_5:
-	r23 = r23 + 1
+	r21 = r21 + 1
 	jump Label_8
 Label_6:
 	rax = r17
