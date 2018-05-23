@@ -218,6 +218,10 @@ public class IrBuilder {
             } else if (t instanceof ArrayType) {
                 x.name = "array." + x.name;
             }
+        } else if (x.exprList.size() > 0 && x.exprList.get(0) instanceof IDExpr) {
+            if (((IDExpr) x.exprList.get(0)).name.equals("this")) {
+                x.name = nowclass + "." + x.name;
+            }
         }
         for (Expr e : x.exprList) {
             visit(e);
