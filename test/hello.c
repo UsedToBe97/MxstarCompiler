@@ -1,17 +1,16 @@
-char *toString(int a) {
-	char *s = malloc(256);
-	int len = 0, i = 0;
-	int tmp[256];
-	while (a) {
-		int b = a % 10;
-		a /= 10;
-		tmp[len++] = b;
-	}
-	for (i = 0; i < len; ++i) s[i] = tmp[len - 1 - i] + '0';
-	s[len] = 0;
-	return s;
+#include<stdio.h>
+char *stringadd(char *a, char *b) {
+	char *c = malloc(256);
+	int la = 0, lb = 0, i;
+	while (a[la] != 0) ++la;
+	while (b[lb] != 0) ++lb;
+	for (i = 0; i < la; ++i) c[i] = a[i];
+	for (i = la; i < la + lb; ++i) c[i] = b[i - la];
+	c[la + lb] = 0;
+	return c;	
 }
 int main(){
-	int a=233;
-	puts(toString(a));
+	char a[111],b[111];
+	scanf("%s%s",a,b);
+	puts(stringadd(a,b));
 }

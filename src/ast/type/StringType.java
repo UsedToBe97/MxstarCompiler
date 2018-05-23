@@ -12,6 +12,7 @@ public class StringType extends Type{
     }
     public StringType(TerminalNode ctx) {
         data = ctx.getText();
+        data = data.substring(1, data.length() - 1);
         pos = new Position(ctx.getSymbol());
     }
 }

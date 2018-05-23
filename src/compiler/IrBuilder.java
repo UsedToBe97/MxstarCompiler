@@ -153,6 +153,17 @@ public class IrBuilder {
 
     public void visit(BinaryExpr x) {
         x.operand = nowfunc.newReg();
+        if (x.op.equals("+") && x.expr1.gettype() instanceof StringType && x.expr2.gettype() instanceof StringType) {
+            x.operand = nowfunc.newReg();
+            List<Operand> params = new ArrayList<>();
+            visit(x.expr1);
+            visit(x.expr2);
+            params.add(x.expr1.operand);
+            params.add(x.expr2.operand);
+            Call call = new Call("string.add", params, x.operand);
+            nowfunc.addInst(call);
+            return;
+        }
         visit(x.expr1);
         if (x.op.equals("||")) {
             Label okLabel = new Label(), toLabel = new Label();
@@ -197,6 +208,17 @@ public class IrBuilder {
 
     public void visit(FuncExpr x) {
         List<Operand> params = new ArrayList<>();
+        if (x.isMemFunc) {
+            //System.err.println(tmp);
+            Type t = x.exprList.get(0).gettype();
+            if (t instanceof ClassType) {
+                x.name = ((ClassType) t).name + "." + x.name;
+            } else if (t instanceof StringType) {
+                x.name = "string." + x.name;
+            } else if (t instanceof ArrayType) {
+                x.name = "array." + x.name;
+            }
+        }
         for (Expr e : x.exprList) {
             visit(e);
             params.add(e.operand);
