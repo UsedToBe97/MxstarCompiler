@@ -107,7 +107,7 @@ class MyVisitor extends MxstarBaseVisitor<atom>
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        boolean Submit = false;
+        boolean Submit = true;
         String inputFile;
         if (Submit == false) inputFile = "D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/1.test";
         else inputFile = "program.txt";
@@ -142,7 +142,7 @@ public class Main {
         CodeGenerator cg = new CodeGenerator();
         cg.translate(ir);
         if (Submit == false) {
-            File f = new File("D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/MY_X86.out");
+            File f = new File("D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/try.asm");
             PrintStream fout = new PrintStream(new FileOutputStream(f));
             fout.print(cg.ans);
         }
