@@ -9,27 +9,539 @@ extern printf
 extern gets
 extern __isoc99_scanf
 section .data
+	dq	1
+str__0:
+	db	32, 0
+	dq	2
+str__1:
+	db	92, 110, 0
+n__:
+	dq	0
+a__:
+	dq	0
 section .text
+exchange:
+	push	rbp
+	mov	rbp, rsp
+	sub	rsp, 56
+	mov	rax, rdi
+	mov	qword [rbp - 8], rax
+	mov	rax, rsi
+	mov	qword [rbp - 16], rax
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 24], rax
+	mov	rbx, qword [rbp - 8]
+	imul	rbx, 8
+	add	rbx, qword [rbp - 24]
+	mov	rax, qword [rbx]
+	mov	qword [rbp - 32], rax
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 40], rax
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 48], rax
+	mov	rbx, qword [rbp - 16]
+	imul	rbx, 8
+	add	rbx, qword [rbp - 48]
+	mov	rax, qword [rbx]
+	mov	rbx, qword [rbp - 8]
+	imul	rbx, 8
+	add	rbx, qword [rbp - 40]
+	mov	qword [rbx], rax
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 56], rax
+	mov	rax, qword [rbp - 32]
+	mov	rbx, qword [rbp - 16]
+	imul	rbx, 8
+	add	rbx, qword [rbp - 56]
+	mov	qword [rbx], rax
+Label_0:
+	mov	rsp, rbp
+	pop	rbp
+	ret
+makeHeap:
+	push	rbp
+	mov	rbp, rsp
+	sub	rsp, 192
+	mov	rdx, qword [ n__ ]
+	sub	rdx, 1
+	mov	qword [rbp - 40], rdx
+	mov	rax, qword [rbp - 40]
+	mov	rcx, 2
+	cqo
+	idiv	rcx
+	mov	qword [rbp - 32], rax
+	mov	rax, qword [rbp - 32]
+	mov	qword [rbp - 8], rax
+	mov	rax, 0
+	mov	qword [rbp - 16], rax
+	mov	rax, 0
+	mov	qword [rbp - 24], rax
+Label_5:
+	mov	rcx, qword [rbp - 8]
+	cmp	rcx, 0
+	setge	cl
+	movzx	rcx, cl
+	mov	qword [rbp - 48], rcx
+	cmp	qword [rbp - 48], 1
+	je	Label_4
+	jmp	Label_3
+Label_4:
+	mov	rdx, qword [rbp - 8]
+	imul	rdx, 2
+	mov	qword [rbp - 56], rdx
+	mov	rax, qword [rbp - 56]
+	mov	qword [rbp - 24], rax
+	mov	rdx, qword [rbp - 8]
+	imul	rdx, 2
+	mov	qword [rbp - 88], rdx
+	mov	rdx, qword [rbp - 88]
+	add	rdx, 1
+	mov	qword [rbp - 80], rdx
+	mov	rcx, qword [rbp - 80]
+	cmp	rcx, qword [ n__ ]
+	setl	cl
+	movzx	rcx, cl
+	mov	qword [rbp - 72], rcx
+	cmp	qword [rbp - 72], 1
+	je	Label_9
+	mov	rax, 0
+	mov	qword [rbp - 64], rax
+	jmp	Label_10
+Label_9:
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 104], rax
+	mov	rdx, qword [rbp - 8]
+	imul	rdx, 2
+	mov	qword [rbp - 120], rdx
+	mov	rdx, qword [rbp - 120]
+	add	rdx, 1
+	mov	qword [rbp - 112], rdx
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 128], rax
+	mov	rdx, qword [rbp - 8]
+	imul	rdx, 2
+	mov	qword [rbp - 136], rdx
+	mov	r10, qword [rbp - 112]
+	imul	r10, 8
+	add	r10, qword [rbp - 104]
+	mov	r11, qword [rbp - 136]
+	imul	r11, 8
+	add	r11, qword [rbp - 128]
+	mov	rcx, qword [r10]
+	cmp	rcx, qword [r11]
+	setl	cl
+	movzx	rcx, cl
+	mov	qword [rbp - 96], rcx
+	mov	rax, qword [rbp - 96]
+	mov	qword [rbp - 64], rax
+Label_10:
+	cmp	qword [rbp - 64], 1
+	je	Label_7
+	jmp	Label_8
+Label_7:
+	mov	rdx, qword [rbp - 8]
+	imul	rdx, 2
+	mov	qword [rbp - 152], rdx
+	mov	rdx, qword [rbp - 152]
+	add	rdx, 1
+	mov	qword [rbp - 144], rdx
+	mov	rax, qword [rbp - 144]
+	mov	qword [rbp - 24], rax
+	jmp	Label_6
+Label_8:
+Label_6:
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 168], rax
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 176], rax
+	mov	r10, qword [rbp - 8]
+	imul	r10, 8
+	add	r10, qword [rbp - 168]
+	mov	r11, qword [rbp - 24]
+	imul	r11, 8
+	add	r11, qword [rbp - 176]
+	mov	rcx, qword [r10]
+	cmp	rcx, qword [r11]
+	setg	cl
+	movzx	rcx, cl
+	mov	qword [rbp - 160], rcx
+	cmp	qword [rbp - 160], 1
+	je	Label_12
+	jmp	Label_13
+Label_12:
+	mov	rax, qword [rbp - 8]
+	mov	rdi, rax
+	mov	rax, qword [rbp - 24]
+	mov	rsi, rax
+	call	exchange
+	mov	qword [rbp - 184], rax
+	jmp	Label_11
+Label_13:
+Label_11:
+	mov	rdx, qword [rbp - 8]
+	sub	rdx, 1
+	mov	qword [rbp - 192], rdx
+	mov	rax, qword [rbp - 192]
+	mov	qword [rbp - 8], rax
+Label_2:
+	jmp	Label_5
+Label_3:
+	mov	rax, 0
+	jmp	Label_1
+Label_1:
+	mov	rsp, rbp
+	pop	rbp
+	ret
+adjustHeap:
+	push	rbp
+	mov	rbp, rsp
+	sub	rsp, 216
+	mov	rax, rdi
+	mov	qword [rbp - 8], rax
+	mov	rax, 0
+	mov	qword [rbp - 16], rax
+	mov	rax, 0
+	mov	qword [rbp - 24], rax
+	mov	rax, 0
+	mov	qword [rbp - 32], rax
+Label_18:
+	mov	rdx, qword [rbp - 16]
+	imul	rdx, 2
+	mov	qword [rbp - 48], rdx
+	mov	rcx, qword [rbp - 48]
+	cmp	rcx, qword [rbp - 8]
+	setl	cl
+	movzx	rcx, cl
+	mov	qword [rbp - 40], rcx
+	cmp	qword [rbp - 40], 1
+	je	Label_17
+	jmp	Label_16
+Label_17:
+	mov	rdx, qword [rbp - 16]
+	imul	rdx, 2
+	mov	qword [rbp - 56], rdx
+	mov	rax, qword [rbp - 56]
+	mov	qword [rbp - 24], rax
+	mov	rdx, qword [rbp - 16]
+	imul	rdx, 2
+	mov	qword [rbp - 88], rdx
+	mov	rdx, qword [rbp - 88]
+	add	rdx, 1
+	mov	qword [rbp - 80], rdx
+	mov	rcx, qword [rbp - 80]
+	cmp	rcx, qword [rbp - 8]
+	setl	cl
+	movzx	rcx, cl
+	mov	qword [rbp - 72], rcx
+	cmp	qword [rbp - 72], 1
+	je	Label_22
+	mov	rax, 0
+	mov	qword [rbp - 64], rax
+	jmp	Label_23
+Label_22:
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 104], rax
+	mov	rdx, qword [rbp - 16]
+	imul	rdx, 2
+	mov	qword [rbp - 120], rdx
+	mov	rdx, qword [rbp - 120]
+	add	rdx, 1
+	mov	qword [rbp - 112], rdx
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 128], rax
+	mov	rdx, qword [rbp - 16]
+	imul	rdx, 2
+	mov	qword [rbp - 136], rdx
+	mov	r10, qword [rbp - 112]
+	imul	r10, 8
+	add	r10, qword [rbp - 104]
+	mov	r11, qword [rbp - 136]
+	imul	r11, 8
+	add	r11, qword [rbp - 128]
+	mov	rcx, qword [r10]
+	cmp	rcx, qword [r11]
+	setl	cl
+	movzx	rcx, cl
+	mov	qword [rbp - 96], rcx
+	mov	rax, qword [rbp - 96]
+	mov	qword [rbp - 64], rax
+Label_23:
+	cmp	qword [rbp - 64], 1
+	je	Label_20
+	jmp	Label_21
+Label_20:
+	mov	rdx, qword [rbp - 16]
+	imul	rdx, 2
+	mov	qword [rbp - 152], rdx
+	mov	rdx, qword [rbp - 152]
+	add	rdx, 1
+	mov	qword [rbp - 144], rdx
+	mov	rax, qword [rbp - 144]
+	mov	qword [rbp - 24], rax
+	jmp	Label_19
+Label_21:
+Label_19:
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 168], rax
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 176], rax
+	mov	r10, qword [rbp - 16]
+	imul	r10, 8
+	add	r10, qword [rbp - 168]
+	mov	r11, qword [rbp - 24]
+	imul	r11, 8
+	add	r11, qword [rbp - 176]
+	mov	rcx, qword [r10]
+	cmp	rcx, qword [r11]
+	setg	cl
+	movzx	rcx, cl
+	mov	qword [rbp - 160], rcx
+	cmp	qword [rbp - 160], 1
+	je	Label_25
+	jmp	Label_26
+Label_25:
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 184], rax
+	mov	rbx, qword [rbp - 16]
+	imul	rbx, 8
+	add	rbx, qword [rbp - 184]
+	mov	rax, qword [rbx]
+	mov	qword [rbp - 192], rax
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 200], rax
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 208], rax
+	mov	rbx, qword [rbp - 24]
+	imul	rbx, 8
+	add	rbx, qword [rbp - 208]
+	mov	rax, qword [rbx]
+	mov	rbx, qword [rbp - 16]
+	imul	rbx, 8
+	add	rbx, qword [rbp - 200]
+	mov	qword [rbx], rax
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 216], rax
+	mov	rax, qword [rbp - 192]
+	mov	rbx, qword [rbp - 24]
+	imul	rbx, 8
+	add	rbx, qword [rbp - 216]
+	mov	qword [rbx], rax
+	mov	rax, qword [rbp - 24]
+	mov	qword [rbp - 16], rax
+	jmp	Label_24
+Label_26:
+	jmp	Label_16
+Label_24:
+Label_15:
+	jmp	Label_18
+Label_16:
+	mov	rax, 0
+	jmp	Label_14
+Label_14:
+	mov	rsp, rbp
+	pop	rbp
+	ret
+heapSort:
+	push	rbp
+	mov	rbp, rsp
+	sub	rsp, 136
+	mov	rax, 0
+	mov	qword [rbp - 8], rax
+	mov	rax, 0
+	mov	qword [rbp - 16], rax
+Label_31:
+	mov	rcx, qword [rbp - 16]
+	cmp	rcx, qword [ n__ ]
+	setl	cl
+	movzx	rcx, cl
+	mov	qword [rbp - 24], rcx
+	cmp	qword [rbp - 24], 1
+	je	Label_30
+	jmp	Label_29
+Label_30:
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 32], rax
+	mov	rax, 0
+	mov	qword [rbp - 40], rax
+	mov	rbx, qword [rbp - 40]
+	imul	rbx, 8
+	add	rbx, qword [rbp - 32]
+	mov	rax, qword [rbx]
+	mov	qword [rbp - 8], rax
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 48], rax
+	mov	rax, 0
+	mov	qword [rbp - 56], rax
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 64], rax
+	mov	rdx, qword [ n__ ]
+	sub	rdx, qword [rbp - 16]
+	mov	qword [rbp - 80], rdx
+	mov	rdx, qword [rbp - 80]
+	sub	rdx, 1
+	mov	qword [rbp - 72], rdx
+	mov	rbx, qword [rbp - 72]
+	imul	rbx, 8
+	add	rbx, qword [rbp - 64]
+	mov	rax, qword [rbx]
+	mov	rbx, qword [rbp - 56]
+	imul	rbx, 8
+	add	rbx, qword [rbp - 48]
+	mov	qword [rbx], rax
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 88], rax
+	mov	rdx, qword [ n__ ]
+	sub	rdx, qword [rbp - 16]
+	mov	qword [rbp - 104], rdx
+	mov	rdx, qword [rbp - 104]
+	sub	rdx, 1
+	mov	qword [rbp - 96], rdx
+	mov	rax, qword [rbp - 8]
+	mov	rbx, qword [rbp - 96]
+	imul	rbx, 8
+	add	rbx, qword [rbp - 88]
+	mov	qword [rbx], rax
+	mov	rdx, qword [ n__ ]
+	sub	rdx, qword [rbp - 16]
+	mov	qword [rbp - 120], rdx
+	mov	rdx, qword [rbp - 120]
+	sub	rdx, 1
+	mov	qword [rbp - 112], rdx
+	mov	rax, qword [rbp - 112]
+	mov	rdi, rax
+	call	adjustHeap
+	mov	qword [rbp - 128], rax
+Label_28:
+	mov	rdx, qword [rbp - 16]
+	add	rdx, 1
+	mov	qword [rbp - 136], rdx
+	mov	rax, qword [rbp - 136]
+	mov	qword [rbp - 16], rax
+	jmp	Label_31
+Label_29:
+	mov	rax, 0
+	jmp	Label_27
+Label_27:
+	mov	rsp, rbp
+	pop	rbp
+	ret
 main:
 	push	rbp
 	mov	rbp, rsp
-	sub	rsp, 24
-	mov	rax, 8
+	sub	rsp, 160
+	call	getString
+	mov	qword [rbp - 16], rax
+	mov	rax, qword [rbp - 16]
+	mov	rdi, rax
+	call	string.parseInt
+	mov	qword [rbp - 24], rax
+	mov	rax, qword [rbp - 24]
+	mov	qword [ n__ ], rax
+	mov	rax, qword [ n__ ]
+	mov	qword [rbp - 32], rax
+	mov	rdx, qword [rbp - 32]
+	add	rdx, 1
+	mov	qword [rbp - 32], rdx
+	mov	rdx, qword [rbp - 32]
+	imul	rdx, 8
+	mov	qword [rbp - 32], rdx
+	mov	rax, qword [rbp - 32]
 	mov	rdi, rax
 	call	malloc
-	mov	qword [rbp - 8], rax
-	mov	rax, qword [rbp - 8]
-	mov	qword [rbp - 16], rax
-	mov	rax, 10
-	mov	rbx, qword [rbp - 16]
+	mov	qword [rbp - 40], rax
+	mov	rax, qword [ n__ ]
+	mov	rbx, qword [rbp - 40]
 	mov	qword [rbx], rax
-	mov	r11, qword [rbp - 16]
-	mov	rdx, 2
-	imul	rdx, qword [r11]
-	mov	qword [rbp - 24], rdx
-	mov	rax, qword [rbp - 24]
-	jmp	Label_0
-Label_0:
+	mov	rdx, qword [rbp - 40]
+	add	rdx, 8
+	mov	qword [rbp - 40], rdx
+	mov	rax, qword [rbp - 40]
+	mov	qword [ a__ ], rax
+	mov	rax, 0
+	mov	qword [rbp - 8], rax
+Label_36:
+	mov	rax, qword [ a__ ]
+	mov	rdi, rax
+	call	array.size
+	mov	qword [rbp - 56], rax
+	mov	rcx, qword [rbp - 8]
+	cmp	rcx, qword [rbp - 56]
+	setl	cl
+	movzx	rcx, cl
+	mov	qword [rbp - 48], rcx
+	cmp	qword [rbp - 48], 1
+	je	Label_35
+	jmp	Label_34
+Label_35:
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 64], rax
+	mov	rax, qword [rbp - 8]
+	mov	rbx, qword [rbp - 8]
+	imul	rbx, 8
+	add	rbx, qword [rbp - 64]
+	mov	qword [rbx], rax
+Label_33:
+	mov	rdx, qword [rbp - 8]
+	add	rdx, 1
+	mov	qword [rbp - 72], rdx
+	mov	rax, qword [rbp - 72]
+	mov	qword [rbp - 8], rax
+	jmp	Label_36
+Label_34:
+	call	makeHeap
+	mov	qword [rbp - 80], rax
+	call	heapSort
+	mov	qword [rbp - 88], rax
+	mov	rax, 0
+	mov	qword [rbp - 8], rax
+Label_40:
+	mov	rax, qword [ a__ ]
+	mov	rdi, rax
+	call	array.size
+	mov	qword [rbp - 104], rax
+	mov	rcx, qword [rbp - 8]
+	cmp	rcx, qword [rbp - 104]
+	setl	cl
+	movzx	rcx, cl
+	mov	qword [rbp - 96], rcx
+	cmp	qword [rbp - 96], 1
+	je	Label_39
+	jmp	Label_38
+Label_39:
+	mov	rax, qword [ a__ ]
+	mov	qword [rbp - 128], rax
+	mov	rbx, qword [rbp - 8]
+	imul	rbx, 8
+	add	rbx, qword [rbp - 128]
+	mov	rax, qword [rbx]
+	mov	rdi, rax
+	call	toString
+	mov	qword [rbp - 136], rax
+	mov	rax, qword [rbp - 136]
+	mov	rdi, rax
+	mov	rax, str__0
+	mov	rsi, rax
+	call	string.add
+	mov	qword [rbp - 120], rax
+	mov	rax, qword [rbp - 120]
+	mov	rdi, rax
+	call	print
+	mov	qword [rbp - 144], rax
+Label_37:
+	mov	rdx, qword [rbp - 8]
+	add	rdx, 1
+	mov	qword [rbp - 152], rdx
+	mov	rax, qword [rbp - 152]
+	mov	qword [rbp - 8], rax
+	jmp	Label_40
+Label_38:
+	mov	rax, str__1
+	mov	rdi, rax
+	call	print
+	mov	qword [rbp - 160], rax
+	mov	rax, 0
+	jmp	Label_32
+Label_32:
 	mov	rsp, rbp
 	pop	rbp
 	ret
@@ -461,7 +973,7 @@ Lsub_002:  mov     eax, dword [rbp-10H]
 	mov     rax, qword [rbp-8H]
 	leave
 	        ret
-parseInt:
+string.parseInt:
 	push    rbp
 	mov     rbp, rsp
 	sub     rsp, 32

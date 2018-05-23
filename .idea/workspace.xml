@@ -131,7 +131,7 @@
           <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="216">
+                <state relative-caret-position="271">
                   <caret line="109" column="30" selection-start-line="109" selection-start-column="30" selection-end-line="109" selection-end-column="30" />
                 </state>
               </provider>
@@ -144,8 +144,8 @@
           <file leaf-file-name="CodeGenerator.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/compiler/CodeGenerator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="223">
-                  <caret line="105" column="23" selection-start-line="105" selection-start-column="23" selection-end-line="105" selection-end-column="23" />
+                <state relative-caret-position="108">
+                  <caret line="664" column="22" selection-start-line="664" selection-start-column="22" selection-end-line="664" selection-end-column="22" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -241,7 +241,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>funcexpr</find>
       <find>ifstmt</find>
       <find>.addr</find>
       <find>assign</find>
@@ -271,6 +270,7 @@
       <find>call</find>
       <find>print</find>
       <find>root.add</find>
+      <find>parse</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -665,12 +665,12 @@
       <workItem from="1526994545786" duration="6438000" />
       <workItem from="1527035408310" duration="15045000" />
       <workItem from="1527071079565" duration="14222000" />
-      <workItem from="1527087260956" duration="897000" />
+      <workItem from="1527087260956" duration="1907000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="344361000" />
+    <option name="totallyTimeSpent" value="345371000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -696,11 +696,11 @@
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4978678" visible="true" weight="0.25925925" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4978678" visible="true" weight="0.25925925" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32897604" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21641791" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21641791" />
       <window_info anchor="right" id="Database" order="8" weight="0.32995737" />
       <window_info anchor="bottom" id="ANTLR Preview" order="12" weight="0.32897604" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1148,7 +1148,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
+        <state relative-caret-position="271">
           <caret line="109" column="30" selection-start-line="109" selection-start-column="30" selection-end-line="109" selection-end-column="30" />
         </state>
       </provider>

@@ -1,12 +1,237 @@
+n__ [GV]
+a__ [GV]
 
+string[ 0 ]  
+string[ 1 ] \n
 
-main [Func]:
-		rdi = 8
-		FuncCall malloc Param_size : 1
-		r16 = rax
-	r17 = r16
-	qword [r17] = 10
-	r18 = 2 * qword [r17]
-	rax = r18
-	jump Label_0
+exchange [Func]:
+	r16 = rdi
+	r17 = rsi
+	r18 = qword [ a__ ]
+	r19 = qword [r18 + r16 * 8]
+	r20 = qword [ a__ ]
+	r21 = qword [ a__ ]
+	qword [r20 + r16 * 8] = qword [r21 + r17 * 8]
+	r22 = qword [ a__ ]
+	qword [r22 + r17 * 8] = r19
 Label_0:
+makeHeap [Func]:
+	r20 = qword [ n__ ] - 1
+	r19 = r20 / 2
+	r16 = r19
+	r17 = 0
+	r18 = 0
+Label_5:
+	r21 = r16 >= 0
+	jump Label_4 if r21 je 1
+	jump Label_3
+Label_4:
+	r22 = r16 * 2
+	r18 = r22
+	r26 = r16 * 2
+	r25 = r26 + 1
+	r24 = r25 < qword [ n__ ]
+	jump Label_9 if r24 je 1
+	r23 = 0
+	jump Label_10
+Label_9:
+	r28 = qword [ a__ ]
+	r30 = r16 * 2
+	r29 = r30 + 1
+	r31 = qword [ a__ ]
+	r32 = r16 * 2
+	r27 = qword [r28 + r29 * 8] < qword [r31 + r32 * 8]
+	r23 = r27
+Label_10:
+	jump Label_7 if r23 je 1
+	jump Label_8
+Label_7:
+	r34 = r16 * 2
+	r33 = r34 + 1
+	r18 = r33
+	jump Label_6
+Label_8:
+Label_6:
+	r36 = qword [ a__ ]
+	r37 = qword [ a__ ]
+	r35 = qword [r36 + r16 * 8] > qword [r37 + r18 * 8]
+	jump Label_12 if r35 je 1
+	jump Label_13
+Label_12:
+		rdi = r16
+		rsi = r18
+		FuncCall exchange Param_size : 2
+		r38 = rax
+	jump Label_11
+Label_13:
+Label_11:
+	r39 = r16 - 1
+	r16 = r39
+Label_2:
+	jump Label_5
+Label_3:
+	rax = 0
+	jump Label_1
+Label_1:
+adjustHeap [Func]:
+	r16 = rdi
+	r17 = 0
+	r18 = 0
+	r19 = 0
+Label_18:
+	r21 = r17 * 2
+	r20 = r21 < r16
+	jump Label_17 if r20 je 1
+	jump Label_16
+Label_17:
+	r22 = r17 * 2
+	r18 = r22
+	r26 = r17 * 2
+	r25 = r26 + 1
+	r24 = r25 < r16
+	jump Label_22 if r24 je 1
+	r23 = 0
+	jump Label_23
+Label_22:
+	r28 = qword [ a__ ]
+	r30 = r17 * 2
+	r29 = r30 + 1
+	r31 = qword [ a__ ]
+	r32 = r17 * 2
+	r27 = qword [r28 + r29 * 8] < qword [r31 + r32 * 8]
+	r23 = r27
+Label_23:
+	jump Label_20 if r23 je 1
+	jump Label_21
+Label_20:
+	r34 = r17 * 2
+	r33 = r34 + 1
+	r18 = r33
+	jump Label_19
+Label_21:
+Label_19:
+	r36 = qword [ a__ ]
+	r37 = qword [ a__ ]
+	r35 = qword [r36 + r17 * 8] > qword [r37 + r18 * 8]
+	jump Label_25 if r35 je 1
+	jump Label_26
+Label_25:
+	r38 = qword [ a__ ]
+	r39 = qword [r38 + r17 * 8]
+	r40 = qword [ a__ ]
+	r41 = qword [ a__ ]
+	qword [r40 + r17 * 8] = qword [r41 + r18 * 8]
+	r42 = qword [ a__ ]
+	qword [r42 + r18 * 8] = r39
+	r17 = r18
+	jump Label_24
+Label_26:
+	jump Label_16
+Label_24:
+Label_15:
+	jump Label_18
+Label_16:
+	rax = 0
+	jump Label_14
+Label_14:
+heapSort [Func]:
+	r16 = 0
+	r17 = 0
+Label_31:
+	r18 = r17 < qword [ n__ ]
+	jump Label_30 if r18 je 1
+	jump Label_29
+Label_30:
+	r19 = qword [ a__ ]
+	r20 = 0
+	r16 = qword [r19 + r20 * 8]
+	r21 = qword [ a__ ]
+	r22 = 0
+	r23 = qword [ a__ ]
+	r25 = qword [ n__ ] - r17
+	r24 = r25 - 1
+	qword [r21 + r22 * 8] = qword [r23 + r24 * 8]
+	r26 = qword [ a__ ]
+	r28 = qword [ n__ ] - r17
+	r27 = r28 - 1
+	qword [r26 + r27 * 8] = r16
+	r30 = qword [ n__ ] - r17
+	r29 = r30 - 1
+		rdi = r29
+		FuncCall adjustHeap Param_size : 1
+		r31 = rax
+Label_28:
+	r32 = r17 + 1
+	r17 = r32
+	jump Label_31
+Label_29:
+	rax = 0
+	jump Label_27
+Label_27:
+main [Func]:
+		FuncCall getString Param_size : 0
+		r17 = rax
+		rdi = r17
+		FuncCall string.parseInt Param_size : 1
+		r18 = rax
+	qword [ n__ ] = r18
+	r19 = qword [ n__ ]
+	r19 = r19 + 1
+	r19 = r19 * 8
+		rdi = r19
+		FuncCall malloc Param_size : 1
+		r20 = rax
+	qword [r20] = qword [ n__ ]
+	r20 = r20 + 8
+	qword [ a__ ] = r20
+	r16 = 0
+Label_36:
+		rdi = qword [ a__ ]
+		FuncCall array.size Param_size : 1
+		r22 = rax
+	r21 = r16 < r22
+	jump Label_35 if r21 je 1
+	jump Label_34
+Label_35:
+	r23 = qword [ a__ ]
+	qword [r23 + r16 * 8] = r16
+Label_33:
+	r24 = r16 + 1
+	r16 = r24
+	jump Label_36
+Label_34:
+		FuncCall makeHeap Param_size : 0
+		r25 = rax
+		FuncCall heapSort Param_size : 0
+		r26 = rax
+	r16 = 0
+Label_40:
+		rdi = qword [ a__ ]
+		FuncCall array.size Param_size : 1
+		r28 = rax
+	r27 = r16 < r28
+	jump Label_39 if r27 je 1
+	jump Label_38
+Label_39:
+	r31 = qword [ a__ ]
+		rdi = qword [r31 + r16 * 8]
+		FuncCall toString Param_size : 1
+		r32 = rax
+		rdi = r32
+		rsi = str__0
+		FuncCall string.add Param_size : 2
+		r30 = rax
+		rdi = r30
+		FuncCall print Param_size : 1
+		r33 = rax
+Label_37:
+	r34 = r16 + 1
+	r16 = r34
+	jump Label_40
+Label_38:
+		rdi = str__1
+		FuncCall print Param_size : 1
+		r35 = rax
+	rax = 0
+	jump Label_32
+Label_32:

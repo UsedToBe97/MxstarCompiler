@@ -656,8 +656,8 @@ public class CodeGenerator {
         ans += "\tleave\n";
         ans += "\t        ret\n";
 
-        //parseInt
-        ans += "parseInt:\n";
+        //string.parseInt
+        ans += "string.parseInt:\n";
         ans += "\tpush    rbp\n";
         ans += "\tmov     rbp, rsp\n";
         ans += "\tsub     rsp, 32\n";
