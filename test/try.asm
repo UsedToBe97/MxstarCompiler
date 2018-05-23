@@ -10,138 +10,26 @@ extern gets
 extern __isoc99_scanf
 section .data
 section .text
-a:
-	push	rbp
-	mov	rbp, rsp
-	sub	rsp, 160
-	mov	rax, rdi
-	mov	qword [rbp - 8], rax
-	mov	rax, rsi
-	mov	qword [rbp - 16], rax
-	mov	rax, rdx
-	mov	qword [rbp - 24], rax
-	mov	rax, rcx
-	mov	qword [rbp - 32], rax
-	mov	rax, r8
-	mov	qword [rbp - 40], rax
-	mov	rax, r9
-	mov	qword [rbp - 48], rax
-	mov	rdx, qword [rbp - 8]
-	add	rdx, qword [rbp - 16]
-	mov	qword [rbp - 160], rdx
-	mov	rdx, qword [rbp - 160]
-	add	rdx, qword [rbp - 24]
-	mov	qword [rbp - 152], rdx
-	mov	rdx, qword [rbp - 152]
-	add	rdx, qword [rbp - 32]
-	mov	qword [rbp - 144], rdx
-	mov	rdx, qword [rbp - 144]
-	add	rdx, qword [rbp - 40]
-	mov	qword [rbp - 136], rdx
-	mov	rdx, qword [rbp - 136]
-	add	rdx, qword [rbp - 48]
-	mov	qword [rbp - 128], rdx
-	mov	r11, rbp
-	mov	rdx, qword [rbp - 128]
-	add	rdx, qword [r11 + 16]
-	mov	qword [rbp - 120], rdx
-	mov	r11, rbp
-	mov	rdx, qword [rbp - 120]
-	add	rdx, qword [r11 + 24]
-	mov	qword [rbp - 112], rdx
-	mov	r11, rbp
-	mov	rdx, qword [rbp - 112]
-	add	rdx, qword [r11 + 32]
-	mov	qword [rbp - 104], rdx
-	mov	r11, rbp
-	mov	rdx, qword [rbp - 104]
-	add	rdx, qword [r11 + 40]
-	mov	qword [rbp - 96], rdx
-	mov	r11, rbp
-	mov	rdx, qword [rbp - 96]
-	add	rdx, qword [r11 + 48]
-	mov	qword [rbp - 88], rdx
-	mov	r11, rbp
-	mov	rdx, qword [rbp - 88]
-	add	rdx, qword [r11 + 56]
-	mov	qword [rbp - 80], rdx
-	mov	r11, rbp
-	mov	rdx, qword [rbp - 80]
-	add	rdx, qword [r11 + 64]
-	mov	qword [rbp - 72], rdx
-	mov	r11, rbp
-	mov	rdx, qword [rbp - 72]
-	add	rdx, qword [r11 + 72]
-	mov	qword [rbp - 64], rdx
-	mov	r11, rbp
-	mov	rdx, qword [rbp - 64]
-	add	rdx, qword [r11 + 80]
-	mov	qword [rbp - 56], rdx
-	mov	rax, qword [rbp - 56]
-	jmp	Label_0
-Label_0:
-	mov	rsp, rbp
-	pop	rbp
-	ret
 main:
 	push	rbp
 	mov	rbp, rsp
 	sub	rsp, 24
-	sub	rsp, 72
-	mov	rax, 1
-	mov	rdi, rax
-	mov	rax, 2
-	mov	rsi, rax
-	mov	rax, 3
-	mov	rdx, rax
-	mov	rax, 4
-	mov	rcx, rax
-	mov	rax, 5
-	mov	r8, rax
-	mov	rax, 6
-	mov	r9, rax
-	mov	rax, 7
-	mov	rbx, rsp
-	mov	qword [rbx], rax
 	mov	rax, 8
-	mov	rbx, rsp
-	mov	qword [rbx + 8], rax
-	mov	rax, 9
-	mov	rbx, rsp
-	mov	qword [rbx + 16], rax
-	mov	rax, 10
-	mov	rbx, rsp
-	mov	qword [rbx + 24], rax
-	mov	rax, 11
-	mov	rbx, rsp
-	mov	qword [rbx + 32], rax
-	mov	rax, 12
-	mov	rbx, rsp
-	mov	qword [rbx + 40], rax
-	mov	rax, 13
-	mov	rbx, rsp
-	mov	qword [rbx + 48], rax
-	mov	rax, 14
-	mov	rbx, rsp
-	mov	qword [rbx + 56], rax
-	mov	rax, 15
-	mov	rbx, rsp
-	mov	qword [rbx + 64], rax
-	call	a
+	mov	rdi, rax
+	call	malloc
 	mov	qword [rbp - 8], rax
-	sub	rsp, -40
 	mov	rax, qword [rbp - 8]
-	mov	rdi, rax
-	call	toString
 	mov	qword [rbp - 16], rax
-	sub	rsp, -40
-	mov	rax, qword [rbp - 16]
-	mov	rdi, rax
-	call	println
-	mov	qword [rbp - 24], rax
-	mov	rax, 0
-	jmp	Label_1
-Label_1:
+	mov	rax, 10
+	mov	rbx, qword [rbp - 16]
+	mov	qword [rbx], rax
+	mov	r11, qword [rbp - 16]
+	mov	rdx, 2
+	imul	rdx, qword [r11]
+	mov	qword [rbp - 24], rdx
+	mov	rax, qword [rbp - 24]
+	jmp	Label_0
+Label_0:
 	mov	rsp, rbp
 	pop	rbp
 	ret

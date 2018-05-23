@@ -7,18 +7,9 @@
     <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/CodeGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/inst/Call.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/inst/Call.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/CodeGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/CodeGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ir/inst/Call.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ir/inst/Call.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/1.test" beforeDir="false" afterPath="$PROJECT_DIR$/test/1.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/AST.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/AST.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/IR.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/IR.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/MY_IR.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/MY_IR.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/hello.c" beforeDir="false" afterPath="$PROJECT_DIR$/test/hello.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/hello.c.nasm" beforeDir="false" afterPath="$PROJECT_DIR$/test/hello.c.nasm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/hello.exe" beforeDir="false" afterPath="$PROJECT_DIR$/test/hello.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/try.asm" beforeDir="false" afterPath="$PROJECT_DIR$/test/try.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/x86.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/x86.out" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -153,8 +144,8 @@
           <file leaf-file-name="CodeGenerator.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/compiler/CodeGenerator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="506">
-                  <caret line="723" column="7" selection-start-line="723" selection-start-column="7" selection-end-line="723" selection-end-column="7" />
+                <state relative-caret-position="223">
+                  <caret line="105" column="23" selection-start-line="105" selection-start-column="23" selection-end-line="105" selection-end-column="23" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -674,12 +665,12 @@
       <workItem from="1526994545786" duration="6438000" />
       <workItem from="1527035408310" duration="15045000" />
       <workItem from="1527071079565" duration="14222000" />
-      <workItem from="1527087260956" duration="293000" />
+      <workItem from="1527087260956" duration="897000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="343757000" />
+    <option name="totallyTimeSpent" value="344361000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

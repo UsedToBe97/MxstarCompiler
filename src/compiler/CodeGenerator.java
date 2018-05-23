@@ -103,7 +103,7 @@ public class CodeGenerator {
     }
 
     public void visit(Call x) {
-        int tmp = (x.size - 6) * 8;
+        int tmp = x.size > 6 ? (x.size - 6) * 8 : 0;
         if(tmp != 0) ans += "\tsub\trsp, " + Integer.toString(tmp) + "\n";
         for (Inst u : x.Insts) visit(u);
     }
