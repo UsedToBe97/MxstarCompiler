@@ -1,838 +1,425 @@
+n [GV]
+h [GV]
+now [GV]
+a [GV]
 A [GV]
-B [GV]
-C [GV]
+M [GV]
+Q [GV]
+R [GV]
+seed [GV]
 
 string[ 0 ]  
-string[ 1 ]  
+string[ 1 ] 
+string[ 2 ] Sorry, the number n must be a number s.t. there exists i satisfying n=1+2+...+i
+string[ 3 ] Let's start!
+string[ 4 ] step 
+string[ 5 ] :
+string[ 6 ] Total: 
+string[ 7 ]  step(s)
 
-main [Func]:
-	qword [ A ] = 1
-	qword [ B ] = 1
-	qword [ C ] = 1
-Label_4:
-	r18 = 1 << 29
-	r17 = qword [ C ] < r18
-	jump Label_5 if r17 je 1
-	r16 = 0
-	jump Label_6
-Label_5:
-	r20 = 1 << 29
-	r21 = r20
-	- r21
-	r19 = qword [ C ] > r21
-	r16 = r19
-Label_6:
-	jump Label_3 if r16 je 1
-	jump Label_2
-Label_3:
-	r30 = qword [ C ] - qword [ A ]
-	r29 = r30 + qword [ B ]
-	r31 = qword [ A ] + qword [ B ]
-	r28 = r29 - r31
-	r34 = qword [ C ] - qword [ A ]
-	r33 = r34 + qword [ B ]
-	r35 = qword [ A ] + qword [ B ]
-	r32 = r33 - r35
-	r27 = r28 + r32
-	r39 = qword [ C ] - qword [ A ]
-	r38 = r39 + qword [ B ]
-	r40 = qword [ A ] + qword [ B ]
-	r37 = r38 - r40
-	r42 = qword [ C ] - qword [ A ]
-	r41 = r42 + qword [ B ]
-	r36 = r37 + r41
-	r26 = r27 + r36
-	r46 = qword [ A ] + qword [ B ]
-	r48 = qword [ C ] - qword [ A ]
-	r47 = r48 + qword [ B ]
-	r45 = r46 + r47
-	r49 = qword [ A ] + qword [ B ]
-	r44 = r45 - r49
-	r53 = qword [ C ] - qword [ A ]
-	r52 = r53 + qword [ B ]
-	r54 = qword [ A ] + qword [ B ]
-	r51 = r52 - r54
-	r56 = qword [ C ] - qword [ A ]
-	r55 = r56 + qword [ B ]
-	r50 = r51 + r55
-	r43 = r44 + r50
-	r25 = r26 - r43
-	r61 = qword [ A ] + qword [ B ]
-	r63 = qword [ C ] - qword [ A ]
-	r62 = r63 + qword [ B ]
-	r60 = r61 + r62
-	r65 = qword [ A ] + qword [ B ]
-	r67 = qword [ C ] - qword [ A ]
-	r66 = r67 + qword [ B ]
-	r64 = r65 + r66
-	r59 = r60 - r64
-	r70 = qword [ A ] + qword [ B ]
-	r72 = qword [ C ] - qword [ A ]
-	r71 = r72 + qword [ B ]
-	r69 = r70 + r71
-	r73 = qword [ A ] + qword [ B ]
-	r68 = r69 - r73
-	r58 = r59 - r68
-	r78 = qword [ C ] - qword [ A ]
-	r77 = r78 + qword [ B ]
-	r79 = qword [ A ] + qword [ B ]
-	r76 = r77 - r79
-	r81 = qword [ C ] - qword [ A ]
-	r80 = r81 + qword [ B ]
-	r75 = r76 + r80
-	r84 = qword [ A ] + qword [ B ]
-	r86 = qword [ C ] - qword [ A ]
-	r85 = r86 + qword [ B ]
-	r83 = r84 + r85
-	r87 = qword [ A ] + qword [ B ]
-	r82 = r83 - r87
-	r74 = r75 - r82
-	r57 = r58 + r74
-	r24 = r25 - r57
-	r94 = qword [ C ] - qword [ A ]
-	r93 = r94 + qword [ B ]
-	r95 = qword [ A ] + qword [ B ]
-	r92 = r93 - r95
-	r98 = qword [ C ] - qword [ A ]
-	r97 = r98 + qword [ B ]
-	r99 = qword [ A ] + qword [ B ]
-	r96 = r97 - r99
-	r91 = r92 + r96
-	r103 = qword [ C ] - qword [ A ]
-	r102 = r103 + qword [ B ]
-	r104 = qword [ A ] + qword [ B ]
-	r101 = r102 - r104
-	r106 = qword [ C ] - qword [ A ]
-	r105 = r106 + qword [ B ]
-	r100 = r101 + r105
-	r90 = r91 + r100
-	r110 = qword [ A ] + qword [ B ]
-	r112 = qword [ C ] - qword [ A ]
-	r111 = r112 + qword [ B ]
-	r109 = r110 + r111
-	r113 = qword [ A ] + qword [ B ]
-	r108 = r109 - r113
-	r117 = qword [ C ] - qword [ A ]
-	r116 = r117 + qword [ B ]
-	r118 = qword [ A ] + qword [ B ]
-	r115 = r116 - r118
-	r120 = qword [ C ] - qword [ A ]
-	r119 = r120 + qword [ B ]
-	r114 = r115 + r119
-	r107 = r108 + r114
-	r89 = r90 - r107
-	r125 = qword [ A ] + qword [ B ]
-	r127 = qword [ C ] - qword [ A ]
-	r126 = r127 + qword [ B ]
-	r124 = r125 + r126
-	r128 = qword [ A ] + qword [ B ]
-	r123 = r124 - r128
-	r132 = qword [ C ] - qword [ A ]
-	r131 = r132 + qword [ B ]
-	r133 = qword [ A ] + qword [ B ]
-	r130 = r131 - r133
-	r135 = qword [ C ] - qword [ A ]
-	r134 = r135 + qword [ B ]
-	r129 = r130 + r134
-	r122 = r123 + r129
-	r139 = qword [ A ] + qword [ B ]
-	r141 = qword [ C ] - qword [ A ]
-	r140 = r141 + qword [ B ]
-	r138 = r139 + r140
-	r142 = qword [ A ] + qword [ B ]
-	r137 = r138 - r142
-	r146 = qword [ C ] - qword [ A ]
-	r145 = r146 + qword [ B ]
-	r147 = qword [ A ] + qword [ B ]
-	r144 = r145 - r147
-	r149 = qword [ C ] - qword [ A ]
-	r148 = r149 + qword [ B ]
-	r143 = r144 + r148
-	r136 = r137 + r143
-	r121 = r122 - r136
-	r88 = r89 - r121
-	r23 = r24 + r88
-	r156 = qword [ A ] + qword [ B ]
-	r158 = qword [ C ] - qword [ A ]
-	r157 = r158 + qword [ B ]
-	r155 = r156 + r157
-	r160 = qword [ A ] + qword [ B ]
-	r162 = qword [ C ] - qword [ A ]
-	r161 = r162 + qword [ B ]
-	r159 = r160 + r161
-	r154 = r155 - r159
-	r165 = qword [ A ] + qword [ B ]
-	r167 = qword [ C ] - qword [ A ]
-	r166 = r167 + qword [ B ]
-	r164 = r165 + r166
-	r168 = qword [ A ] + qword [ B ]
-	r163 = r164 - r168
-	r153 = r154 - r163
-	r173 = qword [ C ] - qword [ A ]
-	r172 = r173 + qword [ B ]
-	r174 = qword [ A ] + qword [ B ]
-	r171 = r172 - r174
-	r176 = qword [ C ] - qword [ A ]
-	r175 = r176 + qword [ B ]
-	r170 = r171 + r175
-	r179 = qword [ A ] + qword [ B ]
-	r181 = qword [ C ] - qword [ A ]
-	r180 = r181 + qword [ B ]
-	r178 = r179 + r180
-	r182 = qword [ A ] + qword [ B ]
-	r177 = r178 - r182
-	r169 = r170 - r177
-	r152 = r153 + r169
-	r188 = qword [ C ] - qword [ A ]
-	r187 = r188 + qword [ B ]
-	r189 = qword [ A ] + qword [ B ]
-	r186 = r187 - r189
-	r191 = qword [ C ] - qword [ A ]
-	r190 = r191 + qword [ B ]
-	r185 = r186 + r190
-	r194 = qword [ A ] + qword [ B ]
-	r196 = qword [ C ] - qword [ A ]
-	r195 = r196 + qword [ B ]
-	r193 = r194 + r195
-	r197 = qword [ A ] + qword [ B ]
-	r192 = r193 - r197
-	r184 = r185 - r192
-	r202 = qword [ C ] - qword [ A ]
-	r201 = r202 + qword [ B ]
-	r203 = qword [ A ] + qword [ B ]
-	r200 = r201 - r203
-	r205 = qword [ C ] - qword [ A ]
-	r204 = r205 + qword [ B ]
-	r199 = r200 + r204
-	r208 = qword [ A ] + qword [ B ]
-	r210 = qword [ C ] - qword [ A ]
-	r209 = r210 + qword [ B ]
-	r207 = r208 + r209
-	r211 = qword [ A ] + qword [ B ]
-	r206 = r207 - r211
-	r198 = r199 - r206
-	r183 = r184 + r198
-	r151 = r152 + r183
-	r218 = qword [ C ] - qword [ A ]
-	r217 = r218 + qword [ B ]
-	r219 = qword [ A ] + qword [ B ]
-	r216 = r217 - r219
-	r222 = qword [ C ] - qword [ A ]
-	r221 = r222 + qword [ B ]
-	r223 = qword [ A ] + qword [ B ]
-	r220 = r221 - r223
-	r215 = r216 + r220
-	r227 = qword [ C ] - qword [ A ]
-	r226 = r227 + qword [ B ]
-	r228 = qword [ A ] + qword [ B ]
-	r225 = r226 - r228
-	r230 = qword [ C ] - qword [ A ]
-	r229 = r230 + qword [ B ]
-	r224 = r225 + r229
-	r214 = r215 + r224
-	r234 = qword [ A ] + qword [ B ]
-	r236 = qword [ C ] - qword [ A ]
-	r235 = r236 + qword [ B ]
-	r233 = r234 + r235
-	r237 = qword [ A ] + qword [ B ]
-	r232 = r233 - r237
-	r241 = qword [ C ] - qword [ A ]
-	r240 = r241 + qword [ B ]
-	r242 = qword [ A ] + qword [ B ]
-	r239 = r240 - r242
-	r244 = qword [ C ] - qword [ A ]
-	r243 = r244 + qword [ B ]
-	r238 = r239 + r243
-	r231 = r232 + r238
-	r213 = r214 - r231
-	r249 = qword [ A ] + qword [ B ]
-	r251 = qword [ C ] - qword [ A ]
-	r250 = r251 + qword [ B ]
-	r248 = r249 + r250
-	r252 = qword [ A ] + qword [ B ]
-	r247 = r248 - r252
-	r256 = qword [ C ] - qword [ A ]
-	r255 = r256 + qword [ B ]
-	r257 = qword [ A ] + qword [ B ]
-	r254 = r255 - r257
-	r259 = qword [ C ] - qword [ A ]
-	r258 = r259 + qword [ B ]
-	r253 = r254 + r258
-	r246 = r247 + r253
-	r263 = qword [ A ] + qword [ B ]
-	r265 = qword [ C ] - qword [ A ]
-	r264 = r265 + qword [ B ]
-	r262 = r263 + r264
-	r266 = qword [ A ] + qword [ B ]
-	r261 = r262 - r266
-	r270 = qword [ C ] - qword [ A ]
-	r269 = r270 + qword [ B ]
-	r271 = qword [ A ] + qword [ B ]
-	r268 = r269 - r271
-	r273 = qword [ C ] - qword [ A ]
-	r272 = r273 + qword [ B ]
-	r267 = r268 + r272
-	r260 = r261 + r267
-	r245 = r246 - r260
-	r212 = r213 - r245
-	r150 = r151 + r212
-	r22 = r23 - r150
-	qword [ A ] = r22
-	r282 = qword [ C ] - qword [ A ]
-	r281 = r282 + qword [ B ]
-	r283 = qword [ A ] + qword [ B ]
-	r280 = r281 - r283
-	r286 = qword [ C ] - qword [ A ]
-	r285 = r286 + qword [ B ]
-	r287 = qword [ A ] + qword [ B ]
-	r284 = r285 - r287
-	r279 = r280 + r284
-	r291 = qword [ C ] - qword [ A ]
-	r290 = r291 + qword [ B ]
-	r292 = qword [ A ] + qword [ B ]
-	r289 = r290 - r292
-	r294 = qword [ C ] - qword [ A ]
-	r293 = r294 + qword [ B ]
-	r288 = r289 + r293
-	r278 = r279 + r288
-	r298 = qword [ A ] + qword [ B ]
-	r300 = qword [ C ] - qword [ A ]
-	r299 = r300 + qword [ B ]
-	r297 = r298 + r299
-	r301 = qword [ A ] + qword [ B ]
-	r296 = r297 - r301
-	r305 = qword [ C ] - qword [ A ]
-	r304 = r305 + qword [ B ]
-	r306 = qword [ A ] + qword [ B ]
-	r303 = r304 - r306
-	r308 = qword [ C ] - qword [ A ]
-	r307 = r308 + qword [ B ]
-	r302 = r303 + r307
-	r295 = r296 + r302
-	r277 = r278 - r295
-	r313 = qword [ A ] + qword [ B ]
-	r315 = qword [ C ] - qword [ A ]
-	r314 = r315 + qword [ B ]
-	r312 = r313 + r314
-	r317 = qword [ A ] + qword [ B ]
-	r319 = qword [ C ] - qword [ A ]
-	r318 = r319 + qword [ B ]
-	r316 = r317 + r318
-	r311 = r312 - r316
-	r322 = qword [ A ] + qword [ B ]
-	r324 = qword [ C ] - qword [ A ]
-	r323 = r324 + qword [ B ]
-	r321 = r322 + r323
-	r325 = qword [ A ] + qword [ B ]
-	r320 = r321 - r325
-	r310 = r311 - r320
-	r330 = qword [ C ] - qword [ A ]
-	r329 = r330 + qword [ B ]
-	r331 = qword [ A ] + qword [ B ]
-	r328 = r329 - r331
-	r333 = qword [ C ] - qword [ A ]
-	r332 = r333 + qword [ B ]
-	r327 = r328 + r332
-	r336 = qword [ A ] + qword [ B ]
-	r338 = qword [ C ] - qword [ A ]
-	r337 = r338 + qword [ B ]
-	r335 = r336 + r337
-	r339 = qword [ A ] + qword [ B ]
-	r334 = r335 - r339
-	r326 = r327 - r334
-	r309 = r310 + r326
-	r276 = r277 - r309
-	r346 = qword [ C ] - qword [ A ]
-	r345 = r346 + qword [ B ]
-	r347 = qword [ A ] + qword [ B ]
-	r344 = r345 - r347
-	r350 = qword [ C ] - qword [ A ]
-	r349 = r350 + qword [ B ]
-	r351 = qword [ A ] + qword [ B ]
-	r348 = r349 - r351
-	r343 = r344 + r348
-	r355 = qword [ C ] - qword [ A ]
-	r354 = r355 + qword [ B ]
-	r356 = qword [ A ] + qword [ B ]
-	r353 = r354 - r356
-	r358 = qword [ C ] - qword [ A ]
-	r357 = r358 + qword [ B ]
-	r352 = r353 + r357
-	r342 = r343 + r352
-	r362 = qword [ A ] + qword [ B ]
-	r364 = qword [ C ] - qword [ A ]
-	r363 = r364 + qword [ B ]
-	r361 = r362 + r363
-	r365 = qword [ A ] + qword [ B ]
-	r360 = r361 - r365
-	r369 = qword [ C ] - qword [ A ]
-	r368 = r369 + qword [ B ]
-	r370 = qword [ A ] + qword [ B ]
-	r367 = r368 - r370
-	r372 = qword [ C ] - qword [ A ]
-	r371 = r372 + qword [ B ]
-	r366 = r367 + r371
-	r359 = r360 + r366
-	r341 = r342 - r359
-	r377 = qword [ A ] + qword [ B ]
-	r379 = qword [ C ] - qword [ A ]
-	r378 = r379 + qword [ B ]
-	r376 = r377 + r378
-	r380 = qword [ A ] + qword [ B ]
-	r375 = r376 - r380
-	r384 = qword [ C ] - qword [ A ]
-	r383 = r384 + qword [ B ]
-	r385 = qword [ A ] + qword [ B ]
-	r382 = r383 - r385
-	r387 = qword [ C ] - qword [ A ]
-	r386 = r387 + qword [ B ]
-	r381 = r382 + r386
-	r374 = r375 + r381
-	r391 = qword [ A ] + qword [ B ]
-	r393 = qword [ C ] - qword [ A ]
-	r392 = r393 + qword [ B ]
-	r390 = r391 + r392
-	r394 = qword [ A ] + qword [ B ]
-	r389 = r390 - r394
-	r398 = qword [ C ] - qword [ A ]
-	r397 = r398 + qword [ B ]
-	r399 = qword [ A ] + qword [ B ]
-	r396 = r397 - r399
-	r401 = qword [ C ] - qword [ A ]
-	r400 = r401 + qword [ B ]
-	r395 = r396 + r400
-	r388 = r389 + r395
-	r373 = r374 - r388
-	r340 = r341 - r373
-	r275 = r276 + r340
-	r408 = qword [ A ] + qword [ B ]
-	r410 = qword [ C ] - qword [ A ]
-	r409 = r410 + qword [ B ]
-	r407 = r408 + r409
-	r412 = qword [ A ] + qword [ B ]
-	r414 = qword [ C ] - qword [ A ]
-	r413 = r414 + qword [ B ]
-	r411 = r412 + r413
-	r406 = r407 - r411
-	r417 = qword [ A ] + qword [ B ]
-	r419 = qword [ C ] - qword [ A ]
-	r418 = r419 + qword [ B ]
-	r416 = r417 + r418
-	r420 = qword [ A ] + qword [ B ]
-	r415 = r416 - r420
-	r405 = r406 - r415
-	r425 = qword [ C ] - qword [ A ]
-	r424 = r425 + qword [ B ]
-	r426 = qword [ A ] + qword [ B ]
-	r423 = r424 - r426
-	r428 = qword [ C ] - qword [ A ]
-	r427 = r428 + qword [ B ]
-	r422 = r423 + r427
-	r431 = qword [ A ] + qword [ B ]
-	r433 = qword [ C ] - qword [ A ]
-	r432 = r433 + qword [ B ]
-	r430 = r431 + r432
-	r434 = qword [ A ] + qword [ B ]
-	r429 = r430 - r434
-	r421 = r422 - r429
-	r404 = r405 + r421
-	r440 = qword [ C ] - qword [ A ]
-	r439 = r440 + qword [ B ]
-	r441 = qword [ A ] + qword [ B ]
-	r438 = r439 - r441
-	r443 = qword [ C ] - qword [ A ]
-	r442 = r443 + qword [ B ]
-	r437 = r438 + r442
-	r446 = qword [ A ] + qword [ B ]
-	r448 = qword [ C ] - qword [ A ]
-	r447 = r448 + qword [ B ]
-	r445 = r446 + r447
-	r449 = qword [ A ] + qword [ B ]
-	r444 = r445 - r449
-	r436 = r437 - r444
-	r454 = qword [ C ] - qword [ A ]
-	r453 = r454 + qword [ B ]
-	r455 = qword [ A ] + qword [ B ]
-	r452 = r453 - r455
-	r457 = qword [ C ] - qword [ A ]
-	r456 = r457 + qword [ B ]
-	r451 = r452 + r456
-	r460 = qword [ A ] + qword [ B ]
-	r462 = qword [ C ] - qword [ A ]
-	r461 = r462 + qword [ B ]
-	r459 = r460 + r461
-	r463 = qword [ A ] + qword [ B ]
-	r458 = r459 - r463
-	r450 = r451 - r458
-	r435 = r436 + r450
-	r403 = r404 + r435
-	r470 = qword [ C ] - qword [ A ]
-	r469 = r470 + qword [ B ]
-	r471 = qword [ A ] + qword [ B ]
-	r468 = r469 - r471
-	r474 = qword [ C ] - qword [ A ]
-	r473 = r474 + qword [ B ]
-	r475 = qword [ A ] + qword [ B ]
-	r472 = r473 - r475
-	r467 = r468 + r472
-	r479 = qword [ C ] - qword [ A ]
-	r478 = r479 + qword [ B ]
-	r480 = qword [ A ] + qword [ B ]
-	r477 = r478 - r480
-	r482 = qword [ C ] - qword [ A ]
-	r481 = r482 + qword [ B ]
-	r476 = r477 + r481
-	r466 = r467 + r476
-	r486 = qword [ A ] + qword [ B ]
-	r488 = qword [ C ] - qword [ A ]
-	r487 = r488 + qword [ B ]
-	r485 = r486 + r487
-	r489 = qword [ A ] + qword [ B ]
-	r484 = r485 - r489
-	r493 = qword [ C ] - qword [ A ]
-	r492 = r493 + qword [ B ]
-	r494 = qword [ A ] + qword [ B ]
-	r491 = r492 - r494
-	r496 = qword [ C ] - qword [ A ]
-	r495 = r496 + qword [ B ]
-	r490 = r491 + r495
-	r483 = r484 + r490
-	r465 = r466 - r483
-	r501 = qword [ A ] + qword [ B ]
-	r503 = qword [ C ] - qword [ A ]
-	r502 = r503 + qword [ B ]
-	r500 = r501 + r502
-	r504 = qword [ A ] + qword [ B ]
-	r499 = r500 - r504
-	r508 = qword [ C ] - qword [ A ]
-	r507 = r508 + qword [ B ]
-	r509 = qword [ A ] + qword [ B ]
-	r506 = r507 - r509
-	r511 = qword [ C ] - qword [ A ]
-	r510 = r511 + qword [ B ]
-	r505 = r506 + r510
-	r498 = r499 + r505
-	r515 = qword [ A ] + qword [ B ]
-	r517 = qword [ C ] - qword [ A ]
-	r516 = r517 + qword [ B ]
-	r514 = r515 + r516
-	r518 = qword [ A ] + qword [ B ]
-	r513 = r514 - r518
-	r522 = qword [ C ] - qword [ A ]
-	r521 = r522 + qword [ B ]
-	r523 = qword [ A ] + qword [ B ]
-	r520 = r521 - r523
-	r525 = qword [ C ] - qword [ A ]
-	r524 = r525 + qword [ B ]
-	r519 = r520 + r524
-	r512 = r513 + r519
-	r497 = r498 - r512
-	r464 = r465 - r497
-	r402 = r403 + r464
-	r274 = r275 - r402
-	qword [ B ] = r274
-	r534 = qword [ C ] - qword [ A ]
-	r533 = r534 + qword [ B ]
-	r535 = qword [ A ] + qword [ B ]
-	r532 = r533 - r535
-	r538 = qword [ C ] - qword [ A ]
-	r537 = r538 + qword [ B ]
-	r539 = qword [ A ] + qword [ B ]
-	r536 = r537 - r539
-	r531 = r532 + r536
-	r543 = qword [ C ] - qword [ A ]
-	r542 = r543 + qword [ B ]
-	r544 = qword [ A ] + qword [ B ]
-	r541 = r542 - r544
-	r546 = qword [ C ] - qword [ A ]
-	r545 = r546 + qword [ B ]
-	r540 = r541 + r545
-	r530 = r531 + r540
-	r550 = qword [ A ] + qword [ B ]
-	r552 = qword [ C ] - qword [ A ]
-	r551 = r552 + qword [ B ]
-	r549 = r550 + r551
-	r553 = qword [ A ] + qword [ B ]
-	r548 = r549 - r553
-	r557 = qword [ C ] - qword [ A ]
-	r556 = r557 + qword [ B ]
-	r558 = qword [ A ] + qword [ B ]
-	r555 = r556 - r558
-	r560 = qword [ C ] - qword [ A ]
-	r559 = r560 + qword [ B ]
-	r554 = r555 + r559
-	r547 = r548 + r554
-	r529 = r530 - r547
-	r565 = qword [ A ] + qword [ B ]
-	r567 = qword [ C ] - qword [ A ]
-	r566 = r567 + qword [ B ]
-	r564 = r565 + r566
-	r569 = qword [ A ] + qword [ B ]
-	r571 = qword [ C ] - qword [ A ]
-	r570 = r571 + qword [ B ]
-	r568 = r569 + r570
-	r563 = r564 - r568
-	r574 = qword [ A ] + qword [ B ]
-	r576 = qword [ C ] - qword [ A ]
-	r575 = r576 + qword [ B ]
-	r573 = r574 + r575
-	r577 = qword [ A ] + qword [ B ]
-	r572 = r573 - r577
-	r562 = r563 - r572
-	r582 = qword [ C ] - qword [ A ]
-	r581 = r582 + qword [ B ]
-	r583 = qword [ A ] + qword [ B ]
-	r580 = r581 - r583
-	r585 = qword [ C ] - qword [ A ]
-	r584 = r585 + qword [ B ]
-	r579 = r580 + r584
-	r588 = qword [ A ] + qword [ B ]
-	r590 = qword [ C ] - qword [ A ]
-	r589 = r590 + qword [ B ]
-	r587 = r588 + r589
-	r591 = qword [ A ] + qword [ B ]
-	r586 = r587 - r591
-	r578 = r579 - r586
-	r561 = r562 + r578
-	r528 = r529 - r561
-	r598 = qword [ C ] - qword [ A ]
-	r597 = r598 + qword [ B ]
-	r599 = qword [ A ] + qword [ B ]
-	r596 = r597 - r599
-	r602 = qword [ C ] - qword [ A ]
-	r601 = r602 + qword [ B ]
-	r603 = qword [ A ] + qword [ B ]
-	r600 = r601 - r603
-	r595 = r596 + r600
-	r607 = qword [ C ] - qword [ A ]
-	r606 = r607 + qword [ B ]
-	r608 = qword [ A ] + qword [ B ]
-	r605 = r606 - r608
-	r610 = qword [ C ] - qword [ A ]
-	r609 = r610 + qword [ B ]
-	r604 = r605 + r609
-	r594 = r595 + r604
-	r614 = qword [ A ] + qword [ B ]
-	r616 = qword [ C ] - qword [ A ]
-	r615 = r616 + qword [ B ]
-	r613 = r614 + r615
-	r617 = qword [ A ] + qword [ B ]
-	r612 = r613 - r617
-	r621 = qword [ C ] - qword [ A ]
-	r620 = r621 + qword [ B ]
-	r622 = qword [ A ] + qword [ B ]
-	r619 = r620 - r622
-	r624 = qword [ C ] - qword [ A ]
-	r623 = r624 + qword [ B ]
-	r618 = r619 + r623
-	r611 = r612 + r618
-	r593 = r594 - r611
-	r629 = qword [ A ] + qword [ B ]
-	r631 = qword [ C ] - qword [ A ]
-	r630 = r631 + qword [ B ]
-	r628 = r629 + r630
-	r632 = qword [ A ] + qword [ B ]
-	r627 = r628 - r632
-	r636 = qword [ C ] - qword [ A ]
-	r635 = r636 + qword [ B ]
-	r637 = qword [ A ] + qword [ B ]
-	r634 = r635 - r637
-	r639 = qword [ C ] - qword [ A ]
-	r638 = r639 + qword [ B ]
-	r633 = r634 + r638
-	r626 = r627 + r633
-	r643 = qword [ A ] + qword [ B ]
-	r645 = qword [ C ] - qword [ A ]
-	r644 = r645 + qword [ B ]
-	r642 = r643 + r644
-	r646 = qword [ A ] + qword [ B ]
-	r641 = r642 - r646
-	r650 = qword [ C ] - qword [ A ]
-	r649 = r650 + qword [ B ]
-	r651 = qword [ A ] + qword [ B ]
-	r648 = r649 - r651
-	r653 = qword [ C ] - qword [ A ]
-	r652 = r653 + qword [ B ]
-	r647 = r648 + r652
-	r640 = r641 + r647
-	r625 = r626 - r640
-	r592 = r593 - r625
-	r527 = r528 + r592
-	r660 = qword [ A ] + qword [ B ]
-	r662 = qword [ C ] - qword [ A ]
-	r661 = r662 + qword [ B ]
-	r659 = r660 + r661
-	r664 = qword [ A ] + qword [ B ]
-	r666 = qword [ C ] - qword [ A ]
-	r665 = r666 + qword [ B ]
-	r663 = r664 + r665
-	r658 = r659 - r663
-	r669 = qword [ A ] + qword [ B ]
-	r671 = qword [ C ] - qword [ A ]
-	r670 = r671 + qword [ B ]
-	r668 = r669 + r670
-	r672 = qword [ A ] + qword [ B ]
-	r667 = r668 - r672
-	r657 = r658 - r667
-	r677 = qword [ C ] - qword [ A ]
-	r676 = r677 + qword [ B ]
-	r678 = qword [ A ] + qword [ B ]
-	r675 = r676 - r678
-	r680 = qword [ C ] - qword [ A ]
-	r679 = r680 + qword [ B ]
-	r674 = r675 + r679
-	r683 = qword [ A ] + qword [ B ]
-	r685 = qword [ C ] - qword [ A ]
-	r684 = r685 + qword [ B ]
-	r682 = r683 + r684
-	r686 = qword [ A ] + qword [ B ]
-	r681 = r682 - r686
-	r673 = r674 - r681
-	r656 = r657 + r673
-	r692 = qword [ C ] - qword [ A ]
-	r691 = r692 + qword [ B ]
-	r693 = qword [ A ] + qword [ B ]
-	r690 = r691 - r693
-	r695 = qword [ C ] - qword [ A ]
-	r694 = r695 + qword [ B ]
-	r689 = r690 + r694
-	r698 = qword [ A ] + qword [ B ]
-	r700 = qword [ C ] - qword [ A ]
-	r699 = r700 + qword [ B ]
-	r697 = r698 + r699
-	r701 = qword [ A ] + qword [ B ]
-	r696 = r697 - r701
-	r688 = r689 - r696
-	r706 = qword [ C ] - qword [ A ]
-	r705 = r706 + qword [ B ]
-	r707 = qword [ A ] + qword [ B ]
-	r704 = r705 - r707
-	r709 = qword [ C ] - qword [ A ]
-	r708 = r709 + qword [ B ]
-	r703 = r704 + r708
-	r712 = qword [ A ] + qword [ B ]
-	r714 = qword [ C ] - qword [ A ]
-	r713 = r714 + qword [ B ]
-	r711 = r712 + r713
-	r715 = qword [ A ] + qword [ B ]
-	r710 = r711 - r715
-	r702 = r703 - r710
-	r687 = r688 + r702
-	r655 = r656 + r687
-	r722 = qword [ C ] - qword [ A ]
-	r721 = r722 + qword [ B ]
-	r723 = qword [ A ] + qword [ B ]
-	r720 = r721 - r723
-	r726 = qword [ C ] - qword [ A ]
-	r725 = r726 + qword [ B ]
-	r727 = qword [ A ] + qword [ B ]
-	r724 = r725 - r727
-	r719 = r720 + r724
-	r731 = qword [ C ] - qword [ A ]
-	r730 = r731 + qword [ B ]
-	r732 = qword [ A ] + qword [ B ]
-	r729 = r730 - r732
-	r734 = qword [ C ] - qword [ A ]
-	r733 = r734 + qword [ B ]
-	r728 = r729 + r733
-	r718 = r719 + r728
-	r738 = qword [ A ] + qword [ B ]
-	r740 = qword [ C ] - qword [ A ]
-	r739 = r740 + qword [ B ]
-	r737 = r738 + r739
-	r741 = qword [ A ] + qword [ B ]
-	r736 = r737 - r741
-	r745 = qword [ C ] - qword [ A ]
-	r744 = r745 + qword [ B ]
-	r746 = qword [ A ] + qword [ B ]
-	r743 = r744 - r746
-	r748 = qword [ C ] - qword [ A ]
-	r747 = r748 + qword [ B ]
-	r742 = r743 + r747
-	r735 = r736 + r742
-	r717 = r718 - r735
-	r753 = qword [ A ] + qword [ B ]
-	r755 = qword [ C ] - qword [ A ]
-	r754 = r755 + qword [ B ]
-	r752 = r753 + r754
-	r756 = qword [ A ] + qword [ B ]
-	r751 = r752 - r756
-	r760 = qword [ C ] - qword [ A ]
-	r759 = r760 + qword [ B ]
-	r761 = qword [ A ] + qword [ B ]
-	r758 = r759 - r761
-	r763 = qword [ C ] - qword [ A ]
-	r762 = r763 + qword [ B ]
-	r757 = r758 + r762
-	r750 = r751 + r757
-	r767 = qword [ A ] + qword [ B ]
-	r769 = qword [ C ] - qword [ A ]
-	r768 = r769 + qword [ B ]
-	r766 = r767 + r768
-	r770 = qword [ A ] + qword [ B ]
-	r765 = r766 - r770
-	r774 = qword [ C ] - qword [ A ]
-	r773 = r774 + qword [ B ]
-	r775 = qword [ A ] + qword [ B ]
-	r772 = r773 - r775
-	r777 = qword [ C ] - qword [ A ]
-	r776 = r777 + qword [ B ]
-	r771 = r772 + r776
-	r764 = r765 + r771
-	r749 = r750 - r764
-	r716 = r717 - r749
-	r654 = r655 + r716
-	r526 = r527 - r654
-	qword [ C ] = r526
-		rdi = qword [ A ]
-		FuncCall toString Param_size : 1
-		r778 = rax
-		rdi = r778
-		FuncCall println Param_size : 1
-		r779 = rax
-		rdi = qword [ B ]
-		FuncCall toString Param_size : 1
-		r780 = rax
-		rdi = r780
-		FuncCall println Param_size : 1
-		r781 = rax
-		rdi = qword [ C ]
-		FuncCall toString Param_size : 1
-		r782 = rax
-		rdi = r782
-		FuncCall println Param_size : 1
-		r783 = rax
-Label_1:
-	jump Label_4
+random [Func]:
+	r18 = qword [ seed ] % qword [ Q ]
+	r17 = qword [ A ] * r18
+	r20 = qword [ seed ] / qword [ Q ]
+	r19 = qword [ R ] * r20
+	r16 = r17 - r19
+	r21 = r16
+	r22 = r21 >= 0
+	jump Label_2 if r22 je 1
+	jump Label_3
 Label_2:
-		rdi = qword [ A ]
-		FuncCall toString Param_size : 1
-		r792 = rax
-		rdi = r792
-		rsi = str__0
-		FuncCall string.add Param_size : 2
-		r791 = rax
-		rdi = qword [ B ]
-		FuncCall toString Param_size : 1
-		r793 = rax
-		rdi = r791
-		rsi = r793
-		FuncCall string.add Param_size : 2
-		r789 = rax
-		rdi = r789
-		rsi = str__1
-		FuncCall string.add Param_size : 2
-		r787 = rax
-		rdi = qword [ C ]
-		FuncCall toString Param_size : 1
-		r794 = rax
-		rdi = r787
-		rsi = r794
-		FuncCall string.add Param_size : 2
-		r785 = rax
-		rdi = r785
-		FuncCall println Param_size : 1
-		r795 = rax
-	rax = 0
+	qword [ seed ] = r21
+	jump Label_1
+Label_3:
+	r23 = r21 + qword [ M ]
+	qword [ seed ] = r23
+Label_1:
+	rax = qword [ seed ]
 	jump Label_0
 Label_0:
+initialize [Func]:
+	r16 = rdi
+	qword [ seed ] = r16
+Label_4:
+swap [Func]:
+	r16 = rdi
+	r17 = rsi
+	r18 = qword [ a ]
+	r19 = qword [r18 + r16 * 8]
+	r20 = qword [ a ]
+	r21 = qword [ a ]
+	qword [r20 + r16 * 8] = qword [r21 + r17 * 8]
+	r22 = qword [ a ]
+	qword [r22 + r17 * 8] = r19
+Label_5:
+pd [Func]:
+	r16 = rdi
+Label_10:
+	r17 = qword [ h ] <= r16
+	jump Label_9 if r17 je 1
+	jump Label_8
+Label_9:
+	r21 = qword [ h ] + 1
+	r20 = qword [ h ] * r21
+	r19 = r20 / 2
+	r18 = r16 == r19
+	jump Label_12 if r18 je 1
+	jump Label_13
+Label_12:
+	rax = 1
+	jump Label_6
+	jump Label_11
+Label_13:
+Label_11:
+Label_7:
+	qword [ h ] = qword [ h ] + 1
+	jump Label_10
+Label_8:
+	rax = 0
+	jump Label_6
+Label_6:
+show [Func]:
+	r16 = 0
+Label_18:
+	r17 = r16 < qword [ now ]
+	jump Label_17 if r17 je 1
+	jump Label_16
+Label_17:
+	r20 = qword [ a ]
+		rdi = qword [r20 + r16 * 8]
+		FuncCall toString Param_size : 1
+		r21 = rax
+		rdi = r21
+		rsi = str__0
+		FuncCall string.add Param_size : 2
+		r19 = rax
+		rdi = r19
+		FuncCall print Param_size : 1
+		r22 = rax
+Label_15:
+	r16 = r16 + 1
+	jump Label_18
+Label_16:
+		rdi = str__1
+		FuncCall println Param_size : 1
+		r23 = rax
+Label_14:
+win [Func]:
+	r18 = 100
+	r18 = r18 + 1
+	r18 = r18 * 8
+		rdi = r18
+		FuncCall malloc Param_size : 1
+		r19 = rax
+	qword [r19] = 100
+	r19 = r19 + 8
+	r20 = r19
+	r22 = qword [ now ] != qword [ h ]
+	jump Label_21 if r22 je 1
+	jump Label_22
+Label_21:
+	rax = 0
+	jump Label_19
+	jump Label_20
+Label_22:
+Label_20:
+	r17 = 0
+Label_26:
+	r23 = r17 < qword [ now ]
+	jump Label_25 if r23 je 1
+	jump Label_24
+Label_25:
+	r24 = qword [ a ]
+	qword [r20 + r17 * 8] = qword [r24 + r17 * 8]
+Label_23:
+	r17 = r17 + 1
+	jump Label_26
+Label_24:
+	r16 = 0
+Label_30:
+	r26 = qword [ now ] - 1
+	r25 = r16 < r26
+	jump Label_29 if r25 je 1
+	jump Label_28
+Label_29:
+	r27 = r16 + 1
+	r17 = r27
+Label_34:
+	r28 = r17 < qword [ now ]
+	jump Label_33 if r28 je 1
+	jump Label_32
+Label_33:
+	r29 = qword [r20 + r16 * 8] > qword [r20 + r17 * 8]
+	jump Label_36 if r29 je 1
+	jump Label_37
+Label_36:
+	r21 = qword [r20 + r16 * 8]
+	qword [r20 + r16 * 8] = qword [r20 + r17 * 8]
+	qword [r20 + r17 * 8] = r21
+	jump Label_35
+Label_37:
+Label_35:
+Label_31:
+	r17 = r17 + 1
+	jump Label_34
+Label_32:
+Label_27:
+	r16 = r16 + 1
+	jump Label_30
+Label_28:
+	r16 = 0
+Label_41:
+	r30 = r16 < qword [ now ]
+	jump Label_40 if r30 je 1
+	jump Label_39
+Label_40:
+	r32 = r16 + 1
+	r31 = qword [r20 + r16 * 8] != r32
+	jump Label_43 if r31 je 1
+	jump Label_44
+Label_43:
+	rax = 0
+	jump Label_19
+	jump Label_42
+Label_44:
+Label_42:
+Label_38:
+	r16 = r16 + 1
+	jump Label_41
+Label_39:
+	rax = 1
+	jump Label_19
+Label_19:
+merge [Func]:
+	r16 = 0
+Label_49:
+	r17 = r16 < qword [ now ]
+	jump Label_48 if r17 je 1
+	jump Label_47
+Label_48:
+	r19 = qword [ a ]
+	r18 = qword [r19 + r16 * 8] == 0
+	jump Label_51 if r18 je 1
+	jump Label_52
+Label_51:
+	r21 = r16 + 1
+	r20 = r21
+Label_56:
+	r22 = r20 < qword [ now ]
+	jump Label_55 if r22 je 1
+	jump Label_54
+Label_55:
+	r24 = qword [ a ]
+	r23 = qword [r24 + r20 * 8] != 0
+	jump Label_58 if r23 je 1
+	jump Label_59
+Label_58:
+		rdi = r16
+		rsi = r20
+		FuncCall swap Param_size : 2
+		r25 = rax
+	jump Label_54
+	jump Label_57
+Label_59:
+Label_57:
+Label_53:
+	r20 = r20 + 1
+	jump Label_56
+Label_54:
+	jump Label_50
+Label_52:
+Label_50:
+Label_46:
+	r16 = r16 + 1
+	jump Label_49
+Label_47:
+	r16 = 0
+Label_63:
+	r26 = r16 < qword [ now ]
+	jump Label_62 if r26 je 1
+	jump Label_61
+Label_62:
+	r28 = qword [ a ]
+	r27 = qword [r28 + r16 * 8] == 0
+	jump Label_65 if r27 je 1
+	jump Label_66
+Label_65:
+	qword [ now ] = r16
+	jump Label_61
+	jump Label_64
+Label_66:
+Label_64:
+Label_60:
+	r16 = r16 + 1
+	jump Label_63
+Label_61:
+Label_45:
+move [Func]:
+	r16 = 0
+Label_71:
+	r17 = r16 < qword [ now ]
+	jump Label_70 if r17 je 1
+	jump Label_69
+Label_70:
+	r18 = qword [ a ]
+	qword [r18 + r16 * 8] = qword [r18 + r16 * 8] - 1
+	r19 = r16 + 1
+	r16 = r19
+Label_68:
+	jump Label_71
+Label_69:
+	r20 = qword [ a ]
+	r21 = qword [ now ]
+	qword [r20 + r21 * 8] = qword [ now ]
+	r22 = qword [ now ]
+	qword [ now ] = qword [ now ] + 1
+Label_67:
+main [Func]:
+	qword [ A ] = 48271
+	qword [ M ] = 2147483647
+	qword [ seed ] = 1
+	r16 = 0
+	r17 = 0
+	r18 = 0
+	r20 = 3 * 7
+	r19 = r20 * 10
+	qword [ n ] = r19
+	qword [ h ] = 0
+	r21 = 100
+	r21 = r21 + 1
+	r21 = r21 * 8
+		rdi = r21
+		FuncCall malloc Param_size : 1
+		r22 = rax
+	qword [r22] = 100
+	r22 = r22 + 8
+	qword [ a ] = r22
+	r23 = qword [ M ] / qword [ A ]
+	qword [ Q ] = r23
+	r24 = qword [ M ] % qword [ A ]
+	qword [ R ] = r24
+		rdi = qword [ n ]
+		FuncCall pd Param_size : 1
+		r25 = rax
+	r26 = r25
+	! r26
+	jump Label_74 if r26 je 1
+	jump Label_75
+Label_74:
+		rdi = str__2
+		FuncCall println Param_size : 1
+		r27 = rax
+	rax = 1
+	jump Label_72
+	jump Label_73
+Label_75:
+Label_73:
+		rdi = str__3
+		FuncCall println Param_size : 1
+		r28 = rax
+		rdi = 3654898
+		FuncCall initialize Param_size : 1
+		r29 = rax
+		FuncCall random Param_size : 0
+		r32 = rax
+	r31 = r32 % 10
+	r30 = r31 + 1
+	qword [ now ] = r30
+		rdi = qword [ now ]
+		FuncCall toString Param_size : 1
+		r33 = rax
+		rdi = r33
+		FuncCall println Param_size : 1
+		r34 = rax
+Label_79:
+	r36 = qword [ now ] - 1
+	r35 = r16 < r36
+	jump Label_78 if r35 je 1
+	jump Label_77
+Label_78:
+	r37 = qword [ a ]
+		FuncCall random Param_size : 0
+		r40 = rax
+	r39 = r40 % 10
+	r38 = r39 + 1
+	qword [r37 + r16 * 8] = r38
+Label_83:
+	r43 = qword [ a ]
+	r42 = qword [r43 + r16 * 8] + r17
+	r41 = r42 > qword [ n ]
+	jump Label_82 if r41 je 1
+	jump Label_81
+Label_82:
+	r44 = qword [ a ]
+		FuncCall random Param_size : 0
+		r47 = rax
+	r46 = r47 % 10
+	r45 = r46 + 1
+	qword [r44 + r16 * 8] = r45
+Label_80:
+	jump Label_83
+Label_81:
+	r49 = qword [ a ]
+	r48 = r17 + qword [r49 + r16 * 8]
+	r17 = r48
+Label_76:
+	r16 = r16 + 1
+	jump Label_79
+Label_77:
+	r50 = qword [ a ]
+	r51 = qword [ now ] - 1
+	r52 = qword [ n ] - r17
+	qword [r50 + r51 * 8] = r52
+		FuncCall show Param_size : 0
+		r53 = rax
+		FuncCall merge Param_size : 0
+		r54 = rax
+Label_87:
+		FuncCall win Param_size : 0
+		r55 = rax
+	r56 = r55
+	! r56
+	jump Label_86 if r56 je 1
+	jump Label_85
+Label_86:
+	r18 = r18 + 1
+		rdi = r18
+		FuncCall toString Param_size : 1
+		r61 = rax
+		rdi = str__4
+		rsi = r61
+		FuncCall string.add Param_size : 2
+		r60 = rax
+		rdi = r60
+		rsi = str__5
+		FuncCall string.add Param_size : 2
+		r58 = rax
+		rdi = r58
+		FuncCall println Param_size : 1
+		r62 = rax
+		FuncCall move Param_size : 0
+		r63 = rax
+		FuncCall merge Param_size : 0
+		r64 = rax
+		FuncCall show Param_size : 0
+		r65 = rax
+Label_84:
+	jump Label_87
+Label_85:
+		rdi = r18
+		FuncCall toString Param_size : 1
+		r70 = rax
+		rdi = str__6
+		rsi = r70
+		FuncCall string.add Param_size : 2
+		r69 = rax
+		rdi = r69
+		rsi = str__7
+		FuncCall string.add Param_size : 2
+		r67 = rax
+		rdi = r67
+		FuncCall println Param_size : 1
+		r71 = rax
+	rax = 0
+	jump Label_72
+Label_72:

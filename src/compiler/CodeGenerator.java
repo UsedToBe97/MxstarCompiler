@@ -6,6 +6,7 @@ import ir.Ir;
 import ir.inst.*;
 import ir.operand.Operand;
 import ir.operand.addr.MemAddr;
+import ir.operand.reg.Reg;
 import ir.operand.reg.VirtualReg;
 import ir.operand.reg.X86Reg;
 
@@ -37,18 +38,18 @@ public class CodeGenerator {
     public void visit(Inst x) {x.accept(this);}
 
     public void A(Operand dest, Operand lhs, Operand rhs, String op) {
-        lhs = getOp(lhs);
-        rhs = getOp(rhs);
-        dest = getOp(dest);
+        lhs = getOp(lhs, X86Reg.r9);
+        rhs = getOp(rhs, X86Reg.r8);
+        dest = getOp(dest, X86Reg.r10);
         ans += "\tmov\trdx, " + lhs.toString() + "\n";
         ans += "\t" + op + "\trdx, " + rhs.toString() + "\n";
         ans += "\tmov\t" + dest.toString() + ", rdx\n";
     }
 
     public void B(Operand dest, Operand lhs, Operand rhs, String op) {
-        lhs = getOp(lhs);
-        rhs = getOp(rhs);
-        dest = getOp(dest);
+        lhs = getOp(lhs, X86Reg.r9);
+        rhs = getOp(rhs, X86Reg.r8);
+        dest = getOp(dest, X86Reg.r10);
         ans += "\tmov\trcx, " + lhs.toString() + "\n";
         ans += "\tcmp\trcx, " + rhs.toString() + "\n";
         ans += "\t" + op + "\tcl\n\tmovzx\trcx, cl\n";
@@ -56,9 +57,9 @@ public class CodeGenerator {
     }
 
     public void C(Operand dest, Operand lhs, Operand rhs, String op) {
-        lhs = getOp(lhs);
-        rhs = getOp(rhs);
-        dest = getOp(dest);
+        lhs = getOp(lhs, X86Reg.r9);
+        rhs = getOp(rhs, X86Reg.r8);
+        dest = getOp(dest, X86Reg.r10);
         ans += "\tmov\trax, " + lhs.toString() + "\n";
         ans += "\tmov\trcx, " + rhs.toString() + "\n";
         ans += "\t" + op + "\trax, cl\n";
@@ -66,9 +67,9 @@ public class CodeGenerator {
     }
 
     public void D(Operand dest, Operand lhs, Operand rhs, String op) {
-        lhs = getOp(lhs);
-        rhs = getOp(rhs);
-        dest = getOp(dest);
+        lhs = getOp(lhs, X86Reg.r9);
+        rhs = getOp(rhs, X86Reg.r8);
+        dest = getOp(dest, X86Reg.r10);
         ans += "\tmov\trax, " + lhs.toString() + "\n";
         ans += "\tmov\trcx, " + rhs.toString() + "\n";
         ans += "\tcqo\n\tidiv\trcx\n";
@@ -106,8 +107,8 @@ public class CodeGenerator {
     }
 
     public void visit(CJump x) {
-        x.lhs = getOp(x.lhs);
-        x.rhs = getOp(x.rhs);
+        x.lhs = getOp(x.lhs, X86Reg.r8);
+        x.rhs = getOp(x.rhs, X86Reg.r9);
         ans += "\tcmp\t" + x.lhs.toString() + ", " + x.rhs.toString() +"\n";
         ans += "\t" + x.op + "\t" + x.dest.name +"\n";
     }
@@ -121,16 +122,18 @@ public class CodeGenerator {
     }
 
     public void visit(Move x) {
-        x.dest = getOp(x.dest);
-        x.src = getOp(x.src);
+        x.src = getOp(x.src, X86Reg.rbx);
         if (!x.src.toString().equals("rax"))
             ans += "\tmov\trax, " + x.src.toString() + "\n";
+
+
+        x.dest = getOp(x.dest, X86Reg.rbx);
         if (!x.dest.toString().equals("rax"))
             ans += "\tmov\t" + x.dest.toString() + ", rax\n";
     }
 
     public void visit(UnaryOp x) {
-        x.src = getOp(x.src);
+        x.src = getOp(x.src, X86Reg.rbx);
         if (x.op.equals("~")) {
             ans += "\tnot\t" + x.src.toString() + "\n";
         }
@@ -146,24 +149,24 @@ public class CodeGenerator {
         ans += "\tjmp\t" + x.label.name + "\n";
     }
 
-    public Operand getOp(Operand x) {
+    public Operand getOp(Operand x, Reg tmp) {
         if (x instanceof VirtualReg) {
             if (((VirtualReg) x).idx < 16) return X86Reg.get(((VirtualReg) x).idx);
             else return new MemAddr(X86Reg.rbp, null, 0, -(((VirtualReg) x).idx - 15) * 8);
         }
 
         if (x instanceof MemAddr) {
-            Operand base = getOp(((MemAddr) x).base);
-            Operand index = getOp(((MemAddr) x).index);
+            Operand base = getOp(((MemAddr) x).base, null);
+            Operand index = getOp(((MemAddr) x).index, null);
             if (base instanceof X86Reg && index instanceof X86Reg) {
                 return new MemAddr((X86Reg)base, (X86Reg)index, ((MemAddr) x).scale, ((MemAddr) x).disp);
             } else {
                 if (index != null) {
-                    ans += "\tmov\trbx, " + index.toString() + "\n";
-                    ans += "\timul\trbx, " + Integer.toString(((MemAddr) x).scale) + "\n";
-                    ans += "\tadd\trbx, " + base.toString() +"\n";
-                } else ans += "\tmov\trbx, " + base +"\n";
-                return new MemAddr(X86Reg.rbx, null, 0, ((MemAddr) x).disp);
+                    ans += "\tmov\t" + tmp.name + ", " + index.toString() + "\n";
+                    ans += "\timul\t" + tmp.name + ", " + Integer.toString(((MemAddr) x).scale) + "\n";
+                    ans += "\tadd\t" + tmp.name + ", " + base.toString() +"\n";
+                } else ans += "\tmov\t" + tmp.name + ", " + base +"\n";
+                return new MemAddr(tmp, null, 0, ((MemAddr) x).disp);
             }
         }
 
@@ -173,6 +176,8 @@ public class CodeGenerator {
         int cc = 0;
         ans += "global main\n\n";
         ans += "extern puts\n";
+        ans += "extern getchar\n";
+        ans += "extern putchar\n";
         ans += "extern __stack_chk_fail\n";
         ans += "extern malloc\n";
         ans += "extern __isoc99_scanf\n";
@@ -212,17 +217,28 @@ public class CodeGenerator {
         ans += "\tmov     edi, 256\n";
         ans += "\tcall    malloc\n";
         ans += "\tmov     qword [rbp-418H], rax\n";
-        ans += "\tmov     dword [rbp-428H], 0\n";
         ans += "\tmov     dword [rbp-424H], 0\n";
-        ans += "\tmov     dword [rbp-420H], 0\n";
         ans += "\tcmp     dword [rbp-434H], 0\n";
+        ans += "\tjnz     L_001\n";
+        ans += "\tmov     rax, qword [rbp-418H]\n";
+        ans += "\tmov     byte [rax], 48\n";
+        ans += "\tmov     rax, qword [rbp-418H]\n";
+        ans += "\tadd     rax, 1\n";
+        ans += "\tmov     byte [rax], 0\n";
+        ans += "\tmov     rax, qword [rbp-418H]\n";
+        ans += "\tjmp     L_007\n";
+        ans += "L_001:  cmp     dword [rbp-434H], 0\n";
         ans += "\tjns     L_002\n";
-        ans += "\tneg     dword [rbp-434H]\n";
-        ans += "\tmov     dword [rbp-420H], 1\n";
         ans += "\tmov     rax, qword [rbp-418H]\n";
         ans += "\tmov     byte [rax], 45\n";
-        ans += "\tjmp     L_002\n";
-        ans += "L_001:  mov     ecx, dword [rbp-434H]\n";
+        ans += "\tneg     dword [rbp-434H]\n";
+        ans += "\tmov     dword [rbp-424H], 1\n";
+        ans += "L_002:  mov     dword [rbp-420H], 0\n";
+        ans += "\tjmp     L_004\n";
+        ans += "L_003:  mov     esi, dword [rbp-420H]\n";
+        ans += "\tlea     eax, [rsi+1H]\n";
+        ans += "\tmov     dword [rbp-420H], eax\n";
+        ans += "\tmov     ecx, dword [rbp-434H]\n";
         ans += "\tmov     edx, 1717986919\n";
         ans += "\tmov     eax, ecx\n";
         ans += "\timul    edx\n";
@@ -235,8 +251,9 @@ public class CodeGenerator {
         ans += "\tadd     eax, edx\n";
         ans += "\tadd     eax, eax\n";
         ans += "\tsub     ecx, eax\n";
-        ans += "\tmov     eax, ecx\n";
-        ans += "\tmov     dword [rbp-41CH], eax\n";
+        ans += "\tmov     edx, ecx\n";
+        ans += "\tmovsxd  rax, esi\n";
+        ans += "\tmov     dword [rbp+rax*4-410H], edx\n";
         ans += "\tmov     ecx, dword [rbp-434H]\n";
         ans += "\tmov     edx, 1717986919\n";
         ans += "\tmov     eax, ecx\n";
@@ -247,34 +264,28 @@ public class CodeGenerator {
         ans += "\tsub     edx, eax\n";
         ans += "\tmov     eax, edx\n";
         ans += "\tmov     dword [rbp-434H], eax\n";
-        ans += "\tmov     eax, dword [rbp-428H]\n";
-        ans += "\tlea     edx, [rax+1H]\n";
-        ans += "\tmov     dword [rbp-428H], edx\n";
-        ans += "\t        cdqe\n";
-        ans += "\tmov     edx, dword [rbp-41CH]\n";
-        ans += "\tmov     dword [rbp+rax*4-410H], edx\n";
-        ans += "L_002:  cmp     dword [rbp-434H], 0\n";
-        ans += "\tjnz     L_001\n";
-        ans += "\tmov     dword [rbp-424H], 0\n";
-        ans += "\tjmp     L_004\n";
-        ans += "L_003:  mov     edx, dword [rbp-424H]\n";
-        ans += "\tmov     eax, dword [rbp-420H]\n";
+        ans += "L_004:  cmp     dword [rbp-434H], 0\n";
+        ans += "\tjnz     L_003\n";
+        ans += "\tmov     dword [rbp-41CH], 0\n";
+        ans += "\tjmp     L_006\n";
+        ans += "L_005:  mov     edx, dword [rbp-424H]\n";
+        ans += "\tmov     eax, dword [rbp-41CH]\n";
         ans += "\tadd     eax, edx\n";
         ans += "\tmovsxd  rdx, eax\n";
         ans += "\tmov     rax, qword [rbp-418H]\n";
         ans += "\tadd     rdx, rax\n";
-        ans += "\tmov     eax, dword [rbp-428H]\n";
+        ans += "\tmov     eax, dword [rbp-420H]\n";
         ans += "\tsub     eax, 1\n";
-        ans += "\tsub     eax, dword [rbp-424H]\n";
+        ans += "\tsub     eax, dword [rbp-41CH]\n";
         ans += "\tcdqe\n";
         ans += "\tmov     eax, dword [rbp+rax*4-410H]\n";
         ans += "\tadd     eax, 48\n";
         ans += "\tmov     byte [rdx], al\n";
-        ans += "\tadd     dword [rbp-424H], 1\n";
-        ans += "L_004:  mov     eax, dword [rbp-424H]\n";
-        ans += "\tcmp     eax, dword [rbp-428H]\n";
-        ans += "\tjl      L_003\n";
-        ans += "\tmov     edx, dword [rbp-428H]\n";
+        ans += "\tadd     dword [rbp-41CH], 1\n";
+        ans += "L_006:  mov     eax, dword [rbp-41CH]\n";
+        ans += "\tcmp     eax, dword [rbp-420H]\n";
+        ans += "\tjl      L_005\n";
+        ans += "\tmov     edx, dword [rbp-424H]\n";
         ans += "\tmov     eax, dword [rbp-420H]\n";
         ans += "\tadd     eax, edx\n";
         ans += "\tmovsxd  rdx, eax\n";
@@ -282,11 +293,11 @@ public class CodeGenerator {
         ans += "\tadd     rax, rdx\n";
         ans += "\tmov     byte [rax], 0\n";
         ans += "\tmov     rax, qword [rbp-418H]\n";
-        ans += "\tmov     rsi, qword [rbp-8H]\n";
-        ans += "\txor     rsi, qword [fs:abs 28H]\n";
-        ans += "\tjz      L_005\n";
+        ans += "L_007:  mov     rdi, qword [rbp-8H]\n";
+        ans += "\txor     rdi, qword [fs:abs 28H]\n";
+        ans += "\tjz      L_008\n";
         ans += "\tcall    __stack_chk_fail\n";
-        ans += "L_005:  leave\n";
+        ans += "L_008:  leave\n";
         ans += "\t        ret\n";
 
 
@@ -377,6 +388,98 @@ public class CodeGenerator {
         ans += "\tleave\n";
         ans += "\t        ret\n";
 
+        //getInt
+        ans += "getInt:\n";
+        ans += "\tpush    rbp\n";
+        ans += "\tmov     rbp, rsp\n";
+        ans += "\tsub     rsp, 16\n";
+        ans += "\tcall    getchar\n";
+        ans += "\tmov     byte [rbp-5H], al\n";
+        ans += "\tmov     dword [rbp-4H], 0\n";
+        ans += "\tjmp     Lint_002\n";
+        ans += "Lint_001:  mov     edx, dword [rbp-4H]\n";
+        ans += "\tmov     eax, edx\n";
+        ans += "\tshl     eax, 2\n";
+        ans += "\tadd     eax, edx\n";
+        ans += "\tadd     eax, eax\n";
+        ans += "\tmov     edx, eax\n";
+        ans += "\tmovsx   eax, byte [rbp-5H]\n";
+        ans += "\tadd     eax, edx\n";
+        ans += "\tsub     eax, 48\n";
+        ans += "\tmov     dword [rbp-4H], eax\n";
+        ans += "\tcall    getchar\n";
+        ans += "\tmov     byte [rbp-5H], al\n";
+        ans += "Lint_002:  cmp     byte [rbp-5H], 47\n";
+        ans += "\tjle     Lint_003\n";
+        ans += "\tcmp     byte [rbp-5H], 57\n";
+        ans += "\tjle     Lint_001\n";
+        ans += "Lint_003:  mov     eax, dword [rbp-4H]\n";
+        ans += "\tleave\n";
+        ans += "\t        ret\n";
+
+        //string.length
+        ans += "string.length:\n";
+        ans += "\tpush    rbp\n";
+        ans += "\tmov     rbp, rsp\n";
+        ans += "\tmov     qword [rbp-18H], rdi\n";
+        ans += "\tmov     dword [rbp-4H], 0\n";
+        ans += "\tjmp     Llen_002\n";
+        ans += "Llen_001:  add     dword [rbp-4H], 1\n";
+        ans += "Llen_002:  mov     eax, dword [rbp-4H]\n";
+        ans += "\tmovsxd  rdx, eax\n";
+        ans += "\tmov     rax, qword [rbp-18H]\n";
+        ans += "\tadd     rax, rdx\n";
+        ans += "\tmovzx   eax, byte [rax]\n";
+        ans += "\ttest    al, al\n";
+        ans += "\tjnz     Llen_001\n";
+        ans += "\tmov     eax, dword [rbp-4H]\n";
+        ans += "\tpop     rbp\n";
+        ans += "\tret\n";
+
+        //string.ord
+        ans += "string.ord:\n";
+        ans += "\tpush    rbp\n";
+        ans += "\tmov     rbp, rsp\n";
+        ans += "\tmov     qword [rbp-18H], rdi\n";
+        ans += "\tmov     dword [rbp-1CH], esi\n";
+        ans += "\tmov     eax, dword [rbp-1CH]\n";
+        ans += "\tmovsxd  rdx, eax\n";
+        ans += "\tmov     rax, qword [rbp-18H]\n";
+        ans += "\tadd     rax, rdx\n";
+        ans += "\tmovzx   eax, byte [rax]\n";
+        ans += "\tmovsx   eax, al\n";
+        ans += "\tmov     dword [rbp-4H], eax\n";
+        ans += "\tmov     eax, dword [rbp-4H]\n";
+        ans += "\tpop     rbp\n";
+        ans += "\tret\n";
+
+        //print
+        ans += "print:\n";
+        ans += "\tpush    rbp\n";
+        ans += "\tmov     rbp, rsp\n";
+        ans += "\tsub     rsp, 32\n";
+        ans += "\tmov     qword [rbp-18H], rdi\n";
+        ans += "\tmov     dword [rbp-4H], 0\n";
+        ans += "\tjmp     Lprt_002\n";
+        ans += "Lprt_001:  mov     eax, dword [rbp-4H]\n";
+        ans += "\tmovsxd  rdx, eax\n";
+        ans += "\tmov     rax, qword [rbp-18H]\n";
+        ans += "\tadd     rax, rdx\n";
+        ans += "\tmovzx   eax, byte [rax]\n";
+        ans += "\tmovsx   eax, al\n";
+        ans += "\tmov     edi, eax\n";
+        ans += "\tcall    putchar\n";
+        ans += "\tadd     dword [rbp-4H], 1\n";
+        ans += "Lprt_002:  mov     eax, dword [rbp-4H]\n";
+        ans += "\tmovsxd  rdx, eax\n";
+        ans += "\tmov     rax, qword [rbp-18H]\n";
+        ans += "\tadd     rax, rdx\n";
+        ans += "\tmovzx   eax, byte [rax]\n";
+        ans += "\ttest    al, al\n";
+        ans += "\tjnz     Lprt_001\n";
+        ans += "\tnop\n";
+        ans += "\t        leave\n";
+        ans += "\tret\n";
     }
 
 }
