@@ -1,9 +1,19 @@
-x [GV]
 
 
 main [Func]:
-	qword [ x ] = 10
-	qword [ x ] = 20
-	rax = qword [ x ]
+	r16 = 1
+	r16 = r16 + 1
+	r16 = r16 * 8
+		rdi = r16
+		FuncCall malloc Param_size : 1
+		r17 = rax
+	qword [r17] = 1
+	r17 = r17 + 8
+	r18 = r17
+	r19 = 0
+	qword [r18 + r19 * 8] = 10
+	r21 = 0
+	r20 = qword [r18 + r21 * 8] + 20
+	rax = r20
 	jump Label_0
 Label_0:

@@ -1,7 +1,7 @@
-int x = 10;
 int main() {
-    x = 20;
-    return x;
+    int[] a = new int[1];
+    a[0] = 10;
+    return a[0] + 20;
 }
 
 
@@ -9,7 +9,7 @@ int main() {
 
 /*!! metadata:
 === comment ===
-symtable2.mx
+array2.mx
 === assert ===
 exitcode
 === timeout ===
@@ -21,6 +21,6 @@ codegen pretest
 === is_public ===
 True
 === exitcode ===
-20
+30
 
 !!*/

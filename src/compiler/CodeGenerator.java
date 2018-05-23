@@ -177,7 +177,7 @@ public class CodeGenerator {
                 if (index != null) {
                     ans += "\tmov\trbx, " + index.toString() + "\n";
                     ans += "\timul\trbx, " + Integer.toString(((MemAddr) x).scale) + "\n";
-                    ans += "\timul\trbx, " + base.toString() +"\n";
+                    ans += "\tadd\trbx, " + base.toString() +"\n";
                 } else ans += "\tmov\trbx, " + base +"\n";
                 return new MemAddr(X86Reg.rbx, null, 0, ((MemAddr) x).disp);
             }
