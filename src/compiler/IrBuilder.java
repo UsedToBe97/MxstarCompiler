@@ -164,6 +164,39 @@ public class IrBuilder {
             nowfunc.addInst(call);
             return;
         }
+        if (x.op.equals("==") && x.expr1.gettype() instanceof StringType && x.expr2.gettype() instanceof StringType) {
+            x.operand = nowfunc.newReg();
+            List<Operand> params = new ArrayList<>();
+            visit(x.expr1);
+            visit(x.expr2);
+            params.add(x.expr1.operand);
+            params.add(x.expr2.operand);
+            Call call = new Call("string.eq", params, x.operand);
+            nowfunc.addInst(call);
+            return;
+        }
+        if (x.op.equals("<") && x.expr1.gettype() instanceof StringType && x.expr2.gettype() instanceof StringType) {
+            x.operand = nowfunc.newReg();
+            List<Operand> params = new ArrayList<>();
+            visit(x.expr1);
+            visit(x.expr2);
+            params.add(x.expr1.operand);
+            params.add(x.expr2.operand);
+            Call call = new Call("string.s", params, x.operand);
+            nowfunc.addInst(call);
+            return;
+        }
+        if (x.op.equals(">") && x.expr1.gettype() instanceof StringType && x.expr2.gettype() instanceof StringType) {
+            x.operand = nowfunc.newReg();
+            List<Operand> params = new ArrayList<>();
+            visit(x.expr1);
+            visit(x.expr2);
+            params.add(x.expr1.operand);
+            params.add(x.expr2.operand);
+            Call call = new Call("string.g", params, x.operand);
+            nowfunc.addInst(call);
+            return;
+        }
         visit(x.expr1);
         if (x.op.equals("||")) {
             Label okLabel = new Label(), toLabel = new Label();
