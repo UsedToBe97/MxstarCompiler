@@ -130,7 +130,7 @@ public class Main {
             System.err.println(ce.getMessage());
             System.exit(-1);
         }*/
-        rt.output();
+        //rt.output();
 
         IrBuilder irbuilder = new IrBuilder();
         Ir ir = irbuilder.visit(rt);

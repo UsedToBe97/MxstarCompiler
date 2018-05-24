@@ -65,7 +65,7 @@ public class ScopeTree {
         root.addObj("this", new FuncDef("this", new NullType(new Position(-1, -1))));
     }
     public void print() {
-        System.err.println("\n\n---------------print----------");
+        /*System.err.println("\n\n---------------print----------");
         ScopeNode p = now;
         do {
             for (String s : p.objmap.keySet()) {
@@ -74,7 +74,7 @@ public class ScopeTree {
             System.err.println("\n---------------next----------\n");
             p = p.parent;
         } while (p != null);
-        System.err.println("---------------print----------\n\n");
+        System.err.println("---------------print----------\n\n");*/
     }
     public void addObj(String _s, Def _d) {
         now.addObj(_s, _d);
