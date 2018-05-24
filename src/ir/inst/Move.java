@@ -1,6 +1,7 @@
 package ir.inst;
 
 import compiler.CodeGenerator;
+import compiler.RegAllocator;
 import ir.operand.Operand;
 
 public class Move extends Inst {
@@ -19,5 +20,8 @@ public class Move extends Inst {
     }
     public void accept(CodeGenerator cg) {
         cg.visit(this);
+    }
+    public void accept(RegAllocator ra) {
+        ra.visit(this);
     }
 }

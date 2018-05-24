@@ -1,6 +1,7 @@
 package ir.inst;
 
 import compiler.CodeGenerator;
+import compiler.RegAllocator;
 
 public class FuncCall extends Inst {
     public String name;
@@ -16,6 +17,9 @@ public class FuncCall extends Inst {
     }
     public void accept(CodeGenerator cg) {
         cg.visit(this);
+    }
+    public void accept(RegAllocator ra) {
+        ra.visit(this);
     }
 
 }

@@ -199,7 +199,12 @@ public class CodeGenerator {
 
         for (Func u : rt.Funcs) {
             nowfunc = u;
-            nowfunc.size = nowfunc.num > 16 ? nowfunc.num - 16 : 0;
+            int pp = 0;
+            for (Reg p : nowfunc.Regs){
+                if (pp < p.idx) pp = p.idx;
+            }
+            nowfunc.size = pp > 16 ? pp - 16 : 0;
+            //nowfunc.size = nowfunc.num > 16 ? nowfunc.num - 16 : 0;
             nowfunc.size *= 8;
             ans.append(nowfunc.name + ":\n");
             enterFunc();

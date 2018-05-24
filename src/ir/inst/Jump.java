@@ -1,6 +1,7 @@
 package ir.inst;
 
 import compiler.CodeGenerator;
+import compiler.RegAllocator;
 
 public class Jump extends Inst {
     public Label label;
@@ -13,5 +14,8 @@ public class Jump extends Inst {
     }
     public void accept(CodeGenerator cg) {
         cg.visit(this);
+    }
+    public void accept(RegAllocator ra) {
+        ra.visit(this);
     }
 }

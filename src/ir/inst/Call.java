@@ -1,6 +1,7 @@
 package ir.inst;
 
 import compiler.CodeGenerator;
+import compiler.RegAllocator;
 import ir.operand.Operand;
 import ir.operand.addr.MemAddr;
 import ir.operand.reg.X86Reg;
@@ -30,5 +31,8 @@ public class Call extends Inst {
     }
     public void accept(CodeGenerator cg) {
         cg.visit(this);
+    }
+    public void accept(RegAllocator ra) {
+        ra.visit(this);
     }
 }

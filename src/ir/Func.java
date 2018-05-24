@@ -12,8 +12,10 @@ import java.util.List;
 
 public class Func {
     public String name;
+    public boolean opt;
     public List<Inst> Insts = new ArrayList<>();
     public List<Reg> Regs = new ArrayList<>();
+    public boolean[] tag;
     public int num = 16, size;
     public HashMap<String, Operand> defMap = new HashMap<>();
     public Func(String _name) {
