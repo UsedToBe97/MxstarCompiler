@@ -139,14 +139,14 @@ public class Main {
             PrintStream fout = new PrintStream(new FileOutputStream(f));
             fout.print(ir.toString());
         }
-        CodeGenerator cg = new CodeGenerator();
-        cg.translate(ir);
-        if (Submit == false) {
-            File f = new File("D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/try.asm");
-            PrintStream fout = new PrintStream(new FileOutputStream(f));
-            fout.print(cg.ans);
-        }
-        System.out.println(cg.ans);
+//        CodeGenerator cg = new CodeGenerator();
+//        cg.translate(ir);
+//        if (Submit == false) {
+//            File f = new File("D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/try.asm");
+//            PrintStream fout = new PrintStream(new FileOutputStream(f));
+//            fout.print(cg.ans);
+//        }
+//        System.out.println(cg.ans);
 
     }
 }
