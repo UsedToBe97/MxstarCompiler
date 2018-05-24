@@ -7,10 +7,7 @@ string[ 3 ]
 string[ 4 ]  
 string[ 5 ]  
 string[ 6 ]  
-string[ 7 ]  
-string[ 8 ]  
-string[ 9 ]  
-string[ 10 ] 
+string[ 7 ] 
 
 hilo [Func]:
 	r16 = rdi
@@ -96,31 +93,25 @@ Label_5:
 Label_3:
 int2chr [Func]:
 	r16 = rdi
-		rdi = r16
-		FuncCall toString Param_size : 1
-		r17 = rax
-		rdi = r17
-		FuncCall println Param_size : 1
-		r18 = rax
-	r20 = r16 >= 32
-	jump Label_12 if r20 je 1
-	r19 = 0
+	r18 = r16 >= 32
+	jump Label_12 if r18 je 1
+	r17 = 0
 	jump Label_13
 Label_12:
-	r21 = r16 <= 126
-	r19 = r21
+	r19 = r16 <= 126
+	r17 = r19
 Label_13:
-	jump Label_10 if r19 je 1
+	jump Label_10 if r17 je 1
 	jump Label_11
 Label_10:
-	r22 = r16 - 32
-	r23 = r16 - 32
+	r20 = r16 - 32
+	r21 = r16 - 32
 		rdi = qword [ asciiTable__ ]
-		rsi = r22
-		rdx = r23
+		rsi = r20
+		rdx = r21
 		FuncCall string.substring Param_size : 3
-		r24 = rax
-	rax = r24
+		r22 = rax
+	rax = r22
 	jump Label_8
 	jump Label_9
 Label_11:
@@ -223,190 +214,150 @@ main [Func]:
 	r33 = 0
 	r34 = 0
 	r35 = 0
-	r36 = 0
 	r22 = r16
 Label_27:
-	r37 = r22 < r17
-	jump Label_26 if r37 je 1
+	r36 = r22 < r17
+	jump Label_26 if r36 je 1
 	jump Label_25
 Label_26:
 	r23 = r18
 Label_31:
-	r38 = r23 < r19
-	jump Label_30 if r38 je 1
+	r37 = r23 < r19
+	jump Label_30 if r37 je 1
 	jump Label_29
 Label_30:
 	r24 = r20
 Label_35:
-	r39 = r24 < r21
-	jump Label_34 if r39 je 1
+	r38 = r24 < r21
+	jump Label_34 if r38 je 1
 	jump Label_33
 Label_34:
 		rdi = r16
 		rsi = r31
 		rdx = r24
 		FuncCall getnumber Param_size : 3
-		r40 = rax
-	r41 = r40
+		r39 = rax
+	r40 = r39
 		rdi = r22
 		rsi = r31
 		rdx = r24
 		FuncCall getnumber Param_size : 3
-		r42 = rax
-	r43 = r42
+		r41 = rax
+	r42 = r41
 		rdi = r23
 		rsi = r31
 		rdx = r24
 		FuncCall getnumber Param_size : 3
-		r44 = rax
-	r45 = r44
-	r46 = r22 ^ r23
-		rdi = r46
+		r43 = rax
+	r44 = r43
+	r45 = r22 ^ r23
+		rdi = r45
 		rsi = r31
 		rdx = r24
 		FuncCall getnumber Param_size : 3
-		r47 = rax
-	r48 = r47
+		r46 = rax
+	r47 = r46
 		rdi = r24
 		rsi = 1
 		FuncCall xorshift Param_size : 2
-		r51 = rax
+		r50 = rax
 		rdi = r23
 		rsi = 1
 		FuncCall xorshift Param_size : 2
-		r52 = rax
-	r50 = r51 ^ r52
+		r51 = rax
+	r49 = r50 ^ r51
 		rdi = r22
 		rsi = 1
 		FuncCall xorshift Param_size : 2
-		r53 = rax
-	r49 = r50 ^ r53
-	r54 = r49
-	r56 = r41 ^ r54
-		rdi = r56
+		r52 = rax
+	r48 = r49 ^ r52
+	r53 = r48
+	r55 = r40 ^ r53
+		rdi = r55
 		rsi = 1
 		FuncCall xorshift Param_size : 2
-		r57 = rax
-	r55 = r32 + r57
-	r32 = r55
-	r59 = r43 ^ r54
-		rdi = r59
+		r56 = rax
+	r54 = r32 + r56
+	r32 = r54
+	r58 = r42 ^ r53
+		rdi = r58
 		rsi = 1
 		FuncCall xorshift Param_size : 2
-		r60 = rax
-	r58 = r33 + r60
-	r33 = r58
-	r62 = r45 ^ r54
-		rdi = r62
+		r59 = rax
+	r57 = r33 + r59
+	r33 = r57
+	r61 = r44 ^ r53
+		rdi = r61
 		rsi = 1
 		FuncCall xorshift Param_size : 2
-		r63 = rax
-	r61 = r34 + r63
-	r34 = r61
-	r65 = r48 ^ r54
-		rdi = r65
+		r62 = rax
+	r60 = r34 + r62
+	r34 = r60
+	r64 = r47 ^ r53
+		rdi = r64
 		rsi = 1
 		FuncCall xorshift Param_size : 2
-		r66 = rax
-	r64 = r35 + r66
-	r35 = r64
+		r65 = rax
+	r63 = r35 + r65
+	r35 = r63
 Label_32:
-	r67 = r24
+	r66 = r24
 	r24 = r24 + 1
 	jump Label_35
 Label_33:
 Label_28:
-	r68 = r23
+	r67 = r23
 	r23 = r23 + 1
 	jump Label_31
 Label_29:
 Label_24:
-	r69 = r22
+	r68 = r22
 	r22 = r22 + 1
 	jump Label_27
 Label_25:
 		rdi = r32
-		FuncCall toString Param_size : 1
-		r82 = rax
-		rdi = r82
-		rsi = str__3
-		FuncCall string.add Param_size : 2
-		r81 = rax
-		rdi = r33
-		FuncCall toString Param_size : 1
-		r83 = rax
-		rdi = r81
-		rsi = r83
-		FuncCall string.add Param_size : 2
-		r79 = rax
-		rdi = r79
-		rsi = str__4
-		FuncCall string.add Param_size : 2
-		r77 = rax
-		rdi = r34
-		FuncCall toString Param_size : 1
-		r84 = rax
-		rdi = r77
-		rsi = r84
-		FuncCall string.add Param_size : 2
-		r75 = rax
-		rdi = r75
-		rsi = str__5
-		FuncCall string.add Param_size : 2
-		r73 = rax
-		rdi = r35
-		FuncCall toString Param_size : 1
-		r85 = rax
-		rdi = r73
-		rsi = r85
-		FuncCall string.add Param_size : 2
+		FuncCall toStringHex Param_size : 1
 		r71 = rax
 		rdi = r71
-		FuncCall println Param_size : 1
-		r86 = rax
-		rdi = r32
-		FuncCall toStringHex Param_size : 1
-		r89 = rax
-		rdi = r89
-		rsi = str__6
+		rsi = str__3
 		FuncCall string.add Param_size : 2
-		r88 = rax
-		rdi = r88
+		r70 = rax
+		rdi = r70
 		FuncCall print Param_size : 1
-		r90 = rax
+		r72 = rax
 		rdi = r33
 		FuncCall toStringHex Param_size : 1
-		r93 = rax
-		rdi = r93
-		rsi = str__7
+		r75 = rax
+		rdi = r75
+		rsi = str__4
 		FuncCall string.add Param_size : 2
-		r92 = rax
-		rdi = r92
+		r74 = rax
+		rdi = r74
 		FuncCall print Param_size : 1
-		r94 = rax
+		r76 = rax
 		rdi = r34
 		FuncCall toStringHex Param_size : 1
-		r97 = rax
-		rdi = r97
-		rsi = str__8
+		r79 = rax
+		rdi = r79
+		rsi = str__5
 		FuncCall string.add Param_size : 2
-		r96 = rax
-		rdi = r96
+		r78 = rax
+		rdi = r78
 		FuncCall print Param_size : 1
-		r98 = rax
+		r80 = rax
 		rdi = r35
 		FuncCall toStringHex Param_size : 1
-		r101 = rax
-		rdi = r101
-		rsi = str__9
+		r83 = rax
+		rdi = r83
+		rsi = str__6
 		FuncCall string.add Param_size : 2
-		r100 = rax
-		rdi = r100
+		r82 = rax
+		rdi = r82
 		FuncCall print Param_size : 1
-		r102 = rax
-		rdi = str__10
+		r84 = rax
+		rdi = str__7
 		FuncCall println Param_size : 1
-		r103 = rax
+		r85 = rax
 	rax = 0
 	jump Label_23
 Label_23:

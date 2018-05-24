@@ -34,7 +34,6 @@ int xorshift(int seed, int num)
 string asciiTable = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 string int2chr(int x)
 {
-	println(toString(x));
 	if(x >= 32 && x <= 126)
 		return asciiTable.substring(x-32, x-32);
 	return "";
@@ -82,7 +81,6 @@ int main()
 	int ans1 = 0;
 	int ans2 = 0;
 	int ans3 = 0;
-	int cc = 0;
 	
 	for(i=l1; i<r1; i++)
 		for(j=l2; j<r2; j++)
@@ -100,7 +98,6 @@ int main()
 				ans2 = ans2 + xorshift(x2 ^ y, 1);
 				ans3 = ans3 + xorshift(x3 ^ y, 1);
 			}
-	println(toString(ans0) + " " + toString(ans1) + " " + toString(ans2) + " " + toString(ans3));
 	
 	print(toStringHex(ans0) + " ");
 	print(toStringHex(ans1) + " ");
