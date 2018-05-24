@@ -1,3 +1,9 @@
+#include<bits/stdc++.h>
+using namespace std;
+int getInt() {
+	int x;scanf("%d",&x);
+	return x;
+}
 int hilo(int hi, int lo)
 {
 	return lo | (hi << 16);
@@ -34,9 +40,11 @@ int xorshift(int seed, int num)
 string asciiTable = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
 string int2chr(int x)
 {
-	println(toString(x));
+	printf("%d\n",x-32);
+	cout<<asciiTable.substr(x-32,1)<<endl;
 	if(x >= 32 && x <= 126)
-		return asciiTable.substring(x-32, x-32);
+		return asciiTable.substr(x-32,1);
+		//.substring(x-32, x-32);
 	return "";
 }
 
@@ -83,7 +91,6 @@ int main()
 	int ans2 = 0;
 	int ans3 = 0;
 	int cc = 0;
-	
 	for(i=l1; i<r1; i++)
 		for(j=l2; j<r2; j++)
 			for(k=l3; k<r3; k++)
@@ -100,13 +107,13 @@ int main()
 				ans2 = ans2 + xorshift(x2 ^ y, 1);
 				ans3 = ans3 + xorshift(x3 ^ y, 1);
 			}
-	println(toString(ans0) + " " + toString(ans1) + " " + toString(ans2) + " " + toString(ans3));
 	
-	print(toStringHex(ans0) + " ");
-	print(toStringHex(ans1) + " ");
-	print(toStringHex(ans2) + " ");
-	print(toStringHex(ans3) + " ");
-	println("");
+	cout << ans0 << " " << ans1 << " " << ans2 << " " << ans3 << endl;
+	cout<<toStringHex(ans0)<< " ";
+	cout<<toStringHex(ans1)<< " ";
+	cout<<toStringHex(ans2)<< " ";
+	cout<<toStringHex(ans3)<< " ";
+	puts("");
 	
 	
 	return 0;
@@ -135,3 +142,4 @@ C22EE30E 1CCFFFD1 587343F6 E333CAFF
 0
 
 !!*/
+
