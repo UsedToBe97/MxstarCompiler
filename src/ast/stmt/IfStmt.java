@@ -21,10 +21,10 @@ public class IfStmt extends Stmt {
         return pos;
     }
     public void check() {
-        System.err.println("Check IfStmt");
+         //System.err.println("Check IfStmt");
         for (Pair<Expr, Stmt> u : ifList) {
-            System.err.println(u.getFirst().toString());
-            System.err.println(u.getFirst().gettype().typename() + " ????? ");
+            //System.err.println(u.getFirst().toString());
+            //System.err.println(u.getFirst().gettype().typename() + " ????? ");
             if (!(u.getFirst().gettype() instanceof BoolType))
                 throw new CompileError("Not bool type(If Stmt)", pos);
             if (u.getSecond() != null) {

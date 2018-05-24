@@ -33,7 +33,7 @@ public class ForStmt extends Stmt {
         GlobalClass.circnt++;
         if (!(stmt instanceof BlockStmt)) GlobalClass.st.enterScope();
         for (int i = 0; i < exprs.size(); i++) {
-            System.err.println(i);
+            //System.err.println(i);
             //System.err.println(exprs.get(i).gettype().typename());
             types.add(exprs.get(i).gettype());
         }

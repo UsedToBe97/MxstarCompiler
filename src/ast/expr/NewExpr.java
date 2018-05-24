@@ -29,7 +29,7 @@ public class NewExpr extends Expr {
 
     public Type gettype() {
         if (rettype != null) return rettype;
-        System.err.println("New!");
+        //System.err.println("New!");
         //System.err.println(exprList.get(0));
         for (Expr e : exprList) {
             if (!(e.gettype() instanceof IntType))

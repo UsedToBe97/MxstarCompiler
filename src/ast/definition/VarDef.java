@@ -37,10 +37,10 @@ public class VarDef extends Def {
     public Position getpos() {return pos;}
     public Expr getExpr() {return expr;}
     public void check() {
-        System.err.println("Go Check VarDef   " + name);
+        //System.err.println("Go Check VarDef   " + name);
         if (type instanceof ClassType) {
             Def d = GlobalClass.st.now.check(((ClassType) type).name);
-            System.err.println("next ");
+            //System.err.println("next ");
             GlobalClass.st.print();
             if (!(d instanceof ClassDef))
                 throw new CompileError("Undefined Class(VarDef)", pos);
@@ -59,7 +59,7 @@ public class VarDef extends Def {
                     throw new CompileError("String = null(VarDef)", pos);
         }
         if (expr != null) {
-            System.err.println(expr.gettype().typename() + " //// " + type.typename());
+            //System.err.println(expr.gettype().typename() + " //// " + type.typename());
             if (!expr.gettype().typename().equals("null"))
                 if (!expr.gettype().typename().equals(type.typename()))
                     throw new CompileError("Can't def(VarDef)", pos);

@@ -12,7 +12,7 @@ public class Root extends Atom {
     public List<Def> deflist = new LinkedList<>();
     public void add(Def _def) {deflist.add(_def);}
     public void check() {
-        System.err.println("Go check Root");
+        //System.err.println("Go check Root");
         GlobalClass.st.print();
         if (!GlobalClass.st.contains("main"))
             throw new CompileError("Lost Main (Root)", new Position(-1, -1));

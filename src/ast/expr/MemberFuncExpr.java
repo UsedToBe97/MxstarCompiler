@@ -37,7 +37,7 @@ public class MemberFuncExpr extends Expr {
 
     public Type gettype() {
         if (type != null) return type;
-        System.err.println("Get Type MemberFunc");
+        //System.err.println("Get Type MemberFunc");
         Type t = who.gettype();
         if (t instanceof ClassType) {
             this.funcDef = (FuncDef) GlobalClass.st.now.check(((ClassType) t).name + "." + name);
@@ -47,7 +47,7 @@ public class MemberFuncExpr extends Expr {
             this.funcDef = (FuncDef) GlobalClass.st.now.check("array." + name);
         }
 
-        System.err.println(t + "!!!!!!432423432!!!!!!!!");
+        //System.err.println(t + "!!!!!!432423432!!!!!!!!");
         if (t instanceof ClassType) {
             String tmp = ((ClassType) t).name + '.' + name;
             Def d = GlobalClass.st.now.check(tmp);
@@ -68,9 +68,9 @@ public class MemberFuncExpr extends Expr {
                 return type = new IntType(pos);
             else throw new CompileError("No This MemFunc(MemberFuncExpr)", pos);
         } else if (t instanceof StringType) {
-            System.err.println("gotchaStr");
+            //System.err.println("gotchaStr");
             if (name.equals("length") && exprList.size() == 0) {
-                System.err.println("gotcha");
+                //System.err.println("gotcha");
                 return type = new IntType(pos);
             }
             else if (name.equals("substring") && exprList.size() == 2)

@@ -63,8 +63,8 @@ public class FuncDef extends Def{
         GlobalClass.st.enterScope();
         if ("this".equals(name))
             throw new CompileError("this is a reverse word(FuncDef)", pos);
-        System.err.println("Go Check FuncDef");
-        System.err.println(GlobalClass.nowfunc.name);
+        //System.err.println("Go Check FuncDef");
+        //System.err.println(GlobalClass.nowfunc.name);
         if (type instanceof ClassType) GlobalClass.st.now.check(((ClassType) type).name);
         for (Pair<Type, String> u : params) {
             Type t = u.getFirst();

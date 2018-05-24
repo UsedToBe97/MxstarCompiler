@@ -28,7 +28,7 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
         int tot = 0;
         for (ParserRuleContext child : ctx.def()) {
             ++tot;
-            System.err.println(tot);
+            //System.err.println(tot);
             prog.add((Def)visit(child));
         }
         return prog;
@@ -51,10 +51,10 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
 
     @Override
     public Atom visitFuncDef(MxstarParser.FuncDefContext ctx) {
-        System.err.println("EnterFunc");
+        //System.err.println("EnterFunc");
         FuncDef tmp = new FuncDef(ctx, inclass, classname);
         infunc = true;
-        System.err.println(tmp.name + "!!!!!!!");
+        //System.err.println(tmp.name + "!!!!!!!");
         if (tmp.name.equals("this"))
             throw new CompileError("This is a reversed word", new Position(ctx.name));
         if (inclass) {
@@ -67,13 +67,12 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
         }
         if (inclass) prog.add(tmp);
         infunc = false;
-        System.err.println("ExitFunc");
+        //System.err.println("ExitFunc");
         return tmp;
     }
 
     @Override
     public Atom visitVarDef(MxstarParser.VarDefContext ctx) {
-        System.err.println("EnterVarDef");
         VarDef tmp = new VarDef(ctx);
         if (ctx.expr() != null) {
             tmp.setExpr((Expr) (visit(ctx.expr())));
@@ -82,7 +81,6 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
 
         //if (!inclass && !infunc) tree.addObj(tmp.name, tmp);
 
-        System.err.println("ExitVarDef");
         return tmp;
     }
 
@@ -102,7 +100,7 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
 
     @Override
     public Atom visitIfStmt(MxstarParser.IfStmtContext ctx) {
-        System.err.println("Enter IfStmt");
+        //System.err.println("Enter IfStmt");
         IfStmt tmp = new IfStmt(new Position(ctx.getStart()));
         tmp.add((Expr)visit(ctx.expr(0)), (Stmt)visit(ctx.stmt(0)));
         int k = 1;
@@ -211,13 +209,13 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
 
     @Override
     public Atom visitNewExpr(MxstarParser.NewExprContext ctx) {
-        System.err.println("EnterNewExpr");
+        //System.err.println("EnterNewExpr");
         NewExpr tmp = new NewExpr(ctx.baseType());
         int d1 = 0, d2 = 0;
         //int d1 = ctx.bracketsexpr().exprbr().size(), d2 = ctx.bracketsexpr().rawbr().size();
-        System.err.println(ctx.bracketsexpr().size());
+        //System.err.println(ctx.bracketsexpr().size());
         for (MxstarParser.BracketsexprContext _e : ctx.bracketsexpr()) {
-            System.err.println(d1 + " ///// " + d2);
+            //System.err.println(d1 + " ///// " + d2);
             if (_e.rawbr() == null) {
                 tmp.add((Expr) visit(_e.exprbr().expr()));
                 ++d1;
@@ -253,7 +251,7 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
 
     @Override
     public Atom visitBinaryExpr(MxstarParser.BinaryExprContext ctx) {
-        System.err.println("Enter Binary Expr");
+        //System.err.println("Enter Binary Expr");
         return new BinaryExpr((Expr)visit(ctx.expr(0)),
                 (Expr)visit(ctx.expr(1)),
                 ctx.op.getText(), new Position(ctx.getStart()));

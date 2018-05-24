@@ -31,13 +31,13 @@ public class ArrayExpr extends Expr {
 
     public Type gettype() {
         if (type != null) return type;
-        System.err.println("Get Type ArrayExpr");
+        //System.err.println("Get Type ArrayExpr");
         //System.err.println(pos.toString());
         int tmpd = 0;
-        System.err.println(Leftexpr);
-        System.err.println(exprList.size());
+        //System.err.println(Leftexpr);
+        //System.err.println(exprList.size());
         if (Leftexpr instanceof NewExpr) {
-            System.err.println(Leftexpr.gettype());
+            //System.err.println(Leftexpr.gettype());
             //if (((NewExpr) Leftexpr).d1 != ((NewExpr) Leftexpr).d)
             //    throw new CompileError("Index Error(ArrayExpr)", pos);
         }
@@ -46,18 +46,18 @@ public class ArrayExpr extends Expr {
             if (!(u.gettype() instanceof IntType))
                 throw new CompileError("Index Error(ArrayExpr)", pos);
         }
-        System.err.println("Here");
-        System.err.println(Leftexpr.gettype().typename());
-        System.err.println(((ArrayType) Leftexpr.gettype()).d);
+        //System.err.println("Here");
+        //System.err.println(Leftexpr.gettype().typename());
+        //System.err.println(((ArrayType) Leftexpr.gettype()).d);
         if (Leftexpr.gettype() instanceof ArrayType) {
             int ff =((ArrayType) Leftexpr.gettype()).d - tmpd;
-            System.err.println(ff);
+            //System.err.println(ff);
             if (ff == 0)
                 return type = ((ArrayType) Leftexpr.gettype()).type;
             else if (ff > 0) return type = new ArrayType(ff, ((ArrayType) Leftexpr.gettype()).type, pos);
             else throw new CompileError("Index Too Many(ArrayExpr)", pos);
         } else {
-            System.err.println("Go There");
+            //System.err.println("Go There");
             throw new CompileError("LeftExpr Error(ArrayExpr)", pos);
         }
     }

@@ -20,14 +20,14 @@ public class LUnaryExpr extends Expr {
         return pos;
     }
     public Type gettype() {
-        System.err.println("LUnary"+ op);
+        //System.err.println("LUnary"+ op);
         if (type != null) return type;
         if (op.equals("!") || op.equals("~")) {
-            System.err.println("FUCK");
+            //System.err.println("FUCK");
             if (!(expr.gettype() instanceof IntType || expr.gettype() instanceof BoolType))
                 throw new CompileError("Type Error(LUnaryExpr)", pos);
         } else {
-            System.err.println(expr.gettype().typename());
+            //System.err.println(expr.gettype().typename());
             if (!(expr.gettype() instanceof IntType))
                 throw new CompileError("Type Error(LUnaryExpr)", pos);
         }

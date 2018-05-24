@@ -13,7 +13,7 @@ public class ScopeNode {
     public boolean nodeContain(String _s) {return objmap.containsKey(_s);}
     public Def check(String _s) {
         ScopeNode p = this;
-        System.err.println("check to " + _s);
+        //System.err.println("check to " + _s);
         while (p != null) {
             if (p.objmap.containsKey(_s)) return p.objmap.get(_s);
             p = p.parent;
@@ -22,7 +22,7 @@ public class ScopeNode {
     }
     public int getDep(String _s) {
         ScopeNode p = this;
-        System.err.println("check to " + _s);
+        //System.err.println("check to " + _s);
         int d = 0;
         while (p != null) {
             if (p.objmap.containsKey(_s)) return d;
@@ -45,7 +45,7 @@ public class ScopeNode {
         if (objmap.containsKey(_s))
             throw new CompileError("Redefine(ScopeNode)", new Position(-1,-1));
         objmap.put(_s, _d);
-        System.err.println("ScopeNode Added : " + _s + " ; " +_d);
+        //System.err.println("ScopeNode Added : " + _s + " ; " +_d);
     }
 
 }
