@@ -139,8 +139,8 @@ public class Main {
             PrintStream fout = new PrintStream(new FileOutputStream(f));
             fout.print(ir.toString());
         }
-        RegAllocator ra = new RegAllocator();
-        ir = ra.work(ir);
+        //RegAllocator ra = new RegAllocator();
+        //ir = ra.work(ir);
 
         CodeGenerator cg = new CodeGenerator();
         cg.translate(ir);

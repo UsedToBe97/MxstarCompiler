@@ -61,8 +61,8 @@
           <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="414">
-                  <caret line="109" column="30" selection-start-line="109" selection-start-column="30" selection-end-line="109" selection-end-column="30" />
+                <state relative-caret-position="391">
+                  <caret line="141" column="10" selection-start-line="141" selection-start-column="10" selection-end-line="141" selection-end-column="10" />
                 </state>
               </provider>
             </entry>
@@ -235,8 +235,8 @@
       <find>parse</find>
       <find>main</find>
       <find>system.err</find>
-      <find />
-      <find />
+      <find>ans +=</find>
+      <find>ans +=</find>
       <find>&quot;;</find>
       <find>Cj</find>
       <find>jne</find>
@@ -324,7 +324,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="316" />
     <option name="y" value="94" />
     <option name="width" value="1400" />
@@ -642,12 +642,12 @@
       <workItem from="1527087260956" duration="3005000" />
       <workItem from="1527123193483" duration="421000" />
       <workItem from="1527123770713" duration="4005000" />
-      <workItem from="1527129834292" duration="23144000" />
+      <workItem from="1527129834292" duration="23229000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="374039000" />
+    <option name="totallyTimeSpent" value="374124000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1115,8 +1115,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="109" column="30" selection-start-line="109" selection-start-column="30" selection-end-line="109" selection-end-column="30" />
+        <state relative-caret-position="391">
+          <caret line="141" column="10" selection-start-line="141" selection-start-column="10" selection-end-line="141" selection-end-column="10" />
         </state>
       </provider>
     </entry>
