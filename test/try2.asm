@@ -21,50 +21,124 @@ section .bss
 stringbuffer:
 	resb 256
 section .text
+foo:
+	push	rbp
+	mov	rbp, rsp
+	mov	r10, rdi
+	mov	r11, rsi
+	mov	r8, rdx
+	mov	rcx, r10
+	imul	rcx, 1000
+	mov	rdi, rcx
+	mov	rcx, r11
+	imul	rcx, 10
+	mov	rsi, rcx
+	add	rdi, rsi
+	add	rdi, r8
+	push	r10
+	push	rdi
+	push	rsi
+	push	r8
+	push	r11
+	call	toString
+	pop	r11
+	pop	r8
+	pop	rsi
+	pop	rdi
+	pop	r10
+	mov	rdi, rax
+	push	r10
+	push	rdi
+	push	rsi
+	push	r8
+	push	r11
+	call	println
+	pop	r11
+	pop	r8
+	pop	rsi
+	pop	rdi
+	pop	r10
+	mov	rdi, rax
+	mov	rcx, r10
+	cmp	rcx, 1
+	sete	cl
+	movzx	rcx, cl
+	mov	rdi, rcx
+	cmp	rdi, 1
+	je	Label_2
+	jmp	Label_3
+Label_2:
+	jmp	Label_0
+	jmp	Label_1
+Label_3:
+Label_1:
+	mov	rdi, r11
+	mov	r11, r8
+	mov	r8, rdi
+	push	r10
+	push	rdi
+	push	rsi
+	push	r8
+	push	r11
+	mov	rdi, 1
+	mov	rsi, r11
+	mov	rdx, r8
+	call	foo
+	pop	r11
+	pop	r8
+	pop	rsi
+	pop	rdi
+	pop	r10
+	mov	rdi, rax
+	mov	rcx, r10
+	imul	rcx, 1000
+	mov	rdi, rcx
+	mov	rcx, r11
+	imul	rcx, 10
+	mov	rsi, rcx
+	add	rdi, rsi
+	add	rdi, r8
+	push	r10
+	push	rdi
+	push	rsi
+	push	r8
+	push	r11
+	call	toString
+	pop	r11
+	pop	r8
+	pop	rsi
+	pop	rdi
+	pop	r10
+	mov	rdi, rax
+	push	r10
+	push	rdi
+	push	rsi
+	push	r8
+	push	r11
+	call	println
+	pop	r11
+	pop	r8
+	pop	rsi
+	pop	rdi
+	pop	r10
+	mov	rdi, rax
+Label_0:
+	mov	rsp, rbp
+	pop	rbp
+	ret
 main:
 	push	rbp
 	mov	rbp, rsp
-	push	r11
-	sub	rbp, 8
-	mov	rdi, 5
-	mov	rsi, 0
-	mov	r10, 1
-Label_4:
-	mov	rcx, r10
-	cmp	rcx, rdi
-	setle	cl
-	movzx	rcx, cl
-	mov	r11, rcx
-	cmp	r11, 1
-	je	Label_3
-	jmp	Label_2
-Label_3:
-	mov	r11, 1
-Label_8:
-	mov	rcx, r11
-	cmp	rcx, rdi
-	setle	cl
-	movzx	rcx, cl
-	mov	r8, rcx
-	cmp	r8, 1
-	je	Label_7
-	jmp	Label_6
-Label_7:
-	add	rsi, r10
-Label_5:
-	add	r11, 1
-	jmp	Label_8
-Label_6:
-	add	rsi, 1
-Label_1:
-	add	r10, 1
+	push	rdi
+	mov	rdi, 7
+	mov	rsi, 5
+	mov	rdx, 3
+	call	foo
+	pop	rdi
+	mov	rdi, rax
+	mov	rax, 0
 	jmp	Label_4
-Label_2:
-	mov	rax, rsi
-	jmp	Label_0
-Label_0:
-	add	rbp, 8
-	pop	r11
+Label_4:
 	mov	rsp, rbp
 	pop	rbp
 	ret

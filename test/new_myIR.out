@@ -1,32 +1,52 @@
 
 
-main [Func]:
-	rdi = 5 [][rdi]
-	rsi = 0 [rdi , ][rsi]
-	r10 = 1 [rdi , rsi , ][r10]
-Label_4:
-	r11 = r10 <= rdi [r10 , rdi , rsi , ][r11]
-	jump Label_3 if r11 je 1 [r10 , r11 , rdi , rsi , ][]
-	jump Label_2 [rsi , ][]
-Label_3:
-	r11 = 1 [r10 , rdi , rsi , ][r11]
-Label_8:
-	r8 = r11 <= rdi [r10 , r11 , rdi , rsi , ][r8]
-	jump Label_7 if r8 je 1 [r10 , r11 , rdi , rsi , r8 , ][]
-	jump Label_6 [r10 , rdi , rsi , ][]
-Label_7:
-	rsi = rsi + r10 [r10 , r11 , rdi , rsi , ][rsi]
-	rsi = rsi [r10 , r11 , rdi , rsi , ][rsi]
-Label_5:
-	r11 = r11 + 1 [r10 , r11 , rdi , rsi , ][r11]
-	jump Label_8 [r10 , r11 , rdi , rsi , ][]
-Label_6:
-	rsi = rsi + 1 [r10 , rdi , rsi , ][rsi]
-	rsi = rsi [r10 , rsi , rdi , ][rsi]
-Label_1:
-	r10 = r10 + 1 [r10 , rdi , rsi , ][r10]
-	jump Label_4 [r10 , rdi , rsi , ][]
+foo [Func]:
+	r10 = rdi [rdx , rsi , rdi , ][r10]
+	r11 = rsi [rdx , r10 , rsi , ][r11]
+	r8 = rdx [rdx , r10 , r11 , ][r8]
+	rdi = r10 * 1000 [r8 , r10 , r11 , ][rdi]
+	rsi = r11 * 10 [rdi , r8 , r10 , r11 , ][rsi]
+	rdi = rdi + rsi [rdi , r8 , r10 , r11 , rsi , ][rdi]
+	rdi = rdi + r8 [r8 , rdi , r10 , r11 , ][rdi]
+		rdi = rdi [r8 , rdi , r10 , r11 , ][rdi]
+		FuncCall toString Param_size : 1 [r8 , r10 , r11 , rdi , ][rax]
+		rdi = rax [r8 , r10 , r11 , rax , ][rdi]
+		rdi = rdi [r8 , rdi , r10 , r11 , ][rdi]
+		FuncCall println Param_size : 1 [r8 , r10 , r11 , rdi , ][rax]
+		rdi = rax [r8 , r10 , r11 , rax , ][rdi]
+	rdi = r10 == 1 [r8 , r10 , r11 , ][rdi]
+	jump Label_2 if rdi je 1 [r8 , r10 , r11 , rdi , ][]
+	jump Label_3 [r8 , r10 , r11 , ][]
 Label_2:
-	rax = rsi [rsi , ][rax]
 	jump Label_0 [][]
+	jump Label_1 [r8 , r10 , r11 , ][]
+Label_3:
+Label_1:
+	rdi = r11 [r8 , r10 , r11 , ][rdi]
+	r11 = r8 [r8 , rdi , r10 , ][r11]
+	r8 = rdi [rdi , r10 , r11 , ][r8]
+		rdi = 1 [r8 , r10 , r11 , ][rdi]
+		rsi = r11 [r8 , r10 , r11 , rdi , ][rsi]
+		rdx = r8 [r8 , r10 , rsi , r11 , rdi , ][rdx]
+		FuncCall foo Param_size : 3 [r8 , rdx , r10 , rsi , r11 , rdi , ][rax]
+		rdi = rax [r8 , r10 , r11 , rax , ][rdi]
+	rdi = r10 * 1000 [r8 , r10 , r11 , ][rdi]
+	rsi = r11 * 10 [r8 , r11 , rdi , ][rsi]
+	rdi = rdi + rsi [r8 , rsi , rdi , ][rdi]
+	rdi = rdi + r8 [r8 , rdi , ][rdi]
+		rdi = rdi [rdi , ][rdi]
+		FuncCall toString Param_size : 1 [rdi , ][rax]
+		rdi = rax [rax , ][rdi]
+		rdi = rdi [rdi , ][rdi]
+		FuncCall println Param_size : 1 [rdi , ][rax]
+		rdi = rax [rax , ][rdi]
 Label_0:
+main [Func]:
+		rdi = 7 [][rdi]
+		rsi = 5 [rdi , ][rsi]
+		rdx = 3 [rsi , rdi , ][rdx]
+		FuncCall foo Param_size : 3 [rdx , rsi , rdi , ][rax]
+		rdi = rax [rax , ][rdi]
+	rax = 0 [][rax]
+	jump Label_4 [][]
+Label_4:

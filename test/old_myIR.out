@@ -1,32 +1,52 @@
 
 
-main [Func]:
-	reg16 = 5 [][]
-	reg17 = 0 [][]
-	reg18 = 1 [][]
-Label_4:
-	reg20 = reg18 <= reg16 [][]
-	jump Label_3 if reg20 je 1 [][]
-	jump Label_2 [][]
-Label_3:
-	reg19 = 1 [][]
-Label_8:
-	reg21 = reg19 <= reg16 [][]
-	jump Label_7 if reg21 je 1 [][]
-	jump Label_6 [][]
-Label_7:
-	reg22 = reg17 + reg18 [][]
-	reg17 = reg22 [][]
-Label_5:
-	reg19 = reg19 + 1 [][]
-	jump Label_8 [][]
-Label_6:
-	reg23 = reg17 + 1 [][]
-	reg17 = reg23 [][]
-Label_1:
-	reg18 = reg18 + 1 [][]
-	jump Label_4 [][]
+foo [Func]:
+	reg16 = rdi [][]
+	reg17 = rsi [][]
+	reg18 = rdx [][]
+	reg21 = reg16 * 1000 [][]
+	reg22 = reg17 * 10 [][]
+	reg20 = reg21 + reg22 [][]
+	reg19 = reg20 + reg18 [][]
+		rdi = reg19 [][]
+		FuncCall toString Param_size : 1 [][]
+		reg23 = rax [][]
+		rdi = reg23 [][]
+		FuncCall println Param_size : 1 [][]
+		reg24 = rax [][]
+	reg25 = reg16 == 1 [][]
+	jump Label_2 if reg25 je 1 [][]
+	jump Label_3 [][]
 Label_2:
-	rax = reg17 [][]
 	jump Label_0 [][]
+	jump Label_1 [][]
+Label_3:
+Label_1:
+	reg26 = reg17 [][]
+	reg17 = reg18 [][]
+	reg18 = reg26 [][]
+		rdi = 1 [][]
+		rsi = reg17 [][]
+		rdx = reg18 [][]
+		FuncCall foo Param_size : 3 [][]
+		reg27 = rax [][]
+	reg30 = reg16 * 1000 [][]
+	reg31 = reg17 * 10 [][]
+	reg29 = reg30 + reg31 [][]
+	reg28 = reg29 + reg18 [][]
+		rdi = reg28 [][]
+		FuncCall toString Param_size : 1 [][]
+		reg32 = rax [][]
+		rdi = reg32 [][]
+		FuncCall println Param_size : 1 [][]
+		reg33 = rax [][]
 Label_0:
+main [Func]:
+		rdi = 7 [][]
+		rsi = 5 [][]
+		rdx = 3 [][]
+		FuncCall foo Param_size : 3 [][]
+		reg16 = rax [][]
+	rax = 0 [][]
+	jump Label_4 [][]
+Label_4:

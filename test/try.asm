@@ -21,66 +21,92 @@ section .bss
 stringbuffer:
 	resb 256
 section .text
+foo:
+	push	rbp
+	mov	rbp, rsp
+	sub	rsp, 144
+	mov	qword [rbp - 8], rdi
+	mov	qword [rbp - 16], rsi
+	mov	qword [rbp - 24], rdx
+	mov	rcx, qword [rbp - 8]
+	imul	rcx, 1000
+	mov	qword [rbp - 48], rcx
+	mov	rcx, qword [rbp - 16]
+	imul	rcx, 10
+	mov	qword [rbp - 56], rcx
+	mov	rcx, qword [rbp - 48]
+	add	rcx, qword [rbp - 56]
+	mov	qword [rbp - 40], rcx
+	mov	rcx, qword [rbp - 40]
+	add	rcx, qword [rbp - 24]
+	mov	qword [rbp - 32], rcx
+	mov	rdi, qword [rbp - 32]
+	call	toString
+	mov	qword [rbp - 64], rax
+	mov	rdi, qword [rbp - 64]
+	call	println
+	mov	qword [rbp - 72], rax
+	mov	rcx, qword [rbp - 8]
+	cmp	rcx, 1
+	sete	cl
+	movzx	rcx, cl
+	mov	qword [rbp - 80], rcx
+	mov	rax, qword [rbp - 80]
+	cmp	rax, 1
+	je	Label_2
+	jmp	Label_3
+Label_2:
+	jmp	Label_0
+	jmp	Label_1
+Label_3:
+Label_1:
+	mov	rax, qword [rbp - 16]
+	mov	qword [rbp - 88], rax
+	mov	rax, qword [rbp - 24]
+	mov	qword [rbp - 16], rax
+	mov	rax, qword [rbp - 88]
+	mov	qword [rbp - 24], rax
+	mov	rdi, 1
+	mov	rsi, qword [rbp - 16]
+	mov	rdx, qword [rbp - 24]
+	call	foo
+	mov	qword [rbp - 96], rax
+	mov	rcx, qword [rbp - 8]
+	imul	rcx, 1000
+	mov	qword [rbp - 120], rcx
+	mov	rcx, qword [rbp - 16]
+	imul	rcx, 10
+	mov	qword [rbp - 128], rcx
+	mov	rcx, qword [rbp - 120]
+	add	rcx, qword [rbp - 128]
+	mov	qword [rbp - 112], rcx
+	mov	rcx, qword [rbp - 112]
+	add	rcx, qword [rbp - 24]
+	mov	qword [rbp - 104], rcx
+	mov	rdi, qword [rbp - 104]
+	call	toString
+	mov	qword [rbp - 136], rax
+	mov	rdi, qword [rbp - 136]
+	call	println
+	mov	qword [rbp - 144], rax
+Label_0:
+	add	rsp, 144
+	mov	rsp, rbp
+	pop	rbp
+	ret
 main:
 	push	rbp
 	mov	rbp, rsp
-	sub	rsp, 64
-	mov	rax, 5
+	sub	rsp, 8
+	mov	rdi, 7
+	mov	rsi, 5
+	mov	rdx, 3
+	call	foo
 	mov	qword [rbp - 8], rax
 	mov	rax, 0
-	mov	qword [rbp - 16], rax
-	mov	rax, 1
-	mov	qword [rbp - 24], rax
-Label_4:
-	mov	rax, qword [rbp - 24]
-	cmp	rcx, qword [rbp - 8]
-	setle	cl
-	movzx	rcx, cl
-	mov	qword [rbp - 40], rcx
-	mov	rax, qword [rbp - 40]
-	cmp	rax, 1
-	je	Label_3
-	jmp	Label_2
-Label_3:
-	mov	rax, 1
-	mov	qword [rbp - 32], rax
-Label_8:
-	mov	rax, qword [rbp - 32]
-	cmp	rcx, qword [rbp - 8]
-	setle	cl
-	movzx	rcx, cl
-	mov	qword [rbp - 48], rcx
-	mov	rax, qword [rbp - 48]
-	cmp	rax, 1
-	je	Label_7
-	jmp	Label_6
-Label_7:
-	mov	rcx, qword [rbp - 16]
-	add	rcx, qword [rbp - 24]
-	mov	qword [rbp - 56], rcx
-	mov	rax, qword [rbp - 56]
-	mov	qword [rbp - 16], rax
-Label_5:
-	mov	rcx, qword [rbp - 32]
-	add	rcx, 1
-	mov	qword [rbp - 32], rcx
-	jmp	Label_8
-Label_6:
-	mov	rcx, qword [rbp - 16]
-	add	rcx, 1
-	mov	qword [rbp - 64], rcx
-	mov	rax, qword [rbp - 64]
-	mov	qword [rbp - 16], rax
-Label_1:
-	mov	rcx, qword [rbp - 24]
-	add	rcx, 1
-	mov	qword [rbp - 24], rcx
 	jmp	Label_4
-Label_2:
-	mov	rax, qword [rbp - 16]
-	jmp	Label_0
-Label_0:
-	add	rsp, 64
+Label_4:
+	add	rsp, 8
 	mov	rsp, rbp
 	pop	rbp
 	ret
