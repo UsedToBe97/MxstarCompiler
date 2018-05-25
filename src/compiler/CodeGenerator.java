@@ -111,6 +111,10 @@ public class CodeGenerator {
     public void visit(CJump x) {
         x.lhs = getOp(x.lhs, X86Reg.r10);
         x.rhs = getOp(x.rhs, X86Reg.r11);
+        if (!(x.lhs instanceof Reg)) {
+            ans.append("\tmov\trax, " + x.lhs.toString() + "\n");
+            x.lhs = X86Reg.rax;
+        }
         ans.append("\tcmp\t" + x.lhs.toString() + ", " + x.rhs.toString() +"\n");
         ans.append("\t" + x.op + "\t" + x.dest.name +"\n");
     }
@@ -186,7 +190,6 @@ public class CodeGenerator {
         ans.append("extern strlen\n");
         ans.append("extern memcpy\n");
         ans.append("extern scanf\n");
-        ans.append("extern __isoc99_scanf\n");
 
         ans.append("section .data\n");
         for (String u : rt.SC) {
