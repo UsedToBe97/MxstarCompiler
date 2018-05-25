@@ -1,20 +1,37 @@
-int tak(int x, int y, int z, int p , int q ,int r) {
-    if(y < x) {
-        return 1 + tak( tak(x - 1, y , z,p,q,r),
-            tak(y - 1, z , x,p,q,r),
-            tak(z - 1, x , y,p,q,r),p,q,r
-        );
-    } else {
-       return z;
-    }
+class C2 {
+    int x;
+    int y;
+    bool b;
+    int z;
 }
 
 int main() {
-	int t = 18;
-	tak(t,12,6,0,0,0);
-	t = t + 1;
-	return 0;
+    C2 obj = new C2;
+    obj.x = 10;
+    obj.y = 20;
+    obj.b = obj.x > obj.y;
+    if (obj.b) obj.z = 40;
+    else obj.z = 80;
+    return obj.x + obj.y + obj.z;
 }
 
 
 
+
+/*!! metadata:
+=== comment ===
+struct3.mx
+=== assert ===
+exitcode
+=== timeout ===
+0.1
+=== input ===
+
+=== phase ===
+codegen pretest
+=== is_public ===
+True
+=== exitcode ===
+110
+
+!!*/

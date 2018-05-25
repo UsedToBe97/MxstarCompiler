@@ -40,12 +40,12 @@ public class CodeGenerator {
                 ++tot;
             }
         }
-        if (tot >= 0) ans.append("\tsub\trbp, " + Integer.toString(tot * 8) + "\n");
-        ans.append("\tsub\trsp, ").append(Integer.toString(nowfunc.size)).append("\n");
+        if (tot > 0) ans.append("\tsub\trbp, " + Integer.toString(tot * 8) + "\n");
+        if (nowfunc.size > 0) ans.append("\tsub\trsp, ").append(Integer.toString(nowfunc.size)).append("\n");
     }
     public void exitFunc() {
-        //ans.append("\tadd\trsp, " + Integer.toString(nowfunc.size) + "\n");
-        if (tot >= 0) ans.append("\tadd\trbp, " + Integer.toString(tot * 8) + "\n");
+        if (nowfunc.size > 0) ans.append("\tadd\trsp, " + Integer.toString(nowfunc.size) + "\n");
+        if (tot > 0) ans.append("\tadd\trbp, " + Integer.toString(tot * 8) + "\n");
         if (nowfunc.opt) {
             for (int i = 5; i >= 0; --i) {
                 if (!nowfunc.tag[X86Reg.callee(i).idx]) continue;
@@ -125,7 +125,7 @@ public class CodeGenerator {
 
     public void visit(Call x) {
         int tmp = x.size > 6 ? (x.size - 6) * 8 : 0;
-        if(tmp != 0) ans.append("\tsub\trsp, " + Integer.toString(tmp) + "\n");
+        if(tmp > 0) ans.append("\tsub\trsp, " + Integer.toString(tmp) + "\n");
         if (nowfunc.opt) {
             for (int i = 0; i <= 4; ++i) {
                 if (!nowfunc.tag[X86Reg.caller(i).idx]) continue;
@@ -141,6 +141,7 @@ public class CodeGenerator {
                 }
             }
         }
+        if(tmp > 0) ans.append("\tadd\trsp, " + Integer.toString(tmp) + "\n");
     }
 
     public void visit(CJump x) {

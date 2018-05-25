@@ -21,149 +21,63 @@ section .bss
 stringbuffer:
 	resb 256
 section .text
-tak:
-	push	rbp
-	mov	rbp, rsp
-	push	r11
-	sub	rbp, 8
-	sub	rsp, 104
-	mov	rax, rdi
-	mov	r10, rax
-	mov	rax, rsi
-	mov	r11, rax
-	mov	rax, rdx
-	mov	qword [rbp - 8], rax
-	mov	rax, rcx
-	mov	qword [rbp - 16], rax
-	mov	rax, r8
-	mov	qword [rbp - 24], rax
-	mov	rax, r9
-	mov	qword [rbp - 32], rax
-	mov	rcx, r11
-	cmp	rcx, r10
-	setl	cl
-	movzx	rcx, cl
-	mov	qword [rbp - 40], rcx
-	mov	rax, qword [rbp - 40]
-	cmp	rax, 1
-	je	Label_2
-	jmp	Label_3
-Label_2:
-	mov	rdx, r10
-	sub	rdx, 1
-	mov	qword [rbp - 56], rdx
-	push	r10
-	mov	rax, qword [rbp - 56]
-	mov	rdi, rax
-	mov	rax, r11
-	mov	rsi, rax
-	mov	rax, qword [rbp - 8]
-	mov	rdx, rax
-	mov	rax, qword [rbp - 16]
-	mov	rcx, rax
-	mov	rax, qword [rbp - 24]
-	mov	r8, rax
-	mov	rax, qword [rbp - 32]
-	mov	r9, rax
-	call	tak
-	pop	r10
-	mov	qword [rbp - 64], rax
-	mov	rdx, r11
-	sub	rdx, 1
-	mov	qword [rbp - 72], rdx
-	push	r10
-	mov	rax, qword [rbp - 72]
-	mov	rdi, rax
-	mov	rax, qword [rbp - 8]
-	mov	rsi, rax
-	mov	rax, r10
-	mov	rdx, rax
-	mov	rax, qword [rbp - 16]
-	mov	rcx, rax
-	mov	rax, qword [rbp - 24]
-	mov	r8, rax
-	mov	rax, qword [rbp - 32]
-	mov	r9, rax
-	call	tak
-	pop	r10
-	mov	qword [rbp - 80], rax
-	mov	rdx, qword [rbp - 8]
-	sub	rdx, 1
-	mov	qword [rbp - 88], rdx
-	push	r10
-	mov	rax, qword [rbp - 88]
-	mov	rdi, rax
-	mov	rax, r10
-	mov	rsi, rax
-	mov	rax, r11
-	mov	rdx, rax
-	mov	rax, qword [rbp - 16]
-	mov	rcx, rax
-	mov	rax, qword [rbp - 24]
-	mov	r8, rax
-	mov	rax, qword [rbp - 32]
-	mov	r9, rax
-	call	tak
-	pop	r10
-	mov	qword [rbp - 96], rax
-	push	r10
-	mov	rax, qword [rbp - 64]
-	mov	rdi, rax
-	mov	rax, qword [rbp - 80]
-	mov	rsi, rax
-	mov	rax, qword [rbp - 96]
-	mov	rdx, rax
-	mov	rax, qword [rbp - 16]
-	mov	rcx, rax
-	mov	rax, qword [rbp - 24]
-	mov	r8, rax
-	mov	rax, qword [rbp - 32]
-	mov	r9, rax
-	call	tak
-	pop	r10
-	mov	qword [rbp - 104], rax
-	mov	rdx, 1
-	add	rdx, qword [rbp - 104]
-	mov	qword [rbp - 48], rdx
-	mov	rax, qword [rbp - 48]
-	jmp	Label_0
-	jmp	Label_1
-Label_3:
-	mov	rax, qword [rbp - 8]
-	jmp	Label_0
-Label_1:
-Label_0:
-	add	rbp, 8
-	pop	r11
-	mov	rsp, rbp
-	pop	rbp
-	ret
 main:
 	push	rbp
 	mov	rbp, rsp
 	push	r11
 	sub	rbp, 8
-	sub	rsp, 8
-	mov	r10, 18
 	push	r10
-	mov	rax, r10
-	mov	rdi, rax
-	mov	rsi, 12
-	mov	rdx, 6
-	mov	rcx, 0
-	mov	r8, 0
-	mov	r9, 0
-	call	tak
+	push	rsi
+	push	r8
+	push	r9
+	mov	rdi, 32
+	call	malloc
+	pop	r9
+	pop	r8
+	pop	rsi
 	pop	r10
-	mov	r11, rax
-	mov	rdx, r10
-	add	rdx, 1
-	mov	qword [rbp - 8], rdx
-	mov	rax, qword [rbp - 8]
 	mov	r10, rax
-	mov	rax, 0
-	jmp	Label_4
-Label_4:
+	mov	rax, r10
+	mov	r8, rax
+	mov	rbx, r8
+	mov	qword [rbx], 10
+	mov	rbx, r8
+	mov	qword [rbx + 8], 20
+	mov	rax, r8
+	mov	rcx, r8
+	mov	rcx, qword [rax]
+	cmp	rcx, qword [rcx + 8]
+	setg	cl
+	movzx	rcx, cl
+	mov	r9, rcx
+	mov	rax, r9
+	mov	rbx, r8
+	mov	qword [rbx + 16], rax
+	mov	rcx, r8
+	mov	rax, qword [rcx + 16]
+	cmp	rax, 1
+	je	Label_2
+	jmp	Label_3
+Label_2:
+	mov	rbx, r8
+	mov	qword [rbx + 24], 40
+	jmp	Label_1
+Label_3:
+	mov	rbx, r8
+	mov	qword [rbx + 24], 80
+Label_1:
+	mov	rax, r8
+	mov	rcx, r8
+	mov	rdx, qword [rax]
+	add	rdx, qword [rcx + 8]
+	mov	r11, rdx
+	mov	rcx, r8
+	mov	rdx, r11
+	add	rdx, qword [rcx + 24]
+	mov	rsi, rdx
+	mov	rax, rsi
+	jmp	Label_0
+Label_0:
 	add	rbp, 8
 	pop	r11
 	mov	rsp, rbp
