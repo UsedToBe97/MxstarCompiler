@@ -24,32 +24,76 @@ section .text
 main:
 	push	rbp
 	mov	rbp, rsp
-	sub	rsp, 0
-	mov	r10, 1
-	mov	rdx, r10
-	add	rdx, 1
-	mov	r10, rdx
-	mov	rdx, r10
-	imul	rdx, 8
-	mov	r10, rdx
+	sub	rsp, 16
+	mov	r10, 5
 	mov	rax, r10
-	mov	rdi, rax
-	call	malloc
 	mov	r11, rax
-	mov	rbx, r11
-	mov	qword [rbx], 1
 	mov	rdx, r11
-	add	rdx, 8
+	add	rdx, 1
+	mov	r11, rdx
+	mov	rdx, r11
+	imul	rdx, 8
 	mov	r11, rdx
 	mov	rax, r11
+	mov	rdi, rax
+	call	malloc
 	mov	r12, rax
-	mov	r13, 0
-	mov	qword [r12 + r13 * 8], 10
+	mov	rax, r10
+	mov	rbx, r12
+	mov	qword [rbx], rax
+	mov	rdx, r12
+	add	rdx, 8
+	mov	r12, rdx
+	mov	rax, r12
+	mov	r13, rax
+	mov	r14, 0
 	mov	r15, 0
-	mov	rdx, qword [r12 + r15 * 8]
-	add	rdx, 20
+Label_4:
+	mov	rcx, r15
+	cmp	rcx, r10
+	setl	cl
+	movzx	rcx, cl
+	mov	r8, rcx
+	cmp	r8, 1
+	je	Label_3
+	jmp	Label_2
+Label_3:
+	mov	rdx, r14
+	add	rdx, 1
 	mov	r14, rdx
 	mov	rax, r14
+	mov	qword [r13 + r15 * 8], rax
+Label_1:
+	mov	rdx, r15
+	add	rdx, 1
+	mov	r15, rdx
+	jmp	Label_4
+Label_2:
+	mov	r9, 0
+	mov	r15, 0
+Label_8:
+	mov	rcx, r15
+	cmp	rcx, r10
+	setl	cl
+	movzx	rcx, cl
+	mov	qword [rbp - 8], rcx
+	mov	rax, qword [rbp - 8]
+	cmp	rax, 1
+	je	Label_7
+	jmp	Label_6
+Label_7:
+	mov	rdx, r9
+	add	rdx, qword [r13 + r15 * 8]
+	mov	qword [rbp - 16], rdx
+	mov	rax, qword [rbp - 16]
+	mov	r9, rax
+Label_5:
+	mov	rdx, r15
+	add	rdx, 1
+	mov	r15, rdx
+	jmp	Label_8
+Label_6:
+	mov	rax, r9
 	jmp	Label_0
 Label_0:
 	mov	rsp, rbp

@@ -39,18 +39,18 @@ public class CodeGenerator {
     public void visit(Inst x) {x.accept(this);}
 
     public void A(Operand dest, Operand lhs, Operand rhs, String op) {
-        lhs = getOp(lhs, X86Reg.r10);
-        rhs = getOp(rhs, X86Reg.r11);
-        dest = getOp(dest, X86Reg.r12);
+        lhs = getOp(lhs, X86Reg.rbx);
+        rhs = getOp(rhs, X86Reg.rcx);
+        dest = getOp(dest, X86Reg.rdx);
         ans.append("\tmov\trdx, " + lhs.toString() + "\n");
         ans.append("\t" + op + "\trdx, " + rhs.toString() + "\n");
         ans.append("\tmov\t" + dest.toString() + ", rdx\n");
     }
 
     public void B(Operand dest, Operand lhs, Operand rhs, String op) {
-        lhs = getOp(lhs, X86Reg.r10);
-        rhs = getOp(rhs, X86Reg.r11);
-        dest = getOp(dest, X86Reg.r12);
+        lhs = getOp(lhs, X86Reg.rbx);
+        rhs = getOp(rhs, X86Reg.rcx);
+        dest = getOp(dest, X86Reg.rdx);
         ans.append("\tmov\trcx, " + lhs.toString() + "\n");
         ans.append("\tcmp\trcx, " + rhs.toString() + "\n");
         ans.append("\t" + op + "\tcl\n\tmovzx\trcx, cl\n");
@@ -58,9 +58,9 @@ public class CodeGenerator {
     }
 
     public void C(Operand dest, Operand lhs, Operand rhs, String op) {
-        lhs = getOp(lhs, X86Reg.r10);
-        rhs = getOp(rhs, X86Reg.r11);
-        dest = getOp(dest, X86Reg.r12);
+        lhs = getOp(lhs, X86Reg.rbx);
+        rhs = getOp(rhs, X86Reg.rcx);
+        dest = getOp(dest, X86Reg.rdx);
         ans.append("\tmov\trax, " + lhs.toString() + "\n");
         ans.append("\tmov\trcx, " + rhs.toString() + "\n");
         ans.append("\t" + op + "\trax, cl\n");
@@ -68,9 +68,9 @@ public class CodeGenerator {
     }
 
     public void D(Operand dest, Operand lhs, Operand rhs, String op) {
-        lhs = getOp(lhs, X86Reg.r10);
-        rhs = getOp(rhs, X86Reg.r11);
-        dest = getOp(dest, X86Reg.r12);
+        lhs = getOp(lhs, X86Reg.rbx);
+        rhs = getOp(rhs, X86Reg.rcx);
+        dest = getOp(dest, X86Reg.rdx);
         ans.append("\tmov\trax, " + lhs.toString() + "\n");
         ans.append("\tmov\trcx, " + rhs.toString() + "\n");
         ans.append("\tcqo\n\tidiv\trcx\n");
@@ -110,8 +110,8 @@ public class CodeGenerator {
     }
 
     public void visit(CJump x) {
-        x.lhs = getOp(x.lhs, X86Reg.r10);
-        x.rhs = getOp(x.rhs, X86Reg.r11);
+        x.lhs = getOp(x.lhs, X86Reg.rcx);
+        x.rhs = getOp(x.rhs, X86Reg.rdx);
         if (!(x.lhs instanceof Reg)) {
             ans.append("\tmov\trax, " + x.lhs.toString() + "\n");
             x.lhs = X86Reg.rax;

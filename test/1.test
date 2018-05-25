@@ -1,7 +1,16 @@
 int main() {
-    int[] a = new int[1];
-    a[0] = 10;
-    return a[0] + 20;
+    int la = 5;
+    int[] a = new int[la];
+
+    int cnt = 0;
+    int i;
+    for (i = 0; i < la; ++i)
+        a[i] = ++cnt;
+
+    int sum = 0;
+    for (i = 0; i < la; ++i) sum = sum + a[i];
+
+    return sum;
 }
 
 
@@ -9,7 +18,7 @@ int main() {
 
 /*!! metadata:
 === comment ===
-array2.mx
+array3.mx
 === assert ===
 exitcode
 === timeout ===
@@ -21,6 +30,6 @@ codegen pretest
 === is_public ===
 True
 === exitcode ===
-30
+15
 
 !!*/

@@ -1,19 +1,42 @@
 
 
 main [Func]:
-	r16 = 1
-	r16 = r16 + 1
-	r16 = r16 * 8
-		rdi = r16
+	r16 = 5
+	r17 = r16
+	r17 = r17 + 1
+	r17 = r17 * 8
+		rdi = r17
 		FuncCall malloc Param_size : 1
-		r17 = rax
-	qword [r17] = 1
-	r17 = r17 + 8
-	r18 = r17
-	r19 = 0
-	qword [r18 + r19 * 8] = 10
+		r18 = rax
+	qword [r18] = r16
+	r18 = r18 + 8
+	r19 = r18
+	r20 = 0
 	r21 = 0
-	r20 = qword [r18 + r21 * 8] + 20
-	rax = r20
+Label_4:
+	r22 = r21 < r16
+	jump Label_3 if r22 je 1
+	jump Label_2
+Label_3:
+	r20 = r20 + 1
+	qword [r19 + r21 * 8] = r20
+Label_1:
+	r21 = r21 + 1
+	jump Label_4
+Label_2:
+	r23 = 0
+	r21 = 0
+Label_8:
+	r24 = r21 < r16
+	jump Label_7 if r24 je 1
+	jump Label_6
+Label_7:
+	r25 = r23 + qword [r19 + r21 * 8]
+	r23 = r25
+Label_5:
+	r21 = r21 + 1
+	jump Label_8
+Label_6:
+	rax = r23
 	jump Label_0
 Label_0:
