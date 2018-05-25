@@ -6,7 +6,8 @@ extern putchar
 extern __stack_chk_fail
 extern malloc
 extern printf
-extern gets
+extern strlen
+extern memcpy
 extern scanf
 extern __isoc99_scanf
 section .data
@@ -32,6 +33,12 @@ intbuffer:
 	dq 0
 format1:
 	db"%lld",0
+format2:
+	db"%s",0
+
+section .bss
+stringbuffer:
+	resb 256
 section .text
 merge:
 	push	rbp
@@ -800,55 +807,45 @@ Lprt_010:  mov     eax, dword [rbp-4H]
 	nop
 	        leave
 	ret
-getString:
-	push    rbp
-	mov     rbp, rsp
-	sub     rsp, 288
-	mov     rax, qword [fs:abs 28H]
-	mov     qword [rbp-8H], rax
-	xor     eax, eax
-	lea     rax, [rbp-110H]
-	mov     rdi, rax
-	mov     eax, 0
-	call    gets
-	mov     edi, 256
-	call    malloc
-	mov     qword [rbp-118H], rax
-	mov     dword [rbp-120H], 0
-	jmp     Lgs_002
-Lgs_001:  add     dword [rbp-120H], 1
-Lgs_002:  mov     eax, dword [rbp-120H]
-	cdqe
-	movzx   eax, byte [rbp+rax-110H]
-	test    al, al
-	jnz     Lgs_001
-	mov     dword [rbp-11CH], 0
-	mov     dword [rbp-11CH], 0
-	jmp     Lgs_004
-Lgs_003:  mov     eax, dword [rbp-11CH]
-	movsxd  rdx, eax
-	mov     rax, qword [rbp-118H]
-	add     rdx, rax
-	mov     eax, dword [rbp-11CH]
-	cdqe
-	movzx   eax, byte [rbp+rax-110H]
-	mov     byte [rdx], al
-	add     dword [rbp-11CH], 1
-Lgs_004:  mov     eax, dword [rbp-11CH]
-	cmp     eax, dword [rbp-120H]
-	jl      Lgs_003
-	mov     eax, dword [rbp-120H]
-	movsxd  rdx, eax
-	mov     rax, qword [rbp-118H]
-	add     rax, rdx
-	mov     byte [rax], 0
-	mov     rax, qword [rbp-118H]
-	mov     rcx, qword [rbp-8H]
-	xor     rcx, qword [fs:abs 28H]
-	jz      Lgs_005
-	call    __stack_chk_fail
-	Lgs_005:  leave
+transtring:
+
+	push rbp
+	mov rbp,rsp
+	call strlen
+	push rdi
+	mov rdi,rax
+	push rdi
+	add rdi,9
+	call malloc
+	pop rdi
+	mov [rax],rdi
+	add rax,8
+	mov rdx,rdi
+	add rdx,1
+	mov rdi,rax
+	pop rsi
+	sub rsp,8
+	push rax
+	call memcpy
+	pop rax
+	mov rsp,rbp
+	pop rbp
 	ret
+
+getString:
+
+	push rbp
+	mov rbp,rsp
+	mov rax,0
+	mov rdi,format2
+	mov rsi,stringbuffer
+	call scanf
+	mov rdi,stringbuffer
+	call transtring
+	mov rsp,rbp
+	pop rbp
+	ret
+
 string.substring:
 	push    rbp
 	mov     rbp, rsp
