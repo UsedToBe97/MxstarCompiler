@@ -4,6 +4,7 @@ import ast.definition.VarDef;
 import ir.Func;
 import ir.Ir;
 import ir.inst.*;
+import ir.operand.INum;
 import ir.operand.Operand;
 import ir.operand.addr.MemAddr;
 import ir.operand.reg.Reg;
@@ -128,6 +129,11 @@ public class CodeGenerator {
     }
 
     public void visit(Move x) {
+        if (x.src instanceof INum) {
+            x.dest = getOp(x.dest, X86Reg.rbx);
+            ans.append("\tmov\t" + x.dest.toString() + ", " + x.src.toString() + "\n");
+            return;
+        }
         x.src = getOp(x.src, X86Reg.rbx);
         if (!x.src.toString().equals("rax"))
             ans.append("\tmov\trax, " + x.src.toString() + "\n");

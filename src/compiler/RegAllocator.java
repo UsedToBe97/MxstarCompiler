@@ -56,6 +56,7 @@ public class RegAllocator {
                 }
                 continue;
             }
+            orders.add(u);
             if (u instanceof CJump) ((CJump) u).dest.from.add(u);
             if (u instanceof Jump) {
                 ((Jump) u).label.from.add(u);
@@ -65,12 +66,11 @@ public class RegAllocator {
             }
             if (pre != null) pre.nxt = u;
             pre = u;
-            orders.add(u);
         }
         for (Inst u : orders) visit(u);
-        boolean need = false;
+        boolean need = true;
         while (need) {
-            need = true;
+            need = false;
             for (int i = orders.size() - 1; i >= 0; --i) {
                 Inst u = orders.get(i);
                 if (u instanceof CJump) {
@@ -99,8 +99,12 @@ public class RegAllocator {
         for (int i = 0; i < 16; ++i) {
             col[i] = i;
             x.tag[i] = false;
+            vis[i] = 0;
         }
-        for (int i = 16; i < x.num; ++i) col[i] = -1;
+        for (int i = 16; i < x.num; ++i) {
+            col[i] = -1;
+            vis[i] = 0;
+        }
         int dfn = 0;
         for (int i = 16; i < x.num; ++i) {
             ++dfn;
@@ -110,7 +114,7 @@ public class RegAllocator {
                 if (col[j] != dfn) {
                     col[i] = j;
                     x.Regs.get(i).idx = j;
-                    if (i < 16) x.tag[j] = true;
+                    if (j < 16) x.tag[j] = true;
                     break;
                 }
         }
