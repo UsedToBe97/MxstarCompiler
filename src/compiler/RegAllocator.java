@@ -112,7 +112,7 @@ public class RegAllocator {
             ++dfn;
             for (int j = 0; j < x.num; ++j)
                 if (map[i][j] && col[j] != -1) vis[col[j]] = dfn;
-            for (int j = 0; j < x.num; j = (j == 7 ? 16 : j + 1))
+            for (int j = 0; j < x.num; j = (j == 10 ? 16 : j + 1))
                 if (vis[j] != dfn) {
                     col[i] = j;
                     x.Regs.get(i).idx = j;

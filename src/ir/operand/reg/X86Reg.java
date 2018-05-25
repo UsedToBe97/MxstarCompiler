@@ -5,10 +5,10 @@ import utils.Position;
 
 public class X86Reg extends Reg{
     //rax rcx rdx rbx rsp rbp rsi rdi r8~15
-    public static X86Reg rax = new X86Reg("rax", 10);
+    public static X86Reg rax = new X86Reg("rax", 13);
     public static X86Reg rcx = new X86Reg("rcx", 11);
     public static X86Reg rdx = new X86Reg("rdx", 12);
-    public static X86Reg rbx = new X86Reg("rbx", 13);
+    public static X86Reg rbx = new X86Reg("rbx", 10);
     public static X86Reg rsp = new X86Reg("rsp", 14);
     public static X86Reg rbp = new X86Reg("rbp", 15);
     public static X86Reg rsi = new X86Reg("rsi", 8);
@@ -27,10 +27,10 @@ public class X86Reg extends Reg{
         name = _s;
     }
     public static X86Reg get(int i) {
-        if (i == 10) return rax;
+        if (i == 13) return rax;
         if (i == 11) return rcx;
         if (i == 12) return rdx;
-        if (i == 13) return rbx;
+        if (i == 10) return rbx;
         if (i == 14) return rsp;
         if (i == 15) return rbp;
         if (i == 8) return rsi;
