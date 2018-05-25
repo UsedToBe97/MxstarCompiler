@@ -1,45 +1,3 @@
-// USACO 3.1.2 inflate
-int MAXN = 10005;
-int MAXM = 10005;
-
-int main(){
-	int M;
-	int N;
-	M = getInt();
-	N = getInt();
-	int[] w = new int[MAXN];
-	int[] t = new int[MAXN];
-	int[] DP = new int[MAXN];
-	int i;
-	int j;
-    for (i = 0; i < N; ++i) {
-    	w[i] = getInt();
-    	t[i] = getInt();
-    }
-	println(toString(w[5555]));
-	println(toString(t[7555]));
-    for (i = 0 ; i < N; ++i)
-        for (j = t[i]; j <= M; ++j)
-        	if (DP[j] <= DP[j - t[i]] + w[i])
-        		DP[j] =  DP[j - t[i]] + w[i];
-            // DP[j] = (DP[j] > DP[j - t[i]] + w[i]) ? DP[j] : DP[j - t[i]] + w[i];
-    print(toString(DP[M]));
-    return 0;
-}
-
-
-
-
-/*!! metadata:
-=== comment ===
-inflate-5140519064-yurongyou.txt
-=== is_public ===
-True
-=== assert ===
-output
-=== timeout ===
-1.0
-=== input ===
 10000 10000
 6566 9721
 1637 3251
@@ -10041,11 +9999,3 @@ output
 8337 766
 9611 5127
 3595 1943
-=== phase ===
-codegen extended
-=== output ===
-11670000
-=== exitcode ===
-
-
-!!*/

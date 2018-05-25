@@ -184,6 +184,7 @@ public class CodeGenerator {
         ans.append("extern malloc\n");
         ans.append("extern printf\n");
         ans.append("extern gets\n");
+        ans.append("extern scanf\n");
         ans.append("extern __isoc99_scanf\n");
 
         ans.append("section .data\n");
@@ -193,7 +194,10 @@ public class CodeGenerator {
             ans.append("0\n");
         }
         for (VarDef u : rt.GV) ans.append(u.name + ":\n\tdq\t0\n");
-
+        ans.append("intbuffer:\n");
+        ans.append("\tdq 0\n");
+        ans.append("format1:\n");
+        ans.append("\tdb\"%lld\",0\n");
 
         ans.append("section .text\n");
 
@@ -203,7 +207,7 @@ public class CodeGenerator {
             for (Reg p : nowfunc.Regs){
                 if (pp < p.idx) pp = p.idx;
             }
-            nowfunc.size = pp > 16 ? pp - 16 : 0;
+            nowfunc.size = pp > 15 ? pp - 15 : 0;
             //nowfunc.size = nowfunc.num > 16 ? nowfunc.num - 16 : 0;
             nowfunc.size *= 8;
             ans.append(nowfunc.name + ":\n");
@@ -399,32 +403,16 @@ public class CodeGenerator {
 
         //getInt
         ans.append("getInt:\n");
-        ans.append("\tpush    rbp\n");
-        ans.append("\tmov     rbp, rsp\n");
-        ans.append("\tsub     rsp, 16\n");
-        ans.append("\tcall    getchar\n");
-        ans.append("\tmov     byte [rbp-5H], al\n");
-        ans.append("\tmov     dword [rbp-4H], 0\n");
-        ans.append("\tjmp     Lint_002\n");
-        ans.append("Lint_001:  mov     edx, dword [rbp-4H]\n");
-        ans.append("\tmov     eax, edx\n");
-        ans.append("\tshl     eax, 2\n");
-        ans.append("\tadd     eax, edx\n");
-        ans.append("\tadd     eax, eax\n");
-        ans.append("\tmov     edx, eax\n");
-        ans.append("\tmovsx   eax, byte [rbp-5H]\n");
-        ans.append("\tadd     eax, edx\n");
-        ans.append("\tsub     eax, 48\n");
-        ans.append("\tmov     dword [rbp-4H], eax\n");
-        ans.append("\tcall    getchar\n");
-        ans.append("\tmov     byte [rbp-5H], al\n");
-        ans.append("Lint_002:  cmp     byte [rbp-5H], 47\n");
-        ans.append("\tjle     Lint_003\n");
-        ans.append("\tcmp     byte [rbp-5H], 57\n");
-        ans.append("\tjle     Lint_001\n");
-        ans.append("Lint_003:  mov     eax, dword [rbp-4H]\n");
-        ans.append("\tleave\n");
-        ans.append("\t        ret\n");
+        ans.append("\tpush rbp\n");
+        ans.append("\tmov rbp,rsp\n");
+        ans.append("\tmov rax,0\n");
+        ans.append("\tmov rdi,format1\n");
+        ans.append("\tmov rsi,intbuffer\n");
+        ans.append("\tcall scanf\n");
+        ans.append("\tmov rax,[intbuffer]\n");
+        ans.append("\tmov rsp,rbp\n");
+        ans.append("\tpop rbp\n");
+        ans.append("\tret\n");
 
         //string.length
         ans.append("string.length:\n");
