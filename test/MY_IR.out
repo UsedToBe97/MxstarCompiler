@@ -1,359 +1,51 @@
-N__ [GV]
-head__ [GV]
-startx__ [GV]
-starty__ [GV]
-targetx__ [GV]
-targety__ [GV]
-x__ [GV]
-y__ [GV]
-xlist__ [GV]
-ylist__ [GV]
-tail__ [GV]
-ok__ [GV]
-now__ [GV]
-dx__ [GV]
-dy__ [GV]
-step__ [GV]
-i__ [GV]
-j__ [GV]
-
-string[ 0 ] no solution!
 
 
-origin [Func]:
-	r16 = rdi
-	qword [ head__ ] = 0
-	qword [ tail__ ] = 0
-	r17 = r16
-	r17 = r17 + 1
-	r17 = r17 * 8
-		rdi = r17
-		FuncCall malloc Param_size : 1
-		r18 = rax
-	qword [r18] = r16
-	r18 = r18 + 8
-	qword [ step__ ] = r18
-	qword [ i__ ] = 0
-Label_4:
-	r19 = qword [ i__ ] < r16
-	jump Label_3 if r19 je 1
-	jump Label_2
-Label_3:
-	r20 = qword [ step__ ]
-	r21 = qword [ i__ ]
-	r22 = r16
-	r22 = r22 + 1
-	r22 = r22 * 8
-		rdi = r22
-		FuncCall malloc Param_size : 1
-		r23 = rax
-	qword [r23] = r16
-	r23 = r23 + 8
-	qword [r20 + r21 * 8] = r23
-	qword [ j__ ] = 0
-Label_8:
-	r24 = qword [ j__ ] < r16
-	jump Label_7 if r24 je 1
-	jump Label_6
-Label_7:
-	r25 = qword [ step__ ]
-	r26 = qword [ i__ ]
-	r27 = qword [r25 + r26 * 8]
-	r28 = qword [ j__ ]
-	qword [r27 + r28 * 8] = 0
-Label_5:
-	r29 = qword [ j__ ]
-	qword [ j__ ] = qword [ j__ ] + 1
-	jump Label_8
-Label_6:
-Label_1:
-	r30 = qword [ i__ ]
-	qword [ i__ ] = qword [ i__ ] + 1
-	jump Label_4
-Label_2:
-Label_0:
-check [Func]:
-	r16 = rdi
-	r18 = r16 < qword [ N__ ]
-	jump Label_10 if r18 je 1
-	r17 = 0
-	jump Label_11
-Label_10:
-	r19 = r16 >= 0
-	r17 = r19
-Label_11:
-	rax = r17
-	jump Label_9
-Label_9:
-addList [Func]:
+tak [Func]:
 	r16 = rdi
 	r17 = rsi
-		rdi = r16
-		FuncCall check Param_size : 1
-		r20 = rax
-	jump Label_16 if r20 je 1
-	r19 = 0
-	jump Label_17
-Label_16:
-		rdi = r17
-		FuncCall check Param_size : 1
-		r21 = rax
-	r19 = r21
-Label_17:
-	jump Label_18 if r19 je 1
-	r18 = 0
-	jump Label_19
-Label_18:
-	r23 = qword [ step__ ]
-	r24 = qword [r23 + r16 * 8]
-	r25 = 1
-	- r25
-	r22 = qword [r24 + r17 * 8] == r25
-	r18 = r22
-Label_19:
-	jump Label_14 if r18 je 1
-	jump Label_15
-Label_14:
-	r26 = qword [ tail__ ]
-	qword [ tail__ ] = qword [ tail__ ] + 1
-	r27 = qword [ xlist__ ]
-	r28 = qword [ tail__ ]
-	qword [r27 + r28 * 8] = r16
-	r29 = qword [ ylist__ ]
-	r30 = qword [ tail__ ]
-	qword [r29 + r30 * 8] = r17
-	r31 = qword [ step__ ]
-	r32 = qword [r31 + r16 * 8]
-	r33 = qword [ now__ ] + 1
-	qword [r32 + r17 * 8] = r33
-	r35 = r16 == qword [ targetx__ ]
-	jump Label_23 if r35 je 1
-	r34 = 0
-	jump Label_24
-Label_23:
-	r36 = r17 == qword [ targety__ ]
-	r34 = r36
-Label_24:
-	jump Label_21 if r34 je 1
-	jump Label_22
-Label_21:
-	qword [ ok__ ] = 1
-	jump Label_20
-Label_22:
-Label_20:
-	jump Label_13
-Label_15:
-Label_13:
-Label_12:
-main [Func]:
-	r16 = 12000
-	r16 = r16 + 1
-	r16 = r16 * 8
-		rdi = r16
-		FuncCall malloc Param_size : 1
-		r17 = rax
-	qword [r17] = 12000
-	r17 = r17 + 8
-	qword [ xlist__ ] = r17
-	r18 = 12000
-	r18 = r18 + 1
-	r18 = r18 * 8
-		rdi = r18
-		FuncCall malloc Param_size : 1
-		r19 = rax
-	qword [r19] = 12000
-	r19 = r19 + 8
-	qword [ ylist__ ] = r19
-	r20 = 8
-	r20 = r20 + 1
-	r20 = r20 * 8
-		rdi = r20
-		FuncCall malloc Param_size : 1
-		r21 = rax
-	qword [r21] = 8
-	r21 = r21 + 8
-	qword [ dx__ ] = r21
-	r22 = 9
-	r22 = r22 + 1
-	r22 = r22 * 8
-		rdi = r22
-		FuncCall malloc Param_size : 1
-		r23 = rax
-	qword [r23] = 9
-	r23 = r23 + 8
-	qword [ dy__ ] = r23
-		rdi = 106
-		FuncCall origin Param_size : 1
+	r18 = rdx
+	r19 = r17 < r16
+	jump Label_2 if r19 je 1
+	jump Label_3
+Label_2:
+	r21 = r16 - 1
+		rdi = r21
+		rsi = r17
+		rdx = r18
+		FuncCall tak Param_size : 3
+		r22 = rax
+	r23 = r17 - 1
+		rdi = r23
+		rsi = r18
+		rdx = r16
+		FuncCall tak Param_size : 3
 		r24 = rax
-		FuncCall getInt Param_size : 0
-		r25 = rax
-	qword [ N__ ] = r25
-	r26 = qword [ N__ ] - 1
-	qword [ targety__ ] = r26
-	qword [ targetx__ ] = qword [ targety__ ]
-	qword [ i__ ] = 0
-Label_29:
-	r27 = qword [ i__ ] < qword [ N__ ]
-	jump Label_28 if r27 je 1
-	jump Label_27
-Label_28:
-	qword [ j__ ] = 0
-Label_33:
-	r28 = qword [ j__ ] < qword [ N__ ]
-	jump Label_32 if r28 je 1
-	jump Label_31
-Label_32:
-	r29 = qword [ step__ ]
-	r30 = qword [ i__ ]
-	r31 = qword [r29 + r30 * 8]
-	r32 = qword [ j__ ]
-	r33 = 1
-	- r33
-	qword [r31 + r32 * 8] = r33
-Label_30:
-	r34 = qword [ j__ ]
-	qword [ j__ ] = qword [ j__ ] + 1
-	jump Label_33
-Label_31:
-Label_26:
-	r35 = qword [ i__ ]
-	qword [ i__ ] = qword [ i__ ] + 1
-	jump Label_29
-Label_27:
-	r36 = qword [ dx__ ]
-	r37 = 0
-	r38 = 2
-	- r38
-	qword [r36 + r37 * 8] = r38
-	r39 = qword [ dy__ ]
-	r40 = 0
-	r41 = 1
-	- r41
-	qword [r39 + r40 * 8] = r41
-	r42 = qword [ dx__ ]
-	r43 = 1
-	r44 = 2
-	- r44
-	qword [r42 + r43 * 8] = r44
-	r45 = qword [ dy__ ]
-	r46 = 1
-	qword [r45 + r46 * 8] = 1
-	r47 = qword [ dx__ ]
-	r48 = 2
-	qword [r47 + r48 * 8] = 2
-	r49 = qword [ dy__ ]
-	r50 = 2
-	r51 = 1
-	- r51
-	qword [r49 + r50 * 8] = r51
-	r52 = qword [ dx__ ]
-	r53 = 3
-	qword [r52 + r53 * 8] = 2
-	r54 = qword [ dy__ ]
-	r55 = 3
-	qword [r54 + r55 * 8] = 1
-	r56 = qword [ dx__ ]
-	r57 = 4
-	r58 = 1
-	- r58
-	qword [r56 + r57 * 8] = r58
-	r59 = qword [ dy__ ]
-	r60 = 4
-	r61 = 2
-	- r61
-	qword [r59 + r60 * 8] = r61
-	r62 = qword [ dx__ ]
-	r63 = 5
-	r64 = 1
-	- r64
-	qword [r62 + r63 * 8] = r64
-	r65 = qword [ dy__ ]
-	r66 = 5
-	qword [r65 + r66 * 8] = 2
-	r67 = qword [ dx__ ]
-	r68 = 6
-	qword [r67 + r68 * 8] = 1
-	r69 = qword [ dy__ ]
-	r70 = 6
-	r71 = 2
-	- r71
-	qword [r69 + r70 * 8] = r71
-	r72 = qword [ dx__ ]
-	r73 = 7
-	qword [r72 + r73 * 8] = 1
-	r74 = qword [ dy__ ]
-	r75 = 7
-	qword [r74 + r75 * 8] = 2
-Label_37:
-	r76 = qword [ head__ ] <= qword [ tail__ ]
-	jump Label_36 if r76 je 1
-	jump Label_35
-Label_36:
-	r77 = qword [ xlist__ ]
-	r78 = qword [ head__ ]
-	qword [ x__ ] = qword [r77 + r78 * 8]
-	r79 = qword [ ylist__ ]
-	r80 = qword [ head__ ]
-	qword [ y__ ] = qword [r79 + r80 * 8]
-	r81 = qword [ step__ ]
-	r82 = qword [ x__ ]
-	r83 = qword [r81 + r82 * 8]
-	r84 = qword [ y__ ]
-	qword [ now__ ] = qword [r83 + r84 * 8]
-	qword [ j__ ] = 0
-Label_41:
-	r85 = qword [ j__ ] < 8
-	jump Label_40 if r85 je 1
-	jump Label_39
-Label_40:
-	r87 = qword [ dx__ ]
-	r88 = qword [ j__ ]
-	r86 = qword [ x__ ] + qword [r87 + r88 * 8]
-	r90 = qword [ dy__ ]
-	r91 = qword [ j__ ]
-	r89 = qword [ y__ ] + qword [r90 + r91 * 8]
-		rdi = r86
-		rsi = r89
-		FuncCall addList Param_size : 2
-		r92 = rax
-Label_38:
-	r93 = qword [ j__ ]
-	qword [ j__ ] = qword [ j__ ] + 1
-	jump Label_41
-Label_39:
-	r94 = qword [ ok__ ] == 1
-	jump Label_43 if r94 je 1
-	jump Label_44
-Label_43:
-	jump Label_35
-	jump Label_42
-Label_44:
-Label_42:
-	r95 = qword [ head__ ]
-	qword [ head__ ] = qword [ head__ ] + 1
-Label_34:
-	jump Label_37
-Label_35:
-	r96 = qword [ ok__ ] == 1
-	jump Label_46 if r96 je 1
-	jump Label_47
-Label_46:
-	r97 = qword [ step__ ]
-	r98 = qword [ targetx__ ]
-	r99 = qword [r97 + r98 * 8]
-	r100 = qword [ targety__ ]
-		rdi = qword [r99 + r100 * 8]
-		FuncCall toString Param_size : 1
-		r101 = rax
-		rdi = r101
-		FuncCall println Param_size : 1
-		r102 = rax
-	jump Label_45
-Label_47:
-		rdi = str__0
-		FuncCall print Param_size : 1
-		r103 = rax
-Label_45:
-	rax = 0
-	jump Label_25
-Label_25:
+	r25 = r18 - 1
+		rdi = r25
+		rsi = r16
+		rdx = r17
+		FuncCall tak Param_size : 3
+		r26 = rax
+		rdi = r22
+		rsi = r24
+		rdx = r26
+		FuncCall tak Param_size : 3
+		r27 = rax
+	r20 = 1 + r27
+	rax = r20
+	jump Label_0
+	jump Label_1
+Label_3:
+	rax = r18
+	jump Label_0
+Label_1:
+Label_0:
+main [Func]:
+		rdi = 18
+		rsi = 12
+		rdx = 6
+		FuncCall tak Param_size : 3
+		r16 = rax
+	rax = r16
+	jump Label_4
+Label_4:
