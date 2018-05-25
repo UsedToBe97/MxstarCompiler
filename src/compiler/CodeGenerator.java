@@ -74,12 +74,12 @@ public class CodeGenerator {
 
     public void B(Operand dest, Operand lhs, Operand rhs, String op) {
         lhs = getOp(lhs, X86Reg.rax);
-        ans.append("\tmov\trax, " + lhs.toString() + "\n");
+        ans.append("\tmov\trcx, " + lhs.toString() + "\n");
         rhs = getOp(rhs, X86Reg.rbx);
-        ans.append("\tcmp\trax, " + rhs.toString() + "\n");
+        ans.append("\tcmp\trcx, " + rhs.toString() + "\n");
         dest = getOp(dest, X86Reg.rbx);
-        ans.append("\t" + op + "\tcl\n\tmovzx\trax, al\n");
-        ans.append("\tmov\t" + dest.toString() + ", rax\n");
+        ans.append("\t" + op + "\tcl\n\tmovzx\trcx, cl\n");
+        ans.append("\tmov\t" + dest.toString() + ", rcx\n");
     }
 
     public void C(Operand dest, Operand lhs, Operand rhs, String op) {
@@ -229,7 +229,7 @@ public class CodeGenerator {
                 } else ans.append("\tmov\t" + tmp.name + ", " + base +"\n");
                 return new MemAddr(tmp, null, 0, ((MemAddr) x).disp);
             } else
-                if (base.toString().equals("rbp"))
+                if (base.toString().equals("rbp") && ((MemAddr) x).disp > 0)
                     ((MemAddr)x).disp += tot * 8;
                 return new MemAddr((Reg)base, (Reg)index, ((MemAddr) x).scale, ((MemAddr) x).disp);
         }

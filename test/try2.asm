@@ -21,79 +21,50 @@ section .bss
 stringbuffer:
 	resb 256
 section .text
-a:
+main:
 	push	rbp
 	mov	rbp, rsp
 	push	r11
 	sub	rbp, 8
-	mov	r10, rdx
+	mov	rdi, 5
+	mov	rsi, 0
+	mov	r10, 1
+Label_4:
+	mov	rcx, r10
+	cmp	rcx, rdi
+	setle	cl
+	movzx	rcx, cl
 	mov	r11, rcx
-	add	rdi, rsi
-	add	rdi, r10
-	add	rdi, r11
-	add	rdi, r8
-	add	rdi, r9
-	add	rdi, qword [rbp + 24]
-	add	rdi, qword [rbp + 32]
-	add	rdi, qword [rbp + 40]
-	add	rdi, qword [rbp + 48]
-	add	rdi, qword [rbp + 56]
-	add	rdi, qword [rbp + 64]
-	add	rdi, qword [rbp + 72]
-	add	rdi, qword [rbp + 80]
-	add	rdi, qword [rbp + 88]
-	mov	rax, rdi
+	cmp	r11, 1
+	je	Label_3
+	jmp	Label_2
+Label_3:
+	mov	r11, 1
+Label_8:
+	mov	rcx, r11
+	cmp	rcx, rdi
+	setle	cl
+	movzx	rcx, cl
+	mov	r8, rcx
+	cmp	r8, 1
+	je	Label_7
+	jmp	Label_6
+Label_7:
+	add	rsi, r10
+Label_5:
+	add	r11, 1
+	jmp	Label_8
+Label_6:
+	add	rsi, 1
+Label_1:
+	add	r10, 1
+	jmp	Label_4
+Label_2:
+	mov	rax, rsi
 	jmp	Label_0
 Label_0:
 	add	rbp, 8
 	pop	r11
-	mov	rsp, rbp
-	pop	rbp
-	ret
-main:
-	push	rbp
-	mov	rbp, rsp
-	sub	rsp, 72
-	push	rdi
-	mov	rdi, 1
-	mov	rsi, 2
-	mov	rdx, 3
-	mov	rcx, 4
-	mov	r8, 5
-	mov	r9, 6
-	mov	rax, 7
-	mov	qword [rsp], rax
-	mov	rax, 8
-	mov	qword [rsp + 8], rax
-	mov	rax, 9
-	mov	qword [rsp + 16], rax
-	mov	rax, 10
-	mov	qword [rsp + 24], rax
-	mov	rax, 11
-	mov	qword [rsp + 32], rax
-	mov	rax, 12
-	mov	qword [rsp + 40], rax
-	mov	rax, 13
-	mov	qword [rsp + 48], rax
-	mov	rax, 14
-	mov	qword [rsp + 56], rax
-	mov	rax, 15
-	mov	qword [rsp + 64], rax
-	call	a
-	pop	rdi
-	mov	rdi, rax
-	add	rsp, 72
-	push	rdi
-	call	toString
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	call	println
-	pop	rdi
-	mov	rdi, rax
-	mov	rax, 0
-	jmp	Label_1
-Label_1:
 	mov	rsp, rbp
 	pop	rbp
 	ret

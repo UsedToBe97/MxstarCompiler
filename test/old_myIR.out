@@ -1,53 +1,32 @@
 
 
-a [Func]:
-	r16 = rdi
-	r17 = rsi
-	r18 = rdx
-	r19 = rcx
-	r20 = r8
-	r21 = r9
-	r35 = r16 + r17
-	r34 = r35 + r18
-	r33 = r34 + r19
-	r32 = r33 + r20
-	r31 = r32 + r21
-	r30 = r31 + qword [rbp + 16]
-	r29 = r30 + qword [rbp + 24]
-	r28 = r29 + qword [rbp + 32]
-	r27 = r28 + qword [rbp + 40]
-	r26 = r27 + qword [rbp + 48]
-	r25 = r26 + qword [rbp + 56]
-	r24 = r25 + qword [rbp + 64]
-	r23 = r24 + qword [rbp + 72]
-	r22 = r23 + qword [rbp + 80]
-	rax = r22
-	jump Label_0
-Label_0:
 main [Func]:
-		rdi = 1
-		rsi = 2
-		rdx = 3
-		rcx = 4
-		r8 = 5
-		r9 = 6
-		qword [rsp] = 7
-		qword [rsp + 8] = 8
-		qword [rsp + 16] = 9
-		qword [rsp + 24] = 10
-		qword [rsp + 32] = 11
-		qword [rsp + 40] = 12
-		qword [rsp + 48] = 13
-		qword [rsp + 56] = 14
-		qword [rsp + 64] = 15
-		FuncCall a Param_size : 15
-		r16 = rax
-		rdi = r16
-		FuncCall toString Param_size : 1
-		r17 = rax
-		rdi = r17
-		FuncCall println Param_size : 1
-		r18 = rax
-	rax = 0
-	jump Label_1
+	reg16 = 5 [][]
+	reg17 = 0 [][]
+	reg18 = 1 [][]
+Label_4:
+	reg20 = reg18 <= reg16 [][]
+	jump Label_3 if reg20 je 1 [][]
+	jump Label_2 [][]
+Label_3:
+	reg19 = 1 [][]
+Label_8:
+	reg21 = reg19 <= reg16 [][]
+	jump Label_7 if reg21 je 1 [][]
+	jump Label_6 [][]
+Label_7:
+	reg22 = reg17 + reg18 [][]
+	reg17 = reg22 [][]
+Label_5:
+	reg19 = reg19 + 1 [][]
+	jump Label_8 [][]
+Label_6:
+	reg23 = reg17 + 1 [][]
+	reg17 = reg23 [][]
 Label_1:
+	reg18 = reg18 + 1 [][]
+	jump Label_4 [][]
+Label_2:
+	rax = reg17 [][]
+	jump Label_0 [][]
+Label_0:

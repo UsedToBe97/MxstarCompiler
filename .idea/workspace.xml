@@ -8,55 +8,14 @@
     <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/CodeGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/RegAllocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/RegAllocator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/inst/Binop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/inst/Binop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/inst/CJump.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/inst/CJump.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/inst/FuncCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/inst/FuncCall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/inst/Inst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/inst/Inst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/inst/Jump.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/inst/Jump.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/inst/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/inst/Move.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/inst/UnaryOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/inst/UnaryOp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/operand/reg/VirtualReg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/operand/reg/VirtualReg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/operand/reg/X86Reg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/operand/reg/X86Reg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/CodeGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/CodeGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/RegAllocator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/RegAllocator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ir/inst/Binop.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ir/inst/Binop.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ir/inst/CJump.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ir/inst/CJump.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ir/inst/FuncCall.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ir/inst/FuncCall.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ir/inst/Inst.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ir/inst/Inst.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ir/inst/Jump.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ir/inst/Jump.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ir/inst/Move.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ir/inst/Move.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ir/inst/UnaryOp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ir/inst/UnaryOp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ir/operand/reg/VirtualReg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ir/operand/reg/VirtualReg.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ir/operand/reg/X86Reg.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ir/operand/reg/X86Reg.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/1.test" beforeDir="false" afterPath="$PROJECT_DIR$/test/1.test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/AST.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/AST.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/IR.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/MY_IR.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/MY_IR.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/aa.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/aa.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/c2.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/getString.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/getint.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/getint.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/hello.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/hello.c.nasm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/hello.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/length_ord.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ok.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/parseint.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/print.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/print.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/stringadd.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/substring.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/substring.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/tostr.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/tostring.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/new_IR.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/new_IR.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/new_myIR.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/new_myIR.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/new_x86.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/new_x86.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/old_myIR.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/old_myIR.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/try.asm" beforeDir="false" afterPath="$PROJECT_DIR$/test/try.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/try2.asm" beforeDir="false" afterPath="$PROJECT_DIR$/test/try2.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/x86+2.out" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -85,13 +44,13 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.59029263">
+    <splitter split-orientation="horizontal" split-proportion="0.40984794">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="161">
+                <state relative-caret-position="-184">
                   <caret line="109" column="30" selection-start-line="109" selection-start-column="30" selection-end-line="109" selection-end-column="30" />
                 </state>
               </provider>
@@ -121,7 +80,7 @@
           <file leaf-file-name="X86translator.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../BlablaBiu-mushroom-55f2b59b0a21/src/compiler/X86translator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="249">
+                <state relative-caret-position="823">
                   <caret line="99" column="11" selection-start-line="99" selection-start-column="11" selection-end-line="99" selection-end-column="11" />
                 </state>
               </provider>
@@ -188,8 +147,8 @@
           <file leaf-file-name="CodeGenerator.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/compiler/CodeGenerator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="387">
-                  <caret line="225" column="69" selection-start-line="225" selection-start-column="69" selection-end-line="225" selection-end-column="69" />
+                <state relative-caret-position="476">
+                  <caret line="85" column="22" selection-start-line="85" selection-start-column="22" selection-end-line="85" selection-end-column="22" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#6286#6287#0" expanded="true" />
@@ -486,8 +445,8 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -681,12 +640,16 @@
       <workItem from="1527249712459" duration="548000" />
       <workItem from="1527250344691" duration="409000" />
       <workItem from="1527250823731" duration="1997000" />
-      <workItem from="1527253354100" duration="191000" />
+      <workItem from="1527253354100" duration="435000" />
+      <workItem from="1527253810435" duration="3000" />
+      <workItem from="1527253977643" duration="196000" />
+      <workItem from="1527254278042" duration="570000" />
+      <workItem from="1527255443860" duration="608000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="408687000" />
+    <option name="totallyTimeSpent" value="410308000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -712,11 +675,11 @@
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4968017" visible="true" weight="0.25925925" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4968017" visible="true" weight="0.25925925" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32897604" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2531983" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26385927" />
       <window_info anchor="right" id="Database" order="8" weight="0.32995737" />
       <window_info anchor="bottom" id="ANTLR Preview" order="12" weight="0.32897604" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -765,12 +728,6 @@
           <line>33</line>
           <properties />
           <option name="timeStamp" value="127" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/compiler/CodeGenerator.java</url>
-          <line>62</line>
-          <properties />
-          <option name="timeStamp" value="166" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -1134,10 +1091,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../BlablaBiu-mushroom-55f2b59b0a21/src/compiler/X86translator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="823">
+          <caret line="99" column="11" selection-start-line="99" selection-start-column="11" selection-end-line="99" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/CodeGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="225" column="69" selection-start-line="225" selection-start-column="69" selection-end-line="225" selection-end-column="69" />
+        <state relative-caret-position="476">
+          <caret line="85" column="22" selection-start-line="85" selection-start-column="22" selection-end-line="85" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#6286#6287#0" expanded="true" />
@@ -1146,16 +1110,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../BlablaBiu-mushroom-55f2b59b0a21/src/compiler/X86translator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="99" column="11" selection-start-line="99" selection-start-column="11" selection-end-line="99" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
+        <state relative-caret-position="-184">
           <caret line="109" column="30" selection-start-line="109" selection-start-column="30" selection-end-line="109" selection-end-column="30" />
         </state>
       </provider>
