@@ -9,7 +9,7 @@ public class Jump extends Inst {
 
     public String toString() {
         String tmp = "\t";
-        tmp += "jump " + label.name + "\n";
+        tmp += "jump " + label.name + Indef() + "\n";
         return tmp;
     }
     public void accept(CodeGenerator cg) {

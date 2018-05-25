@@ -16,7 +16,7 @@ public class CJump extends Inst{
     public String toString() {
         String tmp = "\t";
         tmp += "jump " + dest.name + " if ";
-        tmp += lhs.toString() + " " + op + " " + rhs.toString() + "\n";
+        tmp += lhs.toString() + " " + op + " " + rhs.toString() + Indef() + "\n";
         return tmp;
     }
     public void accept(CodeGenerator cg) {

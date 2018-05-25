@@ -3,56 +3,83 @@ global main
 section .data
 
 section .text
-work:
+a:
 	push	rbp
 	mov		rbp, rsp
-	sub		rsp, 8
-	push	rdi
-	mov		rdi, 32
-	call	malloc
-	pop		rdi
-	mov		rdi, rax
-	add		rsp, 8
+	push	rbx
+	sub		rbp, 8
+	mov		rdi, rdi
+	mov		rsi, rsi
+	mov		rbx, rdx
+	mov		r10, rcx
+	mov		r8, r8
+	mov		r9, r9
+	add		rdi, rsi
+	add		rdi, rbx
+	add		rdi, r10
+	add		rdi, r8
+	add		rdi, r9
+	add		rdi, qword [rbp + 16]
+	add		rdi, qword [rbp + 24]
+	add		rdi, qword [rbp + 32]
+	add		rdi, qword [rbp + 40]
+	add		rdi, qword [rbp + 48]
+	add		rdi, qword [rbp + 56]
+	add		rdi, qword [rbp + 64]
+	add		rdi, qword [rbp + 72]
+	add		rdi, qword [rbp + 80]
+	mov		rax, rdi
+	jmp		_0_Label
+_0_Label:
+	add		rbp, 8
+	pop		rbx
 	mov		rsp, rbp
 	pop		rbp
 	ret	
 main:
 	push	rbp
 	mov		rbp, rsp
-	mov		rdi, 32
-	call	malloc
-	mov		r15, rax
+	sub		rsp, 72
+	push	rdi
+	mov		rax, 15
+	mov		qword [rsp + 64], rax
+	mov		rax, 14
+	mov		qword [rsp + 56], rax
+	mov		rax, 13
+	mov		qword [rsp + 48], rax
+	mov		rax, 12
+	mov		qword [rsp + 40], rax
+	mov		rax, 11
+	mov		qword [rsp + 32], rax
 	mov		rax, 10
-	mov		qword [r15], rax
-	mov		rax, 20
-	mov		qword [r15 + 8], rax
-	mov		rcx, qword [r15]
-	cmp		rcx, qword [r15 + 8]
-	setg	cl
-	movzx	rcx, cl
-	mov		r14, rcx
-	mov		qword [r15 + 16], r14
-	mov		rax, qword [r15 + 16]
-	cmp		rax, 1
-	je		_2_Label
-	jmp		_3_Label
-_2_Label:
-	mov		rax, 40
-	mov		qword [r15 + 24], rax
-	jmp		_4_Label
-_3_Label:
-	mov		rax, 80
-	mov		qword [r15 + 24], rax
-_4_Label:
-	call	work
-	mov		r14, rax
-	mov		rdx, qword [r15]
-	add	rdx, qword [r15 + 8]
-	mov		r14, rdx
-	mov		rdx, r14
-	add	rdx, qword [r15 + 24]
-	mov		r15, rdx
-	mov		rax, r15
+	mov		qword [rsp + 24], rax
+	mov		rax, 9
+	mov		qword [rsp + 16], rax
+	mov		rax, 8
+	mov		qword [rsp + 8], rax
+	mov		rax, 7
+	mov		qword [rsp], rax
+	mov		r9, 6
+	mov		r8, 5
+	mov		rcx, 4
+	mov		rdx, 3
+	mov		rsi, 2
+	mov		rdi, 1
+	call	a
+	pop		rdi
+	mov		rdi, rax
+	add		rsp, 72
+	push	rdi
+	mov		rdi, rdi
+	call	toString
+	pop		rdi
+	mov		rdi, rax
+	push	rdi
+	mov		rdi, rdi
+	call	println
+	pop		rdi
+	mov		rdi, rax
+	mov		rax, 0
 	jmp		_1_Label
 _1_Label:
 	mov		rsp, rbp

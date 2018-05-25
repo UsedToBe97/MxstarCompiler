@@ -142,7 +142,11 @@ public class Main {
         alloc = true;
 
         if (Submit == false) {
-            File f = new File("D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/MY_IR.out");
+            File f;
+            if (!alloc) f = new File("D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/old_myIR.out");
+            else f = new File("D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/new_myIR.out");
+
+            //File f = new File("D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/MY_IR.out");
             PrintStream fout = new PrintStream(new FileOutputStream(f));
             fout.print(ir.toString());
         }

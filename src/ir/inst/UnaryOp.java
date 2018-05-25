@@ -13,7 +13,7 @@ public class UnaryOp extends Inst {
     }
     public String toString() {
         String tmp = "\t";
-        tmp += op + " " + src.toString() + "\n";
+        tmp += op + " " + src.toString() + Indef() + "\n";
         return tmp;
     }
     public void accept(CodeGenerator cg) {

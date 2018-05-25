@@ -1,32 +1,53 @@
 
 
-work [Func]:
-		rdi = 32
-		FuncCall malloc Param_size : 1
-		r0 = rax
-	r1 = r0
+a [Func]:
+	r0 = rdi
+	r3 = rsi
+	r4 = rdx
+	r5 = rcx
+	r1 = r8
+	r2 = r9
+	r25 = r0 + r3
+	r24 = r25 + r4
+	r23 = r24 + r5
+	r22 = r23 + r1
+	r21 = r22 + r2
+	r20 = r21 + qword [rbp + 16]
+	r19 = r20 + qword [rbp + 24]
+	r18 = r19 + qword [rbp + 32]
+	r17 = r18 + qword [rbp + 40]
+	r16 = r17 + qword [rbp + 48]
+	r9 = r16 + qword [rbp + 56]
+	r8 = r9 + qword [rbp + 64]
+	r7 = r8 + qword [rbp + 72]
+	r6 = r7 + qword [rbp + 80]
+	rax = r6
+	jump Label_0
 Label_0:
 main [Func]:
-		rdi = 32
-		FuncCall malloc Param_size : 1
+		rdi = 1
+		rsi = 2
+		rdx = 3
+		rcx = 4
+		r8 = 5
+		r9 = 6
+		qword [rsp] = 7
+		qword [rsp + 8] = 8
+		qword [rsp + 16] = 9
+		qword [rsp + 24] = 10
+		qword [rsp + 32] = 11
+		qword [rsp + 40] = 12
+		qword [rsp + 48] = 13
+		qword [rsp + 56] = 14
+		qword [rsp + 64] = 15
+		FuncCall a Param_size : 15
 		r0 = rax
-	r1 = r0
-	qword [r1] = 10
-	qword [r1 + 8] = 20
-	r2 = qword [r1] > qword [r1 + 8]
-	qword [r1 + 16] = r2
-	jump Label_3 if qword [r1 + 16] je 1
-	jump Label_4
-Label_3:
-	qword [r1 + 24] = 40
-	jump Label_2
-Label_4:
-	qword [r1 + 24] = 80
-Label_2:
-		FuncCall work Param_size : 0
-		r3 = rax
-	r6 = qword [r1] + qword [r1 + 8]
-	r5 = r6 + qword [r1 + 24]
-	rax = r5
+		rdi = r0
+		FuncCall toString Param_size : 1
+		r5 = rax
+		rdi = r5
+		FuncCall println Param_size : 1
+		r6 = rax
+	rax = 0
 	jump Label_1
 Label_1:

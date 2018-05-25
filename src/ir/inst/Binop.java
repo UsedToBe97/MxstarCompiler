@@ -18,7 +18,7 @@ public class Binop extends Inst {
     public String toString() {
         String tmp = "\t" + dest.toString();
         tmp += " = " + lhs.toString();
-        tmp += " " + op + " " + rhs.toString() + "\n";
+        tmp += " " + op + " " + rhs.toString() + Indef() + "\n";
         return tmp;
     }
     public void accept(CodeGenerator cg) {

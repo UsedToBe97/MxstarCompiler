@@ -15,7 +15,7 @@ public class RegAllocator {
     public void visit(Binop x) {
         x.add(x.lhs);
         x.add(x.rhs);
-        x.add(x.dest);
+        x.add2(x.dest);
         x.set(x.dest);
     }
     public void visit(Call x) {
@@ -27,13 +27,13 @@ public class RegAllocator {
     }
     public void visit(FuncCall x) {
         int tmp = (x.n > 6) ? 6 : x.n;
-        x.add(X86Reg.rax);
+        x.add2(X86Reg.rax);
         x.set(X86Reg.rax);
         for (int i = 0; i < tmp; ++i) x.add(X86Reg.getparam(i));
     }
     public void visit(Move x) {
         x.add(x.src);
-        x.add(x.dest);
+        x.add2(x.dest);
         x.set(x.dest);
     }
     public void visit(UnaryOp x) {
@@ -112,7 +112,7 @@ public class RegAllocator {
             ++dfn;
             for (int j = 0; j < x.num; ++j)
                 if (map[i][j] && col[j] != -1) vis[col[j]] = dfn;
-            for (int j = 0; j < x.num; j = (j == 10 ? 16 : j + 1))
+            for (int j = 0; j < x.num; j = (j == 9 ? 16 : j + 1))
                 if (vis[j] != dfn) {
                     col[i] = j;
                     x.Regs.get(i).idx = j;

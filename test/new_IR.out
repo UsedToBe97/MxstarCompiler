@@ -1,0 +1,61 @@
+a[you need to fix]:
+	rdi 	= rdi [rdx | r9 | rcx | rbp | rsi | r8 | rdi | ][rdi]
+	rsi 	= rsi [rdi | rdx | r9 | rcx | rbp | rsi | r8 | ][rsi]
+	rbx 	= rdx [rdi | rdx | r9 | rcx | rsi | rbp | r8 | ][rbx]
+	r10 	= rcx [rdi | r9 | rbx | rcx | rsi | rbp | r8 | ][r10]
+	r8 	= r8 [rdi | r9 | rbx | rsi | rbp | r10 | r8 | ][r8]
+	r9 	= r9 [rdi | r9 | rbx | r8 | rsi | rbp | r10 | ][r9]
+	rdi 	= rdi + rsi [rdi | rbx | r8 | rsi | rbp | r10 | r9 | ][rdi]
+	rdi 	= rdi + rbx [rbx | r8 | rdi | rbp | r10 | r9 | ][rdi]
+	rdi 	= rdi + r10 [r8 | rbp | r10 | rdi | r9 | ][rdi]
+	rdi 	= rdi + r8 [r8 | rdi | rbp | r9 | ][rdi]
+	rdi 	= rdi + r9 [rdi | rbp | r9 | ][rdi]
+	rdi 	= rdi + qword [rbp + 16] [rbp | rdi | ][rdi]
+	rdi 	= rdi + qword [rbp + 24] [rdi | rbp | ][rdi]
+	rdi 	= rdi + qword [rbp + 32] [rbp | rdi | ][rdi]
+	rdi 	= rdi + qword [rbp + 40] [rdi | rbp | ][rdi]
+	rdi 	= rdi + qword [rbp + 48] [rdi | rbp | ][rdi]
+	rdi 	= rdi + qword [rbp + 56] [rdi | rbp | ][rdi]
+	rdi 	= rdi + qword [rbp + 64] [rdi | rbp | ][rdi]
+	rdi 	= rdi + qword [rbp + 72] [rdi | rbp | ][rdi]
+	rdi 	= rdi + qword [rbp + 80] [rdi | rbp | ][rdi]
+	rax 	= rdi [rdi | ][rax]
+	jump _0_Label [][]
+_0_Label: [][]
+
+
+main[you need to fix]:
+
+		qword [rsp + 64] 	= 15 [rsp | ][]
+		qword [rsp + 56] 	= 14 [rsp | ][]
+		qword [rsp + 48] 	= 13 [rsp | ][]
+		qword [rsp + 40] 	= 12 [rsp | ][]
+		qword [rsp + 32] 	= 11 [rsp | ][]
+		qword [rsp + 24] 	= 10 [rsp | ][]
+		qword [rsp + 16] 	= 9 [rsp | ][]
+		qword [rsp + 8] 	= 8 [rsp | ][]
+		qword [rsp] 	= 7 [rsp | ][]
+		r9 	= 6 [][r9]
+		r8 	= 5 [r9 | ][r8]
+		rcx 	= 4 [r9 | r8 | ][rcx]
+		rdx 	= 3 [r9 | rcx | r8 | ][rdx]
+		rsi 	= 2 [rdx | r9 | rcx | r8 | ][rsi]
+		rdi 	= 1 [rdx | r9 | rcx | rsi | r8 | ][rdi]
+		call a[size : 15] [rdx | r9 | rcx | rsi | r8 | rdi | ][rax]
+		rdi 	= rax [rax | ][rdi]
+
+
+		rdi 	= rdi [rdi | ][rdi]
+		call toString[size : 1] [rdi | ][rax]
+		rdi 	= rax [rax | ][rdi]
+
+
+		rdi 	= rdi [rdi | ][rdi]
+		call println[size : 1] [rdi | ][rax]
+		rdi 	= rax [rax | ][rdi]
+
+	rax 	= 0 [][rax]
+	jump _1_Label [][]
+_1_Label: [][]
+
+

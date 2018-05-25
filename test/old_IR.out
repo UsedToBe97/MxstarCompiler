@@ -1,0 +1,61 @@
+a[you need to fix]:
+	reg16 	= rdi [][]
+	reg17 	= rsi [][]
+	reg18 	= rdx [][]
+	reg19 	= rcx [][]
+	reg20 	= r8 [][]
+	reg21 	= r9 [][]
+	reg35 	= reg16 + reg17 [][]
+	reg34 	= reg35 + reg18 [][]
+	reg33 	= reg34 + reg19 [][]
+	reg32 	= reg33 + reg20 [][]
+	reg31 	= reg32 + reg21 [][]
+	reg30 	= reg31 + qword [rbp + 16] [][]
+	reg29 	= reg30 + qword [rbp + 24] [][]
+	reg28 	= reg29 + qword [rbp + 32] [][]
+	reg27 	= reg28 + qword [rbp + 40] [][]
+	reg26 	= reg27 + qword [rbp + 48] [][]
+	reg25 	= reg26 + qword [rbp + 56] [][]
+	reg24 	= reg25 + qword [rbp + 64] [][]
+	reg23 	= reg24 + qword [rbp + 72] [][]
+	reg22 	= reg23 + qword [rbp + 80] [][]
+	rax 	= reg22 [][]
+	jump _0_Label [][]
+_0_Label: [][]
+
+
+main[you need to fix]:
+
+		qword [rsp + 64] 	= 15 [][]
+		qword [rsp + 56] 	= 14 [][]
+		qword [rsp + 48] 	= 13 [][]
+		qword [rsp + 40] 	= 12 [][]
+		qword [rsp + 32] 	= 11 [][]
+		qword [rsp + 24] 	= 10 [][]
+		qword [rsp + 16] 	= 9 [][]
+		qword [rsp + 8] 	= 8 [][]
+		qword [rsp] 	= 7 [][]
+		r9 	= 6 [][]
+		r8 	= 5 [][]
+		rcx 	= 4 [][]
+		rdx 	= 3 [][]
+		rsi 	= 2 [][]
+		rdi 	= 1 [][]
+		call a[size : 15] [][]
+		reg16 	= rax [][]
+
+
+		rdi 	= reg16 [][]
+		call toString[size : 1] [][]
+		reg17 	= rax [][]
+
+
+		rdi 	= reg17 [][]
+		call println[size : 1] [][]
+		reg18 	= rax [][]
+
+	rax 	= 0 [][]
+	jump _1_Label [][]
+_1_Label: [][]
+
+

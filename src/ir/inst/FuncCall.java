@@ -12,7 +12,7 @@ public class FuncCall extends Inst {
     }
 
     public String toString() {
-        String tmp = "\t" + "FuncCall " + name + " Param_size : " + n + "\n";
+        String tmp = "\t" + "FuncCall " + name + " Param_size : " + n + Indef() + "\n";
         return tmp;
     }
     public void accept(CodeGenerator cg) {

@@ -8,6 +8,7 @@ import ir.operand.addr.MemAddr;
 import ir.operand.reg.Reg;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public abstract class Inst extends Atom {
@@ -21,7 +22,25 @@ public abstract class Inst extends Atom {
             if (((MemAddr) x).base != null) in.add(((MemAddr) x).base);
         } else if (x instanceof Reg) in.add((Reg)x);
     }
+    public void add2(Operand x) {
+        if (x instanceof MemAddr) {
+            if (((MemAddr) x).index != null) in.add(((MemAddr) x).index);
+            if (((MemAddr) x).base != null) in.add(((MemAddr) x).base);
+        }
+    }
     public abstract String toString();
     public abstract void accept(CodeGenerator cg);
     public abstract void accept(RegAllocator ra);
+    public String Indef() {
+        String tmp = " [";
+        for(Iterator<Reg> it = in.iterator(); it.hasNext();)
+        {
+            tmp += it.next().toString() + " , ";
+        }
+        tmp += "]";
+        tmp += "[";
+        if(def != null) tmp += def.toString();
+        tmp += "]";
+        return tmp;
+    }
 }

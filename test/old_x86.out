@@ -1,0 +1,387 @@
+global main
+
+section .data
+
+section .text
+a:
+	push	rbp
+	mov		rbp, rsp
+	sub		rsp, 160
+	mov		qword [rbp - 8], rdi
+	mov		qword [rbp - 16], rsi
+	mov		qword [rbp - 24], rdx
+	mov		qword [rbp - 32], rcx
+	mov		qword [rbp - 40], r8
+	mov		qword [rbp - 48], r9
+	mov		rdx, qword [rbp - 8]
+	add	rdx, qword [rbp - 16]
+	mov		qword [rbp - 160], rdx
+	mov		rdx, qword [rbp - 160]
+	add	rdx, qword [rbp - 24]
+	mov		qword [rbp - 152], rdx
+	mov		rdx, qword [rbp - 152]
+	add	rdx, qword [rbp - 32]
+	mov		qword [rbp - 144], rdx
+	mov		rdx, qword [rbp - 144]
+	add	rdx, qword [rbp - 40]
+	mov		qword [rbp - 136], rdx
+	mov		rdx, qword [rbp - 136]
+	add	rdx, qword [rbp - 48]
+	mov		qword [rbp - 128], rdx
+	mov		rdx, qword [rbp - 128]
+	add	rdx, qword [rbp + 16]
+	mov		qword [rbp - 120], rdx
+	mov		rdx, qword [rbp - 120]
+	add	rdx, qword [rbp + 24]
+	mov		qword [rbp - 112], rdx
+	mov		rdx, qword [rbp - 112]
+	add	rdx, qword [rbp + 32]
+	mov		qword [rbp - 104], rdx
+	mov		rdx, qword [rbp - 104]
+	add	rdx, qword [rbp + 40]
+	mov		qword [rbp - 96], rdx
+	mov		rdx, qword [rbp - 96]
+	add	rdx, qword [rbp + 48]
+	mov		qword [rbp - 88], rdx
+	mov		rdx, qword [rbp - 88]
+	add	rdx, qword [rbp + 56]
+	mov		qword [rbp - 80], rdx
+	mov		rdx, qword [rbp - 80]
+	add	rdx, qword [rbp + 64]
+	mov		qword [rbp - 72], rdx
+	mov		rdx, qword [rbp - 72]
+	add	rdx, qword [rbp + 72]
+	mov		qword [rbp - 64], rdx
+	mov		rdx, qword [rbp - 64]
+	add	rdx, qword [rbp + 80]
+	mov		qword [rbp - 56], rdx
+	mov		rax, qword [rbp - 56]
+	jmp		_0_Label
+_0_Label:
+	add		rsp, 160
+	mov		rsp, rbp
+	pop		rbp
+	ret	
+main:
+	push	rbp
+	mov		rbp, rsp
+	sub		rsp, 32
+	sub		rsp, 72
+	mov		rax, 15
+	mov		qword [rsp + 64], rax
+	mov		rax, 14
+	mov		qword [rsp + 56], rax
+	mov		rax, 13
+	mov		qword [rsp + 48], rax
+	mov		rax, 12
+	mov		qword [rsp + 40], rax
+	mov		rax, 11
+	mov		qword [rsp + 32], rax
+	mov		rax, 10
+	mov		qword [rsp + 24], rax
+	mov		rax, 9
+	mov		qword [rsp + 16], rax
+	mov		rax, 8
+	mov		qword [rsp + 8], rax
+	mov		rax, 7
+	mov		qword [rsp], rax
+	mov		r9, 6
+	mov		r8, 5
+	mov		rcx, 4
+	mov		rdx, 3
+	mov		rsi, 2
+	mov		rdi, 1
+	call	a
+	mov		qword [rbp - 8], rax
+	add		rsp, 72
+	mov		rdi, qword [rbp - 8]
+	call	toString
+	mov		qword [rbp - 16], rax
+	mov		rdi, qword [rbp - 16]
+	call	println
+	mov		qword [rbp - 24], rax
+	mov		rax, 0
+	jmp		_1_Label
+_1_Label:
+	add		rsp, 32
+	mov		rsp, rbp
+	pop		rbp
+	ret	
+
+
+;thanks for XZYY's inner-built function assembly code
+
+section .data
+intbuffer:
+	dq 0
+format1:
+	db"%lld",0
+format2:
+	db"%lld ",10,0
+format3:
+	db"%s",0
+format4:
+	db"%s",10,0
+
+section .bss
+stringbuffer:
+	resb 256
+
+extern scanf
+extern printf
+extern puts
+extern strlen
+extern memcpy
+extern sscanf
+extern sprintf
+extern malloc
+extern strcmp
+
+section .text
+getInt:
+
+	push rbp
+	mov rbp,rsp
+	mov rax,0
+	mov rdi,format1
+	mov rsi,intbuffer
+	call scanf
+	mov rax,[intbuffer]
+	mov rsp,rbp
+	pop rbp
+	ret
+
+printInt:
+	push rbp
+	mov rbp,rsp
+	mov rsi,rdi
+	mov rax,0
+	mov rdi,format2
+	call printf
+	mov rsp,rbp
+	pop rbp
+	ret
+
+Array_size:
+	mov rax,[rdi-8]
+	ret
+
+print:
+	push rbp
+	mov rbp,rsp
+	mov rax,0
+	mov rsi,rdi
+	mov rdi,format3
+	call printf
+	mov rsp,rbp
+	pop rbp
+	ret
+
+println:
+
+	call puts
+	ret
+
+
+transtring:
+
+	push rbp
+	mov rbp,rsp
+	call strlen
+	push rdi
+	mov rdi,rax
+	push rdi
+	add rdi,9
+	call malloc
+	pop rdi
+	mov [rax],rdi
+	add rax,8
+	mov rdx,rdi
+	add rdx,1
+	mov rdi,rax
+	pop rsi
+	sub rsp,8
+	push rax
+	call memcpy
+	pop rax
+	mov rsp,rbp
+	pop rbp
+	ret
+
+getString:
+
+	push rbp
+	mov rbp,rsp
+	mov rax,0
+	mov rdi,format3
+	mov rsi,stringbuffer
+	call scanf
+	mov rdi,stringbuffer
+	call transtring
+	mov rsp,rbp
+	pop rbp
+	ret
+
+toString:
+
+	push rbp
+	mov rbp,rsp
+	mov rdx,rdi
+	mov rax,0
+	mov rdi,stringbuffer
+	mov rsi,format1
+	call sprintf
+	mov rdi,stringbuffer
+	call transtring
+	mov rsp,rbp
+	pop rbp
+	ret
+
+String_length:
+
+	mov rax,[rdi-8]
+	ret
+
+String_substring:
+
+	push rbp
+	mov rbp,rsp
+	push rdi
+	push rsi
+	mov rdi,rdx
+	sub rdi,rsi
+	add rdi,1
+	push rdi
+	add rdi,9
+	call malloc
+	pop rdx
+	mov [rax],rdx
+	add rax,8
+	pop rsi
+	pop rdi
+	add rsi,rdi
+	mov rdi,rax
+	push rdx
+	push rax
+	call memcpy
+	pop rax
+	pop rdx
+	mov qword[rax+rdx],0
+	mov rsp,rbp
+	pop rbp
+	ret
+
+String_parseInt:
+
+	mov rsi,format1
+	mov rdx,intbuffer
+	mov rax,0
+	call sscanf
+	mov rax,[intbuffer]
+	ret
+
+String_ord:
+
+	mov rax,0
+	mov al,byte[rdi+rsi]
+	ret
+
+String_add:
+
+	push rbp
+	mov rbp,rsp
+	push rsi
+	mov rsi,rdi
+	mov rdi,stringbuffer
+	mov rdx,[rsi-8]
+	push rdx
+	call memcpy
+	pop rdi
+	pop rsi
+	add rdi,stringbuffer
+	mov rdx,[rsi-8]
+	add rdx,1
+	call memcpy
+	mov rdi,stringbuffer
+	call transtring
+	mov rsp,rbp
+	pop rbp
+	ret
+
+String_lt:
+
+	push rbp
+	mov rbp,rsp
+	call strcmp
+	mov rdi,0
+	cmp rax,0
+	setl dil
+	mov rax,rdi
+	mov rsp,rbp
+	pop rbp
+	ret
+
+String_le:
+
+	push rbp
+	mov rbp,rsp
+	call strcmp
+	mov rdi,0
+	cmp rax,0
+	setle dil
+	mov rax,rdi
+	mov rsp,rbp
+	pop rbp
+	ret
+
+String_gt:
+
+	push rbp
+	mov rbp,rsp
+	call strcmp
+	mov rdi,0
+	cmp rax,0
+	setg dil
+	mov rax,rdi
+	mov rsp,rbp
+	pop rbp
+	ret
+
+String_ge:
+
+	push rbp
+	mov rbp,rsp
+	call strcmp
+	mov rdi,0
+	cmp rax,0
+	setge dil
+	mov rax,rdi
+	mov rsp,rbp
+	pop rbp
+	ret
+
+String_eq:
+
+	push rbp
+	mov rbp,rsp
+	call strcmp
+	mov rdi,0
+	cmp rax,0
+	sete dil
+	mov rax,rdi
+	mov rsp,rbp
+	pop rbp
+	ret
+
+String_ne:
+
+	push rbp
+	mov rbp,rsp
+	call strcmp
+	mov rdi,0
+	cmp rax,0
+	setne dil
+	mov rax,rdi
+	mov rsp,rbp
+	pop rbp
+	ret

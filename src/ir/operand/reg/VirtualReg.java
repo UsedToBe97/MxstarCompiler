@@ -6,6 +6,9 @@ public class VirtualReg extends Reg {
         name = "r" + Integer.toString(x);
     }
     public String toString() {
-        return "r" + idx;
+        if(idx < 16) {
+            return X86Reg.get(idx).toString();
+        }
+        return "reg" + idx;
     }
 }

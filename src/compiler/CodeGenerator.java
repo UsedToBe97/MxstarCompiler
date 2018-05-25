@@ -4,11 +4,9 @@ import ast.definition.VarDef;
 import ir.Func;
 import ir.Ir;
 import ir.inst.*;
-import ir.operand.INum;
 import ir.operand.Operand;
 import ir.operand.addr.MemAddr;
 import ir.operand.reg.Reg;
-import ir.operand.reg.VirtualReg;
 import ir.operand.reg.X86Reg;
 
 /*
@@ -34,7 +32,7 @@ public class CodeGenerator {
         ans.append("\tmov\trbp, rsp\n");
         tot = 0;
         if (nowfunc.opt) {
-            for (int i = 0; i <= 5; ++i) {
+            for (int i = 0; i <= 4; ++i) {
                 if (!nowfunc.tag[X86Reg.callee(i).idx]) continue;
                 ans.append("\tpush\t" + X86Reg.callee(i).toString() + "\n");
                 ++tot;
@@ -47,7 +45,7 @@ public class CodeGenerator {
         if (nowfunc.size > 0) ans.append("\tadd\trsp, " + Integer.toString(nowfunc.size) + "\n");
         if (tot > 0) ans.append("\tadd\trbp, " + Integer.toString(tot * 8) + "\n");
         if (nowfunc.opt) {
-            for (int i = 5; i >= 0; --i) {
+            for (int i = 4; i >= 0; --i) {
                 if (!nowfunc.tag[X86Reg.callee(i).idx]) continue;
                 ans.append("\tpop\t" + X86Reg.callee(i).toString() + "\n");
             }
@@ -59,22 +57,29 @@ public class CodeGenerator {
     public void visit(Inst x) {x.accept(this);}
 
     public void A(Operand dest, Operand lhs, Operand rhs, String op) {
-        lhs = getOp(lhs, X86Reg.rax);
-        rhs = getOp(rhs, X86Reg.rcx);
+        lhs = getOp(lhs, X86Reg.rcx);
         dest = getOp(dest, X86Reg.rdx);
-        ans.append("\tmov\trdx, " + lhs.toString() + "\n");
-        ans.append("\t" + op + "\trdx, " + rhs.toString() + "\n");
-        ans.append("\tmov\t" + dest.toString() + ", rdx\n");
+        if (lhs.toString().equals(dest.toString()) && dest instanceof Reg) {
+            rhs = getOp(rhs, X86Reg.rcx);
+            ans.append("\t" + op + "\t" + dest.toString() + ", " + rhs.toString() + "\n");
+            return;
+        }
+        rhs = getOp(rhs, X86Reg.rax);
+        if (!lhs.toString().equals("rcx")) {
+            ans.append("\tmov\trcx, " + lhs.toString() + "\n");
+        }
+        ans.append("\t" + op + "\trcx, " + rhs.toString() + "\n");
+        ans.append("\tmov\t" + dest.toString() + ", rcx\n");
     }
 
     public void B(Operand dest, Operand lhs, Operand rhs, String op) {
         lhs = getOp(lhs, X86Reg.rax);
-        ans.append("\tmov\trcx, " + lhs.toString() + "\n");
-        rhs = getOp(rhs, X86Reg.rax);
-        ans.append("\tcmp\trcx, " + rhs.toString() + "\n");
-        dest = getOp(dest, X86Reg.rdx);
-        ans.append("\t" + op + "\tcl\n\tmovzx\trcx, cl\n");
-        ans.append("\tmov\t" + dest.toString() + ", rcx\n");
+        ans.append("\tmov\trax, " + lhs.toString() + "\n");
+        rhs = getOp(rhs, X86Reg.rbx);
+        ans.append("\tcmp\trax, " + rhs.toString() + "\n");
+        dest = getOp(dest, X86Reg.rbx);
+        ans.append("\t" + op + "\tcl\n\tmovzx\trax, al\n");
+        ans.append("\tmov\t" + dest.toString() + ", rax\n");
     }
 
     public void C(Operand dest, Operand lhs, Operand rhs, String op) {
@@ -164,19 +169,30 @@ public class CodeGenerator {
     }
 
     public void visit(Move x) {
-        if (x.src instanceof INum) {
-            x.dest = getOp(x.dest, X86Reg.rdx);
+        /*if (x.src instanceof INum) {
+            x.dest = getOp(x.dest, X86Reg.rbx);
             ans.append("\tmov\t" + x.dest.toString() + ", " + x.src.toString() + "\n");
             return;
         }
-        x.src = getOp(x.src, X86Reg.rdx);
+        x.src = getOp(x.src, X86Reg.rax);
         if (!x.src.toString().equals("rax"))
             ans.append("\tmov\trax, " + x.src.toString() + "\n");
 
 
-        x.dest = getOp(x.dest, X86Reg.rdx);
+        x.dest = getOp(x.dest, X86Reg.rax);
         if (!x.dest.toString().equals("rax"))
-            ans.append("\tmov\t" + x.dest.toString() + ", rax\n");
+            ans.append("\tmov\t" + x.dest.toString() + ", rax\n");*/
+        if (x.src.toString().equals(x.dest.toString())) return;
+        /*if (x.src instanceof VirtualReg && x.dest instanceof VirtualReg) {
+            if (((VirtualReg) x.dest).idx == ((VirtualReg) x.src).idx) return;
+        }*/
+        x.dest = getOp(x.dest, X86Reg.rbx);
+        x.src = getOp(x.src, X86Reg.rax);
+        if (!(x.dest instanceof Reg) && !(x.src instanceof Reg)) {
+            ans.append("\tmov\trax, " + x.src.toString() + "\n");
+            x.src = X86Reg.rax;
+        }
+        ans.append("\tmov\t" + x.dest.toString() + ", " + x.src.toString() + "\n");
     }
 
     public void visit(UnaryOp x) {
@@ -197,24 +213,25 @@ public class CodeGenerator {
     }
 
     public Operand getOp(Operand x, Reg tmp) {
-        if (x instanceof VirtualReg) {
-            if (((VirtualReg) x).idx < 16) return X86Reg.get(((VirtualReg) x).idx);
-            else return new MemAddr(X86Reg.rbp, null, 0, -(((VirtualReg) x).idx - 15) * 8);
+        if (x instanceof Reg) {
+            if (((Reg)x).idx < 16) return X86Reg.get(((Reg)x).idx);
+            else return new MemAddr(X86Reg.rbp, null, 0, -(((Reg)x).idx - 15) * 8);
         }
-
         if (x instanceof MemAddr) {
             Operand base = getOp(((MemAddr) x).base, null);
             Operand index = getOp(((MemAddr) x).index, null);
-            if (base instanceof X86Reg && index instanceof X86Reg) {
-                return new MemAddr((X86Reg)base, (X86Reg)index, ((MemAddr) x).scale, ((MemAddr) x).disp);
-            } else {
+
+            if (base instanceof MemAddr || index instanceof MemAddr) {
                 if (index != null) {
                     ans.append("\tmov\t" + tmp.name + ", " + index.toString() + "\n");
                     ans.append("\timul\t" + tmp.name + ", " + Integer.toString(((MemAddr) x).scale) + "\n");
                     ans.append("\tadd\t" + tmp.name + ", " + base.toString() +"\n");
                 } else ans.append("\tmov\t" + tmp.name + ", " + base +"\n");
                 return new MemAddr(tmp, null, 0, ((MemAddr) x).disp);
-            }
+            } else
+                if (base.toString().equals("rbp"))
+                    ((MemAddr)x).disp += tot * 8;
+                return new MemAddr((Reg)base, (Reg)index, ((MemAddr) x).scale, ((MemAddr) x).disp);
         }
 
         return x;

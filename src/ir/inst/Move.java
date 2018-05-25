@@ -15,7 +15,7 @@ public class Move extends Inst {
         if (dest == null) {
             tmp += " FUCK!!! " + src.toString() + "\n";
         }else
-        tmp += dest.toString() + " = " + src.toString() + "\n";
+        tmp += dest.toString() + " = " + src.toString() + Indef() + "\n";
         return tmp;
     }
     public void accept(CodeGenerator cg) {
