@@ -134,17 +134,18 @@ public class Main {
 
         IrBuilder irbuilder = new IrBuilder();
         Ir ir = irbuilder.visit(rt);
-        if (Submit == false) {
-            File f = new File("D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/MY_IR.out");
-            PrintStream fout = new PrintStream(new FileOutputStream(f));
-            fout.print(ir.toString());
-        }
+
         boolean alloc = false;
 
         RegAllocator ra = new RegAllocator();
         ir = ra.work(ir);
         alloc = true;
 
+        if (Submit == false) {
+            File f = new File("D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/MY_IR.out");
+            PrintStream fout = new PrintStream(new FileOutputStream(f));
+            fout.print(ir.toString());
+        }
 
         CodeGenerator cg = new CodeGenerator();
         cg.translate(ir);

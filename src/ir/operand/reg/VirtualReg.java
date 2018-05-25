@@ -6,6 +6,6 @@ public class VirtualReg extends Reg {
         name = "r" + Integer.toString(x);
     }
     public String toString() {
-        return name;
+        return "r" + idx;
     }
 }

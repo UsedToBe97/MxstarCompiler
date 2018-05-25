@@ -69,16 +69,16 @@ public class CodeGenerator {
 
     public void B(Operand dest, Operand lhs, Operand rhs, String op) {
         lhs = getOp(lhs, X86Reg.rax);
-        rhs = getOp(rhs, X86Reg.rcx);
-        dest = getOp(dest, X86Reg.rdx);
         ans.append("\tmov\trcx, " + lhs.toString() + "\n");
+        rhs = getOp(rhs, X86Reg.rax);
         ans.append("\tcmp\trcx, " + rhs.toString() + "\n");
+        dest = getOp(dest, X86Reg.rdx);
         ans.append("\t" + op + "\tcl\n\tmovzx\trcx, cl\n");
         ans.append("\tmov\t" + dest.toString() + ", rcx\n");
     }
 
     public void C(Operand dest, Operand lhs, Operand rhs, String op) {
-        lhs = getOp(lhs, X86Reg.rbx);
+        lhs = getOp(lhs, X86Reg.rax);
         rhs = getOp(rhs, X86Reg.rcx);
         dest = getOp(dest, X86Reg.rdx);
         ans.append("\tmov\trax, " + lhs.toString() + "\n");
@@ -88,7 +88,7 @@ public class CodeGenerator {
     }
 
     public void D(Operand dest, Operand lhs, Operand rhs, String op) {
-        lhs = getOp(lhs, X86Reg.rbx);
+        lhs = getOp(lhs, X86Reg.rax);
         rhs = getOp(rhs, X86Reg.rcx);
         dest = getOp(dest, X86Reg.rdx);
         ans.append("\tmov\trax, " + lhs.toString() + "\n");
@@ -165,22 +165,22 @@ public class CodeGenerator {
 
     public void visit(Move x) {
         if (x.src instanceof INum) {
-            x.dest = getOp(x.dest, X86Reg.rbx);
+            x.dest = getOp(x.dest, X86Reg.rdx);
             ans.append("\tmov\t" + x.dest.toString() + ", " + x.src.toString() + "\n");
             return;
         }
-        x.src = getOp(x.src, X86Reg.rbx);
+        x.src = getOp(x.src, X86Reg.rdx);
         if (!x.src.toString().equals("rax"))
             ans.append("\tmov\trax, " + x.src.toString() + "\n");
 
 
-        x.dest = getOp(x.dest, X86Reg.rbx);
+        x.dest = getOp(x.dest, X86Reg.rdx);
         if (!x.dest.toString().equals("rax"))
             ans.append("\tmov\t" + x.dest.toString() + ", rax\n");
     }
 
     public void visit(UnaryOp x) {
-        x.src = getOp(x.src, X86Reg.rbx);
+        x.src = getOp(x.src, X86Reg.rdx);
         if (x.op.equals("~")) {
             ans.append("\tnot\t" + x.src.toString() + "\n");
         }

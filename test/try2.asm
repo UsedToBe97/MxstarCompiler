@@ -21,11 +21,28 @@ section .bss
 stringbuffer:
 	resb 256
 section .text
+work:
+	push	rbp
+	mov	rbp, rsp
+	push	r10
+	push	r8
+	mov	rdi, 32
+	call	malloc
+	pop	r8
+	pop	r10
+	mov	r10, rax
+	mov	rax, r10
+	mov	r8, rax
+Label_0:
+	mov	rsp, rbp
+	pop	rbp
+	ret
 main:
 	push	rbp
 	mov	rbp, rsp
 	push	r11
-	sub	rbp, 8
+	push	r12
+	sub	rbp, 16
 	push	r10
 	push	rsi
 	push	r8
@@ -39,46 +56,57 @@ main:
 	mov	r10, rax
 	mov	rax, r10
 	mov	r8, rax
-	mov	rbx, r8
-	mov	qword [rbx], 10
-	mov	rbx, r8
-	mov	qword [rbx + 8], 20
+	mov	rdx, r8
+	mov	qword [rdx], 10
+	mov	rdx, r8
+	mov	qword [rdx + 8], 20
 	mov	rax, r8
-	mov	rcx, r8
 	mov	rcx, qword [rax]
-	cmp	rcx, qword [rcx + 8]
+	mov	rax, r8
+	cmp	rcx, qword [rax + 8]
 	setg	cl
 	movzx	rcx, cl
 	mov	r9, rcx
 	mov	rax, r9
-	mov	rbx, r8
-	mov	qword [rbx + 16], rax
+	mov	rdx, r8
+	mov	qword [rdx + 16], rax
 	mov	rcx, r8
 	mov	rax, qword [rcx + 16]
 	cmp	rax, 1
-	je	Label_2
-	jmp	Label_3
-Label_2:
-	mov	rbx, r8
-	mov	qword [rbx + 24], 40
-	jmp	Label_1
+	je	Label_3
+	jmp	Label_4
 Label_3:
-	mov	rbx, r8
-	mov	qword [rbx + 24], 80
-Label_1:
+	mov	rdx, r8
+	mov	qword [rdx + 24], 40
+	jmp	Label_2
+Label_4:
+	mov	rdx, r8
+	mov	qword [rdx + 24], 80
+Label_2:
+	push	r10
+	push	rsi
+	push	r8
+	push	r9
+	call	work
+	pop	r9
+	pop	r8
+	pop	rsi
+	pop	r10
+	mov	rsi, rax
 	mov	rax, r8
 	mov	rcx, r8
 	mov	rdx, qword [rax]
 	add	rdx, qword [rcx + 8]
-	mov	r11, rdx
+	mov	r12, rdx
 	mov	rcx, r8
-	mov	rdx, r11
+	mov	rdx, r12
 	add	rdx, qword [rcx + 24]
-	mov	rsi, rdx
-	mov	rax, rsi
-	jmp	Label_0
-Label_0:
-	add	rbp, 8
+	mov	r11, rdx
+	mov	rax, r11
+	jmp	Label_1
+Label_1:
+	add	rbp, 16
+	pop	r12
 	pop	r11
 	mov	rsp, rbp
 	pop	rbp

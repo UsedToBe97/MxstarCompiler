@@ -4,6 +4,9 @@ class C2 {
     bool b;
     int z;
 }
+void work() {
+	C2 a = new C2;
+}
 
 int main() {
     C2 obj = new C2;
@@ -12,26 +15,8 @@ int main() {
     obj.b = obj.x > obj.y;
     if (obj.b) obj.z = 40;
     else obj.z = 80;
+	work();
     return obj.x + obj.y + obj.z;
 }
 
 
-
-
-/*!! metadata:
-=== comment ===
-struct3.mx
-=== assert ===
-exitcode
-=== timeout ===
-0.1
-=== input ===
-
-=== phase ===
-codegen pretest
-=== is_public ===
-True
-=== exitcode ===
-110
-
-!!*/
