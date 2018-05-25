@@ -56,12 +56,12 @@ public class X86Reg extends Reg{
         throw new CompileError("RegParam Error", new Position(0,0));
     }
     public static X86Reg caller(int i) {
-        if (i == 0) return r10;
-        if (i == 1) return rdi;
-        if (i == 2) return rsi;
-        if (i == 3) return r8;
-        if (i == 4) return r9;
-        if (i == 5) return r11;
+        if (i == 2) return r10;
+        if (i == 0) return rdi;
+        if (i == 1) return rsi;
+        if (i == 4) return r8;
+        if (i == 5) return r9;
+        if (i == 3) return r11;
         throw new CompileError("RegCaller Error", new Position(0,0));
     }
     public static X86Reg callee(int i) {
