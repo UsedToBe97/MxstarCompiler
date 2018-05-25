@@ -132,7 +132,7 @@ public class CodeGenerator {
         int tmp = x.size > 6 ? (x.size - 6) * 8 : 0;
 
         if(tmp > 0) ans.append("\tsub\trsp, " + Integer.toString(tmp) + "\n");
-        int cc = 5;
+        /*int cc = 5;
         if (nowfunc.opt) {
             for (Inst u : x.Insts)
                 if (u instanceof FuncCall) {
@@ -143,10 +143,10 @@ public class CodeGenerator {
                         cc = 4;
                     }
                 }
-        }
+        }*/
 
         if (nowfunc.opt) {
-            for (int i = 0; i <= cc; ++i) {
+            for (int i = 0; i <= 5; ++i) {
                 if (!nowfunc.tag[X86Reg.caller(i).idx]) continue;
                 ans.append("\tpush\t" + X86Reg.caller(i).toString() + "\n");
             }
@@ -154,7 +154,7 @@ public class CodeGenerator {
         for (Inst u : x.Insts) {
             visit(u);
             if (u instanceof FuncCall && nowfunc.opt) {
-                for (int i = cc; i >= 0; --i) {
+                for (int i = 5; i >= 0; --i) {
                     if (!nowfunc.tag[X86Reg.caller(i).idx]) continue;
                     ans.append("\tpop\t" + X86Reg.caller(i).toString() + "\n");
                 }

@@ -226,7 +226,7 @@
       <find>parse</find>
       <find>main</find>
       <find>system.err</find>
-      <find>ans +=</find>
+      <find />
       <find>&quot;;</find>
       <find>Cj</find>
       <find>jne</find>
@@ -248,7 +248,7 @@
       <find>set</find>
       <find>format3</find>
       <find>call</find>
-      <find>call</find>
+      <find />
     </findStrings>
   </component>
   <component name="Git.Settings">
