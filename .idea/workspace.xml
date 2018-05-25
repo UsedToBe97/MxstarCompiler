@@ -6,12 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/compiler/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/CodeGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/RegAllocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/RegAllocator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/1.test" beforeDir="false" afterPath="$PROJECT_DIR$/test/1.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/MY_IR.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/MY_IR.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/try2.asm" beforeDir="false" afterPath="$PROJECT_DIR$/test/try2.asm" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -52,20 +47,20 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1397">
-                  <caret line="102" column="5" lean-forward="true" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
+                <state relative-caret-position="178">
+                  <caret line="109" column="30" selection-start-line="109" selection-start-column="30" selection-end-line="109" selection-end-column="30" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="X86translator.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="X86translator.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../BlablaBiu-mushroom-55f2b59b0a21/src/compiler/X86translator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1355">
-                  <caret line="378" column="57" selection-start-line="378" selection-start-column="57" selection-end-line="378" selection-end-column="57" />
+                <state relative-caret-position="297">
+                  <caret line="350" column="32" selection-start-line="350" selection-start-column="32" selection-end-line="350" selection-end-column="32" />
                 </state>
               </provider>
             </entry>
@@ -113,8 +108,8 @@
           <file leaf-file-name="CodeGenerator.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/compiler/CodeGenerator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="499">
-                  <caret line="143" column="37" selection-start-line="143" selection-start-column="37" selection-end-line="143" selection-end-column="37" />
+                <state relative-caret-position="19134">
+                  <caret line="990" selection-start-line="990" selection-end-line="990" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#5433#5434#0" expanded="true" />
@@ -300,9 +295,9 @@
         <option value="$PROJECT_DIR$/src/ir/inst/Label.java" />
         <option value="$PROJECT_DIR$/src/ir/inst/Inst.java" />
         <option value="$PROJECT_DIR$/src/ir/operand/reg/X86Reg.java" />
-        <option value="$PROJECT_DIR$/src/compiler/Main.java" />
         <option value="$PROJECT_DIR$/src/compiler/RegAllocator.java" />
         <option value="$PROJECT_DIR$/src/compiler/CodeGenerator.java" />
+        <option value="$PROJECT_DIR$/src/compiler/Main.java" />
       </list>
     </option>
   </component>
@@ -645,12 +640,12 @@
       <workItem from="1527174166947" duration="617000" />
       <workItem from="1527208822935" duration="12145000" />
       <workItem from="1527222553035" duration="4665000" />
-      <workItem from="1527228573081" duration="3005000" />
+      <workItem from="1527228573081" duration="3192000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="395431000" />
+    <option name="totallyTimeSpent" value="395618000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1079,20 +1074,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1397">
-          <caret line="102" column="5" lean-forward="true" selection-start-line="102" selection-start-column="5" selection-end-line="102" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../BlablaBiu-mushroom-55f2b59b0a21/src/compiler/X86translator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1355">
-          <caret line="378" column="57" selection-start-line="378" selection-start-column="57" selection-end-line="378" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/RegAllocator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2176">
@@ -1105,15 +1086,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ir/operand/reg/X86Reg.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="60" column="30" lean-forward="true" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
+        <state relative-caret-position="138">
+          <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/CodeGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="143" column="37" selection-start-line="143" selection-start-column="37" selection-end-line="143" selection-end-column="37" />
+        <state relative-caret-position="19134">
+          <caret line="990" selection-start-line="990" selection-end-line="990" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5433#5434#0" expanded="true" />
@@ -1123,6 +1104,20 @@
             <element signature="e#6546#6547#0" expanded="true" />
             <element signature="e#6605#6606#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../BlablaBiu-mushroom-55f2b59b0a21/src/compiler/X86translator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="350" column="32" selection-start-line="350" selection-start-column="32" selection-end-line="350" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="109" column="30" selection-start-line="109" selection-start-column="30" selection-end-line="109" selection-end-column="30" />
         </state>
       </provider>
     </entry>
