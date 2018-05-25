@@ -24,89 +24,148 @@ section .text
 tak:
 	push	rbp
 	mov	rbp, rsp
-	sub	rsp, 48
+	push	r11
+	sub	rbp, 8
+	sub	rsp, 104
 	mov	rax, rdi
 	mov	r10, rax
 	mov	rax, rsi
 	mov	r11, rax
 	mov	rax, rdx
-	mov	r12, rax
+	mov	qword [rbp - 8], rax
+	mov	rax, rcx
+	mov	qword [rbp - 16], rax
+	mov	rax, r8
+	mov	qword [rbp - 24], rax
+	mov	rax, r9
+	mov	qword [rbp - 32], rax
 	mov	rcx, r11
 	cmp	rcx, r10
 	setl	cl
 	movzx	rcx, cl
-	mov	r13, rcx
-	cmp	r13, 1
+	mov	qword [rbp - 40], rcx
+	mov	rax, qword [rbp - 40]
+	cmp	rax, 1
 	je	Label_2
 	jmp	Label_3
 Label_2:
 	mov	rdx, r10
 	sub	rdx, 1
-	mov	r15, rdx
-	mov	rax, r15
+	mov	qword [rbp - 56], rdx
+	push	r10
+	mov	rax, qword [rbp - 56]
 	mov	rdi, rax
 	mov	rax, r11
 	mov	rsi, rax
-	mov	rax, r12
+	mov	rax, qword [rbp - 8]
 	mov	rdx, rax
+	mov	rax, qword [rbp - 16]
+	mov	rcx, rax
+	mov	rax, qword [rbp - 24]
+	mov	r8, rax
+	mov	rax, qword [rbp - 32]
+	mov	r9, rax
 	call	tak
-	mov	qword [rbp - 8], rax
+	pop	r10
+	mov	qword [rbp - 64], rax
 	mov	rdx, r11
 	sub	rdx, 1
-	mov	qword [rbp - 16], rdx
-	mov	rax, qword [rbp - 16]
+	mov	qword [rbp - 72], rdx
+	push	r10
+	mov	rax, qword [rbp - 72]
 	mov	rdi, rax
-	mov	rax, r12
+	mov	rax, qword [rbp - 8]
 	mov	rsi, rax
 	mov	rax, r10
 	mov	rdx, rax
-	call	tak
-	mov	qword [rbp - 24], rax
-	mov	rdx, r12
-	sub	rdx, 1
-	mov	qword [rbp - 32], rdx
+	mov	rax, qword [rbp - 16]
+	mov	rcx, rax
+	mov	rax, qword [rbp - 24]
+	mov	r8, rax
 	mov	rax, qword [rbp - 32]
+	mov	r9, rax
+	call	tak
+	pop	r10
+	mov	qword [rbp - 80], rax
+	mov	rdx, qword [rbp - 8]
+	sub	rdx, 1
+	mov	qword [rbp - 88], rdx
+	push	r10
+	mov	rax, qword [rbp - 88]
 	mov	rdi, rax
 	mov	rax, r10
 	mov	rsi, rax
 	mov	rax, r11
 	mov	rdx, rax
-	call	tak
-	mov	qword [rbp - 40], rax
-	mov	rax, qword [rbp - 8]
-	mov	rdi, rax
+	mov	rax, qword [rbp - 16]
+	mov	rcx, rax
 	mov	rax, qword [rbp - 24]
-	mov	rsi, rax
-	mov	rax, qword [rbp - 40]
-	mov	rdx, rax
+	mov	r8, rax
+	mov	rax, qword [rbp - 32]
+	mov	r9, rax
 	call	tak
-	mov	qword [rbp - 48], rax
+	pop	r10
+	mov	qword [rbp - 96], rax
+	push	r10
+	mov	rax, qword [rbp - 64]
+	mov	rdi, rax
+	mov	rax, qword [rbp - 80]
+	mov	rsi, rax
+	mov	rax, qword [rbp - 96]
+	mov	rdx, rax
+	mov	rax, qword [rbp - 16]
+	mov	rcx, rax
+	mov	rax, qword [rbp - 24]
+	mov	r8, rax
+	mov	rax, qword [rbp - 32]
+	mov	r9, rax
+	call	tak
+	pop	r10
+	mov	qword [rbp - 104], rax
 	mov	rdx, 1
-	add	rdx, qword [rbp - 48]
-	mov	r14, rdx
-	mov	rax, r14
+	add	rdx, qword [rbp - 104]
+	mov	qword [rbp - 48], rdx
+	mov	rax, qword [rbp - 48]
 	jmp	Label_0
 	jmp	Label_1
 Label_3:
-	mov	rax, r12
+	mov	rax, qword [rbp - 8]
 	jmp	Label_0
 Label_1:
 Label_0:
+	add	rbp, 8
+	pop	r11
 	mov	rsp, rbp
 	pop	rbp
 	ret
 main:
 	push	rbp
 	mov	rbp, rsp
-	sub	rsp, 0
-	mov	rdi, 18
+	push	r11
+	sub	rbp, 8
+	sub	rsp, 8
+	mov	r10, 18
+	push	r10
+	mov	rax, r10
+	mov	rdi, rax
 	mov	rsi, 12
 	mov	rdx, 6
+	mov	rcx, 0
+	mov	r8, 0
+	mov	r9, 0
 	call	tak
+	pop	r10
+	mov	r11, rax
+	mov	rdx, r10
+	add	rdx, 1
+	mov	qword [rbp - 8], rdx
+	mov	rax, qword [rbp - 8]
 	mov	r10, rax
-	mov	rax, r10
+	mov	rax, 0
 	jmp	Label_4
 Label_4:
+	add	rbp, 8
+	pop	r11
 	mov	rsp, rbp
 	pop	rbp
 	ret

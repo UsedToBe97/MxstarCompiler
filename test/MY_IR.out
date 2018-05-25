@@ -4,35 +4,50 @@ tak [Func]:
 	r16 = rdi
 	r17 = rsi
 	r18 = rdx
-	r19 = r17 < r16
-	jump Label_2 if r19 je 1
+	r19 = rcx
+	r20 = r8
+	r21 = r9
+	r22 = r17 < r16
+	jump Label_2 if r22 je 1
 	jump Label_3
 Label_2:
-	r21 = r16 - 1
-		rdi = r21
+	r24 = r16 - 1
+		rdi = r24
 		rsi = r17
 		rdx = r18
-		FuncCall tak Param_size : 3
-		r22 = rax
-	r23 = r17 - 1
-		rdi = r23
+		rcx = r19
+		r8 = r20
+		r9 = r21
+		FuncCall tak Param_size : 6
+		r25 = rax
+	r26 = r17 - 1
+		rdi = r26
 		rsi = r18
 		rdx = r16
-		FuncCall tak Param_size : 3
-		r24 = rax
-	r25 = r18 - 1
-		rdi = r25
+		rcx = r19
+		r8 = r20
+		r9 = r21
+		FuncCall tak Param_size : 6
+		r27 = rax
+	r28 = r18 - 1
+		rdi = r28
 		rsi = r16
 		rdx = r17
-		FuncCall tak Param_size : 3
-		r26 = rax
-		rdi = r22
-		rsi = r24
-		rdx = r26
-		FuncCall tak Param_size : 3
-		r27 = rax
-	r20 = 1 + r27
-	rax = r20
+		rcx = r19
+		r8 = r20
+		r9 = r21
+		FuncCall tak Param_size : 6
+		r29 = rax
+		rdi = r25
+		rsi = r27
+		rdx = r29
+		rcx = r19
+		r8 = r20
+		r9 = r21
+		FuncCall tak Param_size : 6
+		r30 = rax
+	r23 = 1 + r30
+	rax = r23
 	jump Label_0
 	jump Label_1
 Label_3:
@@ -41,11 +56,17 @@ Label_3:
 Label_1:
 Label_0:
 main [Func]:
-		rdi = 18
+	r16 = 18
+		rdi = r16
 		rsi = 12
 		rdx = 6
-		FuncCall tak Param_size : 3
-		r16 = rax
-	rax = r16
+		rcx = 0
+		r8 = 0
+		r9 = 0
+		FuncCall tak Param_size : 6
+		r17 = rax
+	r18 = r16 + 1
+	r16 = r18
+	rax = 0
 	jump Label_4
 Label_4:

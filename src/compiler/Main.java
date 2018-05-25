@@ -107,7 +107,7 @@ class MyVisitor extends MxstarBaseVisitor<atom>
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        boolean Submit = false;
+        boolean Submit = true;
         String inputFile;
         if (Submit == false) inputFile = "D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/1.test";
         else inputFile = "program.txt";

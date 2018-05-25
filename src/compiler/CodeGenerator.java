@@ -21,17 +21,37 @@ rdi : dest index
 rbp : base pointer
 rsp : stack pointer
 */
+
+// U can set the rule on your own
+// caller (when call) r8~10 rdi rsi
+// callee (when enter func) r11~15 rbx
 public class CodeGenerator {
     public Func nowfunc;
     public StringBuffer ans = new StringBuffer("");
-
+    public int tot = 0;
     public void enterFunc() {
         ans.append("\tpush\trbp\n");
         ans.append("\tmov\trbp, rsp\n");
+        tot = 0;
+        if (nowfunc.opt) {
+            for (int i = 0; i <= 5; ++i) {
+                if (!nowfunc.tag[X86Reg.callee(i).idx]) continue;
+                ans.append("\tpush\t" + X86Reg.callee(i).toString() + "\n");
+                ++tot;
+            }
+        }
+        if (tot >= 0) ans.append("\tsub\trbp, " + Integer.toString(tot * 8) + "\n");
         ans.append("\tsub\trsp, ").append(Integer.toString(nowfunc.size)).append("\n");
     }
     public void exitFunc() {
         //ans.append("\tadd\trsp, " + Integer.toString(nowfunc.size) + "\n");
+        if (tot >= 0) ans.append("\tadd\trbp, " + Integer.toString(tot * 8) + "\n");
+        if (nowfunc.opt) {
+            for (int i = 5; i >= 0; --i) {
+                if (!nowfunc.tag[X86Reg.callee(i).idx]) continue;
+                ans.append("\tpop\t" + X86Reg.callee(i).toString() + "\n");
+            }
+        }
         ans.append("\tmov\trsp, rbp\n");
         ans.append("\tpop\trbp\n");
         ans.append("\tret\n");
@@ -39,7 +59,7 @@ public class CodeGenerator {
     public void visit(Inst x) {x.accept(this);}
 
     public void A(Operand dest, Operand lhs, Operand rhs, String op) {
-        lhs = getOp(lhs, X86Reg.rbx);
+        lhs = getOp(lhs, X86Reg.rax);
         rhs = getOp(rhs, X86Reg.rcx);
         dest = getOp(dest, X86Reg.rdx);
         ans.append("\tmov\trdx, " + lhs.toString() + "\n");
@@ -48,7 +68,7 @@ public class CodeGenerator {
     }
 
     public void B(Operand dest, Operand lhs, Operand rhs, String op) {
-        lhs = getOp(lhs, X86Reg.rbx);
+        lhs = getOp(lhs, X86Reg.rax);
         rhs = getOp(rhs, X86Reg.rcx);
         dest = getOp(dest, X86Reg.rdx);
         ans.append("\tmov\trcx, " + lhs.toString() + "\n");
@@ -106,7 +126,21 @@ public class CodeGenerator {
     public void visit(Call x) {
         int tmp = x.size > 6 ? (x.size - 6) * 8 : 0;
         if(tmp != 0) ans.append("\tsub\trsp, " + Integer.toString(tmp) + "\n");
-        for (Inst u : x.Insts) visit(u);
+        if (nowfunc.opt) {
+            for (int i = 0; i <= 4; ++i) {
+                if (!nowfunc.tag[X86Reg.caller(i).idx]) continue;
+                ans.append("\tpush\t" + X86Reg.caller(i).toString() + "\n");
+            }
+        }
+        for (Inst u : x.Insts) {
+            visit(u);
+            if (u instanceof FuncCall && nowfunc.opt) {
+                for (int i = 4; i >= 0; --i) {
+                    if (!nowfunc.tag[X86Reg.caller(i).idx]) continue;
+                    ans.append("\tpop\t" + X86Reg.caller(i).toString() + "\n");
+                }
+            }
+        }
     }
 
     public void visit(CJump x) {
