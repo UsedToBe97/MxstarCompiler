@@ -69,8 +69,10 @@ public class RegAllocator {
         }
         for (Inst u : orders) visit(u);
         boolean need = true;
+        int cc = 0;
         while (need) {
             need = false;
+            ++cc;
             for (int i = orders.size() - 1; i >= 0; --i) {
                 Inst u = orders.get(i);
                 if (u instanceof CJump) {
@@ -110,8 +112,8 @@ public class RegAllocator {
             ++dfn;
             for (int j = 0; j < x.num; ++j)
                 if (map[i][j] && col[j] != -1) vis[col[j]] = dfn;
-            for (int j = 0; j < x.num; j = (j == 13 ? 16 : j + 1))
-                if (col[j] != dfn) {
+            for (int j = 0; j < x.num; j = (j == 7 ? 16 : j + 1))
+                if (vis[j] != dfn) {
                     col[i] = j;
                     x.Regs.get(i).idx = j;
                     if (j < 16) x.tag[j] = true;

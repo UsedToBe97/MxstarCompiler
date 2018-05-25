@@ -139,13 +139,19 @@ public class Main {
             PrintStream fout = new PrintStream(new FileOutputStream(f));
             fout.print(ir.toString());
         }
-        //RegAllocator ra = new RegAllocator();
-        //ir = ra.work(ir);
+        boolean alloc = false;
+
+        RegAllocator ra = new RegAllocator();
+        ir = ra.work(ir);
+        alloc = true;
+
 
         CodeGenerator cg = new CodeGenerator();
         cg.translate(ir);
         if (Submit == false) {
-            File f = new File("D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/try.asm");
+            File f;
+            if (alloc) f = new File("D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/try2.asm");
+            else f = new File("D:/Study/Grade 2/Compile Principle/MxstarCompiler/test/try.asm");
             PrintStream fout = new PrintStream(new FileOutputStream(f));
             fout.print(cg.ans);
         }
