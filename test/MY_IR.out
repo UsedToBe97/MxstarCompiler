@@ -1,111 +1,223 @@
-MAXN__ [GV]
-MAXM__ [GV]
+N__ [GV]
+M__ [GV]
+ch__ [GV]
+l__ [GV]
+r__ [GV]
+w__ [GV]
+
+string[ 0 ]  
+string[ 1 ] 
 
 
-main [Func]:
-	qword [ MAXN__ ] = 10005
-	qword [ MAXM__ ] = 10005
-		FuncCall getInt Param_size : 0
-		r18 = rax
-	r16 = r18
-		FuncCall getInt Param_size : 0
-		r19 = rax
-	r17 = r19
-	r20 = qword [ MAXN__ ]
-	r20 = r20 + 1
-	r20 = r20 * 8
-		rdi = r20
-		FuncCall malloc Param_size : 1
-		r21 = rax
-	qword [r21] = qword [ MAXN__ ]
-	r21 = r21 + 8
-	r22 = r21
-	r23 = qword [ MAXN__ ]
-	r23 = r23 + 1
-	r23 = r23 * 8
-		rdi = r23
-		FuncCall malloc Param_size : 1
-		r24 = rax
-	qword [r24] = qword [ MAXN__ ]
-	r24 = r24 + 8
-	r25 = r24
-	r26 = qword [ MAXN__ ]
-	r26 = r26 + 1
-	r26 = r26 * 8
-		rdi = r26
-		FuncCall malloc Param_size : 1
-		r27 = rax
-	qword [r27] = qword [ MAXN__ ]
-	r27 = r27 + 8
-	r28 = r27
-	r29 = 0
-Label_4:
-	r31 = r29 < r17
-	jump Label_3 if r31 je 1
-	jump Label_2
-Label_3:
-		FuncCall getInt Param_size : 0
-		r32 = rax
-	qword [r22 + r29 * 8] = r32
-		FuncCall getInt Param_size : 0
-		r33 = rax
-	qword [r25 + r29 * 8] = r33
-Label_1:
-	r29 = r29 + 1
-	jump Label_4
+merge [Func]:
+	r16 = rdi
+	r17 = rsi
+	r18 = 0 == r16
+	jump Label_2 if r18 je 1
+	jump Label_3
 Label_2:
-	r34 = 5555
-		rdi = qword [r22 + r34 * 8]
-		FuncCall toString Param_size : 1
-		r35 = rax
-		rdi = r35
-		FuncCall println Param_size : 1
-		r36 = rax
-	r37 = 7555
-		rdi = qword [r25 + r37 * 8]
-		FuncCall toString Param_size : 1
-		r38 = rax
-		rdi = r38
-		FuncCall println Param_size : 1
-		r39 = rax
-	r29 = 0
-Label_8:
-	r40 = r29 < r17
-	jump Label_7 if r40 je 1
+	rax = r17
+	jump Label_0
+	jump Label_1
+Label_3:
+Label_1:
+	r19 = 0 == r17
+	jump Label_5 if r19 je 1
 	jump Label_6
-Label_7:
-	r30 = qword [r25 + r29 * 8]
-Label_12:
-	r41 = r30 <= r16
-	jump Label_11 if r41 je 1
-	jump Label_10
-Label_11:
-	r44 = r30 - qword [r25 + r29 * 8]
-	r43 = qword [r28 + r44 * 8] + qword [r22 + r29 * 8]
-	r42 = qword [r28 + r30 * 8] <= r43
-	jump Label_14 if r42 je 1
-	jump Label_15
-Label_14:
-	r46 = r30 - qword [r25 + r29 * 8]
-	r45 = qword [r28 + r46 * 8] + qword [r22 + r29 * 8]
-	qword [r28 + r30 * 8] = r45
-	jump Label_13
-Label_15:
-Label_13:
-Label_9:
-	r30 = r30 + 1
-	jump Label_12
-Label_10:
 Label_5:
-	r29 = r29 + 1
-	jump Label_8
+	rax = r16
+	jump Label_0
+	jump Label_4
 Label_6:
-		rdi = qword [r28 + r16 * 8]
-		FuncCall toString Param_size : 1
-		r47 = rax
-		rdi = r47
-		FuncCall print Param_size : 1
-		r48 = rax
-	rax = 0
+Label_4:
+	r21 = qword [ w__ ]
+	r22 = qword [ w__ ]
+	r20 = qword [r21 + r16 * 8] < qword [r22 + r17 * 8]
+	jump Label_8 if r20 je 1
+	jump Label_9
+Label_8:
+	r23 = r16
+	r16 = r17
+	r17 = r23
+	jump Label_7
+Label_9:
+Label_7:
+	r24 = qword [ r__ ]
+	r25 = qword [ r__ ]
+		rdi = qword [r25 + r16 * 8]
+		rsi = r17
+		FuncCall merge Param_size : 2
+		r26 = rax
+	qword [r24 + r16 * 8] = r26
+	r27 = qword [ l__ ]
+	r28 = qword [r27 + r16 * 8]
+	r29 = qword [ l__ ]
+	r30 = qword [ r__ ]
+	qword [r29 + r16 * 8] = qword [r30 + r16 * 8]
+	r31 = qword [ r__ ]
+	qword [r31 + r16 * 8] = r28
+	rax = r16
 	jump Label_0
 Label_0:
+main [Func]:
+		FuncCall getInt Param_size : 0
+		r16 = rax
+	qword [ N__ ] = r16
+		FuncCall getInt Param_size : 0
+		r17 = rax
+	qword [ M__ ] = r17
+		FuncCall getString Param_size : 0
+		r18 = rax
+	qword [ ch__ ] = r18
+	r20 = qword [ N__ ] + qword [ M__ ]
+	r19 = r20 + 5
+	r21 = r19
+	r21 = r21 + 1
+	r21 = r21 * 8
+		rdi = r21
+		FuncCall malloc Param_size : 1
+		r22 = rax
+	qword [r22] = r19
+	r22 = r22 + 8
+	qword [ l__ ] = r22
+	r24 = qword [ N__ ] + qword [ M__ ]
+	r23 = r24 + 5
+	r25 = r23
+	r25 = r25 + 1
+	r25 = r25 * 8
+		rdi = r25
+		FuncCall malloc Param_size : 1
+		r26 = rax
+	qword [r26] = r23
+	r26 = r26 + 8
+	qword [ r__ ] = r26
+	r28 = qword [ N__ ] + qword [ M__ ]
+	r27 = r28 + 5
+	r29 = r27
+	r29 = r29 + 1
+	r29 = r29 * 8
+		rdi = r29
+		FuncCall malloc Param_size : 1
+		r30 = rax
+	qword [r30] = r27
+	r30 = r30 + 8
+	qword [ w__ ] = r30
+	r31 = 1
+Label_14:
+	r32 = r31 <= qword [ N__ ]
+	jump Label_13 if r32 je 1
+	jump Label_12
+Label_13:
+	r33 = qword [ w__ ]
+		FuncCall getInt Param_size : 0
+		r34 = rax
+	qword [r33 + r31 * 8] = r34
+	r35 = qword [ l__ ]
+	qword [r35 + r31 * 8] = 0
+	r36 = qword [ r__ ]
+	qword [r36 + r31 * 8] = 0
+Label_11:
+	r37 = r31
+	r31 = r31 + 1
+	jump Label_14
+Label_12:
+	r31 = 1
+Label_18:
+	r38 = r31 <= qword [ M__ ]
+	jump Label_17 if r38 je 1
+	jump Label_16
+Label_17:
+	r39 = qword [ w__ ]
+	r40 = r31 + qword [ N__ ]
+	r41 = r31 - 1
+		rdi = qword [ ch__ ]
+		rsi = r41
+		FuncCall string.ord Param_size : 2
+		r42 = rax
+	qword [r39 + r40 * 8] = r42
+	r43 = qword [ l__ ]
+	r44 = r31 + qword [ N__ ]
+	qword [r43 + r44 * 8] = 0
+	r45 = qword [ r__ ]
+	r46 = r31 + qword [ N__ ]
+	qword [r45 + r46 * 8] = 0
+Label_15:
+	r47 = r31
+	r31 = r31 + 1
+	jump Label_18
+Label_16:
+	r48 = 1
+	r49 = qword [ N__ ] + 1
+	r50 = r49
+	r31 = 2
+Label_22:
+	r51 = r31 <= qword [ N__ ]
+	jump Label_21 if r51 je 1
+	jump Label_20
+Label_21:
+		rdi = r48
+		rsi = r31
+		FuncCall merge Param_size : 2
+		r52 = rax
+	r48 = r52
+Label_19:
+	r53 = r31
+	r31 = r31 + 1
+	jump Label_22
+Label_20:
+	r54 = qword [ N__ ] + 2
+	r31 = r54
+Label_26:
+	r56 = qword [ N__ ] + qword [ M__ ]
+	r55 = r31 <= r56
+	jump Label_25 if r55 je 1
+	jump Label_24
+Label_25:
+		rdi = r50
+		rsi = r31
+		FuncCall merge Param_size : 2
+		r57 = rax
+	r50 = r57
+Label_23:
+	r58 = r31
+	r31 = r31 + 1
+	jump Label_26
+Label_24:
+	r59 = qword [ w__ ]
+		rdi = qword [r59 + r48 * 8]
+		FuncCall toString Param_size : 1
+		r60 = rax
+		rdi = r60
+		FuncCall print Param_size : 1
+		r61 = rax
+		rdi = str__0
+		FuncCall print Param_size : 1
+		r62 = rax
+	r64 = r50 - qword [ N__ ]
+	r63 = r64 - 1
+	r66 = r50 - qword [ N__ ]
+	r65 = r66 - 1
+		rdi = qword [ ch__ ]
+		rsi = r63
+		rdx = r65
+		FuncCall string.substring Param_size : 3
+		r67 = rax
+		rdi = r67
+		FuncCall print Param_size : 1
+		r68 = rax
+		rdi = str__1
+		FuncCall print Param_size : 1
+		r69 = rax
+		rdi = r48
+		rsi = r50
+		FuncCall merge Param_size : 2
+		r70 = rax
+		rdi = r70
+		FuncCall toString Param_size : 1
+		r71 = rax
+		rdi = r71
+		FuncCall println Param_size : 1
+		r72 = rax
+	rax = 0
+	jump Label_10
+Label_10:
