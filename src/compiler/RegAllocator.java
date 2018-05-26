@@ -43,7 +43,7 @@ public class RegAllocator {
     public void visit(Label x) {}
     public void visit(Jump x) {}
     public void alloc(Func x) {
-        if (x.num > 524) return;
+        if (x.num > 800) return;
         x.opt = true;
         ArrayList<Inst> orders = new ArrayList<>();
         Inst pre = null;
