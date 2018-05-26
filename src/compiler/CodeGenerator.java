@@ -92,23 +92,25 @@ public class CodeGenerator {
         ans.append("\tmov\t" + dest.toString() + ", rax\n");
     }
 
-    public void D(Operand dest, Operand lhs, Operand rhs, String op) {
-        lhs = getOp(lhs, X86Reg.rax);
-        rhs = getOp(rhs, X86Reg.rcx);
-        dest = getOp(dest, X86Reg.rdx);
-        String tt = lhs.toString(), tt2 = dest.toString(), tt3 = rhs.toString();
+    public String JW(Operand lhs) {
+        String tt = lhs.toString();
         if (lhs instanceof Reg) {
             if (tt.charAt(1) >= 'a' && tt.charAt(1) <= 'z') tt =  tt.replaceFirst("r", "e");
             else tt = tt + "d";
         }
-        if (rhs instanceof Reg) {
-            if (tt3.charAt(1) >= 'a' && tt3.charAt(1) <= 'z') tt3 =  tt3.replaceFirst("r", "e");
-            else tt3 = tt3 + "d";
+        if (lhs instanceof MemAddr) {
+            tt =  tt.replaceFirst("qword", "dword");
         }
-        if (dest instanceof Reg) {
-            if (tt2.charAt(1) >= 'a' && tt2.charAt(1) <= 'z') tt2 =  tt2.replaceFirst("r", "e");
-            else tt2 = tt2 + "d";
-        }
+        return tt;
+    }
+
+    public void D(Operand dest, Operand lhs, Operand rhs, String op) {
+        lhs = getOp(lhs, X86Reg.rax);
+        rhs = getOp(rhs, X86Reg.rcx);
+        dest = getOp(dest, X86Reg.rdx);
+        String tt = JW(lhs);
+        String tt2 = JW(dest);
+        String tt3 = JW(rhs);
         ans.append("\tmov\teax, " + tt + "\n");
         ans.append("\tmov\tecx, " + tt3 + "\n");
         ans.append("\tcdq\n\tidiv\tecx\n");
