@@ -76,7 +76,9 @@ main:
 	push	r10
 	push	r11
 	push	r8
+	push	r9
 	call	toString
+	pop	r9
 	pop	r8
 	pop	r11
 	pop	r10
@@ -88,8 +90,10 @@ main:
 	push	r10
 	push	r11
 	push	r8
+	push	r9
 	mov	rsi, str__1
 	call	string.add
+	pop	r9
 	pop	r8
 	pop	r11
 	pop	r10
@@ -101,8 +105,10 @@ main:
 	push	r10
 	push	r11
 	push	r8
+	push	r9
 	mov	rdi, r10
 	call	toString
+	pop	r9
 	pop	r8
 	pop	r11
 	pop	r10
@@ -114,9 +120,11 @@ main:
 	push	r10
 	push	r11
 	push	r8
+	push	r9
 	mov	rdi, rsi
 	mov	rsi, r11
 	call	string.add
+	pop	r9
 	pop	r8
 	pop	r11
 	pop	r10
@@ -140,13 +148,8 @@ main:
 	mov	r8, 1
 	mov	r11, 0
 Label_4:
-	mov	rcx, r11
-	cmp	rcx, r10
-	setl	cl
-	movzx	rcx, cl
-	mov	rdi, rcx
-	cmp	rdi, 1
-	je	Label_3
+	cmp	r11, r10
+	jl	Label_3
 	jmp	Label_2
 Label_3:
 	push	rdi
@@ -154,8 +157,10 @@ Label_3:
 	push	r10
 	push	r11
 	push	r8
+	push	r9
 	mov	rdi, r8
 	call	toString
+	pop	r9
 	pop	r8
 	pop	r11
 	pop	r10
@@ -167,8 +172,10 @@ Label_3:
 	push	r10
 	push	r11
 	push	r8
+	push	r9
 	mov	rsi, str__2
 	call	string.add
+	pop	r9
 	pop	r8
 	pop	r11
 	pop	r10
@@ -183,7 +190,9 @@ Label_3:
 	push	r10
 	push	r11
 	push	r8
+	push	r9
 	call	toString
+	pop	r9
 	pop	r8
 	pop	r11
 	pop	r10
@@ -195,9 +204,11 @@ Label_3:
 	push	r10
 	push	r11
 	push	r8
+	push	r9
 	mov	rdi, rsi
 	mov	rsi, r9
 	call	string.add
+	pop	r9
 	pop	r8
 	pop	r11
 	pop	r10
@@ -209,8 +220,10 @@ Label_3:
 	push	r10
 	push	r11
 	push	r8
+	push	r9
 	mov	rsi, str__3
 	call	string.add
+	pop	r9
 	pop	r8
 	pop	r11
 	pop	r10
@@ -226,7 +239,9 @@ Label_3:
 	push	r10
 	push	r11
 	push	r8
+	push	r9
 	call	toString
+	pop	r9
 	pop	r8
 	pop	r11
 	pop	r10
@@ -238,9 +253,11 @@ Label_3:
 	push	r10
 	push	r11
 	push	r8
+	push	r9
 	mov	rdi, rsi
 	mov	rsi, r9
 	call	string.add
+	pop	r9
 	pop	r8
 	pop	r11
 	pop	r10
@@ -252,12 +269,7 @@ Label_3:
 	cqo
 	idiv	rcx
 	mov	rsi, rdx
-	mov	rcx, rsi
-	cmp	rcx, 0
-	sete	cl
-	movzx	rcx, cl
-	mov	rsi, rcx
-	cmp	rsi, 1
+	cmp	rsi, 0
 	je	Label_6
 	jmp	Label_7
 Label_6:

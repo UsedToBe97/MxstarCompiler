@@ -38,16 +38,17 @@ public class IrBuilder {
             if (d instanceof ClassDef) {
                 int tmp = 0;
                 nowclass = ((ClassDef) d).name;
-                for (Def t : ((ClassDef) d).Deflist) if (t instanceof VarDef){
-                    ((VarDef) t).inClass = true;
-                    ((VarDef) t).offset = tmp;
-                    varMap.put(nowclass + "." + ((VarDef) t).name, (VarDef) t);
-                    tmp += 8;
-                } else if (t instanceof FuncDef) {
-                    //visit2((FuncDef) t);
-                }
+                for (Def t : ((ClassDef) d).Deflist)
+                    if (t instanceof VarDef) {
+                        ((VarDef) t).inClass = true;
+                        ((VarDef) t).offset = tmp;
+                        varMap.put(nowclass + "." + ((VarDef) t).name, (VarDef) t);
+                        tmp += 8;
+                    } else if (t instanceof FuncDef) {
+                        //visit2((FuncDef) t);
+                    }
                 ((ClassDef) d).size = tmp;
-            } else if (d instanceof VarDef){
+            } else if (d instanceof VarDef) {
                 nowclass = "";
                 ((VarDef) d).isGlobal = true;
                 ((VarDef) d).addr = root.add((VarDef) d);
@@ -56,15 +57,22 @@ public class IrBuilder {
                 }
             }
         }
-        for (Def d : x.deflist) if (d instanceof FuncDef){
-            nowclass = "";
-            visit((FuncDef) d);
-        }
+        for (Def d : x.deflist)
+            if (d instanceof FuncDef) {
+                nowclass = "";
+                visit((FuncDef) d);
+            }
+        for (Func u : root.Funcs) doit(u);
         return root;
     }
 
-    public void visit(Expr x) {if (x != null) x.accept(this);}
-    public void visit(Stmt x) {if (x != null) x.accept(this);}
+    public void visit(Expr x) {
+        if (x != null) x.accept(this);
+    }
+
+    public void visit(Stmt x) {
+        if (x != null) x.accept(this);
+    }
 
     public void visit(FuncDef x) {
         returnLabel = new Label();
@@ -122,7 +130,7 @@ public class IrBuilder {
     }
 
     public VirtualReg getReg(Operand x) {
-        if (x instanceof Reg) return (VirtualReg)x;
+        if (x instanceof Reg) return (VirtualReg) x;
         else {
             VirtualReg t = nowfunc.newReg();
             nowfunc.addInst(new Move(t, x));
@@ -286,11 +294,12 @@ public class IrBuilder {
         Call call = new Call(x.name, params, x.operand);
         nowfunc.addInst(call);
     }
+
     public void visit(IDExpr x) {
         if (x.varDef != null && x.varDef.addr != null) x.operand = x.varDef.addr;
         else if (nowfunc.defMap.containsKey(x.name)) {
             x.operand = nowfunc.defMap.get(x.name);
-        }else {
+        } else {
             VarDef vd = varMap.get(nowclass + "." + x.name);
             Reg base = getReg(baseaddr);
             if (x.name.equals("this")) x.operand = base;
@@ -350,7 +359,7 @@ public class IrBuilder {
     public Operand buildClass(Type x) {
         VirtualReg dest = nowfunc.newReg();
         if (x instanceof ClassType) {
-           if (((ClassType) x).classDef == null)
+            if (((ClassType) x).classDef == null)
                 ((ClassType) x).classDef = (ClassDef) GlobalClass.st.now.check(((ClassType) x).name);
             Operand tmp = new INum(((ClassType) x).classDef.size);
             ArrayList<Operand> tt = new ArrayList<>();
@@ -409,10 +418,22 @@ public class IrBuilder {
         else x.operand = buildArray(x, 0);
     }
 
-    public void visit(BlockStmt x) {x.Stmts.forEach(xx -> visit(xx));}
-    public void visit(BreakStmt x) {nowfunc.addInst(new Jump(breakLabel));}
-    public void visit(ContStmt x) {nowfunc.addInst(new Jump(contLabel));}
-    public void visit(ExprStmt x) {visit(x.expr);}
+    public void visit(BlockStmt x) {
+        x.Stmts.forEach(xx -> visit(xx));
+    }
+
+    public void visit(BreakStmt x) {
+        nowfunc.addInst(new Jump(breakLabel));
+    }
+
+    public void visit(ContStmt x) {
+        nowfunc.addInst(new Jump(contLabel));
+    }
+
+    public void visit(ExprStmt x) {
+        visit(x.expr);
+    }
+
     public void visit(ForStmt x) {
         Label tc = contLabel, tb = breakLabel;
         contLabel = new Label();
@@ -440,7 +461,7 @@ public class IrBuilder {
 
     public void visit(IfStmt x) {
         Label ed = new Label();
-        for (Pair<Expr, Stmt> u: x.ifList) {
+        for (Pair<Expr, Stmt> u : x.ifList) {
             Label okLabel = new Label();
             Label failLabel = new Label();
             visit(u.getFirst());
@@ -482,5 +503,38 @@ public class IrBuilder {
         nowfunc.addInst(breakLabel);
         contLabel = tc;
         breakLabel = tb;
+    }
+
+    public void doit(Func x) {
+        List<Inst> tmp = new ArrayList<>();
+        for (int i = 1; i < x.Insts.size(); ++i) {
+            boolean ok = false;
+            if (x.Insts.get(i - 1) instanceof Binop && x.Insts.get(i) instanceof CJump) {
+                Binop t1 = (Binop)x.Insts.get(i - 1);
+                CJump t2 = (CJump)x.Insts.get(i);
+                if (t1.dest == t2.lhs && t2.rhs instanceof INum) {
+                    if (((INum)t2.rhs).v == 1) {
+                        String op = "";
+                        switch (t1.op) {
+                            case ">" : op = "jg"; break;
+                            case "<" : op = "jl"; break;
+                            case "==": op = "je"; break;
+                            case "!=": op = "jne"; break;
+                            case ">=": op = "jge"; break;
+                            case "<=": op = "jle"; break;
+                        }
+                        if (!op.equals("")) {
+                            ok = true;
+                            ++i;
+                            tmp.add(new CJump(t1.lhs, t1.rhs, op, t2.dest));
+                        }
+                    }
+                }
+            }
+            if (ok) continue;
+            tmp.add(x.Insts.get(i - 1));
+            if (i == x.Insts.size() - 1) tmp.add(x.Insts.get(i));
+        }
+        x.Insts = tmp;
     }
 }
