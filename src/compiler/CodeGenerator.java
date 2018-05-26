@@ -5,6 +5,7 @@ import ir.Func;
 import ir.Ir;
 import ir.inst.*;
 import ir.operand.Operand;
+import ir.operand.addr.GlobalAddr;
 import ir.operand.addr.MemAddr;
 import ir.operand.reg.Reg;
 import ir.operand.reg.X86Reg;
@@ -98,7 +99,7 @@ public class CodeGenerator {
             if (tt.charAt(1) >= 'a' && tt.charAt(1) <= 'z') tt =  tt.replaceFirst("r", "e");
             else tt = tt + "d";
         }
-        if (lhs instanceof MemAddr) {
+        if (lhs instanceof MemAddr || lhs instanceof GlobalAddr) {
             tt =  tt.replaceFirst("qword", "dword");
         }
         return tt;

@@ -1,134 +1,405 @@
-N__ [GV]
+n__ [GV]
+h__ [GV]
+now__ [GV]
+a__ [GV]
+A__ [GV]
 M__ [GV]
-check__ [GV]
+Q__ [GV]
+R__ [GV]
+seed__ [GV]
 
+string[ 0 ]  
+string[ 1 ] 
+string[ 2 ] Sorry, the number n must be a number s.t. there exists i satisfying n=1+2+...+i
+string[ 3 ] Let's start!
+string[ 4 ] step 
+string[ 5 ] :
+string[ 6 ] Total: 
+string[ 7 ]  step(s)
 
-main [Func]:
-	qword [ M__ ] = 0 [][]
-		FuncCall getInt Param_size : 0 [][rax]
-		rdi = rax [rax , ][rdi]
-	qword [ N__ ] = rdi [rdi , ][]
-	rsi = qword [ N__ ] + 5 [][rsi]
-	rdi = rsi [rsi , ][rdi]
-	rdi = rdi + 1 [rsi , rdi , ][rdi]
-	rdi = rdi * 8 [rsi , rdi , ][rdi]
-		rdi = rdi [rsi , rdi , ][rdi]
-		FuncCall malloc Param_size : 1 [rsi , rdi , ][rax]
-		rdi = rax [rsi , rax , ][rdi]
-	qword [rdi] = rsi [rsi , rdi , ][]
-	rdi = rdi + 8 [rdi , ][rdi]
-	qword [ check__ ] = rdi [rdi , ][]
-	rsi = 0 [][rsi]
-Label_4:
-	jump Label_3 if rsi jle qword [ N__ ] [rsi , ][]
-	jump Label_2 [][]
-Label_3:
-	rdi = qword [ check__ ] [rsi , ][rdi]
-	r10 = rsi [rsi , rdi , ][r10]
-	rsi = rsi + 1 [rsi , rdi , r10 , ][rsi]
-	qword [rdi + r10 * 8] = 1 [rdi , rsi , r10 , ][]
-Label_1:
-	jump Label_4 [rsi , ][]
+random [Func]:
+	rdi = qword [ seed__ ] % qword [ Q__ ] [][rdi]
+	rdi = qword [ A__ ] * rdi [rdi , ][rdi]
+	rsi = qword [ seed__ ] / qword [ Q__ ] [rdi , ][rsi]
+	rsi = qword [ R__ ] * rsi [rsi , rdi , ][rsi]
+	rdi = rdi - rsi [rsi , rdi , ][rdi]
+	rdi = rdi [rdi , ][rdi]
+	jump Label_2 if rdi jge 0 [rdi , ][]
+	jump Label_3 [rdi , ][]
 Label_2:
-	rsi = qword [ N__ ] + 5 [][rsi]
-	rdi = rsi [rsi , ][rdi]
-	rdi = rdi + 1 [rsi , rdi , ][rdi]
-	rdi = rdi * 8 [rsi , rdi , ][rdi]
-		rdi = rdi [rsi , rdi , ][rdi]
-		FuncCall malloc Param_size : 1 [rdi , rsi , ][rax]
-		rdi = rax [rsi , rax , ][rdi]
-	qword [rdi] = rsi [rdi , rsi , ][]
-	rdi = rdi + 8 [rdi , ][rdi]
-	r10 = rdi [rdi , ][r10]
-	rsi = qword [ N__ ] + 5 [r10 , ][rsi]
-	rdi = rsi [r10 , rsi , ][rdi]
-	rdi = rdi + 1 [r10 , rsi , rdi , ][rdi]
-	rdi = rdi * 8 [r10 , rsi , rdi , ][rdi]
-		rdi = rdi [r10 , rsi , rdi , ][rdi]
-		FuncCall malloc Param_size : 1 [rdi , r10 , rsi , ][rax]
-		rdi = rax [r10 , rax , rsi , ][rdi]
-	qword [rdi] = rsi [r10 , rdi , rsi , ][]
-	rdi = rdi + 8 [r10 , rdi , ][rdi]
-	r11 = rdi [r10 , rdi , ][r11]
-	rdi = 1 [r10 , r11 , ][rdi]
-	qword [r10 + rdi * 8] = 1 [r10 , r11 , rdi , ][]
-	rsi = 2 [r10 , r11 , ][rsi]
-Label_8:
-	jump Label_7 [rsi , r10 , r11 , ][]
-Label_7:
-	jump Label_10 if rsi jg qword [ N__ ] [rsi , r10 , r11 , ][]
-	jump Label_11 [rsi , r10 , r11 , ][]
-Label_10:
-	jump Label_6 [][]
-	jump Label_9 [rsi , r10 , r11 , ][]
-Label_11:
-Label_9:
-	rdi = qword [ check__ ] [rsi , r10 , r11 , ][rdi]
-	jump Label_13 if qword [rdi + rsi * 8] je 1 [rsi , r10 , r11 , rdi , ][]
-	jump Label_14 [rsi , r10 , r11 , ][]
-Label_13:
-	qword [ M__ ] = qword [ M__ ] + 1 [rsi , r10 , r11 , ][]
-	rdi = qword [ M__ ] [rsi , r10 , r11 , ][rdi]
-	qword [r11 + rdi * 8] = rsi [rsi , r10 , rdi , r11 , ][]
-	rdi = rsi - 1 [rsi , r10 , r11 , ][rdi]
-	qword [r10 + rsi * 8] = rdi [rsi , r10 , rdi , r11 , ][]
-	jump Label_12 [rsi , r10 , r11 , ][]
-Label_14:
-Label_12:
-	rdi = rsi [rsi , r10 , r11 , ][rdi]
-	r8 = 1 [rsi , r10 , rdi , r11 , ][r8]
-Label_18:
-	jump Label_19 if r8 jle qword [ M__ ] [rsi , r8 , r10 , rdi , r11 , ][]
-	r9 = 0 [rsi , r8 , r10 , rdi , r11 , ][r9]
-	jump Label_20 [rsi , r8 , r10 , rdi , r11 , r9 , ][]
-Label_19:
-	r9 = rdi * qword [r11 + r8 * 8] [rsi , r8 , r10 , rdi , r11 , ][r9]
-	r9 = r9 <= qword [ N__ ] [rsi , r8 , r10 , r9 , rdi , r11 , ][r9]
-	r9 = r9 [rsi , r9 , r8 , r10 , rdi , r11 , ][r9]
-Label_20:
-	jump Label_17 if r9 je 1 [rsi , r8 , r10 , rdi , r11 , r9 , ][]
-	jump Label_16 [rsi , r10 , rdi , r11 , ][]
-Label_17:
-	r9 = rdi * qword [r11 + r8 * 8] [rsi , r8 , r10 , rdi , r11 , ][r9]
-	r9 = r9 [rsi , r8 , r10 , rdi , r11 , r9 , ][r9]
-	jump Label_22 if r9 jg qword [ N__ ] [rsi , r8 , r10 , rdi , r9 , r11 , ][]
-	jump Label_23 [rsi , r8 , r10 , rdi , r9 , r11 , ][]
-Label_22:
-	jump Label_15 [rsi , r8 , r10 , rdi , r11 , ][]
-	jump Label_21 [rsi , r8 , r10 , rdi , r9 , r11 , ][]
-Label_23:
-Label_21:
-	r12 = qword [ check__ ] [rsi , r8 , r10 , rdi , r9 , r11 , ][r12]
-	qword [r12 + r9 * 8] = 0 [rsi , r8 , r10 , rdi , r9 , r11 , r12 , ][]
-	r12 = rdi % qword [r11 + r8 * 8] [rsi , r8 , r10 , rdi , r11 , r9 , ][r12]
-	jump Label_25 if r12 je 0 [rsi , r10 , r8 , rdi , r11 , r9 , r12 , ][]
-	jump Label_26 [rsi , r8 , r10 , rdi , r11 , ][]
-Label_25:
-	r8 = qword [r10 + rdi * 8] * qword [r11 + r8 * 8] [rsi , r10 , r8 , rdi , r11 , r9 , ][r8]
-	qword [r10 + r9 * 8] = r8 [rsi , r10 , rdi , r8 , r9 , r11 , ][]
-	jump Label_16 [rsi , r10 , rdi , r11 , ][]
-	jump Label_24 [rsi , r8 , r10 , rdi , r11 , ][]
-Label_26:
-	r9 = rdi * qword [r11 + r8 * 8] [rsi , r8 , r10 , rdi , r11 , ][r9]
-	r12 = qword [r11 + r8 * 8] - 1 [rsi , r8 , r10 , rdi , r9 , r11 , ][r12]
-	r12 = qword [r10 + rdi * 8] * r12 [rsi , r10 , r8 , rdi , r9 , r11 , r12 , ][r12]
-	qword [r10 + r9 * 8] = r12 [rsi , r10 , r8 , rdi , r9 , r11 , r12 , ][]
-Label_24:
-Label_15:
-	r9 = r8 [rsi , r8 , r10 , rdi , r11 , ][r9]
-	r8 = r8 + 1 [rsi , r8 , r10 , rdi , r11 , ][r8]
-	jump Label_18 [rsi , r8 , r10 , rdi , r11 , ][]
-Label_16:
-		rdi = qword [r10 + rdi * 8] [rsi , r10 , rdi , r11 , ][rdi]
-		FuncCall toString Param_size : 1 [rsi , rdi , r10 , r11 , ][rax]
-		rdi = rax [rsi , r10 , rax , r11 , ][rdi]
-		rdi = rdi [rsi , r10 , rdi , r11 , ][rdi]
-		FuncCall println Param_size : 1 [rsi , rdi , r10 , r11 , ][rax]
-		rdi = rax [rsi , r10 , rax , r11 , ][rdi]
-Label_5:
-	rsi = rsi + 1 [rsi , r10 , r11 , ][rsi]
-	jump Label_8 [rsi , r10 , r11 , ][]
-Label_6:
-	rax = 0 [][rax]
+	qword [ seed__ ] = rdi [rdi , ][]
+	jump Label_1 [][]
+Label_3:
+	rdi = rdi + qword [ M__ ] [rdi , ][rdi]
+	qword [ seed__ ] = rdi [rdi , ][]
+Label_1:
+	rax = qword [ seed__ ] [][rax]
 	jump Label_0 [][]
 Label_0:
+initialize [Func]:
+	rdi = rdi [rdi , ][rdi]
+	qword [ seed__ ] = rdi [rdi , ][]
+Label_4:
+swap [Func]:
+	rdi = rdi [rdi , rsi , ][rdi]
+	rsi = rsi [rdi , rsi , ][rsi]
+	r10 = qword [ a__ ] [rdi , rsi , ][r10]
+	r10 = qword [r10 + rdi * 8] [rdi , rsi , r10 , ][r10]
+	r11 = qword [ a__ ] [rdi , r10 , rsi , ][r11]
+	r8 = qword [ a__ ] [r11 , rdi , r10 , rsi , ][r8]
+	qword [r11 + rdi * 8] = qword [r8 + rsi * 8] [r11 , rdi , r10 , rsi , r8 , ][]
+	rdi = qword [ a__ ] [r10 , rsi , ][rdi]
+	qword [rdi + rsi * 8] = r10 [r10 , rsi , rdi , ][]
+Label_5:
+pd [Func]:
+	rdi = rdi [rdi , ][rdi]
+Label_10:
+	jump Label_9 if qword [ h__ ] jle rdi [rdi , ][]
+	jump Label_8 [][]
+Label_9:
+	rsi = qword [ h__ ] + 1 [rdi , ][rsi]
+	rsi = qword [ h__ ] * rsi [rdi , rsi , ][rsi]
+	rsi = rsi / 2 [rdi , rsi , ][rsi]
+	jump Label_12 if rdi je rsi [rdi , rsi , ][]
+	jump Label_13 [rdi , ][]
+Label_12:
+	rax = 1 [][rax]
+	jump Label_6 [][]
+	jump Label_11 [rdi , ][]
+Label_13:
+Label_11:
+Label_7:
+	qword [ h__ ] = qword [ h__ ] + 1 [rdi , ][]
+	jump Label_10 [rdi , ][]
+Label_8:
+	rax = 0 [][rax]
+	jump Label_6 [][]
+Label_6:
+show [Func]:
+	r10 = 0 [][r10]
+Label_18:
+	jump Label_17 if r10 jl qword [ now__ ] [r10 , ][]
+	jump Label_16 [][]
+Label_17:
+	rdi = qword [ a__ ] [r10 , ][rdi]
+		rdi = qword [rdi + r10 * 8] [r10 , rdi , ][rdi]
+		FuncCall toString Param_size : 1 [r10 , rdi , ][rax]
+		rdi = rax [rax , r10 , ][rdi]
+		rdi = rdi [r10 , rdi , ][rdi]
+		rsi = str__0 [r10 , rdi , ][rsi]
+		FuncCall string.add Param_size : 2 [r10 , rdi , rsi , ][rax]
+		rdi = rax [rax , r10 , ][rdi]
+		rdi = rdi [r10 , rdi , ][rdi]
+		FuncCall print Param_size : 1 [r10 , rdi , ][rax]
+		rdi = rax [rax , r10 , ][rdi]
+Label_15:
+	r10 = r10 + 1 [r10 , ][r10]
+	jump Label_18 [r10 , ][]
+Label_16:
+		rdi = str__1 [][rdi]
+		FuncCall println Param_size : 1 [rdi , ][rax]
+		rdi = rax [rax , ][rdi]
+Label_14:
+win [Func]:
+	rdi = 100 [][rdi]
+	rdi = rdi + 1 [rdi , ][rdi]
+	rdi = rdi * 8 [rdi , ][rdi]
+		rdi = rdi [rdi , ][rdi]
+		FuncCall malloc Param_size : 1 [rdi , ][rax]
+		rdi = rax [rax , ][rdi]
+	qword [rdi] = 100 [rdi , ][]
+	rdi = rdi + 8 [rdi , ][rdi]
+	r10 = rdi [rdi , ][r10]
+	jump Label_21 if qword [ now__ ] jne qword [ h__ ] [r10 , ][]
+	jump Label_22 [r10 , ][]
+Label_21:
+	rax = 0 [][rax]
+	jump Label_19 [][]
+	jump Label_20 [r10 , ][]
+Label_22:
+Label_20:
+	rsi = 0 [r10 , ][rsi]
+Label_26:
+	jump Label_25 if rsi jl qword [ now__ ] [r10 , rsi , ][]
+	jump Label_24 [r10 , ][]
+Label_25:
+	rdi = qword [ a__ ] [r10 , rsi , ][rdi]
+	qword [r10 + rsi * 8] = qword [rdi + rsi * 8] [rdi , r10 , rsi , ][]
+Label_23:
+	rsi = rsi + 1 [r10 , rsi , ][rsi]
+	jump Label_26 [r10 , rsi , ][]
+Label_24:
+	rdi = 0 [r10 , ][rdi]
+Label_30:
+	rsi = qword [ now__ ] - 1 [rdi , r10 , ][rsi]
+	jump Label_29 if rdi jl rsi [rdi , r10 , rsi , ][]
+	jump Label_28 [r10 , ][]
+Label_29:
+	rsi = rdi + 1 [rdi , r10 , ][rsi]
+	rsi = rsi [rdi , rsi , r10 , ][rsi]
+Label_34:
+	jump Label_33 if rsi jl qword [ now__ ] [rdi , r10 , rsi , ][]
+	jump Label_32 [rdi , r10 , ][]
+Label_33:
+	jump Label_36 if qword [r10 + rdi * 8] jg qword [r10 + rsi * 8] [rdi , r10 , rsi , ][]
+	jump Label_37 [rdi , r10 , rsi , ][]
+Label_36:
+	r11 = qword [r10 + rdi * 8] [rdi , r10 , rsi , ][r11]
+	qword [r10 + rdi * 8] = qword [r10 + rsi * 8] [rdi , r11 , r10 , rsi , ][]
+	qword [r10 + rsi * 8] = r11 [rdi , r11 , r10 , rsi , ][]
+	jump Label_35 [rdi , r10 , rsi , ][]
+Label_37:
+Label_35:
+Label_31:
+	rsi = rsi + 1 [rdi , r10 , rsi , ][rsi]
+	jump Label_34 [rdi , r10 , rsi , ][]
+Label_32:
+Label_27:
+	rdi = rdi + 1 [rdi , r10 , ][rdi]
+	jump Label_30 [rdi , r10 , ][]
+Label_28:
+	rdi = 0 [r10 , ][rdi]
+Label_41:
+	jump Label_40 if rdi jl qword [ now__ ] [rdi , r10 , ][]
+	jump Label_39 [][]
+Label_40:
+	rsi = rdi + 1 [rdi , r10 , ][rsi]
+	jump Label_43 if qword [r10 + rdi * 8] jne rsi [rdi , rsi , r10 , ][]
+	jump Label_44 [rdi , r10 , ][]
+Label_43:
+	rax = 0 [][rax]
+	jump Label_19 [][]
+	jump Label_42 [rdi , r10 , ][]
+Label_44:
+Label_42:
+Label_38:
+	rdi = rdi + 1 [rdi , r10 , ][rdi]
+	jump Label_41 [rdi , r10 , ][]
+Label_39:
+	rax = 1 [][rax]
+	jump Label_19 [][]
+Label_19:
+merge [Func]:
+	r10 = 0 [][r10]
+Label_49:
+	jump Label_48 if r10 jl qword [ now__ ] [r10 , ][]
+	jump Label_47 [][]
+Label_48:
+	rdi = qword [ a__ ] [r10 , ][rdi]
+	jump Label_51 if qword [rdi + r10 * 8] je 0 [r10 , rdi , ][]
+	jump Label_52 [r10 , ][]
+Label_51:
+	rdi = r10 + 1 [r10 , ][rdi]
+	rsi = rdi [r10 , rdi , ][rsi]
+Label_56:
+	jump Label_55 if rsi jl qword [ now__ ] [rsi , r10 , ][]
+	jump Label_54 [r10 , ][]
+Label_55:
+	rdi = qword [ a__ ] [rsi , r10 , ][rdi]
+	jump Label_58 if qword [rdi + rsi * 8] jne 0 [rsi , r10 , rdi , ][]
+	jump Label_59 [rsi , r10 , ][]
+Label_58:
+		rdi = r10 [r10 , rsi , ][rdi]
+		rsi = rsi [rsi , r10 , rdi , ][rsi]
+		FuncCall swap Param_size : 2 [r10 , rdi , rsi , ][rax]
+		rdi = rax [rax , r10 , ][rdi]
+	jump Label_54 [r10 , ][]
+	jump Label_57 [rsi , r10 , ][]
+Label_59:
+Label_57:
+Label_53:
+	rsi = rsi + 1 [rsi , r10 , ][rsi]
+	jump Label_56 [rsi , r10 , ][]
+Label_54:
+	jump Label_50 [r10 , ][]
+Label_52:
+Label_50:
+Label_46:
+	r10 = r10 + 1 [r10 , ][r10]
+	jump Label_49 [r10 , ][]
+Label_47:
+	r10 = 0 [][r10]
+Label_63:
+	jump Label_62 if r10 jl qword [ now__ ] [r10 , ][]
+	jump Label_61 [][]
+Label_62:
+	rdi = qword [ a__ ] [r10 , ][rdi]
+	jump Label_65 if qword [rdi + r10 * 8] je 0 [r10 , rdi , ][]
+	jump Label_66 [r10 , ][]
+Label_65:
+	qword [ now__ ] = r10 [r10 , ][]
+	jump Label_61 [][]
+	jump Label_64 [r10 , ][]
+Label_66:
+Label_64:
+Label_60:
+	r10 = r10 + 1 [r10 , ][r10]
+	jump Label_63 [r10 , ][]
+Label_61:
+Label_45:
+move [Func]:
+	rdi = 0 [][rdi]
+Label_71:
+	jump Label_70 if rdi jl qword [ now__ ] [rdi , ][]
+	jump Label_69 [][]
+Label_70:
+	rsi = qword [ a__ ] [rdi , ][rsi]
+	qword [rsi + rdi * 8] = qword [rsi + rdi * 8] - 1 [rdi , rsi , ][]
+	rdi = rdi + 1 [rdi , ][rdi]
+	rdi = rdi [rdi , ][rdi]
+Label_68:
+	jump Label_71 [rdi , ][]
+Label_69:
+	rdi = qword [ a__ ] [][rdi]
+	rsi = qword [ now__ ] [rdi , ][rsi]
+	qword [rdi + rsi * 8] = qword [ now__ ] [rsi , rdi , ][]
+	rdi = qword [ now__ ] [][rdi]
+	qword [ now__ ] = qword [ now__ ] + 1 [][]
+Label_67:
+main [Func]:
+	qword [ A__ ] = 48271 [][]
+	qword [ M__ ] = 2147483647 [][]
+	qword [ seed__ ] = 1 [][]
+	rsi = 0 [][rsi]
+	r10 = 0 [rsi , ][r10]
+	r11 = 0 [rsi , r10 , ][r11]
+	rdi = 3 * 7 [r11 , rsi , r10 , ][rdi]
+	rdi = rdi * 10 [r11 , rsi , r10 , rdi , ][rdi]
+	qword [ n__ ] = rdi [rdi , r11 , rsi , r10 , ][]
+	qword [ h__ ] = 0 [r11 , rsi , r10 , ][]
+	rdi = 100 [r11 , rsi , r10 , ][rdi]
+	rdi = rdi + 1 [rdi , r11 , rsi , r10 , ][rdi]
+	rdi = rdi * 8 [rdi , r11 , rsi , r10 , ][rdi]
+		rdi = rdi [rdi , r11 , rsi , r10 , ][rdi]
+		FuncCall malloc Param_size : 1 [r11 , rdi , rsi , r10 , ][rax]
+		rdi = rax [rax , r11 , rsi , r10 , ][rdi]
+	qword [rdi] = 100 [r11 , rdi , rsi , r10 , ][]
+	rdi = rdi + 8 [r11 , rdi , rsi , r10 , ][rdi]
+	qword [ a__ ] = rdi [r11 , rdi , rsi , r10 , ][]
+	rdi = qword [ M__ ] / qword [ A__ ] [r11 , rsi , r10 , ][rdi]
+	qword [ Q__ ] = rdi [r11 , rsi , r10 , rdi , ][]
+	rdi = qword [ M__ ] % qword [ A__ ] [r11 , rsi , r10 , ][rdi]
+	qword [ R__ ] = rdi [r11 , rsi , rdi , r10 , ][]
+		rdi = qword [ n__ ] [r11 , rsi , r10 , ][rdi]
+		FuncCall pd Param_size : 1 [r11 , rdi , rsi , r10 , ][rax]
+		rdi = rax [rax , r11 , rsi , r10 , ][rdi]
+	rdi = rdi [r11 , rdi , rsi , r10 , ][rdi]
+	! rdi [r11 , rsi , r10 , rdi , ][rdi]
+	jump Label_74 if rdi je 1 [r11 , rsi , r10 , rdi , ][]
+	jump Label_75 [r11 , rsi , r10 , ][]
+Label_74:
+		rdi = str__2 [][rdi]
+		FuncCall println Param_size : 1 [rdi , ][rax]
+		rdi = rax [rax , ][rdi]
+	rax = 1 [][rax]
+	jump Label_72 [][]
+	jump Label_73 [r11 , rsi , r10 , ][]
+Label_75:
+Label_73:
+		rdi = str__3 [r11 , rsi , r10 , ][rdi]
+		FuncCall println Param_size : 1 [r11 , rdi , rsi , r10 , ][rax]
+		rdi = rax [rax , r11 , rsi , r10 , ][rdi]
+		rdi = 3654898 [r11 , rsi , r10 , ][rdi]
+		FuncCall initialize Param_size : 1 [r11 , rdi , rsi , r10 , ][rax]
+		rdi = rax [rax , r11 , rsi , r10 , ][rdi]
+		FuncCall random Param_size : 0 [r11 , rsi , r10 , ][rax]
+		rdi = rax [rax , r11 , rsi , r10 , ][rdi]
+	rdi = rdi % 10 [r11 , rsi , r10 , rdi , ][rdi]
+	rdi = rdi + 1 [rdi , r11 , rsi , r10 , ][rdi]
+	qword [ now__ ] = rdi [r11 , rdi , rsi , r10 , ][]
+		rdi = qword [ now__ ] [r11 , rsi , r10 , ][rdi]
+		FuncCall toString Param_size : 1 [r11 , rdi , rsi , r10 , ][rax]
+		rdi = rax [rax , r11 , rsi , r10 , ][rdi]
+		rdi = rdi [rdi , r11 , rsi , r10 , ][rdi]
+		FuncCall println Param_size : 1 [r11 , rdi , rsi , r10 , ][rax]
+		rdi = rax [rax , r11 , rsi , r10 , ][rdi]
+Label_79:
+	rdi = qword [ now__ ] - 1 [r11 , rsi , r10 , ][rdi]
+	jump Label_78 if rsi jl rdi [r11 , rsi , rdi , r10 , ][]
+	jump Label_77 [r11 , r10 , ][]
+Label_78:
+	rdi = qword [ a__ ] [r11 , rsi , r10 , ][rdi]
+		FuncCall random Param_size : 0 [r11 , rdi , rsi , r10 , ][rax]
+		r8 = rax [rax , r11 , rdi , rsi , r10 , ][r8]
+	r8 = r8 % 10 [r11 , rdi , rsi , r10 , r8 , ][r8]
+	r8 = r8 + 1 [r11 , r8 , rdi , rsi , r10 , ][r8]
+	qword [rdi + rsi * 8] = r8 [r11 , rdi , rsi , r8 , r10 , ][]
+Label_83:
+	rdi = qword [ a__ ] [r11 , rsi , r10 , ][rdi]
+	rdi = qword [rdi + rsi * 8] + r10 [rdi , r11 , rsi , r10 , ][rdi]
+	jump Label_82 if rdi jg qword [ n__ ] [r11 , rdi , rsi , r10 , ][]
+	jump Label_81 [r11 , rsi , r10 , ][]
+Label_82:
+	rdi = qword [ a__ ] [r11 , rsi , r10 , ][rdi]
+		FuncCall random Param_size : 0 [r11 , rsi , rdi , r10 , ][rax]
+		r8 = rax [rax , r11 , rsi , rdi , r10 , ][r8]
+	r8 = r8 % 10 [r11 , rsi , rdi , r10 , r8 , ][r8]
+	r8 = r8 + 1 [r11 , rsi , rdi , r8 , r10 , ][r8]
+	qword [rdi + rsi * 8] = r8 [r11 , r8 , rsi , rdi , r10 , ][]
+Label_80:
+	jump Label_83 [r11 , rsi , r10 , ][]
+Label_81:
+	rdi = qword [ a__ ] [r11 , rsi , r10 , ][rdi]
+	rdi = r10 + qword [rdi + rsi * 8] [r11 , rdi , rsi , r10 , ][rdi]
+	r10 = rdi [r11 , rsi , rdi , ][r10]
+Label_76:
+	rsi = rsi + 1 [r11 , rsi , r10 , ][rsi]
+	jump Label_79 [r11 , rsi , r10 , ][]
+Label_77:
+	rdi = qword [ a__ ] [r11 , r10 , ][rdi]
+	rsi = qword [ now__ ] - 1 [r11 , r10 , rdi , ][rsi]
+	r10 = qword [ n__ ] - r10 [r11 , r10 , rdi , rsi , ][r10]
+	qword [rdi + rsi * 8] = r10 [r11 , r10 , rdi , rsi , ][]
+		FuncCall show Param_size : 0 [r11 , ][rax]
+		rdi = rax [rax , r11 , ][rdi]
+		FuncCall merge Param_size : 0 [r11 , ][rax]
+		rdi = rax [rax , r11 , ][rdi]
+Label_87:
+		FuncCall win Param_size : 0 [r11 , ][rax]
+		rdi = rax [rax , r11 , ][rdi]
+	rdi = rdi [r11 , rdi , ][rdi]
+	! rdi [rdi , r11 , ][rdi]
+	jump Label_86 if rdi je 1 [rdi , r11 , ][]
+	jump Label_85 [r11 , ][]
+Label_86:
+	r11 = r11 + 1 [r11 , ][r11]
+		rdi = r11 [r11 , ][rdi]
+		FuncCall toString Param_size : 1 [r11 , rdi , ][rax]
+		rsi = rax [rax , r11 , ][rsi]
+		rdi = str__4 [r11 , rsi , ][rdi]
+		rsi = rsi [r11 , rdi , rsi , ][rsi]
+		FuncCall string.add Param_size : 2 [r11 , rdi , rsi , ][rax]
+		rdi = rax [rax , r11 , ][rdi]
+		rdi = rdi [r11 , rdi , ][rdi]
+		rsi = str__5 [r11 , rdi , ][rsi]
+		FuncCall string.add Param_size : 2 [r11 , rdi , rsi , ][rax]
+		rdi = rax [rax , r11 , ][rdi]
+		rdi = rdi [rdi , r11 , ][rdi]
+		FuncCall println Param_size : 1 [r11 , rdi , ][rax]
+		rdi = rax [rax , r11 , ][rdi]
+		FuncCall move Param_size : 0 [r11 , ][rax]
+		rdi = rax [rax , r11 , ][rdi]
+		FuncCall merge Param_size : 0 [r11 , ][rax]
+		rdi = rax [rax , r11 , ][rdi]
+		FuncCall show Param_size : 0 [r11 , ][rax]
+		rdi = rax [rax , r11 , ][rdi]
+Label_84:
+	jump Label_87 [r11 , ][]
+Label_85:
+		rdi = r11 [r11 , ][rdi]
+		FuncCall toString Param_size : 1 [rdi , ][rax]
+		rsi = rax [rax , ][rsi]
+		rdi = str__6 [rsi , ][rdi]
+		rsi = rsi [rsi , rdi , ][rsi]
+		FuncCall string.add Param_size : 2 [rdi , rsi , ][rax]
+		rdi = rax [rax , ][rdi]
+		rdi = rdi [rdi , ][rdi]
+		rsi = str__7 [rdi , ][rsi]
+		FuncCall string.add Param_size : 2 [rdi , rsi , ][rax]
+		rdi = rax [rax , ][rdi]
+		rdi = rdi [rdi , ][rdi]
+		FuncCall println Param_size : 1 [rdi , ][rax]
+		rdi = rax [rax , ][rdi]
+	rax = 0 [][rax]
+	jump Label_72 [][]
+Label_72:
