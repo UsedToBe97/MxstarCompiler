@@ -364,6 +364,9 @@ public class CodeGenerator {
         ans.append("\tpop rbp\n");
         ans.append("\tret\n");
 
+
+
+
         //getInt
         ans.append("getInt:\n");
         ans.append("\tpush rbp\n");
@@ -468,45 +471,33 @@ public class CodeGenerator {
 
         //string.substring
         ans.append("string.substring:\n");
-        ans.append("\tpush    rbp\n");
-        ans.append("\tmov     rbp, rsp\n");
-        ans.append("\tsub     rsp, 32\n");
-        ans.append("\tmov     qword [rbp-18H], rdi\n");
-        ans.append("\tmov     dword [rbp-1CH], esi\n");
-        ans.append("\tmov     dword [rbp-20H], edx\n");
-        ans.append("\tmov     edi, 256\n");
-        ans.append("\tcall    malloc\n");
-        ans.append("\tmov     qword [rbp-8H], rax\n");
-        ans.append("\tmov     eax, dword [rbp-20H]\n");
-        ans.append("\tsub     eax, dword [rbp-1CH]\n");
-        ans.append("\tadd     eax, 1\n");
-        ans.append("\tmov     dword [rbp-0CH], eax\n");
-        ans.append("\tmov     dword [rbp-10H], 0\n");
-        ans.append("\tjmp     Lsub_002\n");
-        ans.append("Lsub_001:  mov     eax, dword [rbp-10H]\n");
-        ans.append("\tmovsxd  rdx, eax\n");
-        ans.append("\tmov     rax, qword [rbp-8H]\n");
-        ans.append("\tadd     rdx, rax\n");
-        ans.append("\tmov     ecx, dword [rbp-10H]\n");
-        ans.append("\tmov     eax, dword [rbp-1CH]\n");
-        ans.append("\tadd     eax, ecx\n");
-        ans.append("\tmovsxd  rcx, eax\n");
-        ans.append("\tmov     rax, qword [rbp-18H]\n");
-        ans.append("\tadd     rax, rcx\n");
-        ans.append("\tmovzx   eax, byte [rax]\n");
-        ans.append("\tmov     byte [rdx], al\n");
-        ans.append("\tadd     dword [rbp-10H], 1\n");
-        ans.append("Lsub_002:  mov     eax, dword [rbp-10H]\n");
-        ans.append("\tcmp     eax, dword [rbp-0CH]\n");
-        ans.append("\tjl      Lsub_001\n");
-        ans.append("\tmov     eax, dword [rbp-0CH]\n");
-        ans.append("\tmovsxd  rdx, eax\n");
-        ans.append("\tmov     rax, qword [rbp-8H]\n");
-        ans.append("\tadd     rax, rdx\n");
-        ans.append("\tmov     byte [rax], 0\n");
-        ans.append("\tmov     rax, qword [rbp-8H]\n");
-        ans.append("\tleave\n");
-        ans.append("\t        ret\n");
+        ans.append("\tpush rbp\n");
+        ans.append("\tmov rbp,rsp\n");
+        ans.append("\tpush rdi\n");
+        ans.append("\tpush rsi\n");
+        ans.append("\tmov rdi,rdx\n");
+        ans.append("\tsub rdi,rsi\n");
+        ans.append("\tadd rdi,1\n");
+        ans.append("\tpush rdi\n");
+        ans.append("\tadd rdi,9\n");
+        ans.append("\tcall malloc\n");
+        ans.append("\tpop rdx\n");
+        ans.append("\tmov [rax],rdx\n");
+        ans.append("\tadd rax,8\n");
+        ans.append("\tpop rsi\n");
+        ans.append("\tpop rdi\n");
+        ans.append("\tadd rsi,rdi\n");
+        ans.append("\tmov rdi,rax\n");
+        ans.append("\tpush rdx\n");
+        ans.append("\tpush rax\n");
+        ans.append("\tcall memcpy\n");
+        ans.append("\tpop rax\n");
+        ans.append("\tpop rdx\n");
+        ans.append("\tmov qword[rax+rdx],0\n");
+        ans.append("\tmov rsp,rbp\n");
+        ans.append("\tpop rbp\n");
+        ans.append("\tret\n");
+        ans.append("\n");
 
         //string.parseInt
         ans.append("string.parseInt:\n");
