@@ -98,7 +98,7 @@ public class CodeGenerator {
         dest = getOp(dest, X86Reg.rdx);
         ans.append("\tmov\trax, " + lhs.toString() + "\n");
         ans.append("\tmov\trcx, " + rhs.toString() + "\n");
-        ans.append("\tcdq\n\tidiv\tecx\n");
+        ans.append("\tcqo\n\tidiv\tecx\n");
         String src = op.equals("div") ? "rax" : "rdx";
         ans.append("\tmov\t" + dest.toString() + ", " + src + "\n");
     }
