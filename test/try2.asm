@@ -264,11 +264,11 @@ Label_3:
 	pop	rsi
 	pop	rdi
 	mov	rdi, rax
-	mov	rax, r11
-	mov	rcx, 100000
-	cqo
-	idiv	rcx
-	mov	rsi, rdx
+	mov	eax, r11d
+	mov	ecx, 100000
+	cdq
+	idiv	ecx
+	mov	esi, edx
 	cmp	rsi, 0
 	je	Label_6
 	jmp	Label_7
