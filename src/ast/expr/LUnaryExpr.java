@@ -1,11 +1,15 @@
 package ast.expr;
 
+import ast.definition.VarDef;
 import ast.type.BoolType;
 import ast.type.IntType;
 import ast.type.Type;
 import compiler.IrBuilder;
+import ir.operand.Operand;
 import utils.CompileError;
 import utils.Position;
+
+import java.util.HashMap;
 
 public class LUnaryExpr extends Expr {
     public Expr expr;
@@ -48,6 +52,14 @@ public class LUnaryExpr extends Expr {
         expr.output(dep + 1);
         System.err.println(ss + "Type:" + type.typename());
         System.err.println(s + "EndLUnaryExpr:");
+    }
+    public LUnaryExpr() {}
+    public Expr getinline(HashMap<String, Operand> map) {
+        LUnaryExpr tmp = new LUnaryExpr();
+        tmp.expr = expr.getinline(map);
+        tmp.op = op;
+        tmp.type = type;
+        return tmp;
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

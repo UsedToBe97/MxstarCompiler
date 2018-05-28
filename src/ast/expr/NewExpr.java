@@ -1,11 +1,14 @@
 package ast.expr;
 
+import ast.definition.VarDef;
 import ast.type.*;
 import compiler.IrBuilder;
+import ir.operand.Operand;
 import parser.MxstarParser;
 import utils.CompileError;
 import utils.Position;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -59,5 +62,5 @@ public class NewExpr extends Expr {
     public void accept(IrBuilder ib){
         ib.visit(this);
     }
-
+    public NewExpr getinline(HashMap<String, Operand> map) {return this;}
 }

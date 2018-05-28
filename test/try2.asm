@@ -11,17 +11,31 @@ extern strlen
 extern memcpy
 extern scanf
 section .data
-	dq	1
+	dq	0
 str__0:
+	db	0
+	dq	0
+str__1:
+	db	0
+	dq	95
+str__2:
+	db	32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 0
+	dq	1
+str__3:
 	db	32, 0
 	dq	1
-str__1:
+str__4:
 	db	32, 0
-A__:
+	dq	1
+str__5:
+	db	32, 0
+	dq	1
+str__6:
+	db	32, 0
 	dq	0
-B__:
-	dq	0
-C__:
+str__7:
+	db	0
+asciiTable__:
 	dq	0
 intbuffer:
 	dq 0
@@ -34,16 +48,370 @@ section .bss
 stringbuffer:
 	resb 256
 section .text
+hilo:
+	push	rbp
+	mov	rbp, rsp
+	mov	rax, rdi
+	mov	rcx, 16
+	shl	rax, cl
+	mov	rdi, rax
+	mov	rcx, rsi
+	or	rcx, rdi
+	mov	rdi, rcx
+	mov	rax, rdi
+	jmp	Label_0
+Label_0:
+	mov	rsp, rbp
+	pop	rbp
+	ret
+shift_l:
+	push	rbp
+	mov	rbp, rsp
+	mov	rax, rdi
+	mov	rcx, rsi
+	shl	rax, cl
+	mov	rdi, rax
+	mov	rax, 32767
+	mov	rcx, 16
+	shl	rax, cl
+	mov	rsi, rax
+	mov	rcx, 65535
+	or	rcx, rsi
+	mov	rsi, rcx
+	and	rdi, rsi
+	mov	rax, rdi
+	jmp	Label_1
+Label_1:
+	mov	rsp, rbp
+	pop	rbp
+	ret
+shift_r:
+	push	rbp
+	mov	rbp, rsp
+	mov	rax, 32767
+	mov	rcx, 16
+	shl	rax, cl
+	mov	r10, rax
+	mov	rcx, 65535
+	or	rcx, r10
+	mov	r10, rcx
+	mov	rax, r10
+	mov	rcx, rsi
+	shr	rax, cl
+	mov	r10, rax
+	mov	rax, r10
+	mov	rcx, 1
+	shl	rax, cl
+	mov	r10, rax
+	add	r10, 1
+	mov	rax, rdi
+	mov	rcx, rsi
+	shr	rax, cl
+	mov	rdi, rax
+	mov	rcx, r10
+	and	rcx, rdi
+	mov	rdi, rcx
+	mov	r10, rdi
+	mov	rax, 32767
+	mov	rcx, 16
+	shl	rax, cl
+	mov	rdi, rax
+	mov	rcx, 65535
+	or	rcx, rdi
+	mov	rdi, rcx
+	mov	rcx, r10
+	and	rcx, rdi
+	mov	rdi, rcx
+	mov	rax, rdi
+	jmp	Label_2
+Label_2:
+	mov	rsp, rbp
+	pop	rbp
+	ret
+xorshift:
+	push	rbp
+	mov	rbp, rsp
+	mov	r10, rsi
+	add	rdi, 1
+	mov	r11, rdi
+	mov	r8, 0
+Label_7:
+	mov	rcx, r10
+	imul	rcx, 10
+	mov	rdi, rcx
+	cmp	r8, rdi
+	jl	Label_6
+	jmp	Label_5
+Label_6:
+	mov	rax, r11
+	mov	rcx, 13
+	shl	rax, cl
+	mov	rdi, rax
+	mov	rax, 32767
+	mov	rcx, 16
+	shl	rax, cl
+	mov	rsi, rax
+	mov	rcx, 65535
+	or	rcx, rsi
+	mov	rsi, rcx
+	and	rdi, rsi
+	mov	rcx, r11
+	xor	rcx, rdi
+	mov	rdi, rcx
+	mov	r11, rdi
+	push	rdi
+	push	rsi
+	push	r10
+	push	r11
+	push	r8
+	mov	rdi, r11
+	mov	rsi, 17
+	call	shift_r
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	mov	rcx, r11
+	xor	rcx, rdi
+	mov	rdi, rcx
+	mov	r11, rdi
+	mov	rax, r11
+	mov	rcx, 5
+	shl	rax, cl
+	mov	rdi, rax
+	mov	rax, 32767
+	mov	rcx, 16
+	shl	rax, cl
+	mov	rsi, rax
+	mov	rcx, 65535
+	or	rcx, rsi
+	mov	rsi, rcx
+	and	rdi, rsi
+	mov	rcx, r11
+	xor	rcx, rdi
+	mov	rdi, rcx
+	mov	r11, rdi
+Label_4:
+	mov	rdi, r8
+	add	r8, 1
+	jmp	Label_7
+Label_5:
+	mov	rcx, r11
+	xor	rcx, 123456789
+	mov	rdi, rcx
+	mov	rax, rdi
+	jmp	Label_3
+Label_3:
+	mov	rsp, rbp
+	pop	rbp
+	ret
+int2chr:
+	push	rbp
+	mov	rbp, rsp
+	cmp	rdi, 32
+	jge	Label_12
+	mov	rsi, 0
+	jmp	Label_13
+Label_12:
+	mov	rcx, rdi
+	cmp	rcx, 126
+	setle	cl
+	movzx	rcx, cl
+	mov	rsi, rcx
+Label_13:
+	cmp	rsi, 1
+	je	Label_10
+	jmp	Label_11
+Label_10:
+	mov	rcx, rdi
+	sub	rcx, 32
+	mov	rsi, rcx
+	mov	rcx, rdi
+	sub	rcx, 32
+	mov	r10, rcx
+	push	rdi
+	push	rsi
+	push	r10
+	mov	rdi, qword [ asciiTable__ ]
+	mov	rdx, r10
+	call	string.substring
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	mov	rax, rdi
+	jmp	Label_8
+	jmp	Label_9
+Label_11:
+Label_9:
+	mov	rax, str__0
+	jmp	Label_8
+Label_8:
+	mov	rsp, rbp
+	pop	rbp
+	ret
+toStringHex:
+	push	rbp
+	mov	rbp, rsp
+	mov	r10, rdi
+	mov	rsi, str__1
+	mov	r11, 28
+Label_18:
+	cmp	r11, 0
+	jge	Label_17
+	jmp	Label_16
+Label_17:
+	mov	rax, r10
+	mov	rcx, r11
+	shr	rax, cl
+	mov	rdi, rax
+	and	rdi, 15
+	cmp	rdi, 10
+	jl	Label_20
+	jmp	Label_21
+Label_20:
+	mov	rcx, 48
+	add	rcx, rdi
+	mov	rdi, rcx
+	push	rdi
+	push	rsi
+	push	r10
+	push	r11
+	push	r8
+	call	int2chr
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	r8, rax
+	push	rdi
+	push	rsi
+	push	r10
+	push	r11
+	push	r8
+	mov	rdi, rsi
+	mov	rsi, r8
+	call	string.add
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	mov	rsi, rdi
+	jmp	Label_19
+Label_21:
+	mov	rcx, 65
+	add	rcx, rdi
+	mov	rdi, rcx
+	sub	rdi, 10
+	push	rdi
+	push	rsi
+	push	r10
+	push	r11
+	push	r8
+	call	int2chr
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	r8, rax
+	push	rdi
+	push	rsi
+	push	r10
+	push	r11
+	push	r8
+	mov	rdi, rsi
+	mov	rsi, r8
+	call	string.add
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	mov	rsi, rdi
+Label_19:
+Label_15:
+	mov	rcx, r11
+	sub	rcx, 4
+	mov	rdi, rcx
+	mov	r11, rdi
+	jmp	Label_18
+Label_16:
+	mov	rax, rsi
+	jmp	Label_14
+Label_14:
+	mov	rsp, rbp
+	pop	rbp
+	ret
+getnumber:
+	push	rbp
+	mov	rbp, rsp
+	mov	r10, rdx
+	and	r10, 31
+	push	rdi
+	push	rsi
+	push	r10
+	push	r11
+	call	xorshift
+	pop	r11
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	mov	rax, rdi
+	mov	rcx, r10
+	shl	rax, cl
+	mov	rsi, rax
+	mov	rax, 32767
+	mov	rcx, 16
+	shl	rax, cl
+	mov	r11, rax
+	mov	rcx, 65535
+	or	rcx, r11
+	mov	r11, rcx
+	mov	rcx, rsi
+	and	rcx, r11
+	mov	r11, rcx
+	mov	rcx, 32
+	sub	rcx, r10
+	mov	rsi, rcx
+	push	rdi
+	push	rsi
+	push	r10
+	push	r11
+	call	shift_r
+	pop	r11
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	mov	rcx, r11
+	or	rcx, rdi
+	mov	rdi, rcx
+	mov	rax, rdi
+	jmp	Label_22
+Label_22:
+	mov	rsp, rbp
+	pop	rbp
+	ret
 main:
 	push	rbp
 	mov	rbp, rsp
+	push	r15
 	push	r12
 	push	r13
 	push	r14
-	sub	rbp, 24
-	mov	r10, 0
+	sub	rbp, 32
+	sub	rsp, 88
+	mov	rax, str__2
+	mov	qword [ asciiTable__ ], rax
 	push	rdi
-	push	rsi
 	push	r10
 	push	r11
 	push	r8
@@ -53,1565 +421,489 @@ main:
 	pop	r8
 	pop	r11
 	pop	r10
-	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	mov	r10, rdi
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	call	getInt
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
 	pop	rdi
 	mov	rdi, rax
 	mov	r11, rdi
-Label_4:
-	cmp	r10, r11
-	jl	Label_3
-	jmp	Label_2
-Label_3:
-	mov	rcx, r10
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	call	getInt
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	mov	r8, rdi
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	call	getInt
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	mov	r9, rdi
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	call	getInt
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	mov	r12, rdi
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	call	getInt
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	mov	r13, rdi
+	mov	rax, 30
+	mov	qword [rbp - 16], rax
+	mov	rax, 0
+	mov	qword [rbp - 24], rax
+	mov	rax, 0
+	mov	qword [rbp - 32], rax
+	mov	rax, 0
+	mov	qword [rbp - 40], rax
+	mov	rax, 0
+	mov	qword [rbp - 48], rax
+	mov	r14, r10
+Label_27:
+	cmp	r14, r11
+	jl	Label_26
+	jmp	Label_25
+Label_26:
+	mov	r15, r8
+Label_31:
+	cmp	r15, r9
+	jl	Label_30
+	jmp	Label_29
+Label_30:
+	mov	qword [rbp - 8], r12
+Label_35:
+	mov	rax, qword [rbp - 8]
+	cmp	rax, r13
+	jl	Label_34
+	jmp	Label_33
+Label_34:
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rdi, r10
+	mov	rsi, qword [rbp - 16]
+	mov	rdx, qword [rbp - 8]
+	call	getnumber
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	mov	qword [rbp - 56], rdi
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rdi, r14
+	mov	rsi, qword [rbp - 16]
+	mov	rdx, qword [rbp - 8]
+	call	getnumber
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	mov	qword [rbp - 64], rdi
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rdi, r15
+	mov	rsi, qword [rbp - 16]
+	mov	rdx, qword [rbp - 8]
+	call	getnumber
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	mov	qword [rbp - 72], rdi
+	mov	rcx, r14
+	xor	rcx, r15
+	mov	rdi, rcx
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rsi, qword [rbp - 16]
+	mov	rdx, qword [rbp - 8]
+	call	getnumber
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	mov	qword [rbp - 80], rdi
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rdi, qword [rbp - 8]
+	mov	rsi, 1
+	call	xorshift
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	qword [rbp - 88], rax
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rdi, r15
+	mov	rsi, 1
+	call	xorshift
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	mov	rcx, qword [rbp - 88]
+	xor	rcx, rdi
+	mov	qword [rbp - 88], rcx
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rdi, r14
+	mov	rsi, 1
+	call	xorshift
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	mov	rcx, qword [rbp - 88]
+	xor	rcx, rdi
+	mov	rdi, rcx
+	mov	qword [rbp - 88], rdi
+	mov	rcx, qword [rbp - 56]
+	xor	rcx, qword [rbp - 88]
+	mov	rdi, rcx
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rsi, 1
+	call	xorshift
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	mov	rcx, qword [rbp - 24]
+	add	rcx, rdi
+	mov	rdi, rcx
+	mov	qword [rbp - 24], rdi
+	mov	rcx, qword [rbp - 64]
+	xor	rcx, qword [rbp - 88]
+	mov	rdi, rcx
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rsi, 1
+	call	xorshift
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	mov	rcx, qword [rbp - 32]
+	add	rcx, rdi
+	mov	rdi, rcx
+	mov	qword [rbp - 32], rdi
+	mov	rcx, qword [rbp - 72]
+	xor	rcx, qword [rbp - 88]
+	mov	rdi, rcx
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rsi, 1
+	call	xorshift
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	mov	rcx, qword [rbp - 40]
+	add	rcx, rdi
+	mov	rdi, rcx
+	mov	qword [rbp - 40], rdi
+	mov	rcx, qword [rbp - 80]
+	xor	rcx, qword [rbp - 88]
+	mov	rdi, rcx
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rsi, 1
+	call	xorshift
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	mov	rcx, qword [rbp - 48]
+	add	rcx, rdi
+	mov	rdi, rcx
+	mov	qword [rbp - 48], rdi
+Label_32:
+	mov	rdi, qword [rbp - 8]
+	mov	rcx, qword [rbp - 8]
 	add	rcx, 1
-	mov	rdi, rcx
-	mov	qword [ A__ ], rdi
-	mov	rcx, r10
-	add	rcx, 1
-	mov	rdi, rcx
-	mov	qword [ B__ ], rdi
-	mov	rcx, r10
-	add	rcx, 1
-	mov	rdi, rcx
-	mov	qword [ C__ ], rdi
-Label_8:
-	mov	rax, 1
-	mov	rcx, 29
-	shl	rax, cl
-	mov	rdi, rax
-	mov	rax, qword [ C__ ]
-	cmp	rax, rdi
-	jl	Label_9
-	mov	rdi, 0
-	jmp	Label_10
-Label_9:
-	mov	rax, 1
-	mov	rcx, 29
-	shl	rax, cl
-	mov	rdi, rax
-	neg	rdi
-	mov	rcx, qword [ C__ ]
-	cmp	rcx, rdi
-	setg	cl
-	movzx	rcx, cl
-	mov	rdi, rcx
-Label_10:
-	cmp	rdi, 1
-	je	Label_7
-	jmp	Label_6
-Label_7:
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	rdi, rcx
-	add	rdi, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	rsi, rcx
-	sub	rdi, rsi
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	rsi, rcx
-	add	rsi, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	sub	rsi, r8
-	add	rdi, rsi
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	rsi, rcx
-	add	rsi, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	sub	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	add	rsi, r8
-	add	rdi, rsi
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	rsi, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	add	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	sub	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	add	rsi, r8
-	sub	rdi, rsi
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	rsi, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	add	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	sub	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	sub	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	sub	r8, r9
-	add	rsi, r8
-	sub	rdi, rsi
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	rsi, rcx
-	add	rsi, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	sub	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	add	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	add	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	add	r8, r9
-	sub	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r13, rcx
-	sub	r12, r13
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	add	r12, r13
-	add	r9, r12
-	sub	r8, r9
-	sub	rsi, r8
-	add	rdi, rsi
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	rsi, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	add	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	sub	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	sub	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	sub	r8, r9
-	add	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	add	r12, r13
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r13, rcx
-	sub	r12, r13
-	sub	r9, r12
-	add	r8, r9
-	add	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	add	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r13, rcx
-	sub	r12, r13
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	add	r12, r13
-	add	r9, r12
-	sub	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r13, rcx
-	sub	r12, r13
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	add	r12, r13
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	add	r12, r13
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r13, rcx
-	sub	r12, r13
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r14, rcx
-	sub	r13, r14
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r14, rcx
-	add	r14, qword [ B__ ]
-	add	r13, r14
-	add	r12, r13
-	sub	r9, r12
-	sub	r8, r9
-	add	rsi, r8
-	sub	rdi, rsi
-	mov	qword [ A__ ], rdi
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	rdi, rcx
-	add	rdi, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	rsi, rcx
-	sub	rdi, rsi
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	rsi, rcx
-	add	rsi, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	sub	rsi, r8
-	add	rdi, rsi
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	rsi, rcx
-	add	rsi, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	sub	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	add	rsi, r8
-	add	rdi, rsi
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	rsi, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	add	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	sub	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	add	rsi, r8
-	sub	rdi, rsi
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	rsi, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	add	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	sub	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	sub	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	sub	r8, r9
-	add	rsi, r8
-	sub	rdi, rsi
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	rsi, rcx
-	add	rsi, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	sub	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	add	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	add	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	add	r8, r9
-	sub	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r13, rcx
-	sub	r12, r13
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	add	r12, r13
-	add	r9, r12
-	sub	r8, r9
-	sub	rsi, r8
-	add	rdi, rsi
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	rsi, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	add	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	sub	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	sub	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	sub	r8, r9
-	add	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	add	r12, r13
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r13, rcx
-	sub	r12, r13
-	sub	r9, r12
-	add	r8, r9
-	add	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	add	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r13, rcx
-	sub	r12, r13
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	add	r12, r13
-	add	r9, r12
-	sub	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r13, rcx
-	sub	r12, r13
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	add	r12, r13
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	add	r12, r13
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r13, rcx
-	sub	r12, r13
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r14, rcx
-	sub	r13, r14
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r14, rcx
-	add	r14, qword [ B__ ]
-	add	r13, r14
-	add	r12, r13
-	sub	r9, r12
-	sub	r8, r9
-	add	rsi, r8
-	sub	rdi, rsi
-	mov	qword [ B__ ], rdi
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	rdi, rcx
-	add	rdi, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	rsi, rcx
-	sub	rdi, rsi
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	rsi, rcx
-	add	rsi, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	sub	rsi, r8
-	add	rdi, rsi
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	rsi, rcx
-	add	rsi, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	sub	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	add	rsi, r8
-	add	rdi, rsi
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	rsi, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	add	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	sub	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	add	rsi, r8
-	sub	rdi, rsi
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	rsi, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	add	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	sub	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	sub	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	sub	r8, r9
-	add	rsi, r8
-	sub	rdi, rsi
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	rsi, rcx
-	add	rsi, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	sub	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	add	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	add	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	add	r8, r9
-	sub	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r13, rcx
-	sub	r12, r13
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	add	r12, r13
-	add	r9, r12
-	sub	r8, r9
-	sub	rsi, r8
-	add	rdi, rsi
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	rsi, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	add	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	sub	rsi, r8
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r8, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	sub	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	sub	r8, r9
-	add	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	add	r12, r13
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r13, rcx
-	sub	r12, r13
-	sub	r9, r12
-	add	r8, r9
-	add	rsi, r8
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r8, rcx
-	add	r8, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	sub	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	add	r8, r9
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r9, rcx
-	add	r9, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	add	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r13, rcx
-	sub	r12, r13
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	add	r12, r13
-	add	r9, r12
-	sub	r8, r9
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r9, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	sub	r9, r12
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r12, rcx
-	add	r12, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r13, rcx
-	sub	r12, r13
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	add	r12, r13
-	add	r9, r12
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r12, rcx
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	add	r12, r13
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r13, rcx
-	sub	r12, r13
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r13, rcx
-	add	r13, qword [ B__ ]
-	mov	rcx, qword [ A__ ]
-	add	rcx, qword [ B__ ]
-	mov	r14, rcx
-	sub	r13, r14
-	mov	rcx, qword [ C__ ]
-	sub	rcx, qword [ A__ ]
-	mov	r14, rcx
-	add	r14, qword [ B__ ]
-	add	r13, r14
-	add	r12, r13
-	sub	r9, r12
-	sub	r8, r9
-	add	rsi, r8
-	sub	rdi, rsi
-	mov	qword [ C__ ], rdi
-Label_5:
-	jmp	Label_8
-Label_6:
-	mov	eax, r10d
-	mov	ecx, 1000
-	cdq
-	idiv	ecx
-	mov	edi, edx
-	cmp	rdi, 0
-	je	Label_12
-	jmp	Label_13
-Label_12:
+	mov	qword [rbp - 8], rcx
+	jmp	Label_35
+Label_33:
+Label_28:
+	mov	rdi, r15
+	add	r15, 1
+	jmp	Label_31
+Label_29:
+Label_24:
+	mov	rdi, r14
+	add	r14, 1
+	jmp	Label_27
+Label_25:
 	push	rdi
-	push	rsi
 	push	r10
 	push	r11
 	push	r8
 	push	r9
-	mov	rdi, qword [ A__ ]
-	call	toString
+	mov	rdi, qword [rbp - 24]
+	call	toStringHex
 	pop	r9
 	pop	r8
 	pop	r11
 	pop	r10
-	pop	rsi
 	pop	rdi
 	mov	rdi, rax
 	push	rdi
-	push	rsi
 	push	r10
 	push	r11
 	push	r8
 	push	r9
-	mov	rsi, str__0
+	mov	rsi, str__3
 	call	string.add
 	pop	r9
 	pop	r8
 	pop	r11
 	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rsi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, qword [ B__ ]
-	call	toString
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	r8, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, rsi
-	mov	rsi, r8
-	call	string.add
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
 	pop	rdi
 	mov	rdi, rax
 	push	rdi
-	push	rsi
 	push	r10
 	push	r11
 	push	r8
 	push	r9
-	mov	rsi, str__1
-	call	string.add
+	call	print
 	pop	r9
 	pop	r8
 	pop	r11
 	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rsi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, qword [ C__ ]
-	call	toString
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	r8, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, rsi
-	mov	rsi, r8
-	call	string.add
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
 	pop	rdi
 	mov	rdi, rax
 	push	rdi
-	push	rsi
 	push	r10
 	push	r11
 	push	r8
 	push	r9
+	mov	rdi, qword [rbp - 32]
+	call	toStringHex
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rsi, str__4
+	call	string.add
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	call	print
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rdi, qword [rbp - 40]
+	call	toStringHex
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rsi, str__5
+	call	string.add
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	call	print
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rdi, qword [rbp - 48]
+	call	toStringHex
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rsi, str__6
+	call	string.add
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	call	print
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rdi
+	mov	rdi, rax
+	push	rdi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rdi, str__7
 	call	println
 	pop	r9
 	pop	r8
 	pop	r11
 	pop	r10
-	pop	rsi
 	pop	rdi
 	mov	rdi, rax
-	jmp	Label_11
-Label_13:
-Label_11:
-Label_1:
-	add	r10, 1
-	jmp	Label_4
-Label_2:
 	mov	rax, 0
-	jmp	Label_0
-Label_0:
-	add	rbp, 24
+	jmp	Label_23
+Label_23:
+	add	rsp, 88
+	add	rbp, 32
 	pop	r14
 	pop	r13
 	pop	r12
+	pop	r15
 	mov	rsp, rbp
 	pop	rbp
 	ret

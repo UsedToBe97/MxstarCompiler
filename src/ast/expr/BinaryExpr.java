@@ -2,9 +2,11 @@ package ast.expr;
 
 import ast.type.*;
 import compiler.IrBuilder;
+import ir.operand.Operand;
 import utils.CompileError;
 import utils.Position;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class BinaryExpr extends Expr {
@@ -83,6 +85,15 @@ public class BinaryExpr extends Expr {
         if (type != null)
             System.err.println(ss + "RES_Type:" + type.typename());
         System.err.println(s + "EndBinaryExpr:");
+    }
+    public BinaryExpr() {}
+    public Expr getinline(HashMap<String, Operand> map) {
+        BinaryExpr tmp = new BinaryExpr();
+        tmp.expr1 = expr1.getinline(map);
+        tmp.expr2 = expr2.getinline(map);
+        tmp.op = op;
+        tmp.type = type;
+        return tmp;
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

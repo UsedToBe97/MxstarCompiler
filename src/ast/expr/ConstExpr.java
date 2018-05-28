@@ -3,6 +3,9 @@ package ast.expr;
 import ast.type.IntType;
 import ast.type.Type;
 import compiler.IrBuilder;
+import ir.operand.Operand;
+
+import java.util.HashMap;
 
 public class ConstExpr extends Expr {
     public Type type;
@@ -28,6 +31,7 @@ public class ConstExpr extends Expr {
         }
         System.err.println(s + "EndConstExpr:");
     }
+    public Expr getinline(HashMap<String, Operand> map) {return this;}
     public void accept(IrBuilder ib){
         ib.visit(this);
     }

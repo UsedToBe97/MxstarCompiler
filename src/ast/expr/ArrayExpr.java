@@ -4,11 +4,13 @@ import ast.type.ArrayType;
 import ast.type.IntType;
 import ast.type.Type;
 import compiler.IrBuilder;
+import ir.operand.Operand;
 import ir.operand.addr.MemAddr;
 import utils.CompileError;
 import utils.Position;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -77,6 +79,14 @@ public class ArrayExpr extends Expr {
             e.output(dep + 1);
         }
         System.err.println(s + "EndArrayExpr:");
+    }
+    public ArrayExpr() {}
+    public Expr getinline(HashMap<String, Operand> map) {
+        ArrayExpr tmp = new ArrayExpr();
+        tmp.Leftexpr = Leftexpr.getinline(map);
+        tmp.exprList = new ArrayList<>();
+        for (Expr u : exprList) tmp.add(u.getinline(map));
+        return tmp;
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

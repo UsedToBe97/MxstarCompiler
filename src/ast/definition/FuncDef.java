@@ -16,6 +16,7 @@ import java.util.List;
 public class FuncDef extends Def{
     public String name;
     public Type type = new NullType(pos);
+    public boolean inline = true;
     public List<Pair<Type, String>> params = new LinkedList<>();
     public List<Def> paramList = new LinkedList<>();
     public List<Stmt> stmts = new LinkedList<>();

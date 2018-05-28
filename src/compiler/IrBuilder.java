@@ -290,6 +290,23 @@ public class IrBuilder {
             visit(e);
             params.add(e.operand);
         }
+        if (nowfunc.num < 524 && x.funcDef.inline == true) {
+            if (x.funcDef.stmts.size() == 1 && x.funcDef.stmts.get(0) instanceof ReturnStmt) {
+                x.funcDef.inline = false;
+                Expr res = ((ReturnStmt) x.funcDef.stmts.get(0)).expr;
+                HashMap<String, Operand> newMap = new HashMap<>();
+                for(int i = 0; i < x.funcDef.params.size(); ++i) {
+                    VarDef A = (VarDef) x.funcDef.paramList.get(i);
+                    Expr B = x.exprList.get(i);
+                    newMap.put(A.name, B.operand);
+                }
+                Expr tmp = res.getinline(newMap);
+                visit(tmp);
+                x.operand = tmp.operand;
+                x.funcDef.inline = true;
+                return;
+            }
+        }
         x.operand = nowfunc.newReg();
         Call call = new Call(x.name, params, x.operand);
         nowfunc.addInst(call);

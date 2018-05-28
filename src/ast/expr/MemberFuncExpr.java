@@ -2,16 +2,16 @@ package ast.expr;
 
 import ast.definition.Def;
 import ast.definition.FuncDef;
+import ast.definition.VarDef;
 import ast.type.*;
 import compiler.IrBuilder;
+import ir.operand.Operand;
 import parser.MxstarParser;
 import utils.CompileError;
 import utils.GlobalClass;
 import utils.Position;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class MemberFuncExpr extends Expr {
     public Expr who;
@@ -102,6 +102,21 @@ public class MemberFuncExpr extends Expr {
         System.err.println(ss + "---End of Param(s)---");
         System.err.println(ss + "Type : "+ type);
         System.err.println(s + "EndMemberFuncExpr : " + name + " at " + pos.toString());
+    }
+
+    /*public MemberFuncExpr() {}
+    public Expr getinline(HashMap<VarDef, Operand> map) {
+        MemberFuncExpr tmp = new MemberFuncExpr();
+        tmp.type = type;
+        tmp.exprList = new ArrayList<>();
+        tmp.who = who.getinline(map);
+        tmp.funcDef = funcDef;
+
+
+        return tmp;
+    }*/
+    public Expr getinline(HashMap<String, Operand> map) {
+        throw new CompileError("FUCK U", pos);
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

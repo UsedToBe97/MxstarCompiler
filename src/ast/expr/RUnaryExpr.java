@@ -1,10 +1,14 @@
 package ast.expr;
 
+import ast.definition.VarDef;
 import ast.type.IntType;
 import ast.type.Type;
 import compiler.IrBuilder;
+import ir.operand.Operand;
 import utils.CompileError;
 import utils.Position;
+
+import java.util.HashMap;
 
 public class RUnaryExpr extends Expr {
     public Expr expr;
@@ -39,6 +43,15 @@ public class RUnaryExpr extends Expr {
         expr.output(dep + 1);
         System.err.println(ss + "Type:" + type.typename());
         System.err.println(s + "EndRUnaryExpr:");
+    }
+
+    public RUnaryExpr() {}
+    public Expr getinline(HashMap<String, Operand> map) {
+        RUnaryExpr tmp = new RUnaryExpr();
+        tmp.expr = expr.getinline(map);
+        tmp.op = op;
+        tmp.type = type;
+        return tmp;
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

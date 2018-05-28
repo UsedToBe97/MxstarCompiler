@@ -7,8 +7,11 @@ import ast.type.ClassType;
 import ast.type.NullType;
 import ast.type.Type;
 import compiler.IrBuilder;
+import ir.operand.Operand;
 import utils.GlobalClass;
 import utils.Position;
+
+import java.util.HashMap;
 
 public class IDExpr extends Expr {
     public VarDef varDef;
@@ -18,6 +21,7 @@ public class IDExpr extends Expr {
         name = _s;
         pos = _p;
     }
+
     public Position getpos() {
         return pos;
     }
@@ -62,6 +66,17 @@ public class IDExpr extends Expr {
         System.err.println(ss + "Name: " + name);
         if (varDef != null)System.err.println(ss + "VarDef !!!!");
         System.err.println(s + "EndIDExpr:");
+    }
+    public IDExpr() {}
+    public Expr getinline(HashMap<String, Operand> map) {
+        IDExpr tmp = new IDExpr();
+        tmp.name = name;
+        tmp.varDef = varDef;
+        if (map.containsKey(varDef.name)) {
+            tmp.varDef.addr = map.get(varDef.name);
+            return tmp;
+        }
+        return this;
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

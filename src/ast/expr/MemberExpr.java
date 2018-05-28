@@ -5,9 +5,12 @@ import ast.definition.VarDef;
 import ast.type.ClassType;
 import ast.type.Type;
 import compiler.IrBuilder;
+import ir.operand.Operand;
 import utils.CompileError;
 import utils.GlobalClass;
 import utils.Position;
+
+import java.util.HashMap;
 
 public class MemberExpr extends Expr {
     public Expr who;
@@ -53,6 +56,16 @@ public class MemberExpr extends Expr {
         if (type != null)
             System.err.println(ss + "Type:" + type.typename());
         System.err.println(s + "EndMemberExpr:");
+    }
+
+    public MemberExpr() {}
+    public Expr getinline(HashMap<String, Operand> map) {
+        MemberExpr tmp = new MemberExpr();
+        tmp.type = type;
+        tmp.varDef = varDef;
+        tmp.name = name;
+        tmp.who = who.getinline(map);
+        return tmp;
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

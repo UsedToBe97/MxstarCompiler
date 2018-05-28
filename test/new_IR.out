@@ -1,123 +1,450 @@
+asciiTable is [global Variable]
+
 string__0:
-p cnf 
+
 
 string__1:
- 
+
 
 string__2:
- 
+ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
 
 string__3:
  
 
+string__4:
+ 
+
+string__5:
+ 
+
+string__6:
+ 
+
+string__7:
+
+
+hilo[you need to fix]:
+	rdi 	= rdi [rsi | rdi | ][rdi]
+	rsi 	= rsi [rdi | rsi | ][rsi]
+	rdi 	= rdi << 16 [rdi | rsi | ][rdi]
+	rdi 	= rsi | rdi [rdi | rsi | ][rdi]
+	rax 	= rdi [rdi | ][rax]
+	jump _0_Label [][]
+_0_Label: [][]
+
+
+shift_l[you need to fix]:
+	rdi 	= rdi [rsi | rdi | ][rdi]
+	rsi 	= rsi [rdi | rsi | ][rsi]
+	rdi 	= rdi << rsi [rdi | rsi | ][rdi]
+	rsi 	= 32767 << 16 [rdi | ][rsi]
+	rsi 	= 65535 | rsi [rsi | rdi | ][rsi]
+	rdi 	= rdi & rsi [rsi | rdi | ][rdi]
+	rax 	= rdi [rdi | ][rax]
+	jump _1_Label [][]
+_1_Label: [][]
+
+
+shift_r[you need to fix]:
+	rdi 	= rdi [rsi | rdi | ][rdi]
+	rsi 	= rsi [rsi | rdi | ][rsi]
+	rbx 	= 32767 << 16 [rdi | rsi | ][rbx]
+	rbx 	= 65535 | rbx [rbx | rdi | rsi | ][rbx]
+	rbx 	= rbx [rbx | rdi | rsi | ][rbx]
+	rbx 	= rbx >> rsi [rbx | rdi | rsi | ][rbx]
+	rbx 	= rbx << 1 [rbx | rdi | rsi | ][rbx]
+	rbx 	= rbx + 1 [rdi | rsi | rbx | ][rbx]
+	rbx 	= rbx [rbx | rdi | rsi | ][rbx]
+	rdi 	= rdi >> rsi [rbx | rdi | rsi | ][rdi]
+	rdi 	= rbx & rdi [rbx | rdi | ][rdi]
+	rbx 	= rdi [rdi | ][rbx]
+	rdi 	= 32767 << 16 [rbx | ][rdi]
+	rdi 	= 65535 | rdi [rdi | rbx | ][rdi]
+	rdi 	= rbx & rdi [rbx | rdi | ][rdi]
+	rax 	= rdi [rdi | ][rax]
+	jump _2_Label [][]
+_2_Label: [][]
+
+
+xorshift[you need to fix]:
+	rdi 	= rdi [rsi | rdi | ][rdi]
+	rbx 	= rsi [rsi | rdi | ][rbx]
+	rdi 	= rdi + 1 [rbx | rdi | ][rdi]
+	r8 	= rdi [rdi | rbx | ][r8]
+	r9 	= 0 [rbx | r8 | ][r9]
+_4_Label: [rbx | r8 | r9 | ][]
+	rdi 	= rbx * 10 [rbx | r8 | r9 | ][rdi]
+	jump _5_Label if r9 jl rdi[ [rdi | r8 | rbx | r9 | ][]
+	jump _7_Label [r8 | ][]
+_5_Label: [r8 | rbx | r9 | ][]
+	rdi 	= r8 << 13 [r8 | rbx | r9 | ][rdi]
+	rsi 	= 32767 << 16 [r8 | rbx | rdi | r9 | ][rsi]
+	rsi 	= 65535 | rsi [rsi | r8 | rbx | rdi | r9 | ][rsi]
+	rdi 	= rdi & rsi [r8 | rbx | rdi | rsi | r9 | ][rdi]
+	rdi 	= r8 ^ rdi [r8 | rbx | r9 | rdi | ][rdi]
+	r8 	= rdi [rbx | r9 | rdi | ][r8]
+
+		rsi 	= 17 [r8 | rbx | r9 | ][rsi]
+		rdi 	= r8 [r8 | rsi | rbx | r9 | ][rdi]
+		call shift_r[size : 2] [rsi | r8 | rbx | r9 | rdi | ][rax]
+		rdi 	= rax [rax | r8 | rbx | r9 | ][rdi]
+
+	rdi 	= r8 ^ rdi [r8 | rbx | rdi | r9 | ][rdi]
+	r8 	= rdi [rdi | rbx | r9 | ][r8]
+	rdi 	= r8 << 5 [r8 | rbx | r9 | ][rdi]
+	rsi 	= 32767 << 16 [rdi | r8 | rbx | r9 | ][rsi]
+	rsi 	= 65535 | rsi [rdi | rsi | r8 | rbx | r9 | ][rsi]
+	rdi 	= rdi & rsi [rdi | r8 | rbx | rsi | r9 | ][rdi]
+	rdi 	= r8 ^ rdi [r8 | rdi | rbx | r9 | ][rdi]
+	r8 	= rdi [rdi | rbx | r9 | ][r8]
+	rdi 	= r9 [rbx | r8 | r9 | ][rdi]
+	r9 	= r9 + 1 [rbx | r8 | r9 | ][r9]
+	jump _4_Label [rbx | r8 | r9 | ][]
+_7_Label: [r8 | ][]
+	rdi 	= r8 ^ 123456789 [r8 | ][rdi]
+	rax 	= rdi [rdi | ][rax]
+	jump _3_Label [][]
+_3_Label: [][]
+
+
+int2chr[you need to fix]:
+	rdi 	= rdi [rdi | ][rdi]
+	jump _9_Label if rdi jge 32[ [rdi | ][]
+	rsi 	= 0 [rdi | ][rsi]
+	jump _10_Label [rdi | rsi | ][]
+_9_Label: [rdi | ][]
+	rsi 	= rdi <= 126 [rdi | ][rsi]
+	rsi 	= rsi [rdi | rsi | ][rsi]
+_10_Label: [rdi | rsi | ][]
+	jump _11_Label if rsi je 1[ [rdi | rsi | ][]
+	jump _12_Label [][]
+_11_Label: [rdi | ][]
+	rsi 	= rdi - 32 [rdi | ][rsi]
+	rdi 	= rdi - 32 [rdi | rsi | ][rdi]
+
+		rdx 	= rdi [rdi | rsi | ][rdx]
+		rsi 	= rsi [rdx | rsi | ][rsi]
+		rdi 	= qword [asciiTable__] [rsi | rdx | ][rdi]
+		call String_substring[size : 3] [rsi | rdx | rdi | ][rax]
+		rdi 	= rax [rax | ][rdi]
+
+	rax 	= rdi [rdi | ][rax]
+	jump _8_Label [][]
+_12_Label: [][]
+	rax 	= string__0 [][rax]
+	jump _8_Label [][]
+_8_Label: [][]
+
+
+toStringHex[you need to fix]:
+	rbx 	= rdi [rdi | ][rbx]
+	r8 	= string__1 [rbx | ][r8]
+	r9 	= 28 [rbx | r8 | ][r9]
+_15_Label: [rbx | r8 | r9 | ][]
+	jump _16_Label if r9 jge 0[ [rbx | r8 | r9 | ][]
+	jump _18_Label [r8 | ][]
+_16_Label: [rbx | r8 | r9 | ][]
+	rdi 	= rbx >> r9 [rbx | r8 | r9 | ][rdi]
+	rdi 	= rdi & 15 [rbx | rdi | r8 | r9 | ][rdi]
+	rdi 	= rdi [rbx | r8 | rdi | r9 | ][rdi]
+	jump _19_Label if rdi jl 10[ [rdi | rbx | r8 | r9 | ][]
+	jump _20_Label [rdi | rbx | r8 | r9 | ][]
+_19_Label: [rdi | rbx | r8 | r9 | ][]
+	rdi 	= 48 + rdi [rdi | rbx | r8 | r9 | ][rdi]
+
+		rdi 	= rdi [rbx | r8 | rdi | r9 | ][rdi]
+		call int2chr[size : 1] [rbx | r8 | r9 | rdi | ][rax]
+		rdi 	= rax [rbx | r8 | rax | r9 | ][rdi]
+
+
+		rsi 	= rdi [rbx | r8 | rdi | r9 | ][rsi]
+		rdi 	= r8 [rbx | r8 | rsi | r9 | ][rdi]
+		call String_add[size : 2] [rbx | rsi | r9 | rdi | ][rax]
+		rdi 	= rax [rbx | rax | r9 | ][rdi]
+
+	r8 	= rdi [rbx | rdi | r9 | ][r8]
+	jump _21_Label [rbx | r8 | r9 | ][]
+_20_Label: [rdi | rbx | r8 | r9 | ][]
+	rdi 	= 65 + rdi [rdi | rbx | r8 | r9 | ][rdi]
+	rdi 	= rdi - 10 [rbx | r8 | r9 | rdi | ][rdi]
+
+		rdi 	= rdi [rbx | r8 | rdi | r9 | ][rdi]
+		call int2chr[size : 1] [rbx | r8 | r9 | rdi | ][rax]
+		rdi 	= rax [rbx | r8 | rax | r9 | ][rdi]
+
+
+		rsi 	= rdi [rbx | r8 | r9 | rdi | ][rsi]
+		rdi 	= r8 [rbx | r8 | rsi | r9 | ][rdi]
+		call String_add[size : 2] [rbx | rsi | r9 | rdi | ][rax]
+		rdi 	= rax [rbx | rax | r9 | ][rdi]
+
+	r8 	= rdi [rbx | rdi | r9 | ][r8]
+_21_Label: [rbx | r8 | r9 | ][]
+	rdi 	= r9 - 4 [rbx | r8 | r9 | ][rdi]
+	r9 	= rdi [rbx | r8 | rdi | ][r9]
+	jump _15_Label [rbx | r8 | r9 | ][]
+_18_Label: [r8 | ][]
+	rax 	= r8 [r8 | ][rax]
+	jump _14_Label [][]
+_14_Label: [][]
+
+
+getnumber[you need to fix]:
+	rdi 	= rdi [rsi | rdx | rdi | ][rdi]
+	rsi 	= rsi [rsi | rdx | rdi | ][rsi]
+	rbx 	= rdx [rsi | rdx | rdi | ][rbx]
+	rbx 	= rbx & 31 [rbx | rsi | rdi | ][rbx]
+	rbx 	= rbx [rsi | rbx | rdi | ][rbx]
+
+		rsi 	= rsi [rsi | rdi | rbx | ][rsi]
+		rdi 	= rdi [rsi | rdi | rbx | ][rdi]
+		call xorshift[size : 2] [rsi | rbx | rdi | ][rax]
+		rdi 	= rax [rax | rbx | ][rdi]
+
+	rdi 	= rdi [rdi | rbx | ][rdi]
+	rsi 	= rdi << rbx [rdi | rbx | ][rsi]
+	r8 	= 32767 << 16 [rdi | rsi | rbx | ][r8]
+	r8 	= 65535 | r8 [r8 | rdi | rsi | rbx | ][r8]
+	r8 	= rsi & r8 [rdi | r8 | rsi | rbx | ][r8]
+	rsi 	= 32 - rbx [rdi | r8 | rbx | ][rsi]
+
+		rsi 	= rsi [rdi | rsi | r8 | ][rsi]
+		rdi 	= rdi [rdi | rsi | r8 | ][rdi]
+		call shift_r[size : 2] [rsi | r8 | rdi | ][rax]
+		rdi 	= rax [rax | r8 | ][rdi]
+
+	rdi 	= r8 | rdi [rdi | r8 | ][rdi]
+	rax 	= rdi [rdi | ][rax]
+	jump _22_Label [][]
+_22_Label: [][]
+
+
 main[you need to fix]:
+	qword [asciiTable__] 	= string__2 [][]
 
 		call getInt[size : 0] [][rax]
 		rdi 	= rax [rax | ][rdi]
 
 	rbx 	= rdi [rdi | ][rbx]
 
-		rdi 	= string__0 [rbx | ][rdi]
-		call print[size : 1] [rdi | rbx | ][rax]
-		rdi 	= rax [rax | rbx | ][rdi]
+		call getInt[size : 0] [rbx | ][rax]
+		rdi 	= rax [rbx | rax | ][rdi]
 
-	rdi 	= rbx * 2 [rbx | ][rdi]
-	rdi 	= rdi + 1 [rdi | rbx | ][rdi]
+	r8 	= rdi [rbx | rdi | ][r8]
 
-		rdi 	= rdi [rdi | rbx | ][rdi]
-		call toString[size : 1] [rdi | rbx | ][rax]
-		rdi 	= rax [rax | rbx | ][rdi]
+		call getInt[size : 0] [rbx | r8 | ][rax]
+		rdi 	= rax [rbx | rax | r8 | ][rdi]
+
+	r9 	= rdi [rbx | rdi | r8 | ][r9]
+
+		call getInt[size : 0] [r9 | rbx | r8 | ][rax]
+		rdi 	= rax [r9 | rbx | rax | r8 | ][rdi]
+
+	r10 	= rdi [r9 | rbx | rdi | r8 | ][r10]
+
+		call getInt[size : 0] [r9 | rbx | r10 | r8 | ][rax]
+		rdi 	= rax [r9 | rbx | rax | r10 | r8 | ][rdi]
+
+	r11 	= rdi [r9 | rbx | rdi | r10 | r8 | ][r11]
+
+		call getInt[size : 0] [r9 | r11 | rbx | r10 | r8 | ][rax]
+		rdi 	= rax [r9 | r11 | rbx | rax | r10 | r8 | ][rdi]
+
+	r12 	= rdi [r9 | r11 | rbx | r10 | r8 | rdi | ][r12]
+	reg16 	= 30 [r9 | r11 | r12 | rbx | r10 | r8 | ][reg16]
+	reg17 	= 0 [r9 | r11 | r12 | rbx | reg16 | r10 | r8 | ][reg17]
+	reg18 	= 0 [reg17 | r9 | r11 | r12 | rbx | reg16 | r10 | r8 | ][reg18]
+	reg19 	= 0 [reg17 | r9 | r11 | r12 | rbx | reg16 | r10 | r8 | reg18 | ][reg19]
+	reg20 	= 0 [reg17 | r9 | r11 | r12 | reg19 | rbx | reg16 | r10 | r8 | reg18 | ][reg20]
+	r13 	= rbx [reg17 | r9 | r11 | r12 | reg19 | reg20 | rbx | reg16 | r10 | r8 | reg18 | ][r13]
+_24_Label: [reg17 | r9 | r11 | r12 | reg19 | reg20 | rbx | reg16 | r10 | r8 | reg18 | r13 | ][]
+	jump _25_Label if r13 jl r8[ [reg17 | r9 | r11 | r12 | reg19 | reg20 | rbx | reg16 | r10 | r8 | reg18 | r13 | ][]
+	jump _27_Label [reg17 | reg19 | reg20 | reg18 | ][]
+_25_Label: [reg17 | r9 | r11 | r12 | reg19 | reg20 | rbx | reg16 | r10 | reg18 | r8 | r13 | ][]
+	r14 	= r9 [reg17 | r9 | r11 | r12 | reg19 | reg20 | rbx | reg16 | r10 | reg18 | r8 | r13 | ][r14]
+_28_Label: [reg17 | r11 | r10 | reg18 | r8 | r13 | r9 | r14 | r12 | reg19 | reg20 | rbx | reg16 | ][]
+	jump _29_Label if r14 jl r10[ [reg17 | r11 | r10 | reg18 | r8 | r13 | r9 | r14 | r12 | reg19 | reg20 | rbx | reg16 | ][]
+	jump _31_Label [reg17 | r9 | r11 | r12 | reg19 | reg20 | rbx | reg16 | r10 | r8 | reg18 | r13 | ][]
+_29_Label: [reg17 | r11 | r10 | reg18 | r8 | r13 | r9 | r12 | r14 | reg19 | reg20 | rbx | reg16 | ][]
+	r15 	= r11 [reg17 | r11 | r10 | reg18 | r8 | r13 | r9 | r12 | r14 | reg19 | reg20 | rbx | reg16 | ][r15]
+_32_Label: [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | r9 | r12 | r14 | reg19 | reg20 | rbx | reg16 | ][]
+	jump _33_Label if r15 jl r12[ [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | r9 | r12 | r14 | reg19 | reg20 | rbx | reg16 | ][]
+	jump _35_Label [reg17 | r11 | r10 | reg18 | r8 | r13 | r9 | r14 | r12 | reg19 | reg20 | rbx | reg16 | ][]
+_33_Label: [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg16 | ][]
+
+		rdx 	= r15 [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg16 | ][rdx]
+		rsi 	= reg16 [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg16 | rdx | ][rsi]
+		rdi 	= rbx [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | r9 | r14 | reg19 | reg20 | r12 | rbx | rsi | reg16 | rdx | ][rdi]
+		call getnumber[size : 3] [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | r9 | r14 | reg19 | reg20 | r12 | rbx | rsi | reg16 | rdx | rdi | ][rax]
+		rdi 	= rax [reg17 | r11 | rax | r15 | r10 | reg18 | r8 | r13 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg16 | ][rdi]
+
+	reg21 	= rdi [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | r9 | r14 | reg19 | reg20 | r12 | rbx | rdi | reg16 | ][reg21]
+
+		rdx 	= r15 [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg16 | ][rdx]
+		rsi 	= reg16 [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg16 | rdx | ][rsi]
+		rdi 	= r13 [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | rsi | reg16 | rdx | ][rdi]
+		call getnumber[size : 3] [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | rsi | reg16 | rdx | rdi | ][rax]
+		rdi 	= rax [reg17 | r11 | rax | r15 | r10 | reg18 | r8 | r13 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg16 | ][rdi]
+
+	reg22 	= rdi [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rdi | rbx | reg16 | ][reg22]
+
+		rdx 	= r15 [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg16 | ][rdx]
+		rsi 	= reg16 [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg16 | rdx | ][rsi]
+		rdi 	= r14 [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | rsi | reg16 | rdx | ][rdi]
+		call getnumber[size : 3] [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | rsi | reg16 | rdx | rdi | ][rax]
+		rdi 	= rax [reg17 | r11 | rax | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg16 | ][rdi]
+
+	reg23 	= rdi [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg16 | rdi | ][reg23]
+	rdi 	= r13 ^ r14 [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg23 | reg16 | ][rdi]
+
+		rdx 	= r15 [reg17 | r11 | rdi | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg23 | reg16 | ][rdx]
+		rsi 	= reg16 [reg17 | r11 | rdi | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg23 | reg16 | rdx | ][rsi]
+		rdi 	= rdi [reg17 | r11 | rdi | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | rsi | reg23 | reg16 | rdx | ][rdi]
+		call getnumber[size : 3] [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | rsi | reg23 | reg16 | rdx | rdi | ][rax]
+		rdi 	= rax [reg17 | r11 | rax | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg23 | reg16 | ][rdi]
+
+	reg24 	= rdi [reg17 | r11 | rdi | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg23 | reg16 | ][reg24]
+
+		rsi 	= 1 [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg23 | reg24 | reg16 | ][rsi]
+		rdi 	= r15 [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | rsi | reg23 | reg24 | reg16 | ][rdi]
+		call xorshift[size : 2] [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | rsi | reg23 | reg24 | reg16 | rdi | ][rax]
+		reg25 	= rax [reg17 | r11 | rax | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg23 | reg24 | reg16 | ][reg25]
 
 
-		rsi 	= string__1 [rdi | rbx | ][rsi]
-		rdi 	= rdi [rdi | rsi | rbx | ][rdi]
-		call String_add[size : 2] [rdi | rsi | rbx | ][rax]
-		r8 	= rax [rax | rbx | ][r8]
+		rsi 	= 1 [reg17 | r11 | reg25 | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | reg23 | reg24 | reg16 | ][rsi]
+		rdi 	= r14 [reg17 | r11 | reg25 | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | r14 | reg19 | reg20 | r12 | rbx | rsi | reg23 | reg24 | reg16 | ][rdi]
+		call xorshift[size : 2] [reg17 | r11 | reg25 | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | reg19 | reg20 | r12 | r14 | rbx | rsi | reg23 | reg24 | reg16 | rdi | ][rax]
+		rdi 	= rax [reg17 | r11 | rax | reg25 | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg23 | reg24 | reg16 | ][rdi]
+
+	reg25 	= reg25 ^ rdi [reg17 | r11 | reg25 | rdi | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg23 | reg24 | reg16 | ][reg25]
+
+		rsi 	= 1 [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | reg25 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg23 | reg24 | reg16 | ][rsi]
+		rdi 	= r13 [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | reg22 | reg21 | reg25 | r9 | reg19 | reg20 | r12 | r14 | rbx | rsi | reg23 | reg24 | reg16 | ][rdi]
+		call xorshift[size : 2] [reg17 | r11 | r15 | r10 | reg18 | r8 | reg22 | r13 | reg21 | reg25 | r9 | reg19 | reg20 | r12 | r14 | rbx | rsi | reg23 | reg24 | reg16 | rdi | ][rax]
+		rdi 	= rax [reg17 | r11 | rax | r15 | r10 | reg18 | r8 | reg22 | r13 | reg21 | reg25 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg23 | reg24 | reg16 | ][rdi]
+
+	rdi 	= reg25 ^ rdi [reg17 | r11 | r15 | r10 | reg18 | r8 | reg22 | r13 | reg21 | reg25 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg23 | reg24 | rdi | reg16 | ][rdi]
+	reg25 	= rdi [rdi | reg17 | r11 | r15 | r10 | reg18 | r8 | reg22 | r13 | reg21 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg23 | reg24 | reg16 | ][reg25]
+	rdi 	= reg21 ^ reg25 [reg17 | r11 | r15 | r10 | reg18 | r8 | reg25 | reg22 | r13 | reg21 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg23 | reg24 | reg16 | ][rdi]
+
+		rsi 	= 1 [reg17 | r11 | r15 | r10 | reg18 | r8 | reg22 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rbx | rdi | reg23 | reg24 | reg16 | ][rsi]
+		rdi 	= rdi [reg17 | r11 | r15 | r10 | reg18 | r8 | reg22 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rbx | rdi | rsi | reg23 | reg24 | reg16 | ][rdi]
+		call xorshift[size : 2] [reg17 | r11 | r15 | r10 | reg18 | r8 | reg22 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rbx | rsi | reg23 | reg24 | reg16 | rdi | ][rax]
+		rdi 	= rax [reg17 | r11 | rax | r15 | r10 | reg18 | r8 | reg22 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg23 | reg24 | reg16 | ][rdi]
+
+	rdi 	= reg17 + rdi [reg17 | r11 | r15 | rdi | r10 | reg18 | r8 | reg22 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg23 | reg24 | reg16 | ][rdi]
+	reg17 	= rdi [rdi | r11 | r15 | r10 | reg18 | r8 | reg22 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg23 | reg24 | reg16 | ][reg17]
+	rdi 	= reg22 ^ reg25 [reg17 | r11 | r15 | r10 | reg18 | r8 | reg22 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg23 | reg24 | reg16 | ][rdi]
+
+		rsi 	= 1 [reg17 | r11 | r15 | r10 | reg18 | r8 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rdi | rbx | reg23 | reg24 | reg16 | ][rsi]
+		rdi 	= rdi [reg17 | r11 | r15 | r10 | reg18 | r8 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rdi | rbx | rsi | reg23 | reg24 | reg16 | ][rdi]
+		call xorshift[size : 2] [reg17 | r11 | r15 | r10 | reg18 | r8 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rbx | rsi | reg23 | reg24 | reg16 | rdi | ][rax]
+		rdi 	= rax [reg17 | r11 | rax | r15 | r10 | reg18 | r8 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg23 | reg24 | reg16 | ][rdi]
+
+	rdi 	= reg18 + rdi [reg17 | r11 | r15 | r10 | reg18 | r8 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg23 | reg24 | reg16 | rdi | ][rdi]
+	reg18 	= rdi [reg17 | r11 | r15 | r10 | r8 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg23 | reg24 | reg16 | rdi | ][reg18]
+	rdi 	= reg23 ^ reg25 [reg17 | r11 | r15 | r10 | reg18 | r8 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg23 | reg24 | reg16 | ][rdi]
+
+		rsi 	= 1 [reg17 | r11 | r15 | r10 | rdi | reg18 | r8 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg24 | reg16 | ][rsi]
+		rdi 	= rdi [reg17 | r11 | r15 | r10 | rdi | reg18 | r8 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rbx | rsi | reg24 | reg16 | ][rdi]
+		call xorshift[size : 2] [reg17 | r11 | r15 | r10 | reg18 | r8 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rbx | rsi | reg24 | reg16 | rdi | ][rax]
+		rdi 	= rax [reg17 | r11 | rax | r15 | r10 | reg18 | r8 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg24 | reg16 | ][rdi]
+
+	rdi 	= reg19 + rdi [reg17 | r11 | rdi | r15 | r10 | reg18 | r8 | reg25 | r13 | r9 | reg19 | reg20 | r12 | r14 | rbx | reg24 | reg16 | ][rdi]
+	reg19 	= rdi [reg17 | r11 | r15 | r10 | reg18 | r8 | rdi | reg25 | r13 | r9 | reg20 | r12 | r14 | rbx | reg24 | reg16 | ][reg19]
+	rdi 	= reg24 ^ reg25 [reg17 | r11 | r15 | r10 | reg18 | r8 | reg25 | r13 | r9 | reg20 | r12 | r14 | reg19 | rbx | reg24 | reg16 | ][rdi]
+
+		rsi 	= 1 [rdi | reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | r9 | reg20 | r12 | r14 | reg19 | rbx | reg16 | ][rsi]
+		rdi 	= rdi [rdi | reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | r9 | reg20 | r12 | r14 | reg19 | rbx | rsi | reg16 | ][rdi]
+		call xorshift[size : 2] [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | r9 | reg20 | r12 | r14 | reg19 | rbx | rsi | reg16 | rdi | ][rax]
+		rdi 	= rax [reg17 | r11 | rax | r15 | r10 | reg18 | r8 | r13 | r9 | reg20 | r12 | r14 | reg19 | rbx | reg16 | ][rdi]
+
+	rdi 	= reg20 + rdi [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | r9 | reg20 | r12 | r14 | reg19 | rbx | reg16 | rdi | ][rdi]
+	reg20 	= rdi [reg17 | r11 | rdi | r15 | r10 | reg18 | r8 | r13 | r9 | r12 | r14 | reg19 | rbx | reg16 | ][reg20]
+	rdi 	= r15 [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | r9 | r12 | r14 | reg19 | reg20 | rbx | reg16 | ][rdi]
+	r15 	= r15 + 1 [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | r9 | r12 | r14 | reg19 | reg20 | rbx | reg16 | ][r15]
+	jump _32_Label [reg17 | r11 | r15 | r10 | reg18 | r8 | r13 | r9 | r12 | r14 | reg19 | reg20 | rbx | reg16 | ][]
+_35_Label: [reg17 | r11 | r10 | reg18 | r8 | r13 | r9 | r14 | r12 | reg19 | reg20 | rbx | reg16 | ][]
+	rdi 	= r14 [reg17 | r11 | r10 | reg18 | r8 | r13 | r9 | r14 | r12 | reg19 | reg20 | rbx | reg16 | ][rdi]
+	r14 	= r14 + 1 [reg17 | r11 | r10 | reg18 | r8 | r13 | r9 | r14 | r12 | reg19 | reg20 | rbx | reg16 | ][r14]
+	jump _28_Label [reg17 | r11 | r10 | reg18 | r8 | r13 | r9 | r14 | r12 | reg19 | reg20 | rbx | reg16 | ][]
+_31_Label: [reg17 | r9 | r11 | r12 | reg19 | reg20 | rbx | reg16 | r10 | r8 | reg18 | r13 | ][]
+	rdi 	= r13 [reg17 | r9 | r11 | r12 | reg19 | reg20 | rbx | reg16 | r10 | r8 | reg18 | r13 | ][rdi]
+	r13 	= r13 + 1 [reg17 | r9 | r11 | r12 | reg19 | reg20 | rbx | reg16 | r10 | r8 | reg18 | r13 | ][r13]
+	jump _24_Label [reg17 | r9 | r11 | r12 | reg19 | reg20 | rbx | reg16 | r10 | r8 | reg18 | r13 | ][]
+_27_Label: [reg17 | reg19 | reg20 | reg18 | ][]
+
+		rdi 	= reg17 [reg17 | reg19 | reg20 | reg18 | ][rdi]
+		call toStringHex[size : 1] [reg19 | reg20 | reg18 | rdi | ][rax]
+		rdi 	= rax [reg19 | reg20 | rax | reg18 | ][rdi]
 
 
-		rdi 	= rbx [r8 | rbx | ][rdi]
-		call toString[size : 1] [rdi | r8 | rbx | ][rax]
-		rdi 	= rax [r8 | rax | rbx | ][rdi]
+		rsi 	= string__3 [rdi | reg19 | reg20 | reg18 | ][rsi]
+		rdi 	= rdi [rdi | reg19 | reg20 | rsi | reg18 | ][rdi]
+		call String_add[size : 2] [reg19 | reg20 | rsi | reg18 | rdi | ][rax]
+		rdi 	= rax [reg19 | reg20 | rax | reg18 | ][rdi]
 
 
-		rsi 	= rdi [rdi | r8 | rbx | ][rsi]
-		rdi 	= r8 [rsi | r8 | rbx | ][rdi]
-		call String_add[size : 2] [rdi | rsi | rbx | ][rax]
-		rdi 	= rax [rax | rbx | ][rdi]
+		rdi 	= rdi [rdi | reg19 | reg20 | reg18 | ][rdi]
+		call print[size : 1] [reg19 | reg20 | reg18 | rdi | ][rax]
+		rdi 	= rax [reg19 | reg20 | rax | reg18 | ][rdi]
 
 
-		rdi 	= rdi [rdi | rbx | ][rdi]
-		call println[size : 1] [rdi | rbx | ][rax]
-		rdi 	= rax [rax | rbx | ][rdi]
-
-	r9 	= 1 [rbx | ][r9]
-	r8 	= 0 [r9 | rbx | ][r8]
-_1_Label: [r8 | r9 | rbx | ][]
-	jump _2_Label if r8 jl rbx[ [r8 | r9 | rbx | ][]
-	jump _4_Label [][]
-_2_Label: [r8 | r9 | rbx | ][]
-
-		rdi 	= r9 [r8 | r9 | rbx | ][rdi]
-		call toString[size : 1] [r8 | rdi | r9 | rbx | ][rax]
-		rdi 	= rax [r8 | r9 | rax | rbx | ][rdi]
+		rdi 	= reg18 [reg19 | reg20 | reg18 | ][rdi]
+		call toStringHex[size : 1] [reg19 | reg20 | rdi | ][rax]
+		rdi 	= rax [reg19 | reg20 | rax | ][rdi]
 
 
-		rsi 	= string__2 [r8 | r9 | rdi | rbx | ][rsi]
-		rdi 	= rdi [r8 | r9 | rsi | rdi | rbx | ][rdi]
-		call String_add[size : 2] [r8 | rdi | r9 | rsi | rbx | ][rax]
-		r10 	= rax [r8 | r9 | rax | rbx | ][r10]
-
-	rdi 	= r9 + 1 [r8 | r10 | r9 | rbx | ][rdi]
-
-		rdi 	= rdi [r8 | rdi | r10 | r9 | rbx | ][rdi]
-		call toString[size : 1] [r8 | r10 | rdi | r9 | rbx | ][rax]
-		rdi 	= rax [r8 | r10 | r9 | rax | rbx | ][rdi]
+		rsi 	= string__4 [reg19 | reg20 | rdi | ][rsi]
+		rdi 	= rdi [reg19 | reg20 | rsi | rdi | ][rdi]
+		call String_add[size : 2] [reg19 | reg20 | rsi | rdi | ][rax]
+		rdi 	= rax [reg19 | reg20 | rax | ][rdi]
 
 
-		rsi 	= rdi [r8 | r10 | r9 | rdi | rbx | ][rsi]
-		rdi 	= r10 [r8 | r10 | r9 | rsi | rbx | ][rdi]
-		call String_add[size : 2] [r8 | rdi | r9 | rsi | rbx | ][rax]
-		rdi 	= rax [r8 | r9 | rax | rbx | ][rdi]
+		rdi 	= rdi [rdi | reg19 | reg20 | ][rdi]
+		call print[size : 1] [reg19 | reg20 | rdi | ][rax]
+		rdi 	= rax [reg19 | reg20 | rax | ][rdi]
 
 
-		rsi 	= string__3 [r8 | r9 | rdi | rbx | ][rsi]
-		rdi 	= rdi [r8 | r9 | rsi | rdi | rbx | ][rdi]
-		call String_add[size : 2] [r8 | rdi | r9 | rsi | rbx | ][rax]
-		r10 	= rax [r8 | r9 | rax | rbx | ][r10]
-
-	rdi 	= r9 + 2 [r8 | r9 | r10 | rbx | ][rdi]
-	rdi 	= rdi [r8 | rdi | r9 | r10 | rbx | ][rdi]
-	- rdi [r8 | r9 | rdi | r10 | rbx | ][rdi]
-
-		rdi 	= rdi [r8 | r9 | rdi | r10 | rbx | ][rdi]
-		call toString[size : 1] [r8 | rdi | r9 | r10 | rbx | ][rax]
-		rdi 	= rax [r8 | r9 | rax | r10 | rbx | ][rdi]
+		rdi 	= reg19 [reg19 | reg20 | ][rdi]
+		call toStringHex[size : 1] [reg20 | rdi | ][rax]
+		rdi 	= rax [reg20 | rax | ][rdi]
 
 
-		rsi 	= rdi [r8 | r9 | rdi | r10 | rbx | ][rsi]
-		rdi 	= r10 [r8 | r9 | rsi | r10 | rbx | ][rdi]
-		call String_add[size : 2] [r8 | rdi | r9 | rsi | rbx | ][rax]
-		rdi 	= rax [r8 | r9 | rax | rbx | ][rdi]
+		rsi 	= string__5 [rdi | reg20 | ][rsi]
+		rdi 	= rdi [rdi | reg20 | rsi | ][rdi]
+		call String_add[size : 2] [reg20 | rsi | rdi | ][rax]
+		rdi 	= rax [reg20 | rax | ][rdi]
 
-	rdi 	= rdi [r8 | rdi | r9 | rbx | ][rdi]
-	rsi 	= r8 % 100000 [r8 | r9 | rdi | rbx | ][rsi]
-	jump _5_Label if rsi je 0[ [r8 | r9 | rsi | rdi | rbx | ][]
-	jump _6_Label [r8 | r9 | rbx | ][]
-_5_Label: [r8 | r9 | rdi | rbx | ][]
 
-		rdi 	= rdi [r8 | r9 | rdi | rbx | ][rdi]
-		call println[size : 1] [r8 | rdi | r9 | rbx | ][rax]
-		rdi 	= rax [r8 | r9 | rax | rbx | ][rdi]
+		rdi 	= rdi [reg20 | rdi | ][rdi]
+		call print[size : 1] [reg20 | rdi | ][rax]
+		rdi 	= rax [reg20 | rax | ][rdi]
 
-	jump _6_Label [r8 | r9 | rbx | ][]
-_6_Label: [r8 | r9 | rbx | ][]
-	rdi 	= r9 + 2 [r8 | r9 | rbx | ][rdi]
-	r9 	= rdi [r8 | rdi | rbx | ][r9]
-	r8 	= r8 + 1 [r8 | r9 | rbx | ][r8]
-	jump _1_Label [r8 | r9 | rbx | ][]
-_4_Label: [][]
+
+		rdi 	= reg20 [reg20 | ][rdi]
+		call toStringHex[size : 1] [rdi | ][rax]
+		rdi 	= rax [rax | ][rdi]
+
+
+		rsi 	= string__6 [rdi | ][rsi]
+		rdi 	= rdi [rdi | rsi | ][rdi]
+		call String_add[size : 2] [rsi | rdi | ][rax]
+		rdi 	= rax [rax | ][rdi]
+
+
+		rdi 	= rdi [rdi | ][rdi]
+		call print[size : 1] [rdi | ][rax]
+		rdi 	= rax [rax | ][rdi]
+
+
+		rdi 	= string__7 [][rdi]
+		call println[size : 1] [rdi | ][rax]
+		rdi 	= rax [rax | ][rdi]
+
 	rax 	= 0 [][rax]
-	jump _0_Label [][]
-_0_Label: [][]
+	jump _23_Label [][]
+_23_Label: [][]
 
 

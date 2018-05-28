@@ -2,22 +2,23 @@ package ast.expr;
 
 import ast.definition.Def;
 import ast.definition.FuncDef;
+import ast.definition.VarDef;
 import ast.type.*;
 import compiler.IrBuilder;
+import ir.operand.Operand;
 import parser.MxstarParser;
 import utils.CompileError;
 import utils.GlobalClass;
 import utils.Position;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class FuncExpr extends Expr {
     public String name;
     public List<Expr> exprList = new LinkedList<>();
     public Type type = null;
     public Boolean isMemFunc = false;
+    public FuncDef funcDef = null;
     public FuncExpr(MxstarParser.FuncExprContext ctx) {
         name = ctx.Identifier().getText();
         pos = new Position(ctx.getStart());
@@ -66,6 +67,7 @@ public class FuncExpr extends Expr {
             else if (GlobalClass.st.now.getDep(_name) < GlobalClass.st.now.getDep(tmp)) d = GlobalClass.st.now.check(_name);
             else d = GlobalClass.st.now.check(tmp);
             if (d instanceof FuncDef) {
+                funcDef = (FuncDef) d;
                 if (((FuncDef) d).params.size() != exprList.size()) {
                     throw new CompileError("Number Not Match(FuncExpr)", pos);
                 } else {
@@ -98,6 +100,17 @@ public class FuncExpr extends Expr {
         }
         System.err.println(ss + "---End of Param(s)---");
         System.err.println(s + "EndFuncExpr : " + name + " at " + pos.toString());
+    }
+    public FuncExpr() {}
+    public Expr getinline(HashMap<String, Operand> map) {
+        FuncExpr tmp = new FuncExpr();
+        tmp.isMemFunc = isMemFunc;
+        tmp.exprList = new ArrayList<>();
+        tmp.type = type;
+        tmp.name = name;
+        tmp.funcDef = funcDef;
+        for (Expr u : exprList) tmp.exprList.add(u.getinline(map));
+        return tmp;
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

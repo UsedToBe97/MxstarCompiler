@@ -3,8 +3,11 @@ package ast.expr;
 import ast.type.NullType;
 import ast.type.Type;
 import compiler.IrBuilder;
+import ir.operand.Operand;
 import utils.CompileError;
 import utils.Position;
+
+import java.util.HashMap;
 
 public class AssignExpr extends Expr {
     public Expr expr1, expr2;
@@ -13,6 +16,7 @@ public class AssignExpr extends Expr {
         expr2 = _e2;
         pos = _pos;
     }
+
     public Position getpos() {
         return pos;
     }
@@ -47,6 +51,13 @@ public class AssignExpr extends Expr {
         System.err.println(ss + "RightExpr:");
         expr2.output(dep + 1);;
         System.err.println(s + "EndAssignExpr:");
+    }
+    public AssignExpr() {}
+    public Expr getinline(HashMap<String, Operand> map) {
+        AssignExpr tmp = new AssignExpr();
+        tmp.expr1 = expr1.getinline(map);
+        tmp.expr2 = expr2.getinline(map);
+        return tmp;
     }
     public void accept(IrBuilder ib){
         ib.visit(this);

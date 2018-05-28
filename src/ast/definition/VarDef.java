@@ -16,7 +16,7 @@ public class VarDef extends Def {
     public boolean inClass = false; // IR;
     public boolean isGlobal = false; // IR;
     public int offset = 0; //IR;
-
+    public VarDef() {}
     public VarDef(MxstarParser.VarDefContext ctx) {
         pos = new Position(ctx.getStart());
         setName(ctx.Identifier().getText());
