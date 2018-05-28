@@ -72,6 +72,7 @@ public class IDExpr extends Expr {
         IDExpr tmp = new IDExpr();
         tmp.name = name;
         tmp.varDef = varDef;
+        tmp.type = type;
         if (map.containsKey(varDef.name)) {
             tmp.varDef.addr = map.get(varDef.name);
             return tmp;

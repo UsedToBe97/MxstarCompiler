@@ -6,29 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/definition/FuncDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/definition/FuncDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/definition/VarDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/definition/VarDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/ArrayExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/ArrayExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/AssignExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/AssignExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/BinaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/BinaryExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/ConstExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/ConstExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/Expr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/FuncExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/FuncExpr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ast/expr/IDExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/IDExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/LUnaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/LUnaryExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/MemberExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/MemberExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/MemberFuncExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/MemberFuncExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/NewExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/NewExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/RUnaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/RUnaryExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/IrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/IrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/1.test" beforeDir="false" afterPath="$PROJECT_DIR$/test/1.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/AST.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/AST.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/new_IR.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/new_IR.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/new_myIR.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/new_myIR.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/new_x86.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/new_x86.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/try2.asm" beforeDir="false" afterPath="$PROJECT_DIR$/test/try2.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/x86.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/x86.out" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -60,11 +40,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.3806735">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="302">
-                  <caret line="109" column="30" selection-start-line="109" selection-start-column="30" selection-end-line="109" selection-end-column="30" />
+                <state relative-caret-position="210">
+                  <caret line="135" selection-start-line="135" selection-end-line="135" />
                 </state>
               </provider>
             </entry>
@@ -110,15 +90,6 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="MemberExpr.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../BlablaBiu-mushroom-55f2b59b0a21/src/compiler/AST/Expression/MemberExpr.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="NewExpr.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../BlablaBiu-mushroom-55f2b59b0a21/src/compiler/AST/Expression/NewExpr.java">
               <provider selected="true" editor-type-id="text-editor">
@@ -131,13 +102,13 @@
           <file leaf-file-name="IRBuilder.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../BlablaBiu-mushroom-55f2b59b0a21/src/compiler/IRBuilder.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="260">
-                  <caret line="267" column="9" selection-start-line="267" selection-start-column="9" selection-end-line="267" selection-end-column="9" />
+                <state relative-caret-position="375">
+                  <caret line="266" column="40" selection-start-line="266" selection-start-column="40" selection-end-line="266" selection-end-column="40" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Atom.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Atom.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ast/Atom.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="46">
@@ -153,39 +124,35 @@
           <file leaf-file-name="FuncExpr.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/ast/expr/FuncExpr.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="137">
-                  <caret line="104" column="40" selection-start-line="104" selection-start-column="40" selection-end-line="104" selection-end-column="40" />
+                <state relative-caret-position="377">
+                  <caret line="110" column="23" selection-start-line="110" selection-start-column="23" selection-end-line="110" selection-end-column="23" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="NewExpr.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ast/expr/NewExpr.java">
+          <file leaf-file-name="Reg.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/ir/operand/reg/Reg.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="64" column="43" selection-start-line="64" selection-start-column="43" selection-end-line="64" selection-end-column="43" />
+                <state relative-caret-position="115">
+                  <caret line="5" selection-start-line="5" selection-end-line="5" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="MemberFuncExpr.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ast/expr/MemberFuncExpr.java">
+          <file leaf-file-name="Func.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/ir/Func.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="436">
-                  <caret line="117" column="40" selection-start-line="117" selection-start-column="40" selection-end-line="117" selection-end-column="40" />
-                  <folding>
-                    <element signature="e#4443#4444#0" expanded="true" />
-                    <element signature="e#4496#4497#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="253">
+                  <caret line="28" selection-start-line="28" selection-end-line="28" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="MemberExpr.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ast/expr/MemberExpr.java">
+          <file leaf-file-name="VirtualReg.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/ir/operand/reg/VirtualReg.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="302">
-                  <caret line="61" column="40" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="40" />
+                <state relative-caret-position="138">
+                  <caret line="6" selection-start-line="6" selection-end-line="6" />
                 </state>
               </provider>
             </entry>
@@ -193,7 +160,7 @@
           <file leaf-file-name="LUnaryExpr.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/ast/expr/LUnaryExpr.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="244">
+                <state relative-caret-position="308">
                   <caret line="56" column="40" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
                 </state>
               </provider>
@@ -202,8 +169,8 @@
           <file leaf-file-name="IDExpr.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ast/expr/IDExpr.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="440">
-                  <caret line="71" column="32" lean-forward="true" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
+                <state relative-caret-position="147">
+                  <caret line="74" column="24" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
                   <folding>
                     <element signature="e#2652#2653#0" expanded="true" />
                     <element signature="e#2682#2683#0" expanded="true" />
@@ -215,8 +182,8 @@
           <file leaf-file-name="IrBuilder.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/compiler/IrBuilder.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="263">
-                  <caret line="302" selection-start-line="302" selection-end-line="302" />
+                <state relative-caret-position="412">
+                  <caret line="185" selection-start-line="185" selection-end-line="185" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#2107#2108#0" expanded="true" />
@@ -235,24 +202,23 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="BinaryExpr.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ast/expr/BinaryExpr.java">
+          <file leaf-file-name="Operand.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/ir/operand/Operand.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="207">
-                  <caret line="91" selection-start-line="91" selection-end-line="91" />
-                  <folding>
-                    <element signature="e#4164#4165#0" expanded="true" />
-                    <element signature="e#4194#4195#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="92">
+                  <caret line="4" selection-start-line="4" selection-end-line="4" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Expr.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ast/expr/Expr.java">
+          <file leaf-file-name="BinaryExpr.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/ast/expr/BinaryExpr.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="253">
-                  <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+                <state relative-caret-position="432">
+                  <caret line="98" selection-start-line="98" selection-end-line="98" />
+                  <folding>
+                    <element signature="e#4194#4195#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -270,7 +236,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>index</find>
       <find>root.add</find>
       <find>useRegTag</find>
       <find>nowfunc.num</find>
@@ -300,6 +265,7 @@
       <find>memlist</find>
       <find>binary</find>
       <find>524</find>
+      <find>binar</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -357,8 +323,8 @@
         <option value="$PROJECT_DIR$/src/ast/expr/AssignExpr.java" />
         <option value="$PROJECT_DIR$/src/ast/expr/ArrayExpr.java" />
         <option value="$PROJECT_DIR$/src/compiler/IrBuilder.java" />
-        <option value="$PROJECT_DIR$/src/ast/expr/IDExpr.java" />
         <option value="$PROJECT_DIR$/src/compiler/Main.java" />
+        <option value="$PROJECT_DIR$/src/ast/expr/IDExpr.java" />
       </list>
     </option>
   </component>
@@ -379,7 +345,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="316" />
     <option name="y" value="94" />
     <option name="width" value="1400" />
@@ -716,12 +682,12 @@
       <workItem from="1527255443860" duration="7325000" />
       <workItem from="1527293694394" duration="1052000" />
       <workItem from="1527319098061" duration="6282000" />
-      <workItem from="1527480328171" duration="3869000" />
+      <workItem from="1527480328171" duration="4399000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="428228000" />
+    <option name="totallyTimeSpent" value="428758000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -747,7 +713,7 @@
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49626866" visible="true" weight="0.25925925" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49626866" weight="0.25925925" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32897604" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
@@ -759,7 +725,7 @@
       <window_info id="UI Designer" order="3" />
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.35511982" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3943355" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -817,7 +783,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="181" />
+      <option name="time" value="182" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -825,13 +791,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../BlablaBiu-mushroom-55f2b59b0a21/src/compiler/IR/IR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../BlablaBiu-mushroom-55f2b59b0a21/src/compiler/IR/Function.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -860,13 +819,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ir/Func.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../BlablaBiu-mushroom-55f2b59b0a21/src/compiler/InAndOut.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="365">
@@ -885,13 +837,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="15" column="52" lean-forward="true" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ir/operand/reg/Reg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
@@ -941,16 +886,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12144">
           <caret line="541" column="30" selection-start-line="541" selection-start-column="30" selection-end-line="541" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/RegAllocator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="874">
-          <caret line="47" column="20" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1013,13 +948,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ir/operand/Operand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/definition/VarDef.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
@@ -1059,13 +987,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="316">
           <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../BlablaBiu-mushroom-55f2b59b0a21/src/compiler/IRBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="267" column="9" selection-start-line="267" selection-start-column="9" selection-end-line="267" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1111,31 +1032,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/expr/LUnaryExpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="56" column="40" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/expr/FuncExpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="104" column="40" selection-start-line="104" selection-start-column="40" selection-end-line="104" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/expr/Expr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
           <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/Atom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
@@ -1153,10 +1053,100 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/expr/ArrayExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="69" column="18" selection-start-line="69" selection-start-column="18" selection-end-line="69" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/RegAllocator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1137">
+          <caret line="148" lean-forward="true" selection-start-line="148" selection-end-line="148" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../BlablaBiu-mushroom-55f2b59b0a21/src/compiler/IRBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="266" column="40" selection-start-line="266" selection-start-column="40" selection-end-line="266" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/expr/LUnaryExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="56" column="40" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/expr/FuncExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="110" column="23" selection-start-line="110" selection-start-column="23" selection-end-line="110" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="135" selection-start-line="135" selection-end-line="135" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/Atom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ir/operand/Operand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ir/operand/reg/Reg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ir/operand/reg/VirtualReg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ir/Func.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/expr/BinaryExpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="98" selection-start-line="98" selection-end-line="98" />
+          <folding>
+            <element signature="e#4194#4195#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/IrBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="302" selection-start-line="302" selection-end-line="302" />
+        <state relative-caret-position="412">
+          <caret line="185" selection-start-line="185" selection-end-line="185" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2107#2108#0" expanded="true" />
@@ -1165,39 +1155,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/expr/BinaryExpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="91" selection-start-line="91" selection-end-line="91" />
-          <folding>
-            <element signature="e#4164#4165#0" expanded="true" />
-            <element signature="e#4194#4195#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ast/expr/IDExpr.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="71" column="32" lean-forward="true" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
+        <state relative-caret-position="147">
+          <caret line="74" column="24" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
           <folding>
             <element signature="e#2652#2653#0" expanded="true" />
             <element signature="e#2682#2683#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/expr/ArrayExpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="69" column="18" selection-start-line="69" selection-start-column="18" selection-end-line="69" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="109" column="30" selection-start-line="109" selection-start-column="30" selection-end-line="109" selection-end-column="30" />
         </state>
       </provider>
     </entry>
