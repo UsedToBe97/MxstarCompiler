@@ -291,7 +291,7 @@ public class IrBuilder {
             params.add(e.operand);
         }
         if (nowfunc.num < 524 && x.funcDef.inline == true) {
-            if (x.funcDef.stmts.size() == 1 && x.funcDef.stmts.get(0) instanceof ReturnStmt) {
+            if (!x.isMemFunc && x.funcDef.stmts.size() == 1 && x.funcDef.stmts.get(0) instanceof ReturnStmt) {
                 x.funcDef.inline = false;
                 Expr res = ((ReturnStmt) x.funcDef.stmts.get(0)).expr;
                 HashMap<String, Operand> newMap = new HashMap<>();

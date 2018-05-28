@@ -1,93 +1,112 @@
-int N;
-int head;
-int startx;
-int starty;
-int targetx;
-int targety;
-int x;
-int y;
-int[] xlist = new int[12000];
-int[] ylist = new int[12000];
-int tail;
-int ok;
-int now;
-int[] dx = new int[8];
-int[] dy = new int[9];
-int[][] step;
-int i;
-int j;
-
-void origin(int N)
-{   
-    head = 0;
-    tail = 0;
-	step = new int[N][];
-    for (i = 0; i < N; i ++ ) {
-		step[i] = new int[N];
-        for (j = 0; j < N; j ++ )
-        step[i][j] = 0;
-    }	
+class point {
+	int x;
+	int y;
+	int z;
+	point() {
+		x = 0;
+		y = 0;
+		z = 0;
+	}
+	void set(int a_x, int a_y, int a_z){
+		x = a_x;
+		y = a_y;
+		z = a_z;
+	}
+	int sqrLen(){
+		return x * x + y * y + z * z;
+	}
+	int sqrDis(point other) {
+		return (x - other.x) * (x - other.x) + (y - other.y) * (y - other.y) + (z - other.z) * (z - other.z);
+	}
+	int dot(point other) {
+		return x * other.x + y * other.y + z * other.z;
+	}
+	point cross(point other) {
+		point retval = new point;
+		retval.set(y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x);
+		return retval;
+	}
+	point add(point other) {
+		x = x + other.x;
+		y = y + other.y;
+		z = z + other.z;
+		return this;
+	}
+	point sub(point other) {
+		x = x - other.x;
+		y = y - other.y;
+		z = z - other.z;
+		return this;
+	}
+	void printPoint() {
+		println("(" + toString(x) + ", " + toString(y) + ", " + toString(z) + ")");
+	}
 }
 
-bool check(int a) {
-    return ((a < N) && (a >= 0));
-}
-
-void addList(int x, int y) {
-    if (check(x) && check(y) && step[x][y] == -1) {
-        tail ++;
-        xlist[tail] = x;
-        ylist[tail] = y;
-        step[x][y] = now + 1;
-        if ((x == targetx) && (y == targety)) ok = 1;
-    }
-}
 int main() {
-	origin(106);
-    N = getInt();
-    targety  = N - 1;
-    targetx = targety;
-    for (i = 0; i < N; i ++)
-        for (j = 0; j < N; j ++)
-        step[i][j] = -1;
-    dx[0] = -2; dy[0] = -1;
-    dx[1] = -2; dy[1] = 1;
-    dx[2] = 2; dy[2] = -1;
-    dx[3] = 2; dy[3] = 1;
-    dx[4] = -1; dy[4] = -2;
-    dx[5] = -1; dy[5] = 2;
-    dx[6] = 1; dy[6] = -2;
-    dx[7] = 1; dy[7] = 2;
-    while (head <= tail) {
-        x = xlist[head];
-        y = ylist[head];
-        now = step[x][y];
-        for (j = 0;j < 8;j ++)
-            addList(x + dx[j], y + dy[j]);
-        if (ok == 1) break;
-        head ++;
-    }
-    if (ok == 1) println(toString(step[targetx][targety]));
-    else print("no solution!\n");
-    return 0;
+	point a = new point;
+	point b = new point;
+	point c = new point;
+	point d = new point;
+	a.printPoint();
+	a.set(849, -463, 480);
+	b.set(-208, 585, -150);
+	c.set(360, -670, -742);
+	d.set(-29, -591, -960);
+	a.add(b);
+	b.add(c);
+	d.add(c);
+	c.sub(a);
+	b.sub(d);
+	d.sub(c);
+	c.add(b);
+	a.add(b);
+	b.add(b);
+	c.add(c);
+	a.sub(d);
+	a.add(b);
+	b.sub(c);
+	println(toString(a.sqrLen()));
+	println(toString(b.sqrLen()));
+	println(toString(b.sqrDis(c)));
+	println(toString(d.sqrDis(a)));
+	println(toString(c.dot(a)));
+	b.cross(d).printPoint();
+	a.printPoint();
+	b.printPoint();
+	c.printPoint();
+	d.printPoint();
+	return 0;
 }
 
 
 
 /*!! metadata:
 === comment ===
-horse3-5100309153-yanghuan.mx
-=== input ===
-103
+point-5140309561-sunxingyuan.txt
+=== is_public ===
+True
 === assert ===
 output
 === timeout ===
-0.4
-=== output ===
-67
+0.1
+=== input ===
+
 === phase ===
-codegen pretest
-=== is_public ===
-True
+codegen extended
+=== output ===
+(0, 0, 0)
+28716325
+7421636
+9980404
+38464544
+1854392
+(7616, 1666188, -1232986)
+(-508, 4119, 3390)
+(562, 1584, 2144)
+(-920, 768, -524)
+(612, -469, -630)
+=== exitcode ===
+
 
 !!*/
