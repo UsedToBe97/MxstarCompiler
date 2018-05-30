@@ -11,18 +11,6 @@ extern strlen
 extern memcpy
 extern scanf
 section .data
-	dq	1
-str__0:
-	db	40, 0
-	dq	2
-str__1:
-	db	44, 32, 0
-	dq	2
-str__2:
-	db	44, 32, 0
-	dq	1
-str__3:
-	db	41, 0
 intbuffer:
 	dq 0
 format1:
@@ -34,1105 +22,188 @@ section .bss
 stringbuffer:
 	resb 256
 section .text
-point.point:
+cost_a_lot_of_time:
 	push	rbp
 	mov	rbp, rsp
-	mov	rax, 0
-	mov	qword [rdi], rax
-	mov	rax, 0
-	mov	qword [rdi + 8], rax
-	mov	rax, 0
-	mov	qword [rdi + 16], rax
+	mov	rdi, 3100
+	mov	rsi, 0
+	mov	rsi, 1
+	push	rdi
+	push	rsi
+	call	toString
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	push	rdi
+	push	rsi
+	call	println
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
 Label_0:
 	mov	rsp, rbp
 	pop	rbp
 	ret
-point.set:
+foo:
 	push	rbp
 	mov	rbp, rsp
-	mov	r10, rdx
-	mov	r11, rcx
-	mov	qword [rdi], rsi
-	mov	qword [rdi + 8], r10
-	mov	qword [rdi + 16], r11
-Label_1:
-	mov	rsp, rbp
-	pop	rbp
-	ret
-point.sqrLen:
-	push	rbp
-	mov	rbp, rsp
-	mov	rcx, qword [rdi]
-	imul	rcx, qword [rdi]
-	mov	rsi, rcx
-	mov	rcx, qword [rdi + 8]
-	imul	rcx, qword [rdi + 8]
-	mov	r10, rcx
-	add	rsi, r10
-	mov	rcx, qword [rdi + 16]
-	imul	rcx, qword [rdi + 16]
-	mov	rdi, rcx
-	mov	rcx, rsi
-	add	rcx, rdi
-	mov	rdi, rcx
-	mov	rax, rdi
-	jmp	Label_2
-Label_2:
-	mov	rsp, rbp
-	pop	rbp
-	ret
-point.sqrDis:
-	push	rbp
-	mov	rbp, rsp
-	mov	rcx, qword [rdi]
-	sub	rcx, qword [rsi]
-	mov	r10, rcx
-	mov	rcx, qword [rdi]
-	sub	rcx, qword [rsi]
-	mov	r11, rcx
-	imul	r10, r11
-	mov	rcx, qword [rdi + 8]
-	sub	rcx, qword [rsi + 8]
-	mov	r11, rcx
-	mov	rcx, qword [rdi + 8]
-	sub	rcx, qword [rsi + 8]
-	mov	r8, rcx
-	imul	r11, r8
-	add	r10, r11
-	mov	rcx, qword [rdi + 16]
-	sub	rcx, qword [rsi + 16]
-	mov	r11, rcx
-	mov	rcx, qword [rdi + 16]
-	sub	rcx, qword [rsi + 16]
+	mov	r10, rdi
+	mov	r11, rsi
+	mov	r8, rdx
+	mov	rcx, r10
+	imul	rcx, 1000
 	mov	rdi, rcx
 	mov	rcx, r11
-	imul	rcx, rdi
-	mov	rdi, rcx
-	mov	rcx, r10
-	add	rcx, rdi
-	mov	rdi, rcx
-	mov	rax, rdi
-	jmp	Label_3
-Label_3:
-	mov	rsp, rbp
-	pop	rbp
-	ret
-point.dot:
-	push	rbp
-	mov	rbp, rsp
-	mov	rcx, qword [rdi]
-	imul	rcx, qword [rsi]
-	mov	r10, rcx
-	mov	rcx, qword [rdi + 8]
-	imul	rcx, qword [rsi + 8]
-	mov	r11, rcx
-	add	r10, r11
-	mov	rcx, qword [rdi + 16]
-	imul	rcx, qword [rsi + 16]
-	mov	rdi, rcx
-	mov	rcx, r10
-	add	rcx, rdi
-	mov	rdi, rcx
-	mov	rax, rdi
-	jmp	Label_4
-Label_4:
-	mov	rsp, rbp
-	pop	rbp
-	ret
-point.cross:
-	push	rbp
-	mov	rbp, rsp
-	mov	r10, rdi
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, 24
-	call	malloc
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	r11, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r11
-	call	point.point
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rcx, qword [r10 + 8]
-	imul	rcx, qword [rsi + 16]
-	mov	rdi, rcx
-	mov	rcx, qword [r10 + 16]
-	imul	rcx, qword [rsi + 8]
-	mov	r8, rcx
-	mov	rcx, rdi
-	sub	rcx, r8
-	mov	r8, rcx
-	mov	rcx, qword [r10 + 16]
-	imul	rcx, qword [rsi]
-	mov	rdi, rcx
-	mov	rcx, qword [r10]
-	imul	rcx, qword [rsi + 16]
-	mov	r9, rcx
-	mov	rcx, rdi
-	sub	rcx, r9
-	mov	r9, rcx
-	mov	rcx, qword [r10]
-	imul	rcx, qword [rsi + 8]
-	mov	rdi, rcx
-	mov	rcx, qword [r10 + 8]
-	imul	rcx, qword [rsi]
+	imul	rcx, 10
 	mov	rsi, rcx
-	mov	rcx, rdi
-	sub	rcx, rsi
-	mov	r10, rcx
+	add	rdi, rsi
+	add	rdi, r8
 	push	rdi
 	push	rsi
 	push	r10
 	push	r11
 	push	r8
-	push	r9
-	mov	rdi, r11
-	mov	rsi, r8
-	mov	rdx, r9
-	mov	rcx, r10
-	call	point.set
-	pop	r9
+	call	toString
 	pop	r8
 	pop	r11
 	pop	r10
 	pop	rsi
 	pop	rdi
 	mov	rdi, rax
-	mov	rax, r11
-	jmp	Label_5
-Label_5:
-	mov	rsp, rbp
-	pop	rbp
-	ret
-point.add:
-	push	rbp
-	mov	rbp, rsp
-	mov	rcx, qword [rdi]
-	add	rcx, qword [rsi]
-	mov	r10, rcx
-	mov	qword [rdi], r10
-	mov	rcx, qword [rdi + 8]
-	add	rcx, qword [rsi + 8]
-	mov	r10, rcx
-	mov	qword [rdi + 8], r10
-	mov	rcx, qword [rdi + 16]
-	add	rcx, qword [rsi + 16]
-	mov	rsi, rcx
-	mov	qword [rdi + 16], rsi
-	mov	rax, rdi
-	jmp	Label_6
-Label_6:
-	mov	rsp, rbp
-	pop	rbp
-	ret
-point.sub:
-	push	rbp
-	mov	rbp, rsp
-	mov	rcx, qword [rdi]
-	sub	rcx, qword [rsi]
-	mov	r10, rcx
-	mov	qword [rdi], r10
-	mov	rcx, qword [rdi + 8]
-	sub	rcx, qword [rsi + 8]
-	mov	r10, rcx
-	mov	qword [rdi + 8], r10
-	mov	rcx, qword [rdi + 16]
-	sub	rcx, qword [rsi + 16]
-	mov	rsi, rcx
-	mov	qword [rdi + 16], rsi
-	mov	rax, rdi
-	jmp	Label_7
-Label_7:
-	mov	rsp, rbp
-	pop	rbp
-	ret
-point.printPoint:
-	push	rbp
-	mov	rbp, rsp
-	mov	r10, rdi
 	push	rdi
 	push	rsi
 	push	r10
 	push	r11
-	mov	rdi, qword [r10]
-	call	toString
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rsi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	mov	rdi, str__0
-	call	string.add
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	mov	rsi, str__1
-	call	string.add
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rsi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	mov	rdi, qword [r10 + 8]
-	call	toString
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	r11, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	mov	rdi, rsi
-	mov	rsi, r11
-	call	string.add
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	mov	rsi, str__2
-	call	string.add
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rsi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	mov	rdi, qword [r10 + 16]
-	call	toString
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	r10, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	mov	rdi, rsi
-	mov	rsi, r10
-	call	string.add
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	mov	rsi, str__3
-	call	string.add
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
+	push	r8
 	call	println
+	pop	r8
 	pop	r11
 	pop	r10
 	pop	rsi
 	pop	rdi
 	mov	rdi, rax
-Label_8:
+	cmp	r10, 1
+	je	Label_3
+	jmp	Label_4
+Label_3:
+	jmp	Label_1
+	jmp	Label_2
+Label_4:
+Label_2:
+	mov	rdi, r11
+	mov	r11, r8
+	mov	r8, rdi
+	push	rdi
+	push	rsi
+	push	r10
+	push	r11
+	push	r8
+	mov	rdi, 1
+	mov	rsi, r11
+	mov	rdx, r8
+	call	foo
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	mov	rcx, r10
+	imul	rcx, 1000
+	mov	rdi, rcx
+	mov	rcx, r11
+	imul	rcx, 10
+	mov	rsi, rcx
+	add	rdi, rsi
+	add	rdi, r8
+	push	rdi
+	push	rsi
+	push	r10
+	push	r11
+	push	r8
+	call	toString
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	push	rdi
+	push	rsi
+	push	r10
+	push	r11
+	push	r8
+	call	println
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+Label_1:
 	mov	rsp, rbp
 	pop	rbp
 	ret
 main:
 	push	rbp
 	mov	rbp, rsp
-	push	r12
-	push	r13
-	sub	rbp, 16
+	mov	rdi, 3100
+	mov	rsi, 0
+	mov	rsi, 1
 	push	rdi
 	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, 24
+	call	toString
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	push	rdi
+	push	rsi
+	call	println
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	push	rdi
+	push	rsi
+	call	cost_a_lot_of_time
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	push	rdi
+	push	rsi
+	mov	rdi, 7
+	mov	rsi, 5
+	mov	rdx, 3
+	call	foo
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	mov	rdi, 10
+	add	rdi, 1
+	imul	rdi, 8
+	push	rdi
+	push	rsi
 	call	malloc
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
 	pop	rsi
 	pop	rdi
-	mov	rsi, rax
+	mov	rdi, rax
+	mov	rax, 10
+	mov	qword [rdi], rax
+	add	rdi, 8
+	mov	rdi, 2
+	add	rdi, 1
+	imul	rdi, 8
 	push	rdi
 	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, rsi
-	call	point.point
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	r10, rsi
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, 24
 	call	malloc
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rsi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, rsi
-	call	point.point
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	r11, rsi
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, 24
-	call	malloc
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rsi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, rsi
-	call	point.point
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	r8, rsi
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, 24
-	call	malloc
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rsi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, rsi
-	call	point.point
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	r9, rsi
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r10
-	call	point.printPoint
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
 	pop	rsi
 	pop	rdi
 	mov	rdi, rax
-	mov	r12, 463
-	neg	r12
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r10
-	mov	rsi, 849
-	mov	rdx, r12
-	mov	rcx, 480
-	call	point.set
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	mov	rsi, 208
-	neg	rsi
-	mov	r12, 150
-	neg	r12
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r11
-	mov	rdx, 585
-	mov	rcx, r12
-	call	point.set
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	mov	r12, 670
-	neg	r12
-	mov	r13, 742
-	neg	r13
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r8
-	mov	rsi, 360
-	mov	rdx, r12
-	mov	rcx, r13
-	call	point.set
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	mov	rsi, 29
-	neg	rsi
-	mov	r12, 591
-	neg	r12
-	mov	r13, 960
-	neg	r13
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r9
-	mov	rdx, r12
-	mov	rcx, r13
-	call	point.set
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r10
-	mov	rsi, r11
-	call	point.add
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r11
-	mov	rsi, r8
-	call	point.add
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r9
-	mov	rsi, r8
-	call	point.add
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r8
-	mov	rsi, r10
-	call	point.sub
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r11
-	mov	rsi, r9
-	call	point.sub
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r9
-	mov	rsi, r8
-	call	point.sub
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r8
-	mov	rsi, r11
-	call	point.add
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r10
-	mov	rsi, r11
-	call	point.add
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r11
-	mov	rsi, r11
-	call	point.add
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r8
-	mov	rsi, r8
-	call	point.add
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r10
-	mov	rsi, r9
-	call	point.sub
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r10
-	mov	rsi, r11
-	call	point.add
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r11
-	mov	rsi, r8
-	call	point.sub
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r10
-	call	point.sqrLen
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	call	toString
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	call	println
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r11
-	call	point.sqrLen
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	call	toString
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	call	println
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r11
-	mov	rsi, r8
-	call	point.sqrDis
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	call	toString
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	call	println
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r9
-	mov	rsi, r10
-	call	point.sqrDis
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	call	toString
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	call	println
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r8
-	mov	rsi, r10
-	call	point.dot
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	call	toString
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	call	println
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r11
-	mov	rsi, r9
-	call	point.cross
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	call	point.printPoint
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r10
-	call	point.printPoint
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r11
-	call	point.printPoint
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r8
-	call	point.printPoint
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, r9
-	call	point.printPoint
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
+	mov	rax, 2
+	mov	qword [rdi], rax
+	add	rdi, 8
 	mov	rax, 0
-	jmp	Label_9
-Label_9:
-	add	rbp, 16
-	pop	r13
-	pop	r12
+	jmp	Label_5
+Label_5:
 	mov	rsp, rbp
 	pop	rbp
 	ret

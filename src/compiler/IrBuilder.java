@@ -452,6 +452,7 @@ public class IrBuilder {
     }
 
     public void visit(ForStmt x) {
+        if (x.del) return;
         Label tc = contLabel, tb = breakLabel;
         contLabel = new Label();
         breakLabel = new Label();
