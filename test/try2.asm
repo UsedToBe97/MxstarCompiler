@@ -30,7 +30,7 @@ main:
 	push	r13
 	push	r14
 	sub	rbp, 32
-	sub	rsp, 40
+	sub	rsp, 8
 	push	rdi
 	push	rsi
 	push	r10
@@ -157,63 +157,28 @@ Label_39:
 	mov	r15, 1
 Label_40:
 	mov	qword [rbp - 8], r15
-	mov	qword [rbp - 16], r15
-	mov	qword [rbp - 24], r15
-	mov	qword [rbp - 32], r15
-	mov	qword [rbp - 40], r15
+	mov	qword [rbp - 8], r15
+	mov	qword [rbp - 8], r15
+	mov	qword [rbp - 8], r15
+	mov	qword [rbp - 8], r15
 	cmp	r15, 1
 	je	Label_44
 	jmp	Label_45
 Label_44:
 	mov	r15, r14
 	add	r14, 1
+	mov	r15, r14
+	add	r14, 1
+	mov	r15, r14
+	add	r14, 1
+	mov	r15, r14
+	add	r14, 1
+	mov	r15, r14
+	add	r14, 1
+	mov	r15, r14
+	add	r14, 1
 	jmp	Label_45
 Label_45:
-	mov	rax, qword [rbp - 8]
-	cmp	rax, 1
-	je	Label_47
-	jmp	Label_48
-Label_47:
-	mov	r15, r14
-	add	r14, 1
-	jmp	Label_48
-Label_48:
-	mov	rax, qword [rbp - 16]
-	cmp	rax, 1
-	je	Label_50
-	jmp	Label_51
-Label_50:
-	mov	r15, r14
-	add	r14, 1
-	jmp	Label_51
-Label_51:
-	mov	rax, qword [rbp - 24]
-	cmp	rax, 1
-	je	Label_53
-	jmp	Label_54
-Label_53:
-	mov	r15, r14
-	add	r14, 1
-	jmp	Label_54
-Label_54:
-	mov	rax, qword [rbp - 32]
-	cmp	rax, 1
-	je	Label_56
-	jmp	Label_57
-Label_56:
-	mov	r15, r14
-	add	r14, 1
-	jmp	Label_57
-Label_57:
-	mov	rax, qword [rbp - 40]
-	cmp	rax, 1
-	je	Label_59
-	jmp	Label_60
-Label_59:
-	mov	r15, r14
-	add	r14, 1
-	jmp	Label_60
-Label_60:
 	add	r12, 1
 	jmp	Label_28
 Label_26:
@@ -267,7 +232,7 @@ Label_2:
 	mov	rax, 0
 	jmp	Label_0
 Label_0:
-	add	rsp, 40
+	add	rsp, 8
 	add	rbp, 32
 	pop	r14
 	pop	r13
