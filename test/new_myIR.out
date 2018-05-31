@@ -1,652 +1,493 @@
+make__ [GV]
+color__ [GV]
+count__ [GV]
+i__ [GV]
+j__ [GV]
 
-string[ 0 ] no solution!
+string[ 0 ]  
+string[ 1 ] 
+
+string[ 2 ] 
 
 
-check [Func]:
-	rdi = rdi [rdi , rsi , ][rdi]
-	rsi = rsi [rdi , rsi , ][rsi]
-	jump Label_1 if rdi jl rsi [rdi , rsi , ][]
-	rdi = 0 [][rdi]
-	jump Label_2 [rdi , ][]
-Label_1:
-	rdi = rdi >= 0 [rdi , ][rdi]
-	rdi = rdi [rdi , ][rdi]
-Label_2:
-	rax = rdi [rdi , ][rax]
-	jump Label_0 [][]
-Label_0:
-main [Func]:
-		FuncCall getInt Param_size : 0 [][rax]
-		rdi = rax [rax , ][rdi]
+origin [Func]:
 	rsi = rdi [rdi , ][rsi]
-	r10 = 0 [rsi , ][r10]
-	r13 = 0 [rsi , r10 , ][r13]
-	r11 = 0 [rsi , r10 , r13 , ][r11]
-	r8 = 0 [rsi , r11 , r10 , r13 , ][r8]
-	rdi = rsi - 1 [rsi , r11 , r10 , r8 , r13 , ][rdi]
-	r9 = rdi [rsi , rdi , r11 , r10 , r8 , r13 , ][r9]
-	rdi = rsi - 1 [rsi , r11 , r10 , r9 , r8 , r13 , ][rdi]
-	r12 = rdi [rsi , rdi , r11 , r10 , r9 , r8 , r13 , ][r12]
-	r15 = 0 [rsi , r11 , r10 , r9 , r8 , r12 , r13 , ][r15]
-	reg16 = 0 [rsi , r11 , r10 , r9 , r8 , r12 , r13 , ][reg16]
-	rdi = 0 [rsi , r11 , r10 , r9 , r8 , r12 , r13 , ][rdi]
-	r14 = 0 [rsi , r11 , r10 , r9 , r8 , r12 , r13 , ][r14]
-	r15 = rsi * rsi [rsi , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][r15]
-	rdi = r15 [rsi , r15 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][rdi]
-	rdi = rdi + 1 [rsi , r15 , r11 , r10 , r9 , r14 , rdi , r8 , r12 , r13 , ][rdi]
-	rdi = rdi * 8 [rsi , r15 , r11 , r10 , r9 , r14 , rdi , r8 , r12 , r13 , ][rdi]
-		rdi = rdi [rsi , r15 , r11 , r10 , r9 , r14 , rdi , r8 , r12 , r13 , ][rdi]
-		FuncCall malloc Param_size : 1 [rsi , r15 , rdi , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][rax]
-		rdi = rax [rax , rsi , r15 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][rdi]
-	qword [rdi] = r15 [rsi , r15 , r11 , r10 , r9 , r14 , r8 , r12 , rdi , r13 , ][]
-	rdi = rdi + 8 [rsi , r11 , r10 , r9 , r14 , r8 , r12 , rdi , r13 , ][rdi]
-	reg17 = rdi [rsi , r11 , r10 , r9 , r14 , r8 , r12 , rdi , r13 , ][reg17]
-	r15 = 0 [rsi , reg17 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][r15]
-Label_7:
-	rdi = rsi * rsi [rsi , reg17 , r15 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][rdi]
-	jump Label_6 if r15 jl rdi [rsi , reg17 , r15 , r11 , r10 , r9 , rdi , r14 , r8 , r12 , r13 , ][]
-	jump Label_5 [rsi , reg17 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][]
-Label_6:
-	qword [reg17 + r15 * 8] = 0 [rsi , reg17 , r15 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][]
+	rdi = rsi [rsi , ][rdi]
+	rdi = rdi + 1 [rdi , rsi , ][rdi]
+	rdi = rdi * 8 [rdi , rsi , ][rdi]
+		rdi = rdi [rdi , rsi , ][rdi]
+		FuncCall malloc Param_size : 1 [rdi , rsi , ][rax]
+		rdi = rax [rax , rsi , ][rdi]
+	qword [rdi] = rsi [rdi , rsi , ][]
+	rdi = rdi + 8 [rdi , rsi , ][rdi]
+	qword [ make__ ] = rdi [rdi , rsi , ][]
+	qword [ i__ ] = 0 [rsi , ][]
 Label_4:
-	rdi = r15 [rsi , reg17 , r15 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][rdi]
-	r15 = r15 + 1 [rsi , reg17 , r15 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][r15]
-	jump Label_7 [rsi , reg17 , r15 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][]
-Label_5:
-	r15 = rsi * rsi [rsi , reg17 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][r15]
-	rdi = r15 [rsi , reg17 , r11 , r10 , r9 , r14 , r15 , r8 , r12 , r13 , ][rdi]
-	rdi = rdi + 1 [rsi , reg17 , rdi , r11 , r10 , r9 , r14 , r15 , r8 , r12 , r13 , ][rdi]
-	rdi = rdi * 8 [rsi , reg17 , rdi , r11 , r10 , r9 , r14 , r15 , r8 , r12 , r13 , ][rdi]
-		rdi = rdi [rsi , reg17 , rdi , r11 , r10 , r9 , r14 , r15 , r8 , r12 , r13 , ][rdi]
-		FuncCall malloc Param_size : 1 [rsi , reg17 , rdi , r11 , r10 , r9 , r14 , r15 , r8 , r12 , r13 , ][rax]
-		rdi = rax [rax , rsi , reg17 , r11 , r10 , r9 , r14 , r15 , r8 , r12 , r13 , ][rdi]
-	qword [rdi] = r15 [rsi , reg17 , rdi , r11 , r10 , r9 , r14 , r15 , r8 , r12 , r13 , ][]
-	rdi = rdi + 8 [rsi , reg17 , rdi , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][rdi]
-	reg18 = rdi [rsi , reg17 , rdi , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][reg18]
-	r15 = 0 [rsi , reg18 , reg17 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][r15]
-Label_11:
-	rdi = rsi * rsi [rsi , reg18 , reg17 , r15 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][rdi]
-	jump Label_10 if r15 jl rdi [rsi , reg18 , reg17 , r15 , rdi , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][]
-	jump Label_9 [rsi , reg17 , reg18 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][]
-Label_10:
-	qword [reg18 + r15 * 8] = 0 [rsi , reg18 , reg17 , r15 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][]
+	jump Label_3 if qword [ i__ ] jl rsi [rsi , ][]
+	jump Label_2 [][]
+Label_3:
+	r10 = qword [ make__ ] [rsi , ][r10]
+	r11 = qword [ i__ ] [r10 , rsi , ][r11]
+	rdi = rsi [r10 , r11 , rsi , ][rdi]
+	rdi = rdi + 1 [r10 , rdi , r11 , rsi , ][rdi]
+	rdi = rdi * 8 [r10 , rdi , r11 , rsi , ][rdi]
+		rdi = rdi [r10 , rdi , r11 , rsi , ][rdi]
+		FuncCall malloc Param_size : 1 [r10 , r11 , rdi , rsi , ][rax]
+		rdi = rax [r10 , r11 , rax , rsi , ][rdi]
+	qword [rdi] = rsi [r10 , r11 , rsi , rdi , ][]
+	rdi = rdi + 8 [r10 , r11 , rsi , rdi , ][rdi]
+	qword [r10 + r11 * 8] = rdi [r10 , r11 , rsi , rdi , ][]
+	qword [ j__ ] = 0 [rsi , ][]
 Label_8:
-	rdi = r15 [rsi , reg18 , reg17 , r15 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][rdi]
-	r15 = r15 + 1 [rsi , reg18 , reg17 , r15 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][r15]
-	jump Label_11 [rsi , reg18 , reg17 , r15 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][]
-Label_9:
-	rdi = rsi [rsi , reg17 , reg18 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][rdi]
-	rdi = rdi + 1 [rsi , reg17 , reg18 , rdi , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][rdi]
-	rdi = rdi * 8 [rsi , reg17 , reg18 , rdi , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][rdi]
-		rdi = rdi [rsi , reg17 , reg18 , rdi , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][rdi]
-		FuncCall malloc Param_size : 1 [rsi , reg17 , reg18 , rdi , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][rax]
-		rdi = rax [rax , rsi , reg17 , reg18 , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][rdi]
-	qword [rdi] = rsi [rsi , reg17 , reg18 , rdi , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][]
-	rdi = rdi + 8 [rsi , reg17 , reg18 , rdi , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][rdi]
-	reg19 = rdi [rsi , reg17 , reg18 , rdi , r11 , r10 , r9 , r14 , r8 , r12 , r13 , ][reg19]
-	r15 = 0 [rsi , reg17 , reg18 , r11 , r10 , r9 , r14 , reg19 , r8 , r12 , r13 , ][r15]
-Label_15:
-	jump Label_14 if r15 jl rsi [rsi , reg17 , reg18 , r15 , r11 , r10 , r9 , r14 , reg19 , r8 , r12 , r13 , ][]
-	jump Label_13 [rsi , reg17 , reg18 , r11 , r10 , r9 , r14 , reg19 , r8 , r12 , r13 , ][]
-Label_14:
-	rdi = rsi [rsi , reg17 , reg18 , r15 , r11 , r10 , r9 , r14 , reg19 , r8 , r12 , r13 , ][rdi]
-	rdi = rdi + 1 [reg17 , reg18 , reg19 , r8 , r12 , r13 , rsi , rdi , r15 , r11 , r10 , r9 , r14 , ][rdi]
-	rdi = rdi * 8 [reg17 , reg18 , reg19 , r8 , r12 , r13 , rsi , rdi , r15 , r11 , r10 , r9 , r14 , ][rdi]
-		rdi = rdi [reg17 , reg18 , reg19 , r8 , r12 , r13 , rsi , rdi , r15 , r11 , r10 , r9 , r14 , ][rdi]
-		FuncCall malloc Param_size : 1 [reg17 , reg18 , rdi , reg19 , r8 , r12 , r13 , rsi , r15 , r11 , r10 , r9 , r14 , ][rax]
-		rdi = rax [reg17 , reg18 , reg19 , r8 , r12 , r13 , rax , rsi , r15 , r11 , r10 , r9 , r14 , ][rdi]
-	qword [rdi] = rsi [reg17 , reg18 , rdi , reg19 , r8 , r12 , r13 , rsi , r15 , r11 , r10 , r9 , r14 , ][]
-	rdi = rdi + 8 [reg17 , reg18 , rdi , reg19 , r8 , r12 , r13 , rsi , r15 , r11 , r10 , r9 , r14 , ][rdi]
-	qword [reg19 + r15 * 8] = rdi [reg17 , reg18 , rdi , reg19 , r8 , r12 , r13 , rsi , r15 , r11 , r10 , r9 , r14 , ][]
-	rdi = 0 [rsi , reg17 , reg18 , r15 , r11 , r10 , r9 , r14 , reg19 , r8 , r12 , r13 , ][rdi]
-Label_19:
-	jump Label_18 if rdi jl rsi [reg17 , reg18 , reg19 , r8 , r12 , r13 , rsi , r15 , rdi , r11 , r10 , r9 , r14 , ][]
-	jump Label_17 [rsi , reg17 , reg18 , r15 , r11 , r10 , r9 , r14 , reg19 , r8 , r12 , r13 , ][]
-Label_18:
-	reg16 = qword [reg19 + r15 * 8] [reg17 , reg18 , reg19 , r8 , r12 , r13 , rsi , r15 , rdi , r11 , r10 , r9 , r14 , ][reg16]
-	reg20 = 1 [reg17 , reg18 , reg19 , r8 , r12 , reg16 , r13 , rsi , r15 , rdi , r11 , r10 , r9 , r14 , ][reg20]
-	- reg20 [reg17 , reg18 , reg19 , r8 , r12 , reg16 , r13 , rsi , r15 , rdi , r11 , r10 , r9 , reg20 , r14 , ][reg20]
-	qword [reg16 + rdi * 8] = reg20 [reg17 , reg18 , reg19 , r8 , r12 , reg16 , r13 , rsi , r15 , rdi , r11 , r10 , r9 , reg20 , r14 , ][]
-Label_16:
-	reg16 = rdi [reg17 , reg18 , reg19 , r8 , r12 , r13 , rsi , r15 , rdi , r11 , r10 , r9 , r14 , ][reg16]
-	rdi = rdi + 1 [reg17 , reg18 , reg19 , r8 , r12 , r13 , rsi , r15 , rdi , r11 , r10 , r9 , r14 , ][rdi]
-	jump Label_19 [reg17 , reg18 , reg19 , r8 , r12 , r13 , rsi , r15 , rdi , r11 , r10 , r9 , r14 , ][]
-Label_17:
-Label_12:
-	rdi = r15 [rsi , reg17 , reg18 , r15 , r11 , r10 , r9 , r14 , reg19 , r8 , r12 , r13 , ][rdi]
-	r15 = r15 + 1 [rsi , reg17 , reg18 , r15 , r11 , r10 , r9 , r14 , reg19 , r8 , r12 , r13 , ][r15]
-	jump Label_15 [rsi , reg17 , reg18 , r15 , r11 , r10 , r9 , r14 , reg19 , r8 , r12 , r13 , ][]
+	jump Label_7 if qword [ j__ ] jl rsi [rsi , ][]
+	jump Label_6 [rsi , ][]
+Label_7:
+	rdi = qword [ make__ ] [rsi , ][rdi]
+	r10 = qword [ i__ ] [rsi , rdi , ][r10]
+	rdi = qword [rdi + r10 * 8] [r10 , rsi , rdi , ][rdi]
+	r10 = qword [ j__ ] [rdi , rsi , ][r10]
+	qword [rdi + r10 * 8] = 0 [rdi , r10 , rsi , ][]
+Label_5:
+	rdi = qword [ j__ ] [rsi , ][rdi]
+	qword [ j__ ] = qword [ j__ ] + 1 [rsi , ][]
+	jump Label_8 [rsi , ][]
+Label_6:
+Label_1:
+	rdi = qword [ i__ ] [rsi , ][rdi]
+	qword [ i__ ] = qword [ i__ ] + 1 [rsi , ][]
+	jump Label_4 [rsi , ][]
+Label_2:
+Label_0:
+search [Func]:
+	r10 = rdi [rsi , rdi , rdx , ][r10]
+	r11 = rsi [rsi , r10 , rdx , ][r11]
+	r8 = rdx [r10 , r11 , rdx , ][r8]
+	jump Label_13 if r11 jg 0 [r10 , r11 , r8 , ][]
+	rdi = r11 < 0 [r10 , r11 , r8 , ][rdi]
+	rdi = rdi [r10 , r11 , rdi , r8 , ][rdi]
+	jump Label_14 [r10 , r11 , rdi , r8 , ][]
 Label_13:
-	rdi = 0 [rsi , reg17 , reg18 , r11 , r10 , r9 , r14 , reg19 , r8 , r12 , r13 , ][rdi]
-	qword [reg17 + rdi * 8] = r11 [rsi , reg17 , reg18 , r11 , r10 , r9 , rdi , r14 , reg19 , r8 , r12 , r13 , ][]
-	rdi = 0 [rsi , reg18 , reg17 , r11 , r10 , r9 , r14 , reg19 , r8 , r12 , r13 , ][rdi]
-	qword [reg18 + rdi * 8] = r8 [rsi , reg18 , reg17 , rdi , r11 , r10 , r9 , r14 , reg19 , r8 , r12 , r13 , ][]
-	rdi = qword [reg19 + r11 * 8] [rsi , reg17 , reg18 , r11 , r10 , r9 , r14 , reg19 , r8 , r12 , r13 , ][rdi]
-	qword [rdi + r8 * 8] = 0 [rsi , reg17 , reg18 , rdi , r10 , r9 , r14 , reg19 , r8 , r12 , r13 , ][]
-Label_23:
-	jump Label_22 if r10 jle r13 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , r12 , r13 , ][]
-	jump Label_21 [r9 , r14 , reg19 , r12 , ][]
+	rdi = 1 [r10 , r11 , r8 , ][rdi]
+Label_14:
+	jump Label_15 if rdi je 1 [r10 , r11 , rdi , r8 , ][]
+	rdi = r10 == 0 [r10 , r11 , r8 , ][rdi]
+	rdi = rdi [rdi , r10 , r11 , r8 , ][rdi]
+	jump Label_16 [r10 , rdi , r11 , r8 , ][]
+Label_15:
+	rdi = 1 [r10 , r11 , r8 , ][rdi]
+Label_16:
+	jump Label_17 if rdi je 1 [r10 , rdi , r11 , r8 , ][]
+	rdi = qword [ make__ ] [r10 , r11 , r8 , ][rdi]
+	rsi = r10 - 1 [r10 , r11 , r8 , rdi , ][rsi]
+	rdi = qword [rdi + rsi * 8] [r10 , r11 , r8 , rdi , rsi , ][rdi]
+	rsi = 0 [r10 , r11 , r8 , rdi , ][rsi]
+	r9 = qword [ make__ ] [r10 , r11 , r8 , rdi , rsi , ][r9]
+	r12 = r10 - 1 [r10 , r11 , r8 , r9 , rdi , rsi , ][r12]
+	r9 = qword [r9 + r12 * 8] [r10 , r11 , r8 , r9 , rdi , r12 , rsi , ][r9]
+	r12 = 1 [r10 , r11 , r8 , rdi , r9 , rsi , ][r12]
+	rdi = qword [rdi + rsi * 8] + qword [r9 + r12 * 8] [r10 , r11 , r8 , rdi , r12 , r9 , rsi , ][rdi]
+	rsi = qword [ make__ ] [r10 , rdi , r11 , r8 , ][rsi]
+	r9 = r10 - 1 [r10 , rdi , r11 , r8 , rsi , ][r9]
+	rsi = qword [rsi + r9 * 8] [rdi , r10 , r11 , r9 , r8 , rsi , ][rsi]
+	r9 = 2 [rdi , r10 , rsi , r11 , r8 , ][r9]
+	rdi = rdi + qword [rsi + r9 * 8] [r9 , rdi , r10 , rsi , r11 , r8 , ][rdi]
+	rdi = rdi == 15 [r10 , r11 , r8 , rdi , ][rdi]
+	rdi = rdi [r10 , r11 , rdi , r8 , ][rdi]
+	jump Label_18 [r10 , r11 , r8 , rdi , ][]
+Label_17:
+	rdi = 1 [r10 , r11 , r8 , ][rdi]
+Label_18:
+	jump Label_11 if rdi je 1 [r10 , r11 , r8 , rdi , ][]
+	jump Label_12 [][]
+Label_11:
+	jump Label_22 if r10 je 2 [r10 , r11 , r8 , ][]
+	rdi = 0 [r10 , r11 , r8 , ][rdi]
+	jump Label_23 [rdi , r10 , r11 , r8 , ][]
 Label_22:
-	rdi = qword [reg17 + r10 * 8] [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , r12 , r13 , ][rdi]
-	rdi = qword [reg19 + rdi * 8] [rsi , reg18 , reg17 , r10 , r9 , r14 , rdi , reg19 , r12 , r13 , ][rdi]
-	r11 = qword [reg18 + r10 * 8] [rsi , reg18 , reg17 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	rdi = qword [rdi + r11 * 8] [rsi , reg17 , reg18 , r11 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][rdi]
-	r11 = qword [reg17 + r10 * 8] - 1 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	r15 = r11 [rsi , reg18 , reg17 , r10 , r9 , r14 , reg19 , rdi , r12 , r11 , r13 , ][r15]
-	r11 = qword [reg18 + r10 * 8] - 2 [rsi , reg18 , reg17 , r10 , r9 , r15 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	reg16 = r11 [r11 , rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , rdi , r12 , r13 , ][reg16]
-	jump Label_27 if r15 jl rsi [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_28 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r11 , r14 , rdi , ][]
+	rdi = r11 == 2 [r10 , r11 , r8 , ][rdi]
+	rdi = rdi [r10 , r11 , r8 , rdi , ][rdi]
+Label_23:
+	jump Label_20 if rdi je 1 [rdi , r10 , r11 , r8 , ][]
+	jump Label_21 [r10 , r11 , r8 , ][]
+Label_20:
+	rdi = qword [ make__ ] [r8 , ][rdi]
+	rsi = 2 [rdi , r8 , ][rsi]
+	rdi = qword [rdi + rsi * 8] [rdi , r8 , rsi , ][rdi]
+	rsi = 2 [rdi , r8 , ][rsi]
+	r10 = 45 - r8 [rsi , rdi , r8 , ][r10]
+	qword [rdi + rsi * 8] = r10 [rsi , rdi , r10 , ][]
+	rdi = qword [ make__ ] [][rdi]
+	rsi = 0 [rdi , ][rsi]
+	rdi = qword [rdi + rsi * 8] [rsi , rdi , ][rdi]
+	rsi = 0 [rdi , ][rsi]
+	r10 = qword [ make__ ] [rsi , rdi , ][r10]
+	r11 = 0 [r10 , rsi , rdi , ][r11]
+	r10 = qword [r10 + r11 * 8] [r10 , rsi , rdi , r11 , ][r10]
+	r11 = 1 [r10 , rsi , rdi , ][r11]
+	rdi = qword [rdi + rsi * 8] + qword [r10 + r11 * 8] [r11 , r10 , rsi , rdi , ][rdi]
+	rsi = qword [ make__ ] [rdi , ][rsi]
+	r10 = 0 [rdi , rsi , ][r10]
+	rsi = qword [rsi + r10 * 8] [rdi , r10 , rsi , ][rsi]
+	r10 = 2 [rdi , rsi , ][r10]
+	rdi = rdi + qword [rsi + r10 * 8] [r10 , rdi , rsi , ][rdi]
+	rdi = rdi [rdi , ][rdi]
+	rsi = qword [ make__ ] [rdi , ][rsi]
+	r10 = 1 [rsi , rdi , ][r10]
+	rsi = qword [rsi + r10 * 8] [r10 , rsi , rdi , ][rsi]
+	r10 = 0 [rsi , rdi , ][r10]
+	r11 = qword [ make__ ] [rsi , r10 , rdi , ][r11]
+	r8 = 1 [rsi , r11 , r10 , rdi , ][r8]
+	r11 = qword [r11 + r8 * 8] [r8 , rsi , r11 , r10 , rdi , ][r11]
+	r8 = 1 [r11 , rsi , r10 , rdi , ][r8]
+	rsi = qword [rsi + r10 * 8] + qword [r11 + r8 * 8] [r8 , r11 , rsi , r10 , rdi , ][rsi]
+	r10 = qword [ make__ ] [rsi , rdi , ][r10]
+	r11 = 1 [r10 , rsi , rdi , ][r11]
+	r10 = qword [r10 + r11 * 8] [r10 , r11 , rsi , rdi , ][r10]
+	r11 = 2 [r10 , rsi , rdi , ][r11]
+	rsi = rsi + qword [r10 + r11 * 8] [r10 , rsi , r11 , rdi , ][rsi]
+	jump Label_27 if rsi je rdi [rsi , rdi , ][]
+	rsi = 0 [rdi , ][rsi]
+	jump Label_28 [rsi , rdi , ][]
 Label_27:
-	r11 = r15 >= 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
+	rsi = qword [ make__ ] [rdi , ][rsi]
+	r10 = 2 [rsi , rdi , ][r10]
+	rsi = qword [rsi + r10 * 8] [r10 , rsi , rdi , ][rsi]
+	r10 = 0 [rsi , rdi , ][r10]
+	r11 = qword [ make__ ] [r10 , rsi , rdi , ][r11]
+	r8 = 2 [r10 , r11 , rsi , rdi , ][r8]
+	r11 = qword [r11 + r8 * 8] [r10 , r11 , rsi , r8 , rdi , ][r11]
+	r8 = 1 [r10 , rsi , r11 , rdi , ][r8]
+	rsi = qword [rsi + r10 * 8] + qword [r11 + r8 * 8] [r10 , rsi , r8 , r11 , rdi , ][rsi]
+	r10 = qword [ make__ ] [rsi , rdi , ][r10]
+	r11 = 2 [r10 , rsi , rdi , ][r11]
+	r10 = qword [r10 + r11 * 8] [r11 , r10 , rsi , rdi , ][r10]
+	r11 = 2 [r10 , rsi , rdi , ][r11]
+	rsi = rsi + qword [r10 + r11 * 8] [r10 , r11 , rsi , rdi , ][rsi]
+	rsi = rsi == rdi [rsi , rdi , ][rsi]
+	rsi = rsi [rsi , rdi , ][rsi]
 Label_28:
-	jump Label_29 if r11 je 1 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r11 , r14 , rdi , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	jump Label_30 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
+	jump Label_29 if rsi je 1 [rsi , rdi , ][]
+	rsi = 0 [rdi , ][rsi]
+	jump Label_30 [rsi , rdi , ][]
 Label_29:
-	jump Label_31 if reg16 jl rsi [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	jump Label_32 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_31:
-	r11 = reg16 >= 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [reg17 , reg18 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , r11 , ][r11]
-Label_32:
-	r11 = r11 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
+	rsi = qword [ make__ ] [rdi , ][rsi]
+	r10 = 0 [rsi , rdi , ][r10]
+	rsi = qword [rsi + r10 * 8] [rsi , r10 , rdi , ][rsi]
+	r10 = 0 [rsi , rdi , ][r10]
+	r11 = qword [ make__ ] [r10 , rsi , rdi , ][r11]
+	r8 = 1 [r10 , rsi , r11 , rdi , ][r8]
+	r11 = qword [r11 + r8 * 8] [r10 , r8 , rsi , r11 , rdi , ][r11]
+	r8 = 0 [r10 , r11 , rsi , rdi , ][r8]
+	rsi = qword [rsi + r10 * 8] + qword [r11 + r8 * 8] [r10 , r11 , rsi , r8 , rdi , ][rsi]
+	r10 = qword [ make__ ] [rsi , rdi , ][r10]
+	r11 = 2 [r10 , rsi , rdi , ][r11]
+	r10 = qword [r10 + r11 * 8] [r11 , r10 , rsi , rdi , ][r10]
+	r11 = 0 [r10 , rsi , rdi , ][r11]
+	rsi = rsi + qword [r10 + r11 * 8] [r11 , r10 , rsi , rdi , ][rsi]
+	rsi = rsi == rdi [rsi , rdi , ][rsi]
+	rsi = rsi [rsi , rdi , ][rsi]
 Label_30:
-	jump Label_33 if r11 je 1 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_34 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r11 , r14 , rdi , ][]
+	jump Label_31 if rsi je 1 [rsi , rdi , ][]
+	rsi = 0 [rdi , ][rsi]
+	jump Label_32 [rsi , rdi , ][]
+Label_31:
+	rsi = qword [ make__ ] [rdi , ][rsi]
+	r10 = 0 [rsi , rdi , ][r10]
+	rsi = qword [rsi + r10 * 8] [r10 , rsi , rdi , ][rsi]
+	r10 = 1 [rsi , rdi , ][r10]
+	r11 = qword [ make__ ] [r10 , rsi , rdi , ][r11]
+	r8 = 1 [r11 , r10 , rsi , rdi , ][r8]
+	r11 = qword [r11 + r8 * 8] [r11 , r10 , rsi , r8 , rdi , ][r11]
+	r8 = 1 [r10 , rsi , r11 , rdi , ][r8]
+	rsi = qword [rsi + r10 * 8] + qword [r11 + r8 * 8] [r10 , rsi , r8 , r11 , rdi , ][rsi]
+	r10 = qword [ make__ ] [rsi , rdi , ][r10]
+	r11 = 2 [rsi , r10 , rdi , ][r11]
+	r10 = qword [r10 + r11 * 8] [rsi , r10 , r11 , rdi , ][r10]
+	r11 = 1 [rsi , r10 , rdi , ][r11]
+	rsi = rsi + qword [r10 + r11 * 8] [rsi , r10 , r11 , rdi , ][rsi]
+	rsi = rsi == rdi [rsi , rdi , ][rsi]
+	rsi = rsi [rsi , rdi , ][rsi]
+Label_32:
+	jump Label_33 if rsi je 1 [rsi , rdi , ][]
+	rsi = 0 [rdi , ][rsi]
+	jump Label_34 [rsi , rdi , ][]
 Label_33:
-	r11 = qword [reg19 + r15 * 8] [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	r8 = 1 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][r8]
-	- r8 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r8 , r9 , r10 , r15 , r14 , rdi , ][r8]
-	r11 = qword [r11 + reg16 * 8] == r8 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r8 , r9 , r10 , r15 , r14 , rdi , ][r11]
-	r11 = r11 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
+	rsi = qword [ make__ ] [rdi , ][rsi]
+	r10 = 0 [rsi , rdi , ][r10]
+	rsi = qword [rsi + r10 * 8] [r10 , rsi , rdi , ][rsi]
+	r10 = 2 [rsi , rdi , ][r10]
+	r11 = qword [ make__ ] [rsi , r10 , rdi , ][r11]
+	r8 = 1 [rsi , r10 , r11 , rdi , ][r8]
+	r11 = qword [r11 + r8 * 8] [rsi , r10 , r8 , r11 , rdi , ][r11]
+	r8 = 2 [rsi , r10 , r11 , rdi , ][r8]
+	rsi = qword [rsi + r10 * 8] + qword [r11 + r8 * 8] [rsi , r10 , r8 , r11 , rdi , ][rsi]
+	r10 = qword [ make__ ] [rsi , rdi , ][r10]
+	r11 = 2 [rsi , r10 , rdi , ][r11]
+	r10 = qword [r10 + r11 * 8] [rsi , r11 , r10 , rdi , ][r10]
+	r11 = 2 [r10 , rsi , rdi , ][r11]
+	rsi = rsi + qword [r10 + r11 * 8] [r10 , rsi , r11 , rdi , ][rsi]
+	rsi = rsi == rdi [rsi , rdi , ][rsi]
+	rsi = rsi [rsi , rdi , ][rsi]
 Label_34:
-	jump Label_25 if r11 je 1 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r11 , r14 , rdi , ][]
-	jump Label_26 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_25:
-	r11 = r13 + 1 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r13 = r11 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r11 , r12 , ][r13]
-	qword [reg17 + r13 * 8] = r15 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	qword [reg18 + r13 * 8] = reg16 [rsi , reg18 , reg17 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = qword [reg19 + r15 * 8] [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	r8 = rdi + 1 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r8]
-	qword [r11 + reg16 * 8] = r8 [reg17 , reg18 , r8 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-	jump Label_38 if r15 je r9 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_39 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r11 , r13 , ][]
-Label_38:
-	r11 = reg16 == r12 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [rsi , reg17 , reg18 , r11 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-Label_39:
-	jump Label_36 if r11 je 1 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r11 , r13 , ][]
-	jump Label_37 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_36:
-	r14 = 1 [rsi , reg17 , reg18 , r10 , r9 , reg19 , rdi , r12 , r13 , ][r14]
-	jump Label_35 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_37:
+	jump Label_35 if rsi je 1 [rsi , rdi , ][]
+	rsi = 0 [rdi , ][rsi]
+	jump Label_36 [rsi , rdi , ][]
 Label_35:
-	jump Label_24 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
+	rsi = qword [ make__ ] [rdi , ][rsi]
+	r10 = 0 [rsi , rdi , ][r10]
+	rsi = qword [rsi + r10 * 8] [r10 , rsi , rdi , ][rsi]
+	r10 = 0 [rsi , rdi , ][r10]
+	r11 = qword [ make__ ] [r10 , rsi , rdi , ][r11]
+	r8 = 1 [r10 , rsi , r11 , rdi , ][r8]
+	r11 = qword [r11 + r8 * 8] [r10 , rsi , r8 , r11 , rdi , ][r11]
+	r8 = 1 [r11 , r10 , rsi , rdi , ][r8]
+	rsi = qword [rsi + r10 * 8] + qword [r11 + r8 * 8] [r11 , r10 , rsi , r8 , rdi , ][rsi]
+	r10 = qword [ make__ ] [rsi , rdi , ][r10]
+	r11 = 2 [r10 , rsi , rdi , ][r11]
+	r10 = qword [r10 + r11 * 8] [r11 , r10 , rsi , rdi , ][r10]
+	r11 = 2 [r10 , rsi , rdi , ][r11]
+	rsi = rsi + qword [r10 + r11 * 8] [r10 , r11 , rsi , rdi , ][rsi]
+	rsi = rsi == rdi [rsi , rdi , ][rsi]
+	rsi = rsi [rsi , rdi , ][rsi]
+Label_36:
+	jump Label_37 if rsi je 1 [rsi , rdi , ][]
+	rdi = 0 [][rdi]
+	jump Label_38 [rdi , ][]
+Label_37:
+	rsi = qword [ make__ ] [rdi , ][rsi]
+	r10 = 2 [rsi , rdi , ][r10]
+	rsi = qword [rsi + r10 * 8] [r10 , rsi , rdi , ][rsi]
+	r10 = 0 [rsi , rdi , ][r10]
+	r11 = qword [ make__ ] [r10 , rsi , rdi , ][r11]
+	r8 = 1 [r10 , rsi , r11 , rdi , ][r8]
+	r11 = qword [r11 + r8 * 8] [r10 , rsi , r8 , r11 , rdi , ][r11]
+	r8 = 1 [r10 , rsi , r11 , rdi , ][r8]
+	rsi = qword [rsi + r10 * 8] + qword [r11 + r8 * 8] [r10 , rsi , r11 , r8 , rdi , ][rsi]
+	r10 = qword [ make__ ] [rsi , rdi , ][r10]
+	r11 = 0 [r10 , rsi , rdi , ][r11]
+	r10 = qword [r10 + r11 * 8] [r10 , rsi , r11 , rdi , ][r10]
+	r11 = 2 [r10 , rsi , rdi , ][r11]
+	rsi = rsi + qword [r10 + r11 * 8] [r10 , rsi , r11 , rdi , ][rsi]
+	rdi = rsi == rdi [rsi , rdi , ][rdi]
+	rdi = rdi [rdi , ][rdi]
+Label_38:
+	jump Label_25 if rdi je 1 [rdi , ][]
+	jump Label_26 [][]
+Label_25:
+	rdi = qword [ count__ ] [][rdi]
+	rsi = 0 [rdi , ][rsi]
+	r10 = qword [ count__ ] [rsi , rdi , ][r10]
+	r11 = 0 [rsi , r10 , rdi , ][r11]
+	r10 = qword [r10 + r11 * 8] + 1 [rsi , r11 , r10 , rdi , ][r10]
+	qword [rdi + rsi * 8] = r10 [r10 , rsi , rdi , ][]
+	r9 = 0 [][r9]
+Label_42:
+	jump Label_41 if r9 jle 2 [r9 , ][]
+	jump Label_40 [][]
+Label_41:
+	rsi = 0 [r9 , ][rsi]
+Label_46:
+	jump Label_45 if rsi jle 2 [r9 , rsi , ][]
+	jump Label_44 [r9 , ][]
+Label_45:
+	rdi = qword [ make__ ] [r9 , rsi , ][rdi]
+	rdi = qword [rdi + r9 * 8] [rdi , r9 , rsi , ][rdi]
+		rdi = qword [rdi + rsi * 8] [rdi , r9 , rsi , ][rdi]
+		FuncCall toString Param_size : 1 [rdi , r9 , rsi , ][rax]
+		rdi = rax [r9 , rax , rsi , ][rdi]
+		rdi = rdi [r9 , rdi , rsi , ][rdi]
+		FuncCall print Param_size : 1 [rdi , r9 , rsi , ][rax]
+		rdi = rax [r9 , rax , rsi , ][rdi]
+		rdi = str__0 [r9 , rsi , ][rdi]
+		FuncCall print Param_size : 1 [rdi , r9 , rsi , ][rax]
+		rdi = rax [r9 , rax , rsi , ][rdi]
+Label_43:
+	rdi = rsi [r9 , rsi , ][rdi]
+	rsi = rsi + 1 [r9 , rsi , ][rsi]
+	jump Label_46 [r9 , rsi , ][]
+Label_44:
+		rdi = str__1 [r9 , ][rdi]
+		FuncCall print Param_size : 1 [rdi , r9 , ][rax]
+		rdi = rax [r9 , rax , ][rdi]
+Label_39:
+	rdi = r9 [r9 , ][rdi]
+	r9 = r9 + 1 [r9 , ][r9]
+	jump Label_42 [r9 , ][]
+Label_40:
+		rdi = str__2 [][rdi]
+		FuncCall print Param_size : 1 [rdi , ][rax]
+		rdi = rax [rax , ][rdi]
+	jump Label_24 [][]
 Label_26:
 Label_24:
-	r11 = qword [reg17 + r10 * 8] - 1 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	r15 = r11 [rsi , reg18 , reg17 , r10 , r9 , r14 , r11 , reg19 , rdi , r12 , r13 , ][r15]
-	r11 = qword [reg18 + r10 * 8] + 2 [rsi , reg18 , reg17 , r10 , r9 , r15 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	reg16 = r11 [rsi , reg17 , reg18 , r9 , r10 , r11 , r15 , r14 , reg19 , rdi , r12 , r13 , ][reg16]
-	jump Label_43 if r15 jl rsi [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_44 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][]
-Label_43:
-	r11 = r15 >= 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_44:
-	jump Label_45 if r11 je 1 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	jump Label_46 [reg17 , reg18 , reg19 , reg16 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][]
-Label_45:
-	jump Label_47 if reg16 jl rsi [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	jump Label_48 [reg17 , reg18 , reg19 , reg16 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][]
-Label_47:
-	r11 = reg16 >= 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [reg17 , reg18 , reg19 , reg16 , r11 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_48:
-	r11 = r11 [reg17 , reg18 , reg19 , reg16 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_46:
-	jump Label_49 if r11 je 1 [reg17 , reg18 , reg19 , reg16 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_50 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_49:
-	r11 = qword [reg19 + r15 * 8] [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	r8 = 1 [reg17 , reg18 , reg16 , reg19 , r11 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r8]
-	- r8 [reg17 , reg18 , reg16 , reg19 , r11 , r12 , r13 , rsi , r8 , r9 , r10 , r15 , r14 , rdi , ][r8]
-	r11 = qword [r11 + reg16 * 8] == r8 [reg17 , reg18 , reg16 , reg19 , r11 , r12 , r13 , rsi , r8 , r9 , r10 , r15 , r14 , rdi , ][r11]
-	r11 = r11 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_50:
-	jump Label_41 if r11 je 1 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-	jump Label_42 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_41:
-	r11 = r13 + 1 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r13 = r11 [rsi , reg17 , reg18 , r9 , r10 , r11 , r15 , r14 , reg16 , reg19 , rdi , r12 , ][r13]
-	qword [reg17 + r13 * 8] = r15 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	qword [reg18 + r13 * 8] = reg16 [rsi , reg18 , reg17 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = qword [reg19 + r15 * 8] [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	r8 = rdi + 1 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][r8]
-	qword [r11 + reg16 * 8] = r8 [reg17 , reg18 , reg16 , reg19 , r8 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][]
-	jump Label_54 if r15 je r9 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_55 [rsi , reg17 , reg18 , r11 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_54:
-	r11 = reg16 == r12 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [rsi , reg17 , reg18 , r11 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-Label_55:
-	jump Label_52 if r11 je 1 [rsi , reg17 , reg18 , r11 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-	jump Label_53 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_52:
-	r14 = 1 [rsi , reg17 , reg18 , r10 , r9 , reg19 , rdi , r12 , r13 , ][r14]
-	jump Label_51 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_53:
-Label_51:
-	jump Label_40 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_42:
-Label_40:
-	r11 = qword [reg17 + r10 * 8] + 1 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	r15 = r11 [rsi , reg18 , reg17 , r10 , r9 , r14 , reg19 , rdi , r11 , r12 , r13 , ][r15]
-	r11 = qword [reg18 + r10 * 8] - 2 [rsi , reg18 , reg17 , r10 , r9 , r15 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	reg16 = r11 [rsi , reg17 , reg18 , r11 , r9 , r10 , r15 , r14 , reg19 , rdi , r12 , r13 , ][reg16]
-	jump Label_59 if r15 jl rsi [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_60 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_59:
-	r11 = r15 >= 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_60:
-	jump Label_61 if r11 je 1 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	jump Label_62 [reg17 , reg18 , reg19 , reg16 , r12 , r13 , r11 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_61:
-	jump Label_63 if reg16 jl rsi [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	jump Label_64 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_63:
-	r11 = reg16 >= 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [reg17 , reg18 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r11 , r15 , r14 , rdi , ][r11]
-Label_64:
-	r11 = r11 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_62:
-	jump Label_65 if r11 je 1 [reg17 , reg18 , reg19 , reg16 , r12 , r13 , r11 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_66 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_65:
-	r11 = qword [reg19 + r15 * 8] [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	r8 = 1 [reg17 , reg18 , reg16 , reg19 , r11 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r8]
-	- r8 [reg17 , reg18 , r8 , reg16 , reg19 , r11 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r8]
-	r11 = qword [r11 + reg16 * 8] == r8 [reg17 , reg18 , r8 , reg16 , reg19 , r11 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-	r11 = r11 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_66:
-	jump Label_57 if r11 je 1 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-	jump Label_58 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_57:
-	r11 = r13 + 1 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r13 = r11 [rsi , reg17 , reg18 , r11 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , ][r13]
-	qword [reg17 + r13 * 8] = r15 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	qword [reg18 + r13 * 8] = reg16 [rsi , reg18 , reg17 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = qword [reg19 + r15 * 8] [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	r8 = rdi + 1 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r8]
-	qword [r11 + reg16 * 8] = r8 [r8 , reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-	jump Label_70 if r15 je r9 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_71 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r11 , r12 , r13 , ][]
-Label_70:
-	r11 = reg16 == r12 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [rsi , reg17 , reg18 , r11 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-Label_71:
-	jump Label_68 if r11 je 1 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r11 , r12 , r13 , ][]
-	jump Label_69 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_68:
-	r14 = 1 [rsi , reg17 , reg18 , r10 , r9 , reg19 , rdi , r12 , r13 , ][r14]
-	jump Label_67 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_69:
-Label_67:
-	jump Label_56 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_58:
-Label_56:
-	r11 = qword [reg17 + r10 * 8] + 1 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	r15 = r11 [rsi , reg18 , reg17 , r10 , r9 , r14 , r11 , reg19 , rdi , r12 , r13 , ][r15]
-	r11 = qword [reg18 + r10 * 8] + 2 [rsi , reg18 , reg17 , r10 , r9 , r15 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	reg16 = r11 [rsi , reg17 , reg18 , r11 , r9 , r10 , r15 , r14 , reg19 , rdi , r12 , r13 , ][reg16]
-	jump Label_75 if r15 jl rsi [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_76 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_75:
-	r11 = r15 >= 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_76:
-	jump Label_77 if r11 je 1 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	jump Label_78 [reg17 , reg18 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r11 , r14 , rdi , ][]
-Label_77:
-	jump Label_79 if reg16 jl rsi [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	jump Label_80 [reg17 , reg18 , reg19 , reg16 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][]
-Label_79:
-	r11 = reg16 >= 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [reg17 , reg18 , reg19 , reg16 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_80:
-	r11 = r11 [reg17 , reg18 , reg19 , reg16 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_78:
-	jump Label_81 if r11 je 1 [reg17 , reg18 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r11 , r14 , rdi , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_82 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , r11 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_81:
-	r11 = qword [reg19 + r15 * 8] [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	r8 = 1 [r11 , reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r8]
-	- r8 [r11 , reg17 , reg18 , r8 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r8]
-	r11 = qword [r11 + reg16 * 8] == r8 [r11 , reg17 , reg18 , r8 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-	r11 = r11 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_82:
-	jump Label_73 if r11 je 1 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , r11 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-	jump Label_74 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_73:
-	r11 = r13 + 1 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r13 = r11 [rsi , reg17 , reg18 , r9 , r10 , r15 , r11 , r14 , reg16 , reg19 , rdi , r12 , ][r13]
-	qword [reg17 + r13 * 8] = r15 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	qword [reg18 + r13 * 8] = reg16 [rsi , reg18 , reg17 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = qword [reg19 + r15 * 8] [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	r8 = rdi + 1 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , r11 , ][r8]
-	qword [r11 + reg16 * 8] = r8 [reg17 , reg18 , r8 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , r11 , ][]
-	jump Label_86 if r15 je r9 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_87 [rsi , reg17 , reg18 , r11 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_86:
-	r11 = reg16 == r12 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [rsi , reg17 , reg18 , r10 , r9 , r11 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-Label_87:
-	jump Label_84 if r11 je 1 [rsi , reg17 , reg18 , r11 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-	jump Label_85 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_84:
-	r14 = 1 [rsi , reg17 , reg18 , r10 , r9 , reg19 , rdi , r12 , r13 , ][r14]
-	jump Label_83 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_85:
-Label_83:
-	jump Label_72 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_74:
-Label_72:
-	r11 = qword [reg17 + r10 * 8] - 2 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	r15 = r11 [rsi , reg18 , reg17 , r10 , r9 , r11 , r14 , reg19 , rdi , r12 , r13 , ][r15]
-	r11 = qword [reg18 + r10 * 8] - 1 [rsi , reg18 , reg17 , r10 , r9 , r15 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	reg16 = r11 [rsi , r11 , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , rdi , r12 , r13 , ][reg16]
-	jump Label_91 if r15 jl rsi [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_92 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_91:
-	r11 = r15 >= 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r11 , r15 , r14 , rdi , ][r11]
-Label_92:
-	jump Label_93 if r11 je 1 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	jump Label_94 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_93:
-	jump Label_95 if reg16 jl rsi [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	jump Label_96 [reg17 , reg18 , reg19 , reg16 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][]
-Label_95:
-	r11 = reg16 >= 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [reg17 , reg18 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r11 , r14 , rdi , ][r11]
-Label_96:
-	r11 = r11 [reg17 , reg18 , reg19 , reg16 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_94:
-	jump Label_97 if r11 je 1 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_98 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , r11 , ][]
-Label_97:
-	r11 = qword [reg19 + r15 * 8] [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	r8 = 1 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][r8]
-	- r8 [reg17 , reg18 , reg16 , reg19 , r8 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][r8]
-	r11 = qword [r11 + reg16 * 8] == r8 [reg17 , reg18 , reg16 , reg19 , r8 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][r11]
-	r11 = r11 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_98:
-	jump Label_89 if r11 je 1 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , r11 , ][]
-	jump Label_90 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_89:
-	r11 = r13 + 1 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r13 = r11 [rsi , reg17 , reg18 , r11 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , ][r13]
-	qword [reg17 + r13 * 8] = r15 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	qword [reg18 + r13 * 8] = reg16 [rsi , reg18 , reg17 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = qword [reg19 + r15 * 8] [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	r8 = rdi + 1 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r8]
-	qword [r11 + reg16 * 8] = r8 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , r8 , ][]
-	jump Label_102 if r15 je r9 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_103 [rsi , r11 , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_102:
-	r11 = reg16 == r12 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r11 , r13 , ][r11]
-Label_103:
-	jump Label_100 if r11 je 1 [rsi , r11 , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-	jump Label_101 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_100:
-	r14 = 1 [rsi , reg17 , reg18 , r10 , r9 , reg19 , rdi , r12 , r13 , ][r14]
-	jump Label_99 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_101:
-Label_99:
-	jump Label_88 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_90:
-Label_88:
-	r11 = qword [reg17 + r10 * 8] - 2 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	r15 = r11 [rsi , reg18 , reg17 , r10 , r9 , r11 , r14 , reg19 , rdi , r12 , r13 , ][r15]
-	r11 = qword [reg18 + r10 * 8] + 1 [rsi , reg18 , reg17 , r10 , r9 , r15 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	reg16 = r11 [rsi , reg17 , reg18 , r11 , r9 , r10 , r15 , r14 , reg19 , rdi , r12 , r13 , ][reg16]
-	jump Label_107 if r15 jl rsi [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_108 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , r11 , ][]
-Label_107:
-	r11 = r15 >= 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r11 , r14 , rdi , ][r11]
-Label_108:
-	jump Label_109 if r11 je 1 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , r11 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	jump Label_110 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_109:
-	jump Label_111 if reg16 jl rsi [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	jump Label_112 [reg17 , reg18 , reg19 , reg16 , r12 , r11 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_111:
-	r11 = reg16 >= 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [reg17 , reg18 , reg19 , reg16 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_112:
-	r11 = r11 [reg17 , reg18 , reg19 , reg16 , r12 , r11 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_110:
-	jump Label_113 if r11 je 1 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_114 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][]
-Label_113:
-	r11 = qword [reg19 + r15 * 8] [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	r8 = 1 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r8]
-	- r8 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , r8 , ][r8]
-	r11 = qword [r11 + reg16 * 8] == r8 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , r8 , ][r11]
-	r11 = r11 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_114:
-	jump Label_105 if r11 je 1 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][]
-	jump Label_106 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_105:
-	r11 = r13 + 1 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r13 = r11 [rsi , reg17 , reg18 , r11 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , ][r13]
-	qword [reg17 + r13 * 8] = r15 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	qword [reg18 + r13 * 8] = reg16 [rsi , reg18 , reg17 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = qword [reg19 + r15 * 8] [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	r8 = rdi + 1 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r11 , r14 , rdi , ][r8]
-	qword [r11 + reg16 * 8] = r8 [reg17 , reg18 , r8 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r11 , r14 , rdi , ][]
-	jump Label_118 if r15 je r9 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_119 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r11 , r12 , r13 , ][]
-Label_118:
-	r11 = reg16 == r12 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r11 , r13 , ][r11]
-Label_119:
-	jump Label_116 if r11 je 1 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r11 , r12 , r13 , ][]
-	jump Label_117 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_116:
-	r14 = 1 [rsi , reg17 , reg18 , r10 , r9 , reg19 , rdi , r12 , r13 , ][r14]
-	jump Label_115 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_117:
-Label_115:
-	jump Label_104 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_106:
-Label_104:
-	r11 = qword [reg17 + r10 * 8] + 2 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	r15 = r11 [rsi , reg18 , reg17 , r10 , r9 , r14 , reg19 , rdi , r11 , r12 , r13 , ][r15]
-	r11 = qword [reg18 + r10 * 8] - 1 [rsi , reg18 , reg17 , r10 , r9 , r15 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	reg16 = r11 [rsi , reg17 , reg18 , r11 , r9 , r10 , r15 , r14 , reg19 , rdi , r12 , r13 , ][reg16]
-	jump Label_123 if r15 jl rsi [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_124 [r11 , reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_123:
-	r11 = r15 >= 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_124:
-	jump Label_125 if r11 je 1 [r11 , reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	jump Label_126 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_125:
-	jump Label_127 if reg16 jl rsi [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	jump Label_128 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_127:
-	r11 = reg16 >= 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_128:
-	r11 = r11 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_126:
-	jump Label_129 if r11 je 1 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_130 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_129:
-	r11 = qword [reg19 + r15 * 8] [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	r8 = 1 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][r8]
-	- r8 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r8 , r11 , r9 , r10 , r15 , r14 , rdi , ][r8]
-	r11 = qword [r11 + reg16 * 8] == r8 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r8 , r9 , r10 , r15 , r14 , rdi , ][r11]
-	r11 = r11 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_130:
-	jump Label_121 if r11 je 1 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-	jump Label_122 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_121:
-	r11 = r13 + 1 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r13 = r11 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r11 , r12 , ][r13]
-	qword [reg17 + r13 * 8] = r15 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	qword [reg18 + r13 * 8] = reg16 [rsi , reg18 , reg17 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = qword [reg19 + r15 * 8] [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	r8 = rdi + 1 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][r8]
-	qword [r11 + reg16 * 8] = r8 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r8 , r14 , rdi , ][]
-	jump Label_134 if r15 je r9 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_135 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r11 , r13 , ][]
-Label_134:
-	r11 = reg16 == r12 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [r11 , rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-Label_135:
-	jump Label_132 if r11 je 1 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r11 , r13 , ][]
-	jump Label_133 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_132:
-	r14 = 1 [rsi , reg17 , reg18 , r10 , r9 , reg19 , rdi , r12 , r13 , ][r14]
-	jump Label_131 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_133:
-Label_131:
-	jump Label_120 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][]
-Label_122:
-Label_120:
-	r11 = qword [reg17 + r10 * 8] + 2 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	r15 = r11 [r11 , rsi , reg18 , reg17 , r10 , r9 , r14 , reg19 , rdi , r12 , r13 , ][r15]
-	r11 = qword [reg18 + r10 * 8] + 1 [rsi , reg18 , reg17 , r10 , r9 , r15 , r14 , reg19 , rdi , r12 , r13 , ][r11]
-	reg16 = r11 [rsi , reg17 , reg18 , r11 , r9 , r10 , r15 , r14 , reg19 , rdi , r12 , r13 , ][reg16]
-	jump Label_139 if r15 jl rsi [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_140 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][]
-Label_139:
-	r11 = r15 >= 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_140:
-	jump Label_141 if r11 je 1 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	jump Label_142 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_141:
-	jump Label_143 if reg16 jl rsi [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	jump Label_144 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-Label_143:
-	r11 = reg16 >= 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r11 = r11 [r11 , reg17 , reg18 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_144:
-	r11 = r11 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r11]
-Label_142:
-	jump Label_145 if r11 je 1 [reg17 , reg18 , r11 , reg19 , reg16 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][]
-	r11 = 0 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	jump Label_146 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][]
-Label_145:
-	r11 = qword [reg19 + r15 * 8] [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , reg16 , rdi , r12 , r13 , ][r11]
-	r8 = 1 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , ][r8]
-	- r8 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r8 , r9 , r10 , r15 , r14 , rdi , ][r8]
-	r11 = qword [r11 + reg16 * 8] == r8 [reg17 , reg18 , r11 , reg16 , reg19 , r12 , r13 , rsi , r8 , r9 , r10 , r15 , r14 , rdi , ][r11]
-	r11 = r11 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r14 , rdi , r11 , ][r11]
-Label_146:
-	jump Label_137 if r11 je 1 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r11 , r9 , r10 , r15 , r14 , rdi , ][]
-	jump Label_138 [rsi , reg17 , reg18 , r9 , r10 , r14 , reg19 , r12 , r13 , ][]
-Label_137:
-	r11 = r13 + 1 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][r11]
-	r13 = r11 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , r11 , reg16 , reg19 , rdi , r12 , ][r13]
-	qword [reg17 + r13 * 8] = r15 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	qword [reg18 + r13 * 8] = reg16 [rsi , reg18 , reg17 , r9 , r10 , r15 , r14 , reg16 , reg19 , rdi , r12 , r13 , ][]
-	r11 = qword [reg19 + r15 * 8] [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg19 , rdi , reg16 , r12 , r13 , ][r11]
-	rdi = rdi + 1 [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r11 , r14 , rdi , ][rdi]
-	qword [r11 + reg16 * 8] = rdi [reg17 , reg18 , reg16 , reg19 , r12 , r13 , rsi , r9 , r10 , r15 , r11 , r14 , rdi , ][]
-	jump Label_150 if r15 je r9 [rsi , reg17 , reg18 , r9 , r10 , r15 , r14 , reg16 , reg19 , r12 , r13 , ][]
-	rdi = 0 [rsi , reg17 , reg18 , r9 , r10 , r14 , reg19 , r12 , r13 , ][rdi]
-	jump Label_151 [rsi , reg17 , reg18 , rdi , r9 , r10 , r14 , reg19 , r12 , r13 , ][]
-Label_150:
-	rdi = reg16 == r12 [rsi , reg17 , reg18 , r9 , r10 , r14 , reg16 , reg19 , r12 , r13 , ][rdi]
-	rdi = rdi [rsi , reg17 , reg18 , r9 , r10 , rdi , r14 , reg19 , r12 , r13 , ][rdi]
-Label_151:
-	jump Label_148 if rdi je 1 [rsi , reg17 , reg18 , rdi , r9 , r10 , r14 , reg19 , r12 , r13 , ][]
-	jump Label_149 [rsi , reg17 , reg18 , r9 , r10 , r14 , reg19 , r12 , r13 , ][]
-Label_148:
-	r14 = 1 [rsi , reg17 , reg18 , r9 , r10 , reg19 , r12 , r13 , ][r14]
-	jump Label_147 [rsi , reg17 , reg18 , r9 , r10 , r14 , reg19 , r12 , r13 , ][]
-Label_149:
-Label_147:
-	jump Label_136 [rsi , reg17 , reg18 , r9 , r10 , r14 , reg19 , r12 , r13 , ][]
-Label_138:
-Label_136:
-	jump Label_153 if r14 je 1 [rsi , reg17 , reg18 , r9 , r10 , r14 , reg19 , r12 , r13 , ][]
-	jump Label_154 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , r12 , r13 , ][]
-Label_153:
-	jump Label_21 [r9 , r14 , reg19 , r12 , ][]
-	jump Label_152 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , r12 , r13 , ][]
-Label_154:
-Label_152:
-	rdi = r10 + 1 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , r12 , r13 , ][rdi]
-	r10 = rdi [rsi , reg17 , reg18 , rdi , r9 , r14 , reg19 , r12 , r13 , ][r10]
-Label_20:
-	jump Label_23 [rsi , reg17 , reg18 , r10 , r9 , r14 , reg19 , r12 , r13 , ][]
+	jump Label_19 [][]
 Label_21:
-	jump Label_156 if r14 je 1 [r9 , r14 , reg19 , r12 , ][]
-	jump Label_157 [][]
-Label_156:
-	rdi = qword [reg19 + r9 * 8] [r9 , reg19 , r12 , ][rdi]
-		rdi = qword [rdi + r12 * 8] [rdi , r12 , ][rdi]
+	jump Label_48 if r11 je 2 [r10 , r11 , r8 , ][]
+	jump Label_49 [r10 , r11 , r8 , ][]
+Label_48:
+	rdi = qword [ make__ ] [r10 , r11 , r8 , ][rdi]
+	rdi = qword [rdi + r10 * 8] [r10 , r11 , rdi , r8 , ][rdi]
+	rsi = qword [ make__ ] [r10 , r11 , r8 , rdi , ][rsi]
+	rsi = qword [rsi + r10 * 8] [r10 , r11 , rsi , r8 , rdi , ][rsi]
+	r9 = 0 [r10 , r11 , r8 , rsi , rdi , ][r9]
+	rsi = 15 - qword [rsi + r9 * 8] [r10 , r11 , r8 , rsi , rdi , r9 , ][rsi]
+	r9 = qword [ make__ ] [r10 , r11 , rsi , r8 , rdi , ][r9]
+	r9 = qword [r9 + r10 * 8] [r10 , r11 , r9 , rsi , r8 , rdi , ][r9]
+	r12 = 1 [r10 , r11 , rsi , r8 , r9 , rdi , ][r12]
+	rsi = rsi - qword [r9 + r12 * 8] [r10 , r11 , rsi , r8 , r12 , r9 , rdi , ][rsi]
+	qword [rdi + r11 * 8] = rsi [r10 , r11 , r8 , rdi , rsi , ][]
+	rdi = qword [ make__ ] [r10 , r11 , r8 , ][rdi]
+	rdi = qword [rdi + r10 * 8] [r10 , r11 , r8 , rdi , ][rdi]
+	jump Label_53 if qword [rdi + r11 * 8] jg 0 [rdi , r10 , r11 , r8 , ][]
+	rdi = 0 [r10 , r11 , r8 , ][rdi]
+	jump Label_54 [r10 , r11 , r8 , rdi , ][]
+Label_53:
+	rdi = qword [ make__ ] [r10 , r11 , r8 , ][rdi]
+	rdi = qword [rdi + r10 * 8] [r10 , r11 , r8 , rdi , ][rdi]
+	rdi = qword [rdi + r11 * 8] < 10 [r10 , r11 , r8 , rdi , ][rdi]
+	rdi = rdi [r10 , rdi , r11 , r8 , ][rdi]
+Label_54:
+	jump Label_55 if rdi je 1 [r10 , r11 , r8 , rdi , ][]
+	rdi = 0 [r10 , r11 , r8 , ][rdi]
+	jump Label_56 [r10 , r11 , r8 , rdi , ][]
+Label_55:
+	rdi = qword [ color__ ] [r10 , r11 , r8 , ][rdi]
+	rsi = qword [ make__ ] [r10 , r11 , rdi , r8 , ][rsi]
+	rsi = qword [rsi + r10 * 8] [r10 , rsi , r11 , rdi , r8 , ][rsi]
+	rsi = qword [rsi + r11 * 8] [rsi , r10 , r11 , rdi , r8 , ][rsi]
+	rdi = qword [rdi + rsi * 8] == 0 [rsi , r10 , rdi , r11 , r8 , ][rdi]
+	rdi = rdi [r10 , r11 , r8 , rdi , ][rdi]
+Label_56:
+	jump Label_51 if rdi je 1 [r10 , r11 , r8 , rdi , ][]
+	jump Label_52 [][]
+Label_51:
+	rdi = qword [ color__ ] [r10 , r11 , r8 , ][rdi]
+	rsi = qword [ make__ ] [rdi , r10 , r11 , r8 , ][rsi]
+	rsi = qword [rsi + r10 * 8] [rdi , r10 , r11 , r8 , rsi , ][rsi]
+	rsi = qword [rsi + r11 * 8] [rdi , r10 , r11 , r8 , rsi , ][rsi]
+	qword [rdi + rsi * 8] = 1 [rdi , r10 , r11 , rsi , r8 , ][]
+	jump Label_58 if r11 je 2 [r10 , r11 , r8 , ][]
+	jump Label_59 [r10 , r11 , r8 , ][]
+Label_58:
+	rdi = r10 + 1 [r10 , r11 , r8 , ][rdi]
+	rsi = qword [ make__ ] [r10 , rdi , r11 , r8 , ][rsi]
+	rsi = qword [rsi + r10 * 8] [r10 , rdi , r11 , r8 , rsi , ][rsi]
+	r8 = r8 + qword [rsi + r11 * 8] [rdi , r10 , r11 , r8 , rsi , ][r8]
+		rdi = rdi [rdi , r10 , r11 , r8 , ][rdi]
+		rsi = 0 [r10 , r11 , rdi , r8 , ][rsi]
+		rdx = r8 [rsi , r10 , r11 , rdi , r8 , ][rdx]
+		FuncCall search Param_size : 3 [rsi , r10 , r11 , rdi , rdx , ][rax]
+		rdi = rax [r10 , r11 , rax , ][rdi]
+	jump Label_57 [r10 , r11 , ][]
+Label_59:
+	rsi = r11 + 1 [r10 , r11 , r8 , ][rsi]
+	rdi = qword [ make__ ] [r10 , r11 , rsi , r8 , ][rdi]
+	rdi = qword [rdi + r10 * 8] [r10 , r11 , rsi , rdi , r8 , ][rdi]
+	r8 = r8 + qword [rdi + r11 * 8] [r10 , r11 , rsi , r8 , rdi , ][r8]
+		rdi = r10 [r10 , rsi , r11 , r8 , ][rdi]
+		rsi = rsi [r10 , rsi , r11 , r8 , rdi , ][rsi]
+		rdx = r8 [rsi , r10 , r11 , r8 , rdi , ][rdx]
+		FuncCall search Param_size : 3 [rsi , r10 , r11 , rdi , rdx , ][rax]
+		rdi = rax [r10 , r11 , rax , ][rdi]
+Label_57:
+	rdi = qword [ color__ ] [r10 , r11 , ][rdi]
+	rsi = qword [ make__ ] [r10 , r11 , rdi , ][rsi]
+	rsi = qword [rsi + r10 * 8] [r10 , r11 , rsi , rdi , ][rsi]
+	rsi = qword [rsi + r11 * 8] [r11 , rsi , rdi , ][rsi]
+	qword [rdi + rsi * 8] = 0 [rsi , rdi , ][]
+	jump Label_50 [][]
+Label_52:
+Label_50:
+	jump Label_47 [][]
+Label_49:
+	r9 = 1 [r10 , r11 , r8 , ][r9]
+Label_63:
+	jump Label_62 if r9 jle 9 [r10 , r11 , r8 , r9 , ][]
+	jump Label_61 [][]
+Label_62:
+	rdi = qword [ color__ ] [r10 , r11 , r8 , r9 , ][rdi]
+	jump Label_65 if qword [rdi + r9 * 8] je 0 [r10 , r11 , r8 , r9 , rdi , ][]
+	jump Label_66 [r10 , r11 , r8 , r9 , ][]
+Label_65:
+	rdi = qword [ color__ ] [r10 , r11 , r8 , r9 , ][rdi]
+	qword [rdi + r9 * 8] = 1 [rdi , r10 , r11 , r8 , r9 , ][]
+	rdi = qword [ make__ ] [r10 , r11 , r8 , r9 , ][rdi]
+	rdi = qword [rdi + r10 * 8] [r10 , r11 , r8 , rdi , r9 , ][rdi]
+	qword [rdi + r11 * 8] = r9 [r10 , r11 , r8 , rdi , r9 , ][]
+	jump Label_68 if r11 je 2 [r10 , r11 , r8 , r9 , ][]
+	jump Label_69 [r10 , r11 , r8 , r9 , ][]
+Label_68:
+	rdi = r10 + 1 [r10 , r11 , r8 , r9 , ][rdi]
+	r12 = r8 + r9 [r10 , r11 , r8 , rdi , r9 , ][r12]
+		rdi = rdi [r12 , r10 , r11 , r8 , rdi , r9 , ][rdi]
+		rsi = 0 [r12 , r10 , r11 , r8 , rdi , r9 , ][rsi]
+		rdx = r12 [rsi , r12 , r10 , r11 , r8 , rdi , r9 , ][rdx]
+		FuncCall search Param_size : 3 [rsi , r10 , r11 , r8 , rdi , r9 , rdx , ][rax]
+		rdi = rax [r10 , r11 , r8 , r9 , rax , ][rdi]
+	jump Label_67 [r10 , r11 , r8 , r9 , ][]
+Label_69:
+	rsi = r11 + 1 [r10 , r11 , r8 , r9 , ][rsi]
+	r12 = r8 + r9 [r10 , r11 , r8 , rsi , r9 , ][r12]
+		rdi = r10 [r10 , r12 , r11 , r8 , rsi , r9 , ][rdi]
+		rsi = rsi [r12 , r10 , r11 , r8 , rsi , rdi , r9 , ][rsi]
+		rdx = r12 [rsi , r12 , r10 , r11 , r8 , rdi , r9 , ][rdx]
+		FuncCall search Param_size : 3 [rsi , r10 , r11 , r8 , rdi , r9 , rdx , ][rax]
+		rdi = rax [r10 , r11 , r8 , r9 , rax , ][rdi]
+Label_67:
+	rdi = qword [ make__ ] [r10 , r11 , r8 , r9 , ][rdi]
+	rdi = qword [rdi + r10 * 8] [r10 , r11 , r8 , rdi , r9 , ][rdi]
+	qword [rdi + r11 * 8] = 0 [r10 , r11 , r8 , r9 , rdi , ][]
+	rdi = qword [ color__ ] [r10 , r11 , r8 , r9 , ][rdi]
+	qword [rdi + r9 * 8] = 0 [r10 , r11 , rdi , r8 , r9 , ][]
+	jump Label_64 [r10 , r11 , r8 , r9 , ][]
+Label_66:
+Label_64:
+Label_60:
+	rdi = r9 [r10 , r11 , r8 , r9 , ][rdi]
+	r9 = r9 + 1 [r10 , r11 , r8 , r9 , ][r9]
+	jump Label_63 [r10 , r11 , r8 , r9 , ][]
+Label_61:
+Label_47:
+Label_19:
+	jump Label_10 [][]
+Label_12:
+Label_10:
+Label_9:
+main [Func]:
+	rdi = 10 [][rdi]
+	rdi = rdi + 1 [rdi , ][rdi]
+	rdi = rdi * 8 [rdi , ][rdi]
+		rdi = rdi [rdi , ][rdi]
+		FuncCall malloc Param_size : 1 [rdi , ][rax]
+		rdi = rax [rax , ][rdi]
+	qword [rdi] = 10 [rdi , ][]
+	rdi = rdi + 8 [rdi , ][rdi]
+	qword [ color__ ] = rdi [rdi , ][]
+	rdi = 1 [][rdi]
+	rdi = rdi + 1 [rdi , ][rdi]
+	rdi = rdi * 8 [rdi , ][rdi]
+		rdi = rdi [rdi , ][rdi]
+		FuncCall malloc Param_size : 1 [rdi , ][rax]
+		rdi = rax [rax , ][rdi]
+	qword [rdi] = 1 [rdi , ][]
+	rdi = rdi + 8 [rdi , ][rdi]
+	qword [ count__ ] = rdi [rdi , ][]
+		rdi = 3 [][rdi]
+		FuncCall origin Param_size : 1 [rdi , ][rax]
+		rdi = rax [rax , ][rdi]
+		rdi = 0 [][rdi]
+		rsi = 0 [rdi , ][rsi]
+		rdx = 0 [rsi , rdi , ][rdx]
+		FuncCall search Param_size : 3 [rsi , rdi , rdx , ][rax]
+		rdi = rax [rax , ][rdi]
+	rdi = qword [ count__ ] [][rdi]
+	rsi = 0 [rdi , ][rsi]
+		rdi = qword [rdi + rsi * 8] [rdi , rsi , ][rdi]
 		FuncCall toString Param_size : 1 [rdi , ][rax]
 		rdi = rax [rax , ][rdi]
 		rdi = rdi [rdi , ][rdi]
 		FuncCall println Param_size : 1 [rdi , ][rax]
 		rdi = rax [rax , ][rdi]
-	jump Label_155 [][]
-Label_157:
-		rdi = str__0 [][rdi]
-		FuncCall print Param_size : 1 [rdi , ][rax]
-		rdi = rax [rax , ][rdi]
-Label_155:
 	rax = 0 [][rax]
-	jump Label_3 [][]
-Label_3:
+	jump Label_70 [][]
+Label_70:

@@ -333,7 +333,7 @@ public class IrBuilder {
                 return;
             }
         }
-        if (params.size() == 1 && x.exprList.get(0) instanceof ConstExpr && ((ConstExpr)x.exprList.get(0)).type instanceof IntType) {
+        if (params.size() == 1 && x.exprList.get(0) instanceof ConstExpr && ((ConstExpr)x.exprList.get(0)).type instanceof IntType && ii != null) {
             x.operand = nowfunc.newReg();
             Label tmp = new Label();
             nowfunc.addInst(new CJump(ii, new INum(0), "jne", tmp));
