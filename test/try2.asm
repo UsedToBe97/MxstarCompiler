@@ -11,9 +11,6 @@ extern strlen
 extern memcpy
 extern scanf
 section .data
-	dq	7
-str__0:
-	db	65, 110, 115, 32, 105, 115, 32, 0
 intbuffer:
 	dq 0
 format1:
@@ -25,114 +22,15 @@ section .bss
 stringbuffer:
 	resb 256
 section .text
-hilo:
-	push	rbp
-	mov	rbp, rsp
-	mov	rax, rdi
-	mov	rcx, 16
-	shl	rax, cl
-	mov	rdi, rax
-	mov	rcx, rsi
-	or	rcx, rdi
-	mov	rdi, rcx
-	mov	rax, rdi
-	jmp	Label_0
-Label_0:
-	mov	rsp, rbp
-	pop	rbp
-	ret
-shift_l:
-	push	rbp
-	mov	rbp, rsp
-	mov	rax, rdi
-	mov	rcx, rsi
-	shl	rax, cl
-	mov	rdi, rax
-	and	rdi, 2147483647
-	mov	rax, rdi
-	jmp	Label_1
-Label_1:
-	mov	rsp, rbp
-	pop	rbp
-	ret
-shift_r:
-	push	rbp
-	mov	rbp, rsp
-	mov	rax, 2147418112
-	mov	rcx, rsi
-	shr	rax, cl
-	mov	r10, rax
-	mov	rax, r10
-	mov	rcx, 2
-	shl	rax, cl
-	mov	r10, rax
-	add	r10, 1
-	mov	rax, rdi
-	mov	rcx, rsi
-	shr	rax, cl
-	mov	rdi, rax
-	mov	rcx, r10
-	and	rcx, rdi
-	mov	rdi, rcx
-	and	rdi, 2147483647
-	mov	rax, rdi
-	jmp	Label_2
-Label_2:
-	mov	rsp, rbp
-	pop	rbp
-	ret
-xorshift:
-	push	rbp
-	mov	rbp, rsp
-	add	rdi, 1
-	mov	r10, 0
-Label_7:
-	mov	rcx, rsi
-	imul	rcx, 10
-	mov	r11, rcx
-	cmp	r10, r11
-	jl	Label_6
-	jmp	Label_5
-Label_6:
-	mov	rax, rdi
-	mov	rcx, 13
-	shl	rax, cl
-	mov	r11, rax
-	and	r11, 2147483647
-	xor	rdi, r11
-	mov	rax, rdi
-	mov	rcx, 17
-	shr	rax, cl
-	mov	r11, rax
-	mov	rcx, 65533
-	and	rcx, r11
-	mov	r11, rcx
-	and	r11, 2147483647
-	xor	rdi, r11
-	mov	rax, rdi
-	mov	rcx, 5
-	shl	rax, cl
-	mov	r11, rax
-	and	r11, 2147483647
-	xor	rdi, r11
-Label_4:
-	mov	r11, r10
-	add	r10, 1
-	jmp	Label_7
-Label_5:
-	xor	rdi, 123456789
-	mov	rax, rdi
-	jmp	Label_3
-Label_3:
-	mov	rsp, rbp
-	pop	rbp
-	ret
 main:
 	push	rbp
 	mov	rbp, rsp
+	push	r15
 	push	r12
 	push	r13
-	sub	rbp, 16
+	push	r14
+	sub	rbp, 32
+	sub	rsp, 40
 	push	rdi
 	push	rsi
 	push	r10
@@ -147,253 +45,203 @@ main:
 	pop	rsi
 	pop	rdi
 	mov	rdi, rax
-	mov	r10, rdi
-	mov	rsi, r10
-	add	rsi, 1
-	imul	rsi, 8
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, rsi
-	call	malloc
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	r11, rax
-	mov	qword [r11], r10
-	add	r11, 8
-	mov	rsi, r10
-Label_9:
-	sub	rsi, 1
-	mov	rdi, r10
-	add	rdi, 1
-	imul	rdi, 8
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	call	malloc
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	mov	qword [rdi], r10
-	add	rdi, 8
-	mov	qword [r11 + rsi * 8], rdi
-	cmp	rsi, 0
-	jne	Label_9
-	mov	r12, r11
-	mov	r11, 0
-Label_13:
-	cmp	r11, r10
-	jl	Label_12
-	jmp	Label_11
-Label_12:
-	mov	r8, 0
-Label_17:
-	cmp	r8, r10
-	jl	Label_16
-	jmp	Label_15
-Label_16:
-	mov	r9, 0
-Label_21:
-	cmp	r9, r10
-	jl	Label_20
-	jmp	Label_19
-Label_20:
-	cmp	r11, 0
-	jg	Label_25
+	mov	r13, rdi
+	mov	r14, 0
 	mov	rdi, 0
+Label_4:
+	cmp	rdi, r13
+	jl	Label_3
+	jmp	Label_2
+Label_3:
+	mov	rsi, 0
+Label_8:
+	cmp	rsi, r13
+	jl	Label_7
+	jmp	Label_6
+Label_7:
+	mov	r10, 0
+Label_12:
+	cmp	r10, r13
+	jl	Label_11
+	jmp	Label_10
+Label_11:
+	mov	r11, 0
+Label_16:
+	cmp	r11, r13
+	jl	Label_15
+	jmp	Label_14
+Label_15:
+	mov	r8, 0
+Label_20:
+	cmp	r8, r13
+	jl	Label_19
+	jmp	Label_18
+Label_19:
+	mov	r9, 0
+Label_24:
+	cmp	r9, r13
+	jl	Label_23
+	jmp	Label_22
+Label_23:
+	mov	r12, 0
+Label_28:
+	cmp	r12, r13
+	jl	Label_27
 	jmp	Label_26
-Label_25:
-	mov	rcx, r8
+Label_27:
+	cmp	rdi, rsi
+	je	Label_29
+	mov	r15, 0
+	jmp	Label_30
+Label_29:
+	mov	rcx, r10
 	cmp	rcx, 0
 	setg	cl
 	movzx	rcx, cl
-	mov	rdi, rcx
-Label_26:
-	cmp	rdi, 1
-	je	Label_27
-	mov	rdi, 0
-	jmp	Label_28
-Label_27:
+	mov	r15, rcx
+Label_30:
+	cmp	r15, 1
+	je	Label_31
+	cmp	r11, r8
+	je	Label_33
+	mov	r15, 0
+	jmp	Label_34
+Label_33:
 	mov	rcx, r9
 	cmp	rcx, 0
 	setg	cl
 	movzx	rcx, cl
-	mov	rdi, rcx
-Label_28:
-	cmp	rdi, 1
-	je	Label_23
-	jmp	Label_24
-Label_23:
-	mov	eax, r11d
-	mov	ecx, r8d
-	cdq
-	idiv	ecx
-	mov	edi, edx
-	mov	eax, r8d
-	mov	ecx, r9d
-	cdq
-	idiv	ecx
-	mov	esi, edx
-	cmp	rdi, rsi
-	jne	Label_32
-	mov	rdi, 0
-	jmp	Label_33
-Label_32:
-	mov	eax, r8d
-	mov	ecx, r9d
-	cdq
-	idiv	ecx
-	mov	edi, edx
-	mov	eax, r9d
-	mov	ecx, r11d
-	cdq
-	idiv	ecx
-	mov	esi, edx
-	mov	rcx, rdi
-	cmp	rcx, rsi
-	setne	cl
-	movzx	rcx, cl
-	mov	rdi, rcx
-Label_33:
-	cmp	rdi, 1
-	je	Label_34
-	mov	rdi, 0
-	jmp	Label_35
+	mov	r15, rcx
 Label_34:
-	mov	eax, r11d
-	mov	ecx, r8d
-	cdq
-	idiv	ecx
-	mov	edi, edx
-	mov	eax, r9d
-	mov	ecx, r11d
-	cdq
-	idiv	ecx
-	mov	esi, edx
-	mov	rcx, rdi
-	cmp	rcx, rsi
-	setne	cl
-	movzx	rcx, cl
-	mov	rdi, rcx
+	cmp	r15, 1
+	je	Label_35
+	mov	r15, 0
+	jmp	Label_36
 Label_35:
-	cmp	rdi, 1
-	je	Label_30
-	jmp	Label_31
-Label_30:
-	mov	r13, qword [r12 + r11 * 8]
-	mov	rcx, r11
-	and	rcx, r8
-	mov	rdi, rcx
-	and	rdi, r9
-	mov	rcx, r11
-	add	rcx, r8
-	mov	rsi, rcx
-	add	rsi, r9
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	call	xorshift
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	mov	qword [r13 + r8 * 8], rdi
-	jmp	Label_29
-Label_31:
-Label_29:
-	jmp	Label_22
-Label_24:
-Label_22:
-Label_18:
-	add	r9, 1
-	jmp	Label_21
-Label_19:
-Label_14:
-	add	r8, 1
-	jmp	Label_17
-Label_15:
-Label_10:
-	add	r11, 1
-	jmp	Label_13
-Label_11:
-	mov	rdi, 0
-	mov	r11, 0
-Label_39:
-	cmp	r11, r10
-	jl	Label_38
-	jmp	Label_37
-Label_38:
-	mov	r8, 0
-Label_43:
-	cmp	r8, r10
-	jl	Label_42
-	jmp	Label_41
-Label_42:
-	mov	r9, 0
-Label_47:
-	cmp	r9, r10
-	jl	Label_46
-	jmp	Label_45
-Label_46:
-	cmp	r11, r8
-	jge	Label_51
-	mov	rsi, 0
-	jmp	Label_52
-Label_51:
-	mov	rcx, r8
-	cmp	rcx, r9
-	setge	cl
+	mov	rcx, r12
+	cmp	rcx, 0
+	setg	cl
 	movzx	rcx, cl
-	mov	rsi, rcx
-Label_52:
-	cmp	rsi, 1
-	je	Label_49
-	jmp	Label_50
-Label_49:
-	mov	rsi, qword [r12 + r11 * 8]
-	add	rdi, qword [rsi + r8 * 8]
-	and	rdi, 1073741823
-	jmp	Label_48
-Label_50:
-Label_48:
-Label_44:
-	add	r9, 1
-	jmp	Label_47
-Label_45:
-Label_40:
-	add	r8, 1
-	jmp	Label_43
-Label_41:
+	mov	r15, rcx
 Label_36:
-	add	r11, 1
-	jmp	Label_39
+	jmp	Label_32
+Label_31:
+	mov	r15, 1
+Label_32:
+	cmp	r15, 1
+	je	Label_37
+	mov	rcx, rdi
+	cmp	rcx, r12
+	sete	cl
+	movzx	rcx, cl
+	mov	r15, rcx
+	jmp	Label_38
 Label_37:
+	mov	r15, 1
+Label_38:
+	cmp	r15, 1
+	je	Label_39
+	cmp	r11, 0
+	jg	Label_41
+	mov	r15, 0
+	jmp	Label_42
+Label_41:
+	mov	rcx, r9
+	cmp	rcx, 0
+	setg	cl
+	movzx	rcx, cl
+	mov	r15, rcx
+Label_42:
+	jmp	Label_40
+Label_39:
+	mov	r15, 1
+Label_40:
+	mov	qword [rbp - 8], r15
+	mov	qword [rbp - 16], r15
+	mov	qword [rbp - 24], r15
+	mov	qword [rbp - 32], r15
+	mov	qword [rbp - 40], r15
+	cmp	r15, 1
+	je	Label_44
+	jmp	Label_45
+Label_44:
+	mov	r15, r14
+	add	r14, 1
+	jmp	Label_45
+Label_45:
+	mov	rax, qword [rbp - 8]
+	cmp	rax, 1
+	je	Label_47
+	jmp	Label_48
+Label_47:
+	mov	r15, r14
+	add	r14, 1
+	jmp	Label_48
+Label_48:
+	mov	rax, qword [rbp - 16]
+	cmp	rax, 1
+	je	Label_50
+	jmp	Label_51
+Label_50:
+	mov	r15, r14
+	add	r14, 1
+	jmp	Label_51
+Label_51:
+	mov	rax, qword [rbp - 24]
+	cmp	rax, 1
+	je	Label_53
+	jmp	Label_54
+Label_53:
+	mov	r15, r14
+	add	r14, 1
+	jmp	Label_54
+Label_54:
+	mov	rax, qword [rbp - 32]
+	cmp	rax, 1
+	je	Label_56
+	jmp	Label_57
+Label_56:
+	mov	r15, r14
+	add	r14, 1
+	jmp	Label_57
+Label_57:
+	mov	rax, qword [rbp - 40]
+	cmp	rax, 1
+	je	Label_59
+	jmp	Label_60
+Label_59:
+	mov	r15, r14
+	add	r14, 1
+	jmp	Label_60
+Label_60:
+	add	r12, 1
+	jmp	Label_28
+Label_26:
+	add	r9, 1
+	jmp	Label_24
+Label_22:
+	add	r8, 1
+	jmp	Label_20
+Label_18:
+	add	r11, 1
+	jmp	Label_16
+Label_14:
+	add	r10, 1
+	jmp	Label_12
+Label_10:
+	add	rsi, 1
+	jmp	Label_8
+Label_6:
+	add	rdi, 1
+	jmp	Label_4
+Label_2:
 	push	rdi
 	push	rsi
 	push	r10
 	push	r11
 	push	r8
 	push	r9
+	mov	rdi, r14
 	call	toString
 	pop	r9
 	pop	r8
@@ -401,21 +249,6 @@ Label_37:
 	pop	r10
 	pop	rsi
 	pop	rdi
-	mov	rsi, rax
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	push	r8
-	push	r9
-	mov	rdi, str__0
-	call	string.add
-	pop	r9
-	pop	r8
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
 	mov	rdi, rax
 	push	rdi
 	push	rsi
@@ -423,7 +256,7 @@ Label_37:
 	push	r11
 	push	r8
 	push	r9
-	call	println
+	call	print
 	pop	r9
 	pop	r8
 	pop	r11
@@ -432,11 +265,14 @@ Label_37:
 	pop	rdi
 	mov	rdi, rax
 	mov	rax, 0
-	jmp	Label_8
-Label_8:
-	add	rbp, 16
+	jmp	Label_0
+Label_0:
+	add	rsp, 40
+	add	rbp, 32
+	pop	r14
 	pop	r13
 	pop	r12
+	pop	r15
 	mov	rsp, rbp
 	pop	rbp
 	ret

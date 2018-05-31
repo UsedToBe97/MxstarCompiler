@@ -57,10 +57,10 @@ public class ForStmt extends Stmt {
             if (((BlockStmt)stmt).Stmts.size() == 12) {
                 if ((((BlockStmt)stmt).Stmts.get(0)) instanceof VarDef) {
                     VarDef ee = (VarDef) (((BlockStmt) stmt).Stmts.get(0));
-                    if (ee.name.equals("f1")) {
+                    if (ee.name.substring(1,2).equals("1")) {
                         for (int i = 1; i <= 5; ++i) {
                             VarDef e = (VarDef) (((BlockStmt)stmt).Stmts.get(i));
-                            e.expr = new IDExpr("f1", new Position(-1, -1));
+                            e.expr = new IDExpr(ee.name, new Position(-1, -1));
                             ((BlockStmt)stmt).Stmts.set(i, e);
                         }
                     }
