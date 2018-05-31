@@ -1,21 +1,59 @@
-1
-ACM
-1
-acm2015
-1
-compiler2017
-1
-optim-extended
-1
-SJTU
-1
-2017
-2
-ABC64A57029F21F165A96BDB59F0351C7C7D1769
-2
-04E8696E6424C21D717E46008780505D598EB59A
-2
-52fdb9f68c503e11d168fe52035901864c0a4861
-2
-cd3f0c85b158c08a2b113464991810cf2cdfc387
-0
+//Target: use loops to calculate calculator of 6!
+//@author yixi
+
+int N;
+int h = 99;
+int i = 100;
+int j = 101;
+int k = 102;
+int total = 0;
+
+int main() {
+  	int a;
+    int b;
+	int c;
+	int d;
+	int e;
+	int f;
+	N=getInt();
+	for ( a=1; a<=N; a++ )
+	for ( b=1; b<=N; b++ )
+	for ( c=1; c<=N; c++ )	
+	for ( d=1; d<=N; d++ )
+	for ( e=1; e<=N; e++ )
+	for ( f=1; f<=N; f++ )
+		if (a!=b && a!=c && a!=d && a!=e && a!=f && a!=h && a!=i && a!=j && a!=k
+              && b!=c && b!=d && b!=e && b!=f && b!=h && b!=i && b!=j && b!=k
+              && c!=d && c!=e && c!=f && c!=h && c!=i && c!=j && c!=k
+              && d!=e && d!=f && d!=h && d!=i && d!=j && d!=k
+              && e!=f && e!=h && e!=i && e!=j && e!=k
+              && f!=h && f!=i && f!=j && f!=k && i!=j && h!=k)
+		{
+			total++;
+		}
+	
+	println(toString(total));
+	return 0;
+}
+
+
+
+/*!! metadata:
+=== comment ===
+superloop-5090379042-jiaxiao.mx
+=== is_public ===
+True
+=== assert ===
+output
+=== timeout ===
+1.5
+=== input ===
+17
+=== phase ===
+optim extended
+=== output ===
+8910720
+=== exitcode ===
+
+
+!!*/

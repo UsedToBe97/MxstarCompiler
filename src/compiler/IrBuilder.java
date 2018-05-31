@@ -564,6 +564,41 @@ public class IrBuilder {
 
     public void doit(Func x) {
         List<Inst> tmp = new ArrayList<>();
+        Set<Label> used = new HashSet<>();
+        HashMap<Label, Label> map = new HashMap<>();
+        for (Inst u : x.Insts) {
+            if (u instanceof Label) map.put((Label) u, (Label) u);
+            if (u instanceof Jump) used.add(((Jump) u).label);
+            if (u instanceof CJump) used.add(((CJump) u).dest);
+        }
+        Inst pre = null;
+        for (int i = 0; i < x.Insts.size(); ++i) {
+            Inst u = x.Insts.get(i);
+            if (u instanceof Label && !used.contains(u)) continue;
+            if (pre instanceof Jump) if (!(u instanceof Label)) continue;
+            if (pre instanceof Label && u instanceof Label) {
+                map.put((Label) u, (Label)pre);
+                continue;
+            }
+            if (pre != null) tmp.add(pre);
+            pre = u;
+        }
+        if (pre != null) tmp.add(pre);
+        for (Inst u : tmp) {
+            if (u instanceof Jump) {
+                Label t = ((Jump) u).label;
+                for (Label nxt = map.get(t); nxt != t; t = nxt, nxt = map.get(t));
+                ((Jump) u).label = t;
+            }
+            if (u instanceof CJump) {
+                Label t = ((CJump) u).dest;
+                for (Label nxt = map.get(t); nxt != t; t = nxt, nxt = map.get(t));
+                ((CJump) u).dest = t;
+            }
+        }
+        x.Insts = tmp;
+
+        tmp = new ArrayList<>();
         for (int i = 1; i < x.Insts.size(); ++i) {
             boolean ok = false;
             if (x.Insts.get(i - 1) instanceof Binop && x.Insts.get(i) instanceof CJump) {
