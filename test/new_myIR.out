@@ -1,75 +1,60 @@
 
 
-add [Func]:
-	rdi = rdi [rsi , rdi , ][rdi]
-	rsi = rsi [rsi , rdi , ][rsi]
-	rdi = rdi + rsi [rdi , rsi , ][rdi]
-	rdi = rdi % 233 [rdi , ][rdi]
+fibo [Func]:
+	rsi = rdi [rdi , ][rsi]
+	jump Label_2 if rsi jl 2 [rsi , ][]
+	jump Label_3 [rsi , ][]
+Label_2:
+	rax = rsi [rsi , ][rax]
+	jump Label_0 [][]
+	jump Label_1 [rsi , ][]
+Label_3:
+Label_1:
+	rdi = rsi - 1 [rsi , ][rdi]
+		rdi = rdi [rdi , rsi , ][rdi]
+		FuncCall fibo Param_size : 1 [rsi , rdi , ][rax]
+		r10 = rax [rax , rsi , ][r10]
+	rdi = rsi - 2 [r10 , rsi , ][rdi]
+		rdi = rdi [r10 , rdi , ][rdi]
+		FuncCall fibo Param_size : 1 [r10 , rdi , ][rax]
+		rdi = rax [r10 , rax , ][rdi]
+	rdi = r10 + rdi [r10 , rdi , ][rdi]
 	rax = rdi [rdi , ][rax]
 	jump Label_0 [][]
 Label_0:
-dp [Func]:
-	rsi = rdi [rdi , ][rsi]
-	jump Label_3 if rsi jle 1 [rsi , ][]
-	jump Label_4 [rsi , ][]
-Label_3:
-	rdi = 36 [][rdi]
-	rax = rdi [rdi , ][rax]
-	jump Label_1 [][]
-	jump Label_2 [rsi , ][]
-Label_4:
-Label_2:
-	r10 = 0 [rsi , ][r10]
-	r11 = 2 [rsi , r10 , ][r11]
-Label_8:
-	jump Label_7 if r11 jle rsi [rsi , r10 , r11 , ][]
-	jump Label_6 [r10 , ][]
-Label_7:
-	rdi = rsi ^ r11 [rsi , r10 , r11 , ][rdi]
-	jump Label_10 if rdi jl rsi [rsi , r10 , r11 , rdi , ][]
-	jump Label_11 [rsi , r10 , r11 , ][]
-Label_10:
-	rdi = rsi ^ r11 [rsi , r10 , r11 , ][rdi]
-		rdi = rdi [rdi , rsi , r10 , r11 , ][rdi]
-		FuncCall dp Param_size : 1 [rsi , r10 , r11 , rdi , ][rax]
-		rdi = rax [rsi , r10 , r11 , rax , ][rdi]
-	rdi = r10 + rdi [rsi , r10 , r11 , rdi , ][rdi]
-	rdi = rdi % 233 [rdi , rsi , r11 , ][rdi]
-	r10 = rdi [rsi , r11 , rdi , ][r10]
-	jump Label_9 [rsi , r10 , r11 , ][]
-Label_11:
-Label_9:
-Label_5:
-	rdi = r11 [rsi , r10 , r11 , ][rdi]
-	r11 = r11 + 1 [rsi , r10 , r11 , ][r11]
-	jump Label_8 [rsi , r10 , r11 , ][]
-Label_6:
-	rax = r10 [r10 , ][rax]
-	jump Label_1 [][]
-Label_1:
 main [Func]:
-		FuncCall getInt Param_size : 0 [][rax]
-		rdi = rax [rax , ][rdi]
-	r10 = rdi [rdi , ][r10]
-	rsi = 1 [r10 , ][rsi]
-Label_16:
-	jump Label_15 if rsi jle r10 [r10 , rsi , ][]
-	jump Label_14 [][]
-Label_15:
-		rdi = rsi [r10 , rsi , ][rdi]
-		FuncCall dp Param_size : 1 [r10 , rdi , rsi , ][rax]
+		FuncCall getInt Param_size : 0 [r10 , ][rax]
+		rdi = rax [r10 , rax , ][rdi]
+	rdi = rdi [rdi , r10 , ][rdi]
+		rdi = rdi [r10 , rdi , ][rdi]
+		FuncCall fibo Param_size : 1 [r10 , rdi , ][rax]
+		rdi = rax [r10 , rax , ][rdi]
+		rdi = rdi [r10 , rdi , ][rdi]
+		FuncCall toString Param_size : 1 [r10 , rdi , ][rax]
+		rdi = rax [r10 , rax , ][rdi]
+		rdi = rdi [rdi , r10 , ][rdi]
+		FuncCall println Param_size : 1 [r10 , rdi , ][rax]
+		rdi = rax [r10 , rax , ][rdi]
+	rsi = 0 [r10 , ][rsi]
+Label_8:
+	jump Label_7 if rsi jle 100 [r10 , rsi , ][]
+	jump Label_6 [][]
+Label_7:
+	jump Label_9 if rsi jne 0 [r10 , rsi , ][]
+		rdi = 30 [rsi , ][rdi]
+		FuncCall fibo Param_size : 1 [rsi , rdi , ][rax]
+		r10 = rax [rax , rsi , ][r10]
+Label_9:
+		rdi = r10 [r10 , rsi , ][rdi]
+		FuncCall toString Param_size : 1 [r10 , rsi , rdi , ][rax]
 		rdi = rax [r10 , rax , rsi , ][rdi]
 		rdi = rdi [r10 , rdi , rsi , ][rdi]
-		FuncCall toString Param_size : 1 [r10 , rdi , rsi , ][rax]
+		FuncCall println Param_size : 1 [r10 , rsi , rdi , ][rax]
 		rdi = rax [r10 , rax , rsi , ][rdi]
-		rdi = rdi [r10 , rdi , rsi , ][rdi]
-		FuncCall println Param_size : 1 [r10 , rdi , rsi , ][rax]
-		rdi = rax [r10 , rax , rsi , ][rdi]
-Label_13:
-	rdi = rsi [r10 , rsi , ][rdi]
+Label_5:
 	rsi = rsi + 1 [r10 , rsi , ][rsi]
-	jump Label_16 [r10 , rsi , ][]
-Label_14:
+	jump Label_8 [r10 , rsi , ][]
+Label_6:
 	rax = 0 [][rax]
-	jump Label_12 [][]
-Label_12:
+	jump Label_4 [][]
+Label_4:

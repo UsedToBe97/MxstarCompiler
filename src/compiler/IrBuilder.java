@@ -30,7 +30,7 @@ public class IrBuilder {
     public List<VarDef> vdExpr = new LinkedList<>();
     public Label breakLabel, contLabel, returnLabel;
     public String nowclass = "";
-    public Operand baseaddr;
+    public Operand baseaddr, ii;
     public Map<String, VarDef> varMap = new HashMap<>();
 
     public Ir visit(Root x) {
@@ -333,6 +333,15 @@ public class IrBuilder {
                 return;
             }
         }
+        if (params.size() == 1 && x.exprList.get(0) instanceof ConstExpr) {
+            x.operand = nowfunc.newReg();
+            Label tmp = new Label();
+            nowfunc.addInst(new CJump(ii, new INum(0), "jne", tmp));
+            Call call = new Call(x.name, params, x.operand);
+            nowfunc.addInst(call);
+            nowfunc.addInst(tmp);
+            return;
+        }
         x.operand = nowfunc.newReg();
         Call call = new Call(x.name, params, x.operand);
         nowfunc.addInst(call);
@@ -490,6 +499,9 @@ public class IrBuilder {
         } else {
             visit(x.exprs.get(1));
             nowfunc.addInst(new CJump(x.exprs.get(1).operand, new INum(1), "je", okLabel));
+            if (x.exprs.get(1) instanceof BinaryExpr) {
+                ii = ((BinaryExpr) x.exprs.get(1)).expr1.operand;
+            }
             nowfunc.addInst(new Jump(breakLabel));
         }
         nowfunc.addInst(okLabel);
@@ -501,6 +513,7 @@ public class IrBuilder {
         nowfunc.addInst(breakLabel);
         contLabel = tc;
         breakLabel = tb;
+        ii = null;
     }
 
     public void visit(IfStmt x) {

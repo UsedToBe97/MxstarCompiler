@@ -22,58 +22,37 @@ section .bss
 stringbuffer:
 	resb 256
 section .text
-add:
-	push	rbp
-	mov	rbp, rsp
-	add	rdi, rsi
-	mov	eax, edi
-	mov	ecx, 233
-	cdq
-	idiv	ecx
-	mov	edi, edx
-	mov	rax, rdi
-	jmp	Label_0
-Label_0:
-	mov	rsp, rbp
-	pop	rbp
-	ret
-dp:
+fibo:
 	push	rbp
 	mov	rbp, rsp
 	mov	rsi, rdi
-	cmp	rsi, 1
-	jle	Label_3
-	jmp	Label_4
-Label_3:
-	mov	rdi, 36
-	mov	rax, rdi
-	jmp	Label_1
-	jmp	Label_2
-Label_4:
+	cmp	rsi, 2
+	jl	Label_2
+	jmp	Label_3
 Label_2:
-	mov	r10, 0
-	mov	r11, 2
-Label_8:
-	cmp	r11, rsi
-	jle	Label_7
-	jmp	Label_6
-Label_7:
+	mov	rax, rsi
+	jmp	Label_0
+	jmp	Label_1
+Label_3:
+Label_1:
 	mov	rcx, rsi
-	xor	rcx, r11
-	mov	rdi, rcx
-	cmp	rdi, rsi
-	jl	Label_10
-	jmp	Label_11
-Label_10:
-	mov	rcx, rsi
-	xor	rcx, r11
+	sub	rcx, 1
 	mov	rdi, rcx
 	push	rdi
 	push	rsi
 	push	r10
-	push	r11
-	call	dp
-	pop	r11
+	call	fibo
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	r10, rax
+	mov	rcx, rsi
+	sub	rcx, 2
+	mov	rdi, rcx
+	push	rdi
+	push	rsi
+	push	r10
+	call	fibo
 	pop	r10
 	pop	rsi
 	pop	rdi
@@ -81,23 +60,9 @@ Label_10:
 	mov	rcx, r10
 	add	rcx, rdi
 	mov	rdi, rcx
-	mov	eax, edi
-	mov	ecx, 233
-	cdq
-	idiv	ecx
-	mov	edi, edx
-	mov	r10, rdi
-	jmp	Label_9
-Label_11:
-Label_9:
-Label_5:
-	mov	rdi, r11
-	add	r11, 1
-	jmp	Label_8
-Label_6:
-	mov	rax, r10
-	jmp	Label_1
-Label_1:
+	mov	rax, rdi
+	jmp	Label_0
+Label_0:
 	mov	rsp, rbp
 	pop	rbp
 	ret
@@ -112,18 +77,10 @@ main:
 	pop	rsi
 	pop	rdi
 	mov	rdi, rax
-	mov	r10, rdi
-	mov	rsi, 1
-Label_16:
-	cmp	rsi, r10
-	jle	Label_15
-	jmp	Label_14
-Label_15:
 	push	rdi
 	push	rsi
 	push	r10
-	mov	rdi, rsi
-	call	dp
+	call	fibo
 	pop	r10
 	pop	rsi
 	pop	rdi
@@ -144,14 +101,48 @@ Label_15:
 	pop	rsi
 	pop	rdi
 	mov	rdi, rax
-Label_13:
-	mov	rdi, rsi
+	mov	rsi, 0
+Label_8:
+	cmp	rsi, 100
+	jle	Label_7
+	jmp	Label_6
+Label_7:
+	cmp	rsi, 0
+	jne	Label_9
+	push	rdi
+	push	rsi
+	push	r10
+	mov	rdi, 30
+	call	fibo
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	r10, rax
+Label_9:
+	push	rdi
+	push	rsi
+	push	r10
+	mov	rdi, r10
+	call	toString
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	push	rdi
+	push	rsi
+	push	r10
+	call	println
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+Label_5:
 	add	rsi, 1
-	jmp	Label_16
-Label_14:
+	jmp	Label_8
+Label_6:
 	mov	rax, 0
-	jmp	Label_12
-Label_12:
+	jmp	Label_4
+Label_4:
 	mov	rsp, rbp
 	pop	rbp
 	ret
