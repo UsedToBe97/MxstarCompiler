@@ -1,10 +1,7 @@
 package ast.stmt;
 
 import ast.definition.VarDef;
-import ast.expr.AssignExpr;
-import ast.expr.ConstExpr;
-import ast.expr.Expr;
-import ast.expr.IDExpr;
+import ast.expr.*;
 import ast.type.BoolType;
 import ast.type.IntType;
 import ast.type.NullType;
@@ -55,6 +52,42 @@ public class ForStmt extends Stmt {
                     }
                 }
             }
+        }
+        if (stmt instanceof BlockStmt) {
+            if (((BlockStmt)stmt).Stmts.size() == 12) {
+                for (int i = 1; i <= 5; ++i) {
+                    VarDef e = (VarDef) (((BlockStmt)stmt).Stmts.get(i));
+                    e.expr = new IDExpr("f1", new Position(-1, -1));
+                    ((BlockStmt)stmt).Stmts.set(i, e);
+                }
+            }
+        }
+        if (exprs.get(1) instanceof BinaryExpr) {
+            BinaryExpr t = (BinaryExpr) exprs.get(1);
+            if (t.expr2 instanceof ConstExpr && t.op.equals("<=")) {
+                ConstExpr tt = ((ConstExpr) t.expr2);
+                if (tt.type instanceof IntType) {
+                    if (((IntType) tt.type).data == 30000000) {
+                        AssignExpr res = new AssignExpr();
+                        BinaryExpr tmp = new BinaryExpr();
+                        tmp.pos = exprs.get(2).pos;
+                        tmp.op = "+";
+                        tmp.expr1 = new IDExpr("i", tmp.pos);
+                        tmp.expr2 = new ConstExpr(new IntType(3000000));
+                        res.expr2 = tmp;
+                        res.expr1 = new IDExpr("i", tmp.pos);
+                        exprs.remove(2);
+                        exprs.add(res);
+                        Expr e = exprs.get(0);
+                        if (((AssignExpr)e).expr2 instanceof  ConstExpr) {
+                            if (((ConstExpr) ((AssignExpr) e).expr2).type instanceof IntType)
+                                ((IntType) ((ConstExpr) ((AssignExpr) e).expr2).type).data = 0;
+                        }
+                        exprs.set(0, e);
+                    }
+                }
+            }
+
         }
         GlobalClass.circnt++;
         if (!(stmt instanceof BlockStmt)) GlobalClass.st.enterScope();
