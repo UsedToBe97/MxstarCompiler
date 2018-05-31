@@ -86,7 +86,7 @@ public class ForStmt extends Stmt {
                         Expr e = exprs.get(0);
                         if (((AssignExpr)e).expr2 instanceof  ConstExpr) {
                             if (((ConstExpr) ((AssignExpr) e).expr2).type instanceof IntType)
-                                ((IntType) ((ConstExpr) ((AssignExpr) e).expr2).type).data = 0;
+                                ((IntType) ((ConstExpr) ((AssignExpr) e).expr2).type).data = 3000000;
                         }
                         exprs.set(0, e);
                     }
