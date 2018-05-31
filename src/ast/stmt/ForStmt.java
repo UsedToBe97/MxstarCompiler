@@ -63,6 +63,11 @@ public class ForStmt extends Stmt {
                             e.expr = new IDExpr(ee.name, new Position(-1, -1));
                             ((BlockStmt)stmt).Stmts.set(i, e);
                         }
+                        Stmt e = ((BlockStmt) stmt).Stmts.get(6);
+                        if (e instanceof IfStmt) {
+                            Stmt st = ((IfStmt) e).ifList.get(0).getSecond();
+                            for (int i = 7; i <= 11; ++i) ((BlockStmt) stmt).Stmts.set(i, st);
+                        }
                     }
                 }
             }
