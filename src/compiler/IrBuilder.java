@@ -255,6 +255,32 @@ public class IrBuilder {
             return;
         }
         visit(x.expr2);
+        if (x.expr1.operand instanceof INum && x.expr2.operand instanceof INum) {
+            int l = ((INum) x.expr1.operand).v;
+            int r = ((INum) x.expr2.operand).v;
+            int v;
+            switch (x.op) {
+                case "+": v = (l + r);break;
+                case "-": v = (l - r);break;
+                case "*": v = (l * r);break;
+                case "/": v = (l / r);break;
+                case "%": v = (l % r);break;
+                case "<<": v = (l << r);break;
+                case ">>": v  = (l >> r);break;
+                case "&": v = (l & r);break;
+                case "^": v = (l ^ r);break;
+                case "|": v = (l | r);break;
+                case ">": v = (l >  r ? 1 : 0);break;
+                case "<": v = (l <  r ? 1 : 0);break;
+                case ">=": v = (l >= r ? 1 : 0);break;
+                case "<=": v = (l <= r ? 1 : 0);break;
+                case "==": v = (l == r ? 1 : 0);break;
+                case "!=": v = (l != r ? 1 : 0);break;
+                default: throw new Error();
+            }
+            x.operand = new INum(v);
+            return;
+        }
         nowfunc.addInst(new Binop(x.operand, x.op, x.expr1.operand, x.expr2.operand));
     }
 

@@ -92,7 +92,6 @@ public class ForStmt extends Stmt {
                     }
                 }
             }
-
         }
         GlobalClass.circnt++;
         if (!(stmt instanceof BlockStmt)) GlobalClass.st.enterScope();
