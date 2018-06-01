@@ -2,7 +2,6 @@ package ast.expr;
 
 import ast.definition.Def;
 import ast.definition.FuncDef;
-import ast.definition.VarDef;
 import ast.type.*;
 import compiler.IrBuilder;
 import ir.operand.Operand;

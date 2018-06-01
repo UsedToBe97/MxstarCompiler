@@ -22,6 +22,7 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
     public String classname = "";
     public boolean inclass = false;
     public boolean infunc = false;
+    public FuncDef nowfunc = null;
     public Root prog = new Root();
     @Override
     public Atom visitProg(MxstarParser.ProgContext ctx) {
@@ -54,6 +55,7 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
         //System.err.println("EnterFunc");
         FuncDef tmp = new FuncDef(ctx, inclass, classname);
         infunc = true;
+        nowfunc = tmp;
         //System.err.println(tmp.name + "!!!!!!!");
         if (tmp.name.equals("this"))
             throw new CompileError("This is a reversed word", new Position(ctx.name));
@@ -67,6 +69,7 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
         }
         if (inclass) prog.add(tmp);
         infunc = false;
+        nowfunc = null;
         //System.err.println("ExitFunc");
         return tmp;
     }
@@ -167,6 +170,7 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
         FuncExpr tmp = new FuncExpr(ctx);
         if (inclass && !GlobalClass.st.contains(ctx.Identifier().getText())) tmp.add(new IDExpr("this", new Position(ctx.getStart())));
         else if (inclass && GlobalClass.st.contains(classname + "." + ctx.Identifier().getText())) tmp.add(new IDExpr("this", new Position(ctx.getStart())));;
+        if (infunc && nowfunc.name.equals(tmp.name)) nowfunc.re = true;
         if (ctx.exprList() != null) {
             for (ParserRuleContext child : ctx.exprList().expr()) {
                 tmp.add((Expr) visit(child));

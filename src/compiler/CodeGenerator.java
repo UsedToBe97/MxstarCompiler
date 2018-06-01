@@ -286,6 +286,11 @@ public class CodeGenerator {
             for (int i = 0; i < u.length(); ++i) ans.append(Integer.toString((int)u.charAt(i)) + ", ");
             ans.append("0\n");
         }
+        for (String u : rt.SC2) {
+            ans.append("\tdq\t500" + "\n" + u + ":\n\tdb\t");
+            for (int i = 0; i < 500; ++i) ans.append(Integer.toString(0) + ", ");
+            ans.append("0\n");
+        }
         for (VarDef u : rt.GV) ans.append(u.name + ":\n\tdq\t0\n");
         ans.append("intbuffer:\n");
         ans.append("\tdq 0\n");

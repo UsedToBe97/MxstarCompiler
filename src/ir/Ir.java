@@ -10,6 +10,7 @@ public class Ir {
     public List<Func> Funcs = new ArrayList<>();
     public List<VarDef> GV = new ArrayList<>();
     public List<String> SC = new ArrayList<>();
+    public List<String> SC2 = new ArrayList<>();
 
     public GlobalAddr add(VarDef t) {
         t.name = t.name + "__";

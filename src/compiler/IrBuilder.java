@@ -13,6 +13,7 @@ import ir.Ir;
 import ir.inst.*;
 import ir.operand.INum;
 import ir.operand.Operand;
+import ir.operand.addr.GlobalAddr;
 import ir.operand.addr.MemAddr;
 import ir.operand.reg.Reg;
 import ir.operand.reg.VirtualReg;
@@ -93,6 +94,26 @@ public class IrBuilder {
             Def t = x.paramList.get(i);
             nowfunc.defMap.put(t.getname(), t.addr);
         }
+
+        if(x.re && x.paramList.size() == 1 && x.params.get(0).getFirst() instanceof IntType) {
+            Label A = new Label();
+            Label B = new Label();
+            Reg Rs = nowfunc.newReg();
+            Reg Rd = nowfunc.newReg();
+            Reg Rc = nowfunc.newReg();
+            nowfunc.addInst(new Move(Rs, X86Reg.getparam(0)));//1
+            root.SC2.add(x.name + "__");
+            nowfunc.addInst(new Move(Rd, new GlobalAddr(x.name + "__", true)));//false
+            nowfunc.addInst(new Move(Rc, new MemAddr((Reg)Rd, (Reg)Rs, 8, 0)));
+            nowfunc.addInst(new CJump(Rc, new INum(0), "jg", B));
+            nowfunc.addInst(new Jump(A));
+            nowfunc.addInst(B);
+            nowfunc.addInst(new Move(X86Reg.rax, Rc));
+            nowfunc.addInst(new Jump(returnLabel));
+            nowfunc.addInst(A);
+        }
+
+
         if (x.name.equals("main"))
             for (VarDef u : vdExpr) visit(u);
         x.stmts.forEach(xx -> visit(xx));

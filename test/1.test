@@ -1,50 +1,36 @@
-int main()
-{
-	int a;
-	int b;
-	int c;
-	int d;
-	int e;
-	int f;
-	int g;
-	int n = getInt();
-	int ans = 0;
-	for(a = 0; a < n; ++a)
-		for(b = 0; b < n; ++b)
-			for(c = 0; c < n; ++c)
-				for(d = 0; d < n; ++d)
-					for(e = 0; e < n; ++e)
-						for(f = 0; f < n; ++f)
-							for(g = 0; g < n; ++g)
-							{
-								bool t1 = (((a == b) && c > 0) || (d == e && f > 0 && g > 0) || (a == g) || (d > 0 && f > 0));
-								bool t2 = (((a == b) && c > 0) || (d == e && f > 0 && g > 0) || (a == g) || (d > 0 && f > 0));
-								bool t3 = (((a == b) && c > 0) || (d == e && f > 0 && g > 0) || (a == g) || (d > 0 && f > 0));
-								bool t4 = (((a == b) && c > 0) || (d == e && f > 0 && g > 0) || (a == g) || (d > 0 && f > 0));
-								bool t5 = (((a == b) && c > 0) || (d == e && f > 0 && g > 0) || (a == g) || (d > 0 && f > 0));
-								bool t6 = (((a == b) && c > 0) || (d == e && f > 0 && g > 0) || (a == g) || (d > 0 && f > 0));
-								if(t1)
-									ans++;
-								if(t2)
-									ans++;
-								if(t3)
-									ans++;
-								if(t4)
-									ans++;
-								if(t5)
-									ans++;
-								if(t6)
-									ans++;
-							}
-	print(toString(ans));
+
+
+int add(int x,int y){return (x+y)%233;}
+
+int dp(int x){
+	if(x<=1){
+		int tmp=7%233*7%233*7%233*7%233*7%233*7%233*7%233
+			*7%233*7%233*7%233*7%233*7%233*7%233*7%233*7%233
+			*7%233*7%233*7%233*7%233*7%233*7%233*7%233*7%233
+			*7%233*7%233*7%233*7%233*7%233*7%233*7%233*7%233
+			*7%233*7%233*7%233*7%233*7%233*7%233*7%233*7%233
+			*7%233*7%233*7%233*7%233*7%233*7%233*7%233*7%233
+			*7%233*7%233*7%233*7%233*7%233*7%233*7%233*7%233;
+		return tmp;
+	}
+	int sum=0;
+	int i;
+	for(i=2;i<=x;i++)if((x^i)<x)
+		sum=add(sum,dp(x^i));
+	return sum;
+}
+
+int main(){
+	int i;
+	int n=getInt();
+	for(i=1;i<=n;i++)
+		println(toString(dp(i)) + "QAQ");
 	return 0;
 }
 
-
-
 /*!! metadata:
 === comment ===
-5140309234-xietiancheng Common Expression Elimination
+张凯羿 inline,constant folding,recursion - 张凯羿
 === is_public ===
 True
 === assert ===
@@ -52,12 +38,66 @@ output
 === timeout ===
 5.0
 === input ===
-14
+55
 === phase ===
-optim extended
+optim pretest
 === output ===
-559355322
+36
+36
+72
+36
+72
+19
+55
+36
+72
+19
+55
+167
+203
+179
+215
+36
+72
+19
+55
+167
+203
+179
+215
+64
+100
+103
+139
+186
+222
+3
+39
+36
+72
+19
+55
+167
+203
+179
+215
+64
+100
+103
+139
+186
+222
+3
+39
+145
+181
+113
+149
+216
+19
+93
+129
 === exitcode ===
-
+0
 
 !!*/

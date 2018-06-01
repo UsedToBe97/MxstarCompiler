@@ -22,6 +22,7 @@ public class FuncDef extends Def{
     public List<Stmt> stmts = new LinkedList<>();
     public String getname() {return name;}
     public Label label = null; // IR;
+    public boolean re = false;
     public FuncDef(String _name, Type _type) {
         name = _name;
         type = _type;
