@@ -6,13 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/definition/FuncDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/definition/FuncDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/FuncExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/FuncExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/AstBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/AstBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/CodeGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/IrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/IrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/Ir.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/Ir.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/1.test" beforeDir="false" afterPath="$PROJECT_DIR$/test/1.test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/new_myIR.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/new_myIR.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/try2.asm" beforeDir="false" afterPath="$PROJECT_DIR$/test/try2.asm" afterDir="false" />
@@ -44,13 +38,13 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.49905124">
+    <splitter split-orientation="horizontal" split-proportion="0.42061988">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="421">
+                <state relative-caret-position="352">
                   <caret line="109" column="30" selection-start-line="109" selection-start-column="30" selection-end-line="109" selection-end-column="30" />
                 </state>
               </provider>
@@ -172,11 +166,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="CodeGenerator.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="CodeGenerator.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/compiler/CodeGenerator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="447">
-                  <caret line="289" column="45" selection-start-line="289" selection-start-column="45" selection-end-line="289" selection-end-column="45" />
+                <state relative-caret-position="4380">
+                  <caret line="289" column="55" selection-start-line="289" selection-start-column="55" selection-end-line="289" selection-end-column="55" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -202,13 +196,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="IrBuilder.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="IrBuilder.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/compiler/IrBuilder.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="455">
-                  <caret line="632" column="38" selection-start-line="483" selection-start-column="32" selection-end-line="483" selection-end-column="37" />
+                <state relative-caret-position="343">
+                  <caret line="124" column="5" lean-forward="true" selection-start-line="124" selection-start-column="5" selection-end-line="124" selection-end-column="5" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#19123#19124#0" expanded="true" />
+                    <element signature="e#19171#19172#0" expanded="true" />
+                    <element signature="e#19209#19210#0" expanded="true" />
+                    <element signature="e#19262#19263#0" expanded="true" />
+                    <element signature="e#19299#19300#0" expanded="true" />
+                    <element signature="e#19351#19352#0" expanded="true" />
+                    <element signature="e#19388#19389#0" expanded="true" />
+                    <element signature="e#19417#19418#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -352,9 +354,9 @@
         <option value="$PROJECT_DIR$/src/ast/expr/FuncExpr.java" />
         <option value="$PROJECT_DIR$/src/compiler/AstBuilder.java" />
         <option value="$PROJECT_DIR$/src/ast/definition/FuncDef.java" />
-        <option value="$PROJECT_DIR$/src/compiler/IrBuilder.java" />
         <option value="$PROJECT_DIR$/src/ir/Ir.java" />
         <option value="$PROJECT_DIR$/src/compiler/CodeGenerator.java" />
+        <option value="$PROJECT_DIR$/src/compiler/IrBuilder.java" />
         <option value="$PROJECT_DIR$/src/compiler/Main.java" />
       </list>
     </option>
@@ -733,12 +735,12 @@
       <workItem from="1527782767648" duration="455000" />
       <workItem from="1527815146010" duration="556000" />
       <workItem from="1527815720748" duration="3000" />
-      <workItem from="1527815811693" duration="3933000" />
+      <workItem from="1527815811693" duration="4732000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="452972000" />
+    <option name="totallyTimeSpent" value="453771000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -764,11 +766,11 @@
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4936034" visible="true" weight="0.25925925" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4936034" visible="true" weight="0.25925925" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32897604" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15724947" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15724947" />
       <window_info anchor="right" id="Database" order="8" weight="0.32995737" />
       <window_info anchor="bottom" id="ANTLR Preview" order="12" weight="0.32897604" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -824,11 +826,17 @@
           <properties />
           <option name="timeStamp" value="184" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/compiler/IrBuilder.java</url>
+          <line>105</line>
+          <properties />
+          <option name="timeStamp" value="207" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="207" />
+      <option name="time" value="209" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1191,8 +1199,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/CodeGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="289" column="45" selection-start-line="289" selection-start-column="45" selection-end-line="289" selection-end-column="45" />
+        <state relative-caret-position="4380">
+          <caret line="289" column="55" selection-start-line="289" selection-start-column="55" selection-end-line="289" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1211,7 +1219,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
+        <state relative-caret-position="352">
           <caret line="109" column="30" selection-start-line="109" selection-start-column="30" selection-end-line="109" selection-end-column="30" />
         </state>
       </provider>

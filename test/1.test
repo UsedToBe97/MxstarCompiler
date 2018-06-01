@@ -17,6 +17,7 @@ int dp(int x){
 	int i;
 	for(i=2;i<=x;i++)if((x^i)<x)
 		sum=add(sum,dp(x^i));
+	println(toString(x) + " : " + toString(sum));
 	return sum;
 }
 
@@ -24,7 +25,7 @@ int main(){
 	int i;
 	int n=getInt();
 	for(i=1;i<=n;i++)
-		println(toString(dp(i)) + "QAQ");
+		println(toString(dp(i)));
 	return 0;
 }
 
