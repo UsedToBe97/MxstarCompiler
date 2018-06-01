@@ -94,12 +94,14 @@ public class IrBuilder {
             Def t = x.paramList.get(i);
             nowfunc.defMap.put(t.getname(), t.addr);
         }
-        Label A = new Label();
-        Label B = new Label();
-        Reg Rs = nowfunc.newReg();
-        Reg Rd = nowfunc.newReg();
-        Reg Rc = nowfunc.newReg();
+        Inst pre = null;
         if(x.re && x.paramList.size() == 1 && x.params.get(0).getFirst() instanceof IntType && x.type instanceof IntType) {
+            Label A = new Label();
+            Label B = new Label();
+            Reg Rs = nowfunc.newReg();
+            Reg Rd = nowfunc.newReg();
+            Reg Rc = nowfunc.newReg();
+            pre = new Move(new MemAddr((Reg)Rd, (Reg)Rs, 8, 0), X86Reg.rax);
             nowfunc.addInst(new Move(Rs, X86Reg.getparam(0)));//1
             root.SC2.add(x.name + "__");
             nowfunc.addInst(new Move(Rd, new GlobalAddr(x.name + "__", true)));//false
@@ -112,15 +114,12 @@ public class IrBuilder {
             nowfunc.addInst(A);
         }
 
-
         if (x.name.equals("main"))
             for (VarDef u : vdExpr) visit(u);
         x.stmts.forEach(xx -> visit(xx));
 
         nowfunc.addInst(returnLabel);
-        if(x.re && x.paramList.size() == 1 && x.params.get(0).getFirst() instanceof IntType && x.type instanceof IntType) {
-            nowfunc.addInst(new Move(new MemAddr((Reg)Rd, (Reg)Rs, 8, 0), X86Reg.rax));
-        }
+        if (pre != null) nowfunc.addInst(pre);
         nowclass = "";
     }
     /*public void visit2(FuncDef x) {
