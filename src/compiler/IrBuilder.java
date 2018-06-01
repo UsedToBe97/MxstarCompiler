@@ -99,7 +99,7 @@ public class IrBuilder {
         Reg Rs = nowfunc.newReg();
         Reg Rd = nowfunc.newReg();
         Reg Rc = nowfunc.newReg();
-        if(x.re && x.paramList.size() == 1 && x.params.get(0).getFirst() instanceof IntType) {
+        if(x.re && x.paramList.size() == 1 && x.params.get(0).getFirst() instanceof IntType && x.type instanceof IntType) {
             nowfunc.addInst(new Move(Rs, X86Reg.getparam(0)));//1
             root.SC2.add(x.name + "__");
             nowfunc.addInst(new Move(Rd, new GlobalAddr(x.name + "__", true)));//false
@@ -118,7 +118,7 @@ public class IrBuilder {
         x.stmts.forEach(xx -> visit(xx));
 
         nowfunc.addInst(returnLabel);
-        if(x.re && x.paramList.size() == 1 && x.params.get(0).getFirst() instanceof IntType) {
+        if(x.re && x.paramList.size() == 1 && x.params.get(0).getFirst() instanceof IntType && x.type instanceof IntType) {
             nowfunc.addInst(new Move(new MemAddr((Reg)Rd, (Reg)Rs, 8, 0), X86Reg.rax));
         }
         nowclass = "";
