@@ -106,10 +106,16 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
     public Atom visitIfStmt(MxstarParser.IfStmtContext ctx) {
         //System.err.println("Enter IfStmt");
         IfStmt tmp = new IfStmt(new Position(ctx.getStart()));
+        boolean pre = setR;
+        setR = true;
         tmp.add((Expr)visit(ctx.expr(0)), (Stmt)visit(ctx.stmt(0)));
+        setR = pre;
         int k = 1;
         while (ctx.expr(k) != null) {
+            pre = setR;
+            setR = true;
             tmp.add((Expr)visit(ctx.expr(k)), (Stmt)visit(ctx.stmt(k)));
+            setR = pre;
             ++k;
         }
         if (ctx.stmt(k) != null) tmp.addElse((Stmt)visit(ctx.stmt(k)));
@@ -171,6 +177,8 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
 
     @Override
     public Atom visitFuncExpr(MxstarParser.FuncExprContext ctx) {
+        boolean pre = setR;
+        setR = true;
         FuncExpr tmp = new FuncExpr(ctx);
         if (inclass && !GlobalClass.st.contains(ctx.Identifier().getText())) tmp.add(new IDExpr("this", new Position(ctx.getStart())));
         else if (inclass && GlobalClass.st.contains(classname + "." + ctx.Identifier().getText())) tmp.add(new IDExpr("this", new Position(ctx.getStart())));;
@@ -180,6 +188,7 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
                 tmp.add((Expr) visit(child));
             }
         }
+        setR = pre;
         return tmp;
     }
 
@@ -275,9 +284,10 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
     public Atom visitAssignExpr(MxstarParser.AssignExprContext ctx) {
         Expr t1 = (Expr)visit(ctx.expr(0));
         System.err.println("Assign : " +  new Position(ctx.getStart()));
+        boolean pre = setR;
         setR = true;
         Expr t2 = (Expr)visit(ctx.expr(1));
-        setR = false;
+        setR = pre;
         return new AssignExpr(t1, t2,
                 new Position(ctx.getStart()));
     }

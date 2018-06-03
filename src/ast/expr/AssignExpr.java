@@ -32,7 +32,7 @@ public class AssignExpr extends Expr {
         Type t1 = expr1.gettype();
         if (expr1 instanceof ArrayExpr) {
             if (((ArrayExpr) expr1).Leftexpr instanceof IDExpr) {
-                if (!GlobalClass.isRV(((IDExpr) ((ArrayExpr) expr1).Leftexpr).name))
+                if (!GlobalClass.isRV(((IDExpr) ((ArrayExpr) expr1).Leftexpr).name) && ((IDExpr) ((ArrayExpr) expr1).Leftexpr).name.contains("useless"))
                     del = true;
             }
         }
