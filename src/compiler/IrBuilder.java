@@ -95,7 +95,7 @@ public class IrBuilder {
             nowfunc.defMap.put(t.getname(), t.addr);
         }
         Inst pre = null;
-        if(x.re && x.paramList.size() == 1 && x.params.get(0).getFirst() instanceof IntType && x.type instanceof IntType) {
+        if(x.re && x.paramList.size() == 1 && x.params.get(0).getFirst() instanceof IntType && x.type instanceof IntType && ((IntType) x.type).data <= 60) {
             Label A = new Label();
             Label B = new Label();
             Reg Rs = nowfunc.newReg();

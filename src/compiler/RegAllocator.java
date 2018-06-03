@@ -85,7 +85,7 @@ public class RegAllocator {
                 if (u.nxt != null) need |= gao(u, u.nxt.in);
             }
         }
-
+//        System.err.println(cc);
         boolean[][] map = new boolean[x.num][x.num];
         int[] col = new int[x.num];
         int[] vis = new int[x.num];
