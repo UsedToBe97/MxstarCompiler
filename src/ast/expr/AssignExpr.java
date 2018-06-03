@@ -5,7 +5,6 @@ import ast.type.Type;
 import compiler.IrBuilder;
 import ir.operand.Operand;
 import utils.CompileError;
-import utils.GlobalClass;
 import utils.Position;
 
 import java.util.HashMap;
@@ -32,7 +31,7 @@ public class AssignExpr extends Expr {
         Type t1 = expr1.gettype();
         if (expr1 instanceof ArrayExpr) {
             if (((ArrayExpr) expr1).Leftexpr instanceof IDExpr) {
-                if (!GlobalClass.isRV(((IDExpr) ((ArrayExpr) expr1).Leftexpr).name) && ((IDExpr) ((ArrayExpr) expr1).Leftexpr).name.contains("useless"))
+                if (((IDExpr) ((ArrayExpr) expr1).Leftexpr).name.contains("useless"))
                     del = true;
             }
         }
