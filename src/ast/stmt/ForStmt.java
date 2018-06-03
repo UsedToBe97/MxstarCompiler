@@ -53,7 +53,7 @@ public class ForStmt extends Stmt {
                 }
             }
         }
-        if (stmt instanceof BlockStmt) {
+        /*if (stmt instanceof BlockStmt) {
             if (((BlockStmt)stmt).Stmts.size() == 12) {
                 if ((((BlockStmt)stmt).Stmts.get(0)) instanceof VarDef) {
                     VarDef ee = (VarDef) (((BlockStmt) stmt).Stmts.get(0));
@@ -101,7 +101,7 @@ public class ForStmt extends Stmt {
                     }
                 }
             }
-        }
+        }*/
         GlobalClass.circnt++;
         if (!(stmt instanceof BlockStmt)) GlobalClass.st.enterScope();
         for (int i = 0; i < exprs.size(); i++) {
