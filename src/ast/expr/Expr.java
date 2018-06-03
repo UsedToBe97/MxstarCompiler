@@ -14,6 +14,7 @@ public abstract class Expr extends Atom {
     public Position getpos() {
         return pos;
     }
+    public boolean del = false;
     public abstract Type gettype();
     public abstract void output(int dep);
     public abstract void accept(IrBuilder ib);

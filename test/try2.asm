@@ -11,9 +11,6 @@ extern strlen
 extern memcpy
 extern scanf
 section .data
-	dq	500
-func__:
-	db	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 intbuffer:
 	dq 0
 format1:
@@ -28,41 +25,142 @@ section .text
 func:
 	push	rbp
 	mov	rbp, rsp
-	mov	rsi, rdi
-	cmp	rdi, 0
-	jl	Label_1
-	cmp	rdi, 60
-	jg	Label_1
-	mov	r10, rdi
-	mov	r11, func__
-	mov	r8, qword [r11 + r10 * 8]
-	cmp	r8, 0
-	jg	Label_2
-	jmp	Label_1
-Label_2:
-	mov	rax, r8
+	mov	r10, rdx
+	add	rdi, rsi
+	add	rdi, r10
+	and	rdi, 1073741823
+	mov	rax, rdi
 	jmp	Label_0
-Label_1:
-	mov	rcx, rsi
-	and	rcx, 3
-	mov	r8, rcx
-	cmp	r8, 0
-	je	Label_4
-	jmp	Label_5
-Label_4:
-	mov	rax, rsi
-	jmp	Label_0
-Label_5:
-	mov	rcx, rsi
-	sub	rcx, r8
-	mov	rdi, rcx
+Label_0:
+	mov	rsp, rbp
+	pop	rbp
+	ret
+main:
+	push	rbp
+	mov	rbp, rsp
+	push	r15
+	push	r12
+	push	r13
+	push	r14
+	sub	rbp, 32
 	push	rdi
 	push	rsi
 	push	r10
 	push	r11
 	push	r8
 	push	r9
-	call	func
+	call	getInt
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	mov	rsi, rdi
+	mov	r10, rsi
+	add	r10, 1
+	imul	r10, 8
+	push	rdi
+	push	rsi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rdi, r10
+	call	malloc
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	r11, rax
+	mov	qword [r11], rsi
+	add	r11, 8
+	mov	r10, rsi
+Label_2:
+	sub	r10, 1
+	mov	rdi, rsi
+	add	rdi, 1
+	imul	rdi, 8
+	push	rdi
+	push	rsi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	call	malloc
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	mov	qword [rdi], rsi
+	add	rdi, 8
+	mov	qword [r11 + r10 * 8], rdi
+	cmp	r10, 0
+	jne	Label_2
+	mov	r10, r11
+	mov	r11, rsi
+	add	r11, 1
+	imul	r11, 8
+	push	rdi
+	push	rsi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rdi, r11
+	call	malloc
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	r8, rax
+	mov	qword [r8], rsi
+	add	r8, 8
+	mov	r11, rsi
+Label_3:
+	sub	r11, 1
+	mov	rdi, rsi
+	add	rdi, 1
+	imul	rdi, 8
+	push	rdi
+	push	rsi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	call	malloc
+	pop	r9
+	pop	r8
+	pop	r11
+	pop	r10
+	pop	rsi
+	pop	rdi
+	mov	rdi, rax
+	mov	qword [rdi], rsi
+	add	rdi, 8
+	mov	qword [r8 + r11 * 8], rdi
+	cmp	r11, 0
+	jne	Label_3
+	mov	r11, r8
+	mov	r8, rsi
+	add	r8, 1
+	imul	r8, 8
+	push	rdi
+	push	rsi
+	push	r10
+	push	r11
+	push	r8
+	push	r9
+	mov	rdi, r8
+	call	malloc
 	pop	r9
 	pop	r8
 	pop	r11
@@ -70,86 +168,132 @@ Label_5:
 	pop	rsi
 	pop	rdi
 	mov	r9, rax
-	mov	rcx, rsi
-	add	rcx, r8
-	mov	rdi, rcx
+	mov	qword [r9], rsi
+	add	r9, 8
+	mov	r8, rsi
+Label_4:
+	sub	r8, 1
+	mov	rdi, rsi
+	add	rdi, 1
+	imul	rdi, 8
 	push	rdi
 	push	rsi
 	push	r10
 	push	r11
 	push	r8
 	push	r9
-	call	func
+	call	malloc
 	pop	r9
 	pop	r8
 	pop	r11
 	pop	r10
 	pop	rsi
 	pop	rdi
-	mov	rsi, rax
-	mov	rcx, r9
-	add	rcx, rsi
-	mov	rsi, rcx
-	and	rsi, 65535
-	mov	rax, rsi
-	jmp	Label_0
-Label_0:
-	cmp	rdi, 0
-	jl	Label_6
-	cmp	rdi, 60
-	jg	Label_6
-	mov	qword [r11 + r10 * 8], rax
-Label_6:
-	mov	rsp, rbp
-	pop	rbp
-	ret
-main:
-	push	rbp
-	mov	rbp, rsp
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	call	getInt
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
 	mov	rdi, rax
-	mov	rsi, rdi
-	mov	r11, 0
-	mov	r10, 0
+	mov	qword [rdi], rsi
+	add	rdi, 8
+	mov	qword [r9 + r8 * 8], rdi
+	cmp	r8, 0
+	jne	Label_4
+	mov	rdi, r9
+	mov	rdi, 0
+Label_8:
+	cmp	rdi, rsi
+	jl	Label_7
+	jmp	Label_6
+Label_7:
+	mov	r8, 0
+Label_12:
+	cmp	r8, rsi
+	jl	Label_11
+	jmp	Label_10
 Label_11:
-	cmp	r10, rsi
-	jl	Label_10
-	jmp	Label_9
+	mov	r9, qword [r10 + rdi * 8]
+	mov	rcx, rdi
+	add	rcx, r8
+	mov	r12, rcx
+	mov	qword [r9 + r8 * 8], r12
+	add	r8, 1
+	jmp	Label_12
 Label_10:
+	add	rdi, 1
+	jmp	Label_8
+Label_6:
+	mov	rdi, 0
+Label_16:
+	cmp	rdi, rsi
+	jl	Label_15
+	jmp	Label_14
+Label_15:
+	mov	r8, 0
+Label_20:
+	cmp	r8, rsi
+	jl	Label_19
+	jmp	Label_18
+Label_19:
+	mov	r9, 0
+Label_24:
+	cmp	r9, rsi
+	jl	Label_23
+	jmp	Label_22
+Label_23:
+	cmp	r8, rdi
+	jge	Label_26
+	jmp	Label_27
+Label_26:
+	mov	r12, qword [r11 + rdi * 8]
+	mov	r13, qword [r11 + rdi * 8]
+	mov	r14, qword [r10 + rdi * 8]
+	mov	r15, qword [r10 + r9 * 8]
+	mov	rcx, qword [r13 + r8 * 8]
+	add	rcx, qword [r14 + r9 * 8]
+	mov	r13, rcx
+	add	r13, qword [r15 + r8 * 8]
+	and	r13, 1073741823
+	mov	qword [r12 + r8 * 8], r13
+	jmp	Label_27
+Label_27:
+	add	r9, 1
+	jmp	Label_24
+Label_22:
+	add	r8, 1
+	jmp	Label_20
+Label_18:
+	add	rdi, 1
+	jmp	Label_16
+Label_14:
+	mov	r10, 0
+	mov	rdi, 0
+Label_31:
+	cmp	rdi, rsi
+	jl	Label_30
+	jmp	Label_29
+Label_30:
+	mov	r8, 0
+Label_35:
+	cmp	r8, rsi
+	jl	Label_34
+	jmp	Label_33
+Label_34:
+	mov	r9, qword [r11 + rdi * 8]
+	add	r10, qword [r9 + r8 * 8]
+	and	r10, 1073741823
+	add	r8, 1
+	jmp	Label_35
+Label_33:
+	add	rdi, 1
+	jmp	Label_31
+Label_29:
 	push	rdi
 	push	rsi
 	push	r10
 	push	r11
+	push	r8
+	push	r9
 	mov	rdi, r10
-	call	func
-	pop	r11
-	pop	r10
-	pop	rsi
-	pop	rdi
-	mov	rdi, rax
-	mov	rcx, r11
-	add	rcx, rdi
-	mov	rdi, rcx
-	and	rdi, 65535
-	mov	r11, rdi
-	mov	rdi, r10
-	add	r10, 1
-	jmp	Label_11
-Label_9:
-	push	rdi
-	push	rsi
-	push	r10
-	push	r11
-	mov	rdi, r11
 	call	toString
+	pop	r9
+	pop	r8
 	pop	r11
 	pop	r10
 	pop	rsi
@@ -159,15 +303,24 @@ Label_9:
 	push	rsi
 	push	r10
 	push	r11
-	call	println
+	push	r8
+	push	r9
+	call	print
+	pop	r9
+	pop	r8
 	pop	r11
 	pop	r10
 	pop	rsi
 	pop	rdi
 	mov	rdi, rax
 	mov	rax, 0
-	jmp	Label_7
-Label_7:
+	jmp	Label_1
+Label_1:
+	add	rbp, 32
+	pop	r14
+	pop	r13
+	pop	r12
+	pop	r15
 	mov	rsp, rbp
 	pop	rbp
 	ret

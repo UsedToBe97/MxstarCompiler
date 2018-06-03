@@ -6,6 +6,7 @@ import java.util.*;
 
 public class ScopeNode {
     public Map<String, Def> objmap = new HashMap<>();
+    public Set<String> RVset = new HashSet<>();
     public ScopeNode parent = null;
     public List<ScopeNode> child = new LinkedList<>();
 
@@ -20,6 +21,7 @@ public class ScopeNode {
         }
         throw new CompileError("Undefined(ScopeNode)", new Position(-1, -1));
     }
+
     public int getDep(String _s) {
         ScopeNode p = this;
         //System.err.println("check to " + _s);
@@ -45,6 +47,7 @@ public class ScopeNode {
         if (objmap.containsKey(_s))
             throw new CompileError("Redefine(ScopeNode)", new Position(-1,-1));
         objmap.put(_s, _d);
+        //if (AstBuilder.setR) RVset.add(_s);
         //System.err.println("ScopeNode Added : " + _s + " ; " +_d);
     }
 

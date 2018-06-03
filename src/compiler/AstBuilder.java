@@ -24,6 +24,7 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
     public boolean infunc = false;
     public FuncDef nowfunc = null;
     public Root prog = new Root();
+    static public boolean setR = false;
     @Override
     public Atom visitProg(MxstarParser.ProgContext ctx) {
         int tot = 0;
@@ -126,6 +127,7 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
     public Atom visitForStmt(MxstarParser.ForStmtContext ctx) {
         ForStmt tmp = new ForStmt((Stmt)visit(ctx.stmt()),
                 new Position(ctx.getStart()));
+        System.err.println("For : " +  new Position(ctx.getStart()));
         if (ctx.first != null) tmp.add((Expr)visit(ctx.first));
         else tmp.add(new ConstExpr(new NullType(tmp.pos)));
         if (ctx.second != null) tmp.add((Expr)visit(ctx.second));
@@ -161,8 +163,10 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
 
     @Override
     public Atom visitIDExpr(MxstarParser.IDExprContext ctx) {
-        return new IDExpr(ctx.Identifier().getText(),
+        GlobalClass.addRV(ctx.Identifier().getText());
+        IDExpr tmp = new IDExpr(ctx.Identifier().getText(),
                 new Position(ctx.getStart()));
+        return tmp;
     }
 
     @Override
@@ -269,8 +273,13 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
 
     @Override
     public Atom visitAssignExpr(MxstarParser.AssignExprContext ctx) {
-        return new AssignExpr((Expr)visit(ctx.expr(0)),
-                (Expr)visit(ctx.expr(1)),
+        Expr t1 = (Expr)visit(ctx.expr(0));
+        System.err.println("Assign : " +  new Position(ctx.getStart()));
+        setR = true;
+        Expr t2 = (Expr)visit(ctx.expr(1));
+        setR = false;
+        return new AssignExpr(t1, t2,
                 new Position(ctx.getStart()));
     }
+
 }

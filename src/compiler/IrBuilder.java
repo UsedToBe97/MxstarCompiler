@@ -185,6 +185,7 @@ public class IrBuilder {
     }
 
     public void visit(AssignExpr x) {
+        if (x.del) return;
         visit(x.expr1);
         visit(x.expr2);
         nowfunc.addInst(new Move(x.expr1.operand, x.expr2.operand));
