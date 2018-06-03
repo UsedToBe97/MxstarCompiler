@@ -1,0 +1,69 @@
+
+
+func [Func]:
+	rsi = rdi [r10 , r11 , rdi , ][rsi]
+	jump Label_1 if rdi jl 0 [r10 , r11 , rdi , rsi , ][]
+	jump Label_1 if rdi jg 60 [r10 , r11 , rdi , rsi , ][]
+	r10 = rdi [rdi , rsi , ][r10]
+	r11 = func__ [r10 , rdi , rsi , ][r11]
+	r8 = qword [r11 + r10 * 8] [r10 , r11 , rdi , rsi , ][r8]
+	jump Label_2 if r8 jg 0 [r8 , r10 , r11 , rdi , rsi , ][]
+	jump Label_1 [r10 , r11 , rdi , rsi , ][]
+Label_2:
+	rax = r8 [r8 , r10 , r11 , rdi , ][rax]
+	jump Label_0 [r10 , rax , r11 , rdi , ][]
+Label_1:
+	r8 = rsi & 3 [r10 , r11 , rdi , rsi , ][r8]
+	r8 = r8 [r10 , r8 , r11 , rdi , rsi , ][r8]
+	jump Label_4 if r8 je 0 [r10 , r11 , rdi , rsi , r8 , ][]
+	jump Label_5 [r10 , r11 , rsi , r8 , ][]
+Label_4:
+	rax = rsi [r10 , r11 , rdi , rsi , ][rax]
+	jump Label_0 [r10 , rax , r11 , rdi , ][]
+Label_5:
+	rdi = rsi - r8 [r10 , r11 , rsi , r8 , ][rdi]
+		rdi = rdi [rdi , r10 , r11 , rsi , r8 , ][rdi]
+		FuncCall func Param_size : 1 [r10 , r11 , rdi , rsi , r8 , ][rax]
+		r9 = rax [r10 , rax , r11 , rsi , r8 , ][r9]
+	rdi = rsi + r8 [r9 , r10 , r11 , rsi , r8 , ][rdi]
+		rdi = rdi [r9 , r10 , rdi , r11 , ][rdi]
+		FuncCall func Param_size : 1 [r9 , r10 , r11 , rdi , ][rax]
+		rsi = rax [r9 , r10 , rax , r11 , rdi , ][rsi]
+	rsi = r9 + rsi [r9 , r10 , rsi , r11 , rdi , ][rsi]
+	rsi = rsi & 65535 [r10 , r11 , rsi , rdi , ][rsi]
+	rax = rsi [r10 , rsi , r11 , rdi , ][rax]
+	jump Label_0 [r10 , rax , r11 , rdi , ][]
+Label_0:
+	jump Label_6 if rdi jl 0 [r10 , rax , r11 , rdi , ][]
+	jump Label_6 if rdi jg 60 [r10 , rax , r11 , rdi , ][]
+	qword [r11 + r10 * 8] = rax [r10 , rax , r11 , ][]
+Label_6:
+main [Func]:
+		FuncCall getInt Param_size : 0 [][rax]
+		rdi = rax [rax , ][rdi]
+	rsi = rdi [rdi , ][rsi]
+	r11 = 0 [rsi , ][r11]
+	r10 = 0 [r11 , rsi , ][r10]
+Label_11:
+	jump Label_10 if r10 jl rsi [r11 , rsi , r10 , ][]
+	jump Label_9 [r11 , ][]
+Label_10:
+		rdi = r10 [r11 , rsi , r10 , ][rdi]
+		FuncCall func Param_size : 1 [r11 , rsi , rdi , r10 , ][rax]
+		rdi = rax [r11 , rsi , rax , r10 , ][rdi]
+	rdi = r11 + rdi [r11 , rsi , rdi , r10 , ][rdi]
+	rdi = rdi & 65535 [rsi , rdi , r10 , ][rdi]
+	r11 = rdi [rsi , rdi , r10 , ][r11]
+	rdi = r10 [r11 , rsi , r10 , ][rdi]
+	r10 = r10 + 1 [r11 , rsi , r10 , ][r10]
+	jump Label_11 [r11 , rsi , r10 , ][]
+Label_9:
+		rdi = r11 [r11 , ][rdi]
+		FuncCall toString Param_size : 1 [rdi , ][rax]
+		rdi = rax [rax , ][rdi]
+		rdi = rdi [rdi , ][rdi]
+		FuncCall println Param_size : 1 [rdi , ][rax]
+		rdi = rax [rax , ][rdi]
+	rax = 0 [][rax]
+	jump Label_7 [][]
+Label_7:

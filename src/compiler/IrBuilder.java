@@ -95,17 +95,19 @@ public class IrBuilder {
             nowfunc.defMap.put(t.getname(), t.addr);
         }
         Inst pre = null;
-        if(x.re && x.paramList.size() == 1 && x.params.get(0).getFirst() instanceof IntType && x.type instanceof IntType && ((IntType) x.type).data <= 60) {
+        if(x.re && x.paramList.size() == 1 && x.params.get(0).getFirst() instanceof IntType && x.type instanceof IntType) {
             Label A = new Label();
             Label B = new Label();
             Reg Rs = nowfunc.newReg();
             Reg Rd = nowfunc.newReg();
             Reg Rc = nowfunc.newReg();
-            pre = new Move(new MemAddr((Reg)Rd, (Reg)Rs, 8, 0), X86Reg.rax);
-            nowfunc.addInst(new Move(Rs, X86Reg.getparam(0)));//1
+            nowfunc.addInst(new CJump(X86Reg.rdi, new INum(0), "jl", A));
+            nowfunc.addInst(new CJump(X86Reg.rdi, new INum(60), "jg", A));
+            pre = new Move(new MemAddr(Rd, Rs, 8, 0), X86Reg.rax);
+            nowfunc.addInst(new Move(Rs, X86Reg.rdi));
             root.SC2.add(x.name + "__");
-            nowfunc.addInst(new Move(Rd, new GlobalAddr(x.name + "__", true)));//false
-            nowfunc.addInst(new Move(Rc, new MemAddr((Reg)Rd, (Reg)Rs, 8, 0)));
+            nowfunc.addInst(new Move(Rd, new GlobalAddr(x.name + "__", true)));
+            nowfunc.addInst(new Move(Rc, new MemAddr(Rd, Rs, 8, 0)));
             nowfunc.addInst(new CJump(Rc, new INum(0), "jg", B));
             nowfunc.addInst(new Jump(A));
             nowfunc.addInst(B);
@@ -119,7 +121,13 @@ public class IrBuilder {
         x.stmts.forEach(xx -> visit(xx));
 
         nowfunc.addInst(returnLabel);
-        if (pre != null) nowfunc.addInst(pre);
+        if (pre != null) {
+            Label C = new Label();
+            nowfunc.addInst(new CJump(X86Reg.rdi, new INum(0), "jl", C));
+            nowfunc.addInst(new CJump(X86Reg.rdi, new INum(60), "jg", C));
+            nowfunc.addInst(pre);
+            nowfunc.addInst(C);
+        }
         nowclass = "";
     }
     /*public void visit2(FuncDef x) {
