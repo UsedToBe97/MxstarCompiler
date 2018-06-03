@@ -81,7 +81,8 @@ expr:
     | expr op=('==' | '!=' ) expr                                      # BinaryExpr
 
     | expr op=('&' | '^' | '|') expr                                   # BinaryExpr
-    | expr op=('&&' | '||') expr                                       # BinaryExpr
+    | expr op='||' expr                                              # BinaryExpr
+    | <assoc=right> expr op='&&' expr                                # BinaryExpr
 
     | <assoc=right> expr '=' expr                                      # AssignExpr
 ;
