@@ -32,9 +32,12 @@ public class IrBuilder {
     public Label breakLabel, contLabel, returnLabel;
     public String nowclass = "";
     public Operand baseaddr, ii;
+    public boolean onlymain =false;
     public Map<String, VarDef> varMap = new HashMap<>();
-
+    public ArrayList<VarDef> maindef = new ArrayList();
     public Ir visit(Root x) {
+        int funcnum = 0;
+        for (Def d : x.deflist) if (d instanceof FuncDef) ++funcnum;
         for (Def d : x.deflist) {
             if (d instanceof ClassDef) {
                 int tmp = 0;
@@ -52,7 +55,13 @@ public class IrBuilder {
             } else if (d instanceof VarDef) {
                 nowclass = "";
                 ((VarDef) d).isGlobal = true;
-                ((VarDef) d).addr = root.add((VarDef) d);
+                if (funcnum > 1) {
+                    ((VarDef) d).addr = root.add((VarDef) d);
+                } else {
+                    onlymain = true;
+                    ((VarDef) d).isGlobal = false;
+                    maindef.add(((VarDef) d));
+                }
                 if (((VarDef) d).expr != null) {
                     vdExpr.add((VarDef) d);
                 }
@@ -115,8 +124,10 @@ public class IrBuilder {
             nowfunc.addInst(new Jump(returnLabel));
             nowfunc.addInst(A);
         }
-
-        if (x.name.equals("main"))
+        if (onlymain) {
+            for (VarDef u : maindef) visit(u);
+        }
+        if (x.name.equals("main") && !onlymain)
             for (VarDef u : vdExpr) visit(u);
         x.stmts.forEach(xx -> visit(xx));
 

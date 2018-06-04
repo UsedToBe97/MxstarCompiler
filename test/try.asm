@@ -11,18 +11,6 @@ extern strlen
 extern memcpy
 extern scanf
 section .data
-N__:
-	dq	0
-h__:
-	dq	0
-i__:
-	dq	0
-j__:
-	dq	0
-k__:
-	dq	0
-total__:
-	dq	0
 intbuffer:
 	dq 0
 format1:
@@ -37,538 +25,222 @@ section .text
 main:
 	push	rbp
 	mov	rbp, rsp
-	sub	rsp, 824
-	mov	rax, 99
-	mov	qword [ h__ ], rax
-	mov	rax, 100
-	mov	qword [ i__ ], rax
-	mov	rax, 101
-	mov	qword [ j__ ], rax
-	mov	rax, 102
-	mov	qword [ k__ ], rax
+	sub	rsp, 544
 	mov	rax, 0
-	mov	qword [ total__ ], rax
-	call	getInt
+	mov	qword [rbp - 8], rax
+	mov	rax, 0
+	mov	qword [rbp - 16], rax
+	mov	rax, 0
+	mov	qword [rbp - 24], rax
+	mov	rax, 0
+	mov	qword [rbp - 32], rax
+	mov	rax, 0
+	mov	qword [rbp - 40], rax
+	mov	rax, 0
+	mov	qword [rbp - 48], rax
+	mov	rax, 0
 	mov	qword [rbp - 56], rax
-	mov	rax, qword [rbp - 56]
-	mov	qword [ N__ ], rax
-	mov	rax, 1
+	mov	rax, 0
+	mov	qword [rbp - 64], rax
+	mov	rax, 0
+	mov	qword [rbp - 72], rax
+	mov	rax, 0
+	mov	qword [rbp - 80], rax
+	mov	rax, 0
+	mov	qword [rbp - 88], rax
+	mov	rax, 0
+	mov	qword [rbp - 96], rax
+	mov	rax, 0
+	mov	qword [rbp - 104], rax
+	mov	rax, 0
+	mov	qword [rbp - 112], rax
+	mov	rax, 0
+	mov	qword [rbp - 120], rax
+	mov	rax, 0
+	mov	qword [rbp - 128], rax
+	mov	rax, 0
+	mov	qword [rbp - 136], rax
+	mov	rax, 0
+	mov	qword [rbp - 144], rax
+	mov	rax, 0
+	mov	qword [rbp - 152], rax
+	mov	rax, 0
+	mov	qword [rbp - 160], rax
+	mov	rax, 0
+	mov	qword [rbp - 168], rax
+	mov	rax, 0
+	mov	qword [rbp - 176], rax
+	mov	rax, 0
+	mov	qword [rbp - 184], rax
+	mov	rax, 0
+	mov	qword [rbp - 192], rax
+	call	getInt
+	mov	qword [rbp - 200], rax
+	mov	rax, qword [rbp - 200]
+	mov	qword [rbp - 208], rax
+	mov	rax, 0
 	mov	qword [rbp - 8], rax
 Label_4:
 	mov	rax, qword [rbp - 8]
-	cmp	rax, qword [ N__ ]
-	jle	Label_3
+	cmp	rax, qword [rbp - 208]
+	jl	Label_3
 	jmp	Label_2
 Label_3:
-	mov	rax, 1
-	mov	qword [rbp - 16], rax
-Label_8:
-	mov	rax, qword [rbp - 16]
-	cmp	rax, qword [ N__ ]
-	jle	Label_7
-	jmp	Label_6
-Label_7:
-	mov	rax, 1
-	mov	qword [rbp - 24], rax
-Label_12:
-	mov	rax, qword [rbp - 24]
-	cmp	rax, qword [ N__ ]
-	jle	Label_11
-	jmp	Label_10
-Label_11:
-	mov	rax, 1
-	mov	qword [rbp - 32], rax
-Label_16:
-	mov	rax, qword [rbp - 32]
-	cmp	rax, qword [ N__ ]
-	jle	Label_15
-	jmp	Label_14
-Label_15:
-	mov	rax, 1
-	mov	qword [rbp - 40], rax
-Label_20:
-	mov	rax, qword [rbp - 40]
-	cmp	rax, qword [ N__ ]
-	jle	Label_19
-	jmp	Label_18
-Label_19:
-	mov	rax, 1
-	mov	qword [rbp - 48], rax
-Label_24:
-	mov	rax, qword [rbp - 48]
-	cmp	rax, qword [ N__ ]
-	jle	Label_23
-	jmp	Label_22
-Label_23:
-	mov	rax, qword [rbp - 8]
-	cmp	rax, qword [rbp - 16]
-	jne	Label_28
-	mov	rax, 0
-	mov	qword [rbp - 112], rax
-	jmp	Label_29
-Label_28:
-	mov	rax, qword [rbp - 8]
-	cmp	rax, qword [rbp - 24]
-	jne	Label_30
-	mov	rax, 0
-	mov	qword [rbp - 128], rax
-	jmp	Label_31
-Label_30:
-	mov	rax, qword [rbp - 8]
-	cmp	rax, qword [rbp - 32]
-	jne	Label_32
-	mov	rax, 0
-	mov	qword [rbp - 144], rax
-	jmp	Label_33
-Label_32:
-	mov	rax, qword [rbp - 8]
-	cmp	rax, qword [rbp - 40]
-	jne	Label_34
-	mov	rax, 0
-	mov	qword [rbp - 160], rax
-	jmp	Label_35
-Label_34:
-	mov	rax, qword [rbp - 8]
-	cmp	rax, qword [rbp - 48]
-	jne	Label_36
-	mov	rax, 0
-	mov	qword [rbp - 176], rax
-	jmp	Label_37
-Label_36:
-	mov	rax, qword [rbp - 8]
-	cmp	rax, qword [ h__ ]
-	jne	Label_38
-	mov	rax, 0
-	mov	qword [rbp - 192], rax
-	jmp	Label_39
-Label_38:
-	mov	rax, qword [rbp - 8]
-	cmp	rax, qword [ i__ ]
-	jne	Label_40
-	mov	rax, 0
-	mov	qword [rbp - 208], rax
-	jmp	Label_41
-Label_40:
-	mov	rax, qword [rbp - 8]
-	cmp	rax, qword [ j__ ]
-	jne	Label_42
-	mov	rax, 0
-	mov	qword [rbp - 224], rax
-	jmp	Label_43
-Label_42:
-	mov	rax, qword [rbp - 8]
-	cmp	rax, qword [ k__ ]
-	jne	Label_44
-	mov	rax, 0
-	mov	qword [rbp - 240], rax
-	jmp	Label_45
-Label_44:
-	mov	rax, qword [rbp - 16]
-	cmp	rax, qword [rbp - 24]
-	jne	Label_46
-	mov	rax, 0
-	mov	qword [rbp - 256], rax
-	jmp	Label_47
-Label_46:
-	mov	rax, qword [rbp - 16]
-	cmp	rax, qword [rbp - 32]
-	jne	Label_48
-	mov	rax, 0
-	mov	qword [rbp - 272], rax
-	jmp	Label_49
-Label_48:
-	mov	rax, qword [rbp - 16]
-	cmp	rax, qword [rbp - 40]
-	jne	Label_50
-	mov	rax, 0
-	mov	qword [rbp - 288], rax
-	jmp	Label_51
-Label_50:
-	mov	rax, qword [rbp - 16]
-	cmp	rax, qword [rbp - 48]
-	jne	Label_52
-	mov	rax, 0
-	mov	qword [rbp - 304], rax
-	jmp	Label_53
-Label_52:
-	mov	rax, qword [rbp - 16]
-	cmp	rax, qword [ h__ ]
-	jne	Label_54
-	mov	rax, 0
-	mov	qword [rbp - 320], rax
-	jmp	Label_55
-Label_54:
-	mov	rax, qword [rbp - 16]
-	cmp	rax, qword [ i__ ]
-	jne	Label_56
-	mov	rax, 0
-	mov	qword [rbp - 336], rax
-	jmp	Label_57
-Label_56:
-	mov	rax, qword [rbp - 16]
-	cmp	rax, qword [ j__ ]
-	jne	Label_58
-	mov	rax, 0
-	mov	qword [rbp - 352], rax
-	jmp	Label_59
-Label_58:
-	mov	rax, qword [rbp - 16]
-	cmp	rax, qword [ k__ ]
-	jne	Label_60
-	mov	rax, 0
-	mov	qword [rbp - 368], rax
-	jmp	Label_61
-Label_60:
-	mov	rax, qword [rbp - 24]
-	cmp	rax, qword [rbp - 32]
-	jne	Label_62
-	mov	rax, 0
-	mov	qword [rbp - 384], rax
-	jmp	Label_63
-Label_62:
-	mov	rax, qword [rbp - 24]
-	cmp	rax, qword [rbp - 40]
-	jne	Label_64
-	mov	rax, 0
-	mov	qword [rbp - 400], rax
-	jmp	Label_65
-Label_64:
-	mov	rax, qword [rbp - 24]
-	cmp	rax, qword [rbp - 48]
-	jne	Label_66
-	mov	rax, 0
-	mov	qword [rbp - 416], rax
-	jmp	Label_67
-Label_66:
-	mov	rax, qword [rbp - 24]
-	cmp	rax, qword [ h__ ]
-	jne	Label_68
-	mov	rax, 0
-	mov	qword [rbp - 432], rax
-	jmp	Label_69
-Label_68:
-	mov	rax, qword [rbp - 24]
-	cmp	rax, qword [ i__ ]
-	jne	Label_70
-	mov	rax, 0
-	mov	qword [rbp - 448], rax
-	jmp	Label_71
-Label_70:
-	mov	rax, qword [rbp - 24]
-	cmp	rax, qword [ j__ ]
-	jne	Label_72
-	mov	rax, 0
-	mov	qword [rbp - 464], rax
-	jmp	Label_73
-Label_72:
-	mov	rax, qword [rbp - 24]
-	cmp	rax, qword [ k__ ]
-	jne	Label_74
-	mov	rax, 0
-	mov	qword [rbp - 480], rax
-	jmp	Label_75
-Label_74:
-	mov	rax, qword [rbp - 32]
-	cmp	rax, qword [rbp - 40]
-	jne	Label_76
-	mov	rax, 0
-	mov	qword [rbp - 496], rax
-	jmp	Label_77
-Label_76:
-	mov	rax, qword [rbp - 32]
-	cmp	rax, qword [rbp - 48]
-	jne	Label_78
-	mov	rax, 0
-	mov	qword [rbp - 512], rax
-	jmp	Label_79
-Label_78:
-	mov	rax, qword [rbp - 32]
-	cmp	rax, qword [ h__ ]
-	jne	Label_80
-	mov	rax, 0
-	mov	qword [rbp - 528], rax
-	jmp	Label_81
-Label_80:
-	mov	rax, qword [rbp - 32]
-	cmp	rax, qword [ i__ ]
-	jne	Label_82
-	mov	rax, 0
-	mov	qword [rbp - 544], rax
-	jmp	Label_83
-Label_82:
-	mov	rax, qword [rbp - 32]
-	cmp	rax, qword [ j__ ]
-	jne	Label_84
-	mov	rax, 0
-	mov	qword [rbp - 560], rax
-	jmp	Label_85
-Label_84:
-	mov	rax, qword [rbp - 32]
-	cmp	rax, qword [ k__ ]
-	jne	Label_86
-	mov	rax, 0
-	mov	qword [rbp - 576], rax
-	jmp	Label_87
-Label_86:
-	mov	rax, qword [rbp - 40]
-	cmp	rax, qword [rbp - 48]
-	jne	Label_88
-	mov	rax, 0
-	mov	qword [rbp - 592], rax
-	jmp	Label_89
-Label_88:
-	mov	rax, qword [rbp - 40]
-	cmp	rax, qword [ h__ ]
-	jne	Label_90
-	mov	rax, 0
-	mov	qword [rbp - 608], rax
-	jmp	Label_91
-Label_90:
-	mov	rax, qword [rbp - 40]
-	cmp	rax, qword [ i__ ]
-	jne	Label_92
-	mov	rax, 0
-	mov	qword [rbp - 624], rax
-	jmp	Label_93
-Label_92:
-	mov	rax, qword [rbp - 40]
-	cmp	rax, qword [ j__ ]
-	jne	Label_94
-	mov	rax, 0
-	mov	qword [rbp - 640], rax
-	jmp	Label_95
-Label_94:
-	mov	rax, qword [rbp - 40]
-	cmp	rax, qword [ k__ ]
-	jne	Label_96
-	mov	rax, 0
-	mov	qword [rbp - 656], rax
-	jmp	Label_97
-Label_96:
-	mov	rax, qword [rbp - 48]
-	cmp	rax, qword [ h__ ]
-	jne	Label_98
-	mov	rax, 0
-	mov	qword [rbp - 672], rax
-	jmp	Label_99
-Label_98:
-	mov	rax, qword [rbp - 48]
-	cmp	rax, qword [ i__ ]
-	jne	Label_100
-	mov	rax, 0
-	mov	qword [rbp - 688], rax
-	jmp	Label_101
-Label_100:
-	mov	rax, qword [rbp - 48]
-	cmp	rax, qword [ j__ ]
-	jne	Label_102
-	mov	rax, 0
-	mov	qword [rbp - 704], rax
-	jmp	Label_103
-Label_102:
-	mov	rax, qword [rbp - 48]
-	cmp	rax, qword [ k__ ]
-	jne	Label_104
-	mov	rax, 0
-	mov	qword [rbp - 720], rax
-	jmp	Label_105
-Label_104:
-	mov	rax, qword [ i__ ]
-	cmp	rax, qword [ j__ ]
-	jne	Label_106
-	mov	rax, 0
-	mov	qword [rbp - 736], rax
-	jmp	Label_107
-Label_106:
-	mov	rcx, qword [ h__ ]
-	cmp	rcx, qword [ k__ ]
-	setne	cl
-	movzx	rcx, cl
-	mov	qword [rbp - 752], rcx
-	mov	rax, qword [rbp - 752]
-	mov	qword [rbp - 736], rax
-Label_107:
-	mov	rax, qword [rbp - 736]
-	mov	qword [rbp - 720], rax
-Label_105:
-	mov	rax, qword [rbp - 720]
-	mov	qword [rbp - 704], rax
-Label_103:
-	mov	rax, qword [rbp - 704]
-	mov	qword [rbp - 688], rax
-Label_101:
-	mov	rax, qword [rbp - 688]
-	mov	qword [rbp - 672], rax
-Label_99:
-	mov	rax, qword [rbp - 672]
-	mov	qword [rbp - 656], rax
-Label_97:
-	mov	rax, qword [rbp - 656]
-	mov	qword [rbp - 640], rax
-Label_95:
-	mov	rax, qword [rbp - 640]
-	mov	qword [rbp - 624], rax
-Label_93:
-	mov	rax, qword [rbp - 624]
-	mov	qword [rbp - 608], rax
-Label_91:
-	mov	rax, qword [rbp - 608]
-	mov	qword [rbp - 592], rax
-Label_89:
-	mov	rax, qword [rbp - 592]
-	mov	qword [rbp - 576], rax
-Label_87:
-	mov	rax, qword [rbp - 576]
-	mov	qword [rbp - 560], rax
-Label_85:
-	mov	rax, qword [rbp - 560]
-	mov	qword [rbp - 544], rax
-Label_83:
-	mov	rax, qword [rbp - 544]
-	mov	qword [rbp - 528], rax
-Label_81:
-	mov	rax, qword [rbp - 528]
-	mov	qword [rbp - 512], rax
-Label_79:
-	mov	rax, qword [rbp - 512]
-	mov	qword [rbp - 496], rax
-Label_77:
-	mov	rax, qword [rbp - 496]
-	mov	qword [rbp - 480], rax
-Label_75:
-	mov	rax, qword [rbp - 480]
-	mov	qword [rbp - 464], rax
-Label_73:
-	mov	rax, qword [rbp - 464]
-	mov	qword [rbp - 448], rax
-Label_71:
-	mov	rax, qword [rbp - 448]
-	mov	qword [rbp - 432], rax
-Label_69:
-	mov	rax, qword [rbp - 432]
-	mov	qword [rbp - 416], rax
-Label_67:
-	mov	rax, qword [rbp - 416]
-	mov	qword [rbp - 400], rax
-Label_65:
-	mov	rax, qword [rbp - 400]
-	mov	qword [rbp - 384], rax
-Label_63:
-	mov	rax, qword [rbp - 384]
-	mov	qword [rbp - 368], rax
-Label_61:
-	mov	rax, qword [rbp - 368]
-	mov	qword [rbp - 352], rax
-Label_59:
-	mov	rax, qword [rbp - 352]
-	mov	qword [rbp - 336], rax
-Label_57:
-	mov	rax, qword [rbp - 336]
-	mov	qword [rbp - 320], rax
-Label_55:
-	mov	rax, qword [rbp - 320]
-	mov	qword [rbp - 304], rax
-Label_53:
-	mov	rax, qword [rbp - 304]
-	mov	qword [rbp - 288], rax
-Label_51:
-	mov	rax, qword [rbp - 288]
-	mov	qword [rbp - 272], rax
-Label_49:
-	mov	rax, qword [rbp - 272]
-	mov	qword [rbp - 256], rax
-Label_47:
-	mov	rax, qword [rbp - 256]
-	mov	qword [rbp - 240], rax
-Label_45:
-	mov	rax, qword [rbp - 240]
-	mov	qword [rbp - 224], rax
-Label_43:
-	mov	rax, qword [rbp - 224]
-	mov	qword [rbp - 208], rax
-Label_41:
-	mov	rax, qword [rbp - 208]
-	mov	qword [rbp - 192], rax
-Label_39:
-	mov	rax, qword [rbp - 192]
-	mov	qword [rbp - 176], rax
-Label_37:
-	mov	rax, qword [rbp - 176]
-	mov	qword [rbp - 160], rax
-Label_35:
-	mov	rax, qword [rbp - 160]
-	mov	qword [rbp - 144], rax
-Label_33:
-	mov	rax, qword [rbp - 144]
-	mov	qword [rbp - 128], rax
-Label_31:
-	mov	rax, qword [rbp - 128]
-	mov	qword [rbp - 112], rax
-Label_29:
-	mov	rax, qword [rbp - 112]
-	cmp	rax, 1
-	je	Label_26
-	jmp	Label_27
-Label_26:
-	mov	rax, qword [ total__ ]
-	mov	qword [rbp - 760], rax
-	mov	rcx, qword [ total__ ]
-	add	rcx, 1
-	mov	qword [ total__ ], rcx
-	jmp	Label_27
-Label_27:
-	mov	rax, qword [rbp - 48]
-	mov	qword [rbp - 768], rax
-	mov	rcx, qword [rbp - 48]
-	add	rcx, 1
-	mov	qword [rbp - 48], rcx
-	jmp	Label_24
-Label_22:
-	mov	rax, qword [rbp - 40]
-	mov	qword [rbp - 776], rax
-	mov	rcx, qword [rbp - 40]
-	add	rcx, 1
-	mov	qword [rbp - 40], rcx
-	jmp	Label_20
-Label_18:
-	mov	rax, qword [rbp - 32]
-	mov	qword [rbp - 784], rax
-	mov	rcx, qword [rbp - 32]
-	add	rcx, 1
-	mov	qword [rbp - 32], rcx
-	jmp	Label_16
-Label_14:
-	mov	rax, qword [rbp - 24]
-	mov	qword [rbp - 792], rax
-	mov	rcx, qword [rbp - 24]
-	add	rcx, 1
-	mov	qword [rbp - 24], rcx
-	jmp	Label_12
-Label_10:
-	mov	rax, qword [rbp - 16]
-	mov	qword [rbp - 800], rax
 	mov	rcx, qword [rbp - 16]
 	add	rcx, 1
-	mov	qword [rbp - 16], rcx
-	jmp	Label_8
+	mov	qword [rbp - 224], rcx
+	mov	rax, qword [rbp - 224]
+	mov	qword [rbp - 16], rax
+	mov	rcx, qword [rbp - 24]
+	add	rcx, 1
+	mov	qword [rbp - 232], rcx
+	mov	rax, qword [rbp - 232]
+	mov	qword [rbp - 24], rax
+	mov	rcx, qword [rbp - 32]
+	add	rcx, 1
+	mov	qword [rbp - 240], rcx
+	mov	rax, qword [rbp - 240]
+	mov	qword [rbp - 32], rax
+	mov	rcx, qword [rbp - 16]
+	add	rcx, 1
+	mov	qword [rbp - 248], rcx
+	mov	rax, qword [rbp - 248]
+	mov	qword [rbp - 40], rax
+	mov	rcx, qword [rbp - 24]
+	add	rcx, 1
+	mov	qword [rbp - 256], rcx
+	mov	rax, qword [rbp - 256]
+	mov	qword [rbp - 48], rax
+	mov	rcx, qword [rbp - 32]
+	add	rcx, 1
+	mov	qword [rbp - 264], rcx
+	mov	rax, qword [rbp - 264]
+	mov	qword [rbp - 56], rax
+	mov	rcx, qword [rbp - 16]
+	add	rcx, 1
+	mov	qword [rbp - 272], rcx
+	mov	rax, qword [rbp - 272]
+	mov	qword [rbp - 64], rax
+	mov	rcx, qword [rbp - 24]
+	add	rcx, 1
+	mov	qword [rbp - 280], rcx
+	mov	rax, qword [rbp - 280]
+	mov	qword [rbp - 72], rax
+	mov	rcx, qword [rbp - 32]
+	add	rcx, 1
+	mov	qword [rbp - 288], rcx
+	mov	rax, qword [rbp - 288]
+	mov	qword [rbp - 80], rax
+	mov	rcx, qword [rbp - 16]
+	add	rcx, 1
+	mov	qword [rbp - 296], rcx
+	mov	rax, qword [rbp - 296]
+	mov	qword [rbp - 88], rax
+	mov	rcx, qword [rbp - 24]
+	add	rcx, 0
+	mov	qword [rbp - 304], rcx
+	mov	rax, qword [rbp - 304]
+	mov	qword [rbp - 96], rax
+	mov	eax, dword [rbp - 8]
+	mov	ecx, 10000000
+	cdq
+	idiv	ecx
+	mov	dword [rbp - 320], edx
+	mov	rax, qword [rbp - 320]
+	cmp	rax, 0
+	je	Label_6
+	jmp	Label_7
 Label_6:
-	mov	rax, qword [rbp - 8]
-	mov	qword [rbp - 808], rax
+	mov	rcx, qword [rbp - 88]
+	add	rcx, qword [rbp - 96]
+	mov	qword [rbp - 504], rcx
+	mov	rcx, qword [rbp - 80]
+	add	rcx, qword [rbp - 504]
+	mov	qword [rbp - 496], rcx
+	mov	rcx, qword [rbp - 72]
+	add	rcx, qword [rbp - 496]
+	mov	qword [rbp - 488], rcx
+	mov	rcx, qword [rbp - 64]
+	add	rcx, qword [rbp - 488]
+	mov	qword [rbp - 480], rcx
+	mov	rcx, qword [rbp - 56]
+	add	rcx, qword [rbp - 480]
+	mov	qword [rbp - 472], rcx
+	mov	rcx, qword [rbp - 48]
+	add	rcx, qword [rbp - 472]
+	mov	qword [rbp - 464], rcx
+	mov	rcx, qword [rbp - 40]
+	add	rcx, qword [rbp - 464]
+	mov	qword [rbp - 456], rcx
+	mov	rcx, qword [rbp - 32]
+	add	rcx, qword [rbp - 456]
+	mov	qword [rbp - 448], rcx
+	mov	rcx, qword [rbp - 24]
+	add	rcx, qword [rbp - 448]
+	mov	qword [rbp - 440], rcx
+	mov	rcx, qword [rbp - 16]
+	add	rcx, qword [rbp - 440]
+	mov	qword [rbp - 432], rcx
+	mov	rcx, qword [rbp - 96]
+	add	rcx, qword [rbp - 432]
+	mov	qword [rbp - 424], rcx
+	mov	rcx, qword [rbp - 88]
+	add	rcx, qword [rbp - 424]
+	mov	qword [rbp - 416], rcx
+	mov	rcx, qword [rbp - 80]
+	add	rcx, qword [rbp - 416]
+	mov	qword [rbp - 408], rcx
+	mov	rcx, qword [rbp - 72]
+	add	rcx, qword [rbp - 408]
+	mov	qword [rbp - 400], rcx
+	mov	rcx, qword [rbp - 64]
+	add	rcx, qword [rbp - 400]
+	mov	qword [rbp - 392], rcx
+	mov	rcx, qword [rbp - 56]
+	add	rcx, qword [rbp - 392]
+	mov	qword [rbp - 384], rcx
+	mov	rcx, qword [rbp - 48]
+	add	rcx, qword [rbp - 384]
+	mov	qword [rbp - 376], rcx
+	mov	rcx, qword [rbp - 40]
+	add	rcx, qword [rbp - 376]
+	mov	qword [rbp - 368], rcx
+	mov	rcx, qword [rbp - 32]
+	add	rcx, qword [rbp - 368]
+	mov	qword [rbp - 360], rcx
+	mov	rcx, qword [rbp - 24]
+	add	rcx, qword [rbp - 360]
+	mov	qword [rbp - 352], rcx
+	mov	rcx, qword [rbp - 16]
+	add	rcx, qword [rbp - 352]
+	mov	qword [rbp - 344], rcx
+	mov	rcx, qword [rbp - 192]
+	add	rcx, qword [rbp - 344]
+	mov	qword [rbp - 336], rcx
+	mov	rcx, qword [rbp - 336]
+	and	rcx, 2147450879
+	mov	qword [rbp - 328], rcx
+	mov	rax, qword [rbp - 328]
+	mov	qword [rbp - 192], rax
+	jmp	Label_7
+Label_7:
 	mov	rcx, qword [rbp - 8]
 	add	rcx, 1
-	mov	qword [rbp - 8], rcx
+	mov	qword [rbp - 528], rcx
+	mov	rax, qword [rbp - 528]
+	mov	qword [rbp - 8], rax
 	jmp	Label_4
 Label_2:
-	mov	rdi, qword [ total__ ]
+	mov	rdi, qword [rbp - 192]
 	call	toString
-	mov	qword [rbp - 816], rax
-	mov	rdi, qword [rbp - 816]
+	mov	qword [rbp - 536], rax
+	mov	rdi, qword [rbp - 536]
 	call	println
-	mov	qword [rbp - 824], rax
+	mov	qword [rbp - 544], rax
 	mov	rax, 0
 	jmp	Label_0
 Label_0:
-	add	rsp, 824
+	add	rsp, 544
 	mov	rsp, rbp
 	pop	rbp
 	ret

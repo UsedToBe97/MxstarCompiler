@@ -112,8 +112,8 @@ public class CodeGenerator {
         String tt = JW(lhs);
         String tt2 = JW(dest);
         String tt3 = JW(rhs);
-        ans.append("\tmov\teax, " + tt + "\n");
         ans.append("\tmov\tecx, " + tt3 + "\n");
+        ans.append("\tmov\teax, " + tt + "\n");
         ans.append("\tcdq\n\tidiv\tecx\n");
         String src = op.equals("div") ? "eax" : "edx";
         ans.append("\tmov\t" + tt2 + ", " + src + "\n");
@@ -237,10 +237,10 @@ public class CodeGenerator {
             if (((VirtualReg) x.dest).idx == ((VirtualReg) x.src).idx) return;
         }*/
         x.dest = getOp(x.dest, X86Reg.rbx);
-        x.src = getOp(x.src, X86Reg.rax);
+        x.src = getOp(x.src, X86Reg.rcx);
         if (!(x.dest instanceof Reg) && !(x.src instanceof Reg)) {
-            ans.append("\tmov\trax, " + x.src.toString() + "\n");
-            x.src = X86Reg.rax;
+            ans.append("\tmov\trcx, " + x.src.toString() + "\n");
+            x.src = X86Reg.rcx;
         }
         ans.append("\tmov\t" + x.dest.toString() + ", " + x.src.toString() + "\n");
     }
