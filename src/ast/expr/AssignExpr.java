@@ -1,10 +1,12 @@
 package ast.expr;
 
+import ast.type.ArrayType;
 import ast.type.NullType;
 import ast.type.Type;
 import compiler.IrBuilder;
 import ir.operand.Operand;
 import utils.CompileError;
+import utils.GlobalClass;
 import utils.Position;
 
 import java.util.HashMap;
@@ -25,13 +27,18 @@ public class AssignExpr extends Expr {
         //System.err.println(pos.toString());
         if (!(expr1 instanceof IDExpr || expr1 instanceof ArrayExpr || expr1 instanceof MemberExpr))
             throw new CompileError("Left Expr Error(AssignExpr)", pos);
-
         //System.err.println(GlobalClass.classname);
         //System.err.println(expr1);
         Type t1 = expr1.gettype();
+        if (expr1 instanceof ArrayExpr && ((ArrayExpr) expr1).Leftexpr instanceof IDExpr) {
+            if (t1 instanceof ArrayType) {
+                GlobalClass.setRV(((IDExpr) ((ArrayExpr) expr1).Leftexpr).name);
+            }
+        }
         if (expr1 instanceof ArrayExpr) {
             if (((ArrayExpr) expr1).Leftexpr instanceof IDExpr) {
-                if (((IDExpr) ((ArrayExpr) expr1).Leftexpr).name.contains("useless"))
+                //if (((IDExpr) ((ArrayExpr) expr1).Leftexpr).name.contains("useless"))
+                if (!GlobalClass.isRV(((IDExpr) ((ArrayExpr) expr1).Leftexpr).name))
                     del = true;
             }
         }

@@ -17,6 +17,7 @@ public class GlobalClass {
     public static void addRV(String _s) {
         if (AstBuilder.setR) RVset.add(_s);
     }
+    public static void setRV(String _s) { RVset.add(_s);}
     public static boolean isRV(String _s) {
         //System.err.println("check to " + _s);
         if (RVset.contains(_s)) return true;

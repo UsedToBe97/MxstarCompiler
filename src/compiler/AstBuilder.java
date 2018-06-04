@@ -108,14 +108,19 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
         IfStmt tmp = new IfStmt(new Position(ctx.getStart()));
         boolean pre = setR;
         setR = true;
-        tmp.add((Expr)visit(ctx.expr(0)), (Stmt)visit(ctx.stmt(0)));
+        Expr tmpex = (Expr)visit(ctx.expr(0));
         setR = pre;
+        Stmt tmpst =  (Stmt)visit(ctx.stmt(0));
+        tmp.add(tmpex, tmpst);
+
         int k = 1;
         while (ctx.expr(k) != null) {
             pre = setR;
             setR = true;
-            tmp.add((Expr)visit(ctx.expr(k)), (Stmt)visit(ctx.stmt(k)));
+            tmpex = (Expr)visit(ctx.expr(k));
             setR = pre;
+            tmpst =  (Stmt)visit(ctx.stmt(k));
+            tmp.add(tmpex, tmpst);
             ++k;
         }
         if (ctx.stmt(k) != null) tmp.addElse((Stmt)visit(ctx.stmt(k)));
@@ -124,8 +129,15 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
 
     @Override
     public Atom visitReturnStmt(MxstarParser.ReturnStmtContext ctx) {
+        Expr tmp = null;
+        if (ctx.expr() != null) {
+            boolean pre = setR;
+            setR = true;
+            tmp = (Expr) visit(ctx.expr());
+            setR = pre;
+        }
         return (ctx.expr() != null)
-            ? new ReturnStmt((Expr)visit(ctx.expr()), new Position(ctx.getStart()))
+            ? new ReturnStmt(tmp, new Position(ctx.getStart()))
             : new ReturnStmt(null, new Position(ctx.getStart()));
     }
 
@@ -206,7 +218,13 @@ public class AstBuilder extends MxstarBaseVisitor<Atom> {
         FuncExpr tmp = new FuncExpr(ctx);
         tmp.add((Expr) visit(ctx.expr()));
         if (ctx.exprList() != null) {
-            for (ParserRuleContext child : ctx.exprList().expr()) tmp.add((Expr)visit(child));
+            for (ParserRuleContext child : ctx.exprList().expr()) {
+                boolean pre = setR;
+                setR = true;
+                Expr tmpex = (Expr)visit(child);
+                setR = pre;
+                tmp.add(tmpex);
+            }
         }
         //prog.add((Def)tmp);
         tmp.isMemFunc = true;
