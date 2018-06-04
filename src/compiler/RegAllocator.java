@@ -62,7 +62,7 @@ public class RegAllocator {
             if (((Move) ins).dest instanceof MemAddr) return false;
             if (((Move) ins).dest instanceof Reg) in.remove(((Move) ins).dest);
         }
-        return !(ins instanceof Call);
+        return !(ins instanceof FuncCall);
     }
     public ArrayList<Inst> DeadCodeElimination(ArrayList<Inst> insts) {
         ArrayList<Inst> tmp = new ArrayList<>();
@@ -71,7 +71,7 @@ public class RegAllocator {
             Inst ins = insts.get(i);
             int ed = i - 1, mx = -1;
             if (ins.del) continue;
-            if (ins instanceof Call) continue;
+            if (ins instanceof FuncCall) continue;
             if (ins instanceof Jump) continue;
             if (ins instanceof Jump) {
                 int x = insts.indexOf(((Jump) ins).label);

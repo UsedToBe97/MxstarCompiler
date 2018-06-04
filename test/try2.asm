@@ -22,16 +22,76 @@ section .bss
 stringbuffer:
 	resb 256
 section .text
+tak:
+	push	rbp
+	mov	rbp, rsp
+	push	r12
+	sub	rbp, 8
+	mov	r10, rdi
+	mov	r11, rsi
+	mov	r8, rdx
+	cmp	r11, r10
+	jl	Label_2
+	jmp	Label_3
+Label_2:
+	mov	rcx, r10
+	sub	rcx, 1
+	mov	rdi, rcx
+	mov	rsi, r11
+	mov	rdx, r8
+	call	tak
+	mov	r9, rax
+	mov	rcx, r11
+	sub	rcx, 1
+	mov	rdi, rcx
+	mov	rsi, r8
+	mov	rdx, r10
+	call	tak
+	mov	r12, rax
+	mov	rcx, r8
+	sub	rcx, 1
+	mov	rdi, rcx
+	mov	rsi, r10
+	mov	rdx, r11
+	call	tak
+	mov	r10, rax
+	mov	rdi, r9
+	mov	rsi, r12
+	mov	rdx, r10
+	call	tak
+	mov	rdi, rax
+	mov	rcx, 1
+	add	rcx, rdi
+	mov	rdi, rcx
+	mov	rax, rdi
+	jmp	Label_1
+Label_3:
+	mov	rax, r8
+	jmp	Label_1
+Label_1:
+	add	rbp, 8
+	pop	r12
+	mov	rsp, rbp
+	pop	rbp
+	ret
 main:
 	push	rbp
 	mov	rbp, rsp
-	mov	rdi, 1
+	call	getInt
+	mov	rdi, rax
+	call	getInt
+	mov	rsi, rax
+	call	getInt
+	mov	r10, rax
+	mov	rdx, r10
+	call	tak
+	mov	rdi, rax
+	call	toString
+	mov	rdi, rax
+	call	println
+	mov	rax, 0
+	jmp	Label_4
 Label_4:
-Label_3:
-Label_2:
-	mov	rax, rdi
-	jmp	Label_0
-Label_0:
 	mov	rsp, rbp
 	pop	rbp
 	ret
