@@ -8,6 +8,7 @@ import ir.operand.reg.Reg;
 import ir.operand.reg.X86Reg;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 public class RegAllocator {
@@ -83,24 +84,28 @@ public class RegAllocator {
                 else if (mx < x) mx = x;
             }
             Set<Reg> in = ins.in;
-            for (int j = i; j < sz; ++j) {
+            for (int j = i; j < sz - 1; ++j) {
                 Inst ins2 = insts.get(j);
+                Set<Reg> out = new HashSet<>();
                 if (!ok(ins2, in)) break;
+                else if (ins2 instanceof Move && ((Move) ins2).dest instanceof X86Reg && ((Move) ins2).dest == X86Reg.rax) break;
                 else if (ins2 instanceof Jump) {
                     int x = insts.indexOf(((Jump) ins2).label);
                     if (x < i) break;
                     else if (mx < x) mx = x;
+                    out = ((Jump) ins2).label.in;
                 } else if (ins2 instanceof CJump) {
-                    int x = insts.indexOf(((CJump) ins).dest);
+                    int x = insts.indexOf(((CJump) ins2).dest);
                     if (x < i) break;
                     else if (mx < x) mx = x;
-                }
-                Set<Reg> out = ins2.nxt.in;
+                    out = ((CJump) ins2).dest.in;
+                } else if (ins2.nxt != null ) out = ins2.nxt.in;
                 if (Contain(in, out)) ed = j;
             }
             if (ed >= mx && ed >= i) for (int j = i; j <= ed; ++j) insts.get(j).del = true;
         }
-        for (Inst ins : insts) if (!ins.del) tmp.add(ins);
+        for (Inst ins : insts)
+            if (!ins.del || ins instanceof Label) tmp.add(ins);
         return tmp;
     }
 
@@ -148,7 +153,7 @@ public class RegAllocator {
             }
         }
 
-        orders = DeadCodeElimination(orders);
+        x.Insts = DeadCodeElimination(orders);
 //        System.err.println(cc);
 
         boolean[][] map = new boolean[x.num][x.num];
