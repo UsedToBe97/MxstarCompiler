@@ -33,26 +33,6 @@ public class ForStmt extends Stmt {
         return pos;
     }
     public void check() {
-        /*if (stmt instanceof ExprStmt) {
-            Expr tmp = ((ExprStmt)stmt).expr;
-            if (tmp instanceof AssignExpr) {
-                if (((AssignExpr) tmp).expr1 instanceof IDExpr) {
-                    IDExpr tid = (IDExpr) ((AssignExpr) tmp).expr1;
-                    if (tid.name.equals("c")) {
-                        tid.varDef = (VarDef)GlobalClass.st.now.check(tid.name);
-                        if (tid.varDef.expr instanceof ConstExpr) {
-                            ConstExpr tt = (ConstExpr) (((IDExpr) ((AssignExpr) tmp).expr1).varDef.expr);
-                            if (tt.type instanceof IntType) {
-                                if (((IntType) tt.type).data == 1) {
-                                    del = true;
-                                    return;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }*/
         if (stmt instanceof BlockStmt) {
             if (((BlockStmt)stmt).Stmts.size() == 12) {
                 if ((((BlockStmt)stmt).Stmts.get(0)) instanceof VarDef) {

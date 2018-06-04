@@ -1,212 +1,328 @@
+N__ [GV]
+h__ [GV]
+i__ [GV]
+j__ [GV]
+k__ [GV]
+total__ [GV]
 
 
-func [Func]:
-	reg16 = rdi [][]
-	reg17 = rsi [][]
-	reg18 = rdx [][]
-	reg21 = reg16 + reg17 [][]
-	reg20 = reg21 + reg18 [][]
-	reg23 = 1 << 30 [][]
-	reg22 = reg23 - 1 [][]
-	reg19 = reg20 & reg22 [][]
-	rax = reg19 [][]
-	jump Label_0 [][]
-Label_0:
 main [Func]:
+	qword [ h__ ] = 99 [][]
+	qword [ i__ ] = 100 [][]
+	qword [ j__ ] = 101 [][]
+	qword [ k__ ] = 102 [][]
+	qword [ total__ ] = 0 [][]
 		FuncCall getInt Param_size : 0 [][]
-		reg16 = rax [][]
-	reg17 = reg16 [][]
-	reg18 = reg17 [][]
-	reg18 = reg18 + 1 [][]
-	reg18 = reg18 * 8 [][]
-		rdi = reg18 [][]
-		FuncCall malloc Param_size : 1 [][]
-		reg19 = rax [][]
-	qword [reg19] = reg17 [][]
-	reg19 = reg19 + 8 [][]
-	reg18 = reg17 [][]
-Label_2:
-	reg18 = reg18 - 1 [][]
-	reg20 = reg17 [][]
-	reg20 = reg20 + 1 [][]
-	reg20 = reg20 * 8 [][]
-		rdi = reg20 [][]
-		FuncCall malloc Param_size : 1 [][]
-		reg21 = rax [][]
-	qword [reg21] = reg17 [][]
-	reg21 = reg21 + 8 [][]
-	qword [reg19 + reg18 * 8] = reg21 [][]
-	jump Label_2 if reg18 jne 0 [][]
-	reg22 = reg19 [][]
-	reg23 = reg17 [][]
-	reg23 = reg23 + 1 [][]
-	reg23 = reg23 * 8 [][]
-		rdi = reg23 [][]
-		FuncCall malloc Param_size : 1 [][]
-		reg24 = rax [][]
-	qword [reg24] = reg17 [][]
-	reg24 = reg24 + 8 [][]
-	reg23 = reg17 [][]
-Label_3:
-	reg23 = reg23 - 1 [][]
-	reg25 = reg17 [][]
-	reg25 = reg25 + 1 [][]
-	reg25 = reg25 * 8 [][]
-		rdi = reg25 [][]
-		FuncCall malloc Param_size : 1 [][]
-		reg26 = rax [][]
-	qword [reg26] = reg17 [][]
-	reg26 = reg26 + 8 [][]
-	qword [reg24 + reg23 * 8] = reg26 [][]
-	jump Label_3 if reg23 jne 0 [][]
-	reg27 = reg24 [][]
-	reg28 = reg17 [][]
-	reg28 = reg28 + 1 [][]
-	reg28 = reg28 * 8 [][]
-		rdi = reg28 [][]
-		FuncCall malloc Param_size : 1 [][]
-		reg29 = rax [][]
-	qword [reg29] = reg17 [][]
-	reg29 = reg29 + 8 [][]
-	reg28 = reg17 [][]
+		reg22 = rax [][]
+	qword [ N__ ] = reg22 [][]
+	reg16 = 1 [][]
 Label_4:
-	reg28 = reg28 - 1 [][]
-	reg30 = reg17 [][]
-	reg30 = reg30 + 1 [][]
-	reg30 = reg30 * 8 [][]
-		rdi = reg30 [][]
-		FuncCall malloc Param_size : 1 [][]
-		reg31 = rax [][]
-	qword [reg31] = reg17 [][]
-	reg31 = reg31 + 8 [][]
-	qword [reg29 + reg28 * 8] = reg31 [][]
-	jump Label_4 if reg28 jne 0 [][]
-	reg32 = reg29 [][]
-	reg33 = 0 [][]
+	jump Label_3 if reg16 jle qword [ N__ ] [][]
+	jump Label_2 [][]
+Label_3:
+	reg17 = 1 [][]
 Label_8:
-	jump Label_7 if reg33 jl reg17 [][]
+	jump Label_7 if reg17 jle qword [ N__ ] [][]
 	jump Label_6 [][]
 Label_7:
-	reg34 = 0 [][]
+	reg18 = 1 [][]
 Label_12:
-	jump Label_11 if reg34 jl reg17 [][]
+	jump Label_11 if reg18 jle qword [ N__ ] [][]
 	jump Label_10 [][]
 Label_11:
-	reg38 = qword [reg22 + reg33 * 8] [][]
-	reg39 = reg33 + reg34 [][]
-	qword [reg38 + reg34 * 8] = reg39 [][]
-Label_9:
-	reg34 = reg34 + 1 [][]
-	jump Label_12 [][]
-Label_10:
-Label_5:
-	reg33 = reg33 + 1 [][]
-	jump Label_8 [][]
-Label_6:
-	reg33 = 0 [][]
+	reg19 = 1 [][]
 Label_16:
-	jump Label_15 if reg33 jl reg17 [][]
+	jump Label_15 if reg19 jle qword [ N__ ] [][]
 	jump Label_14 [][]
 Label_15:
-	reg34 = 0 [][]
+	reg20 = 1 [][]
 Label_20:
-	jump Label_19 if reg34 jl reg17 [][]
+	jump Label_19 if reg20 jle qword [ N__ ] [][]
 	jump Label_18 [][]
 Label_19:
-	reg35 = 0 [][]
+	reg21 = 1 [][]
 Label_24:
-	jump Label_23 if reg35 jl reg17 [][]
+	jump Label_23 if reg21 jle qword [ N__ ] [][]
 	jump Label_22 [][]
 Label_23:
-	jump Label_26 if reg34 jge reg33 [][]
+	jump Label_28 if reg16 jne reg17 [][]
+	reg29 = 0 [][]
+	jump Label_29 [][]
+Label_28:
+	jump Label_30 if reg16 jne reg18 [][]
+	reg31 = 0 [][]
+	jump Label_31 [][]
+Label_30:
+	jump Label_32 if reg16 jne reg19 [][]
+	reg33 = 0 [][]
+	jump Label_33 [][]
+Label_32:
+	jump Label_34 if reg16 jne reg20 [][]
+	reg35 = 0 [][]
+	jump Label_35 [][]
+Label_34:
+	jump Label_36 if reg16 jne reg21 [][]
+	reg37 = 0 [][]
+	jump Label_37 [][]
+Label_36:
+	jump Label_38 if reg16 jne qword [ h__ ] [][]
+	reg39 = 0 [][]
+	jump Label_39 [][]
+Label_38:
+	jump Label_40 if reg16 jne qword [ i__ ] [][]
+	reg41 = 0 [][]
+	jump Label_41 [][]
+Label_40:
+	jump Label_42 if reg16 jne qword [ j__ ] [][]
+	reg43 = 0 [][]
+	jump Label_43 [][]
+Label_42:
+	jump Label_44 if reg16 jne qword [ k__ ] [][]
+	reg45 = 0 [][]
+	jump Label_45 [][]
+Label_44:
+	jump Label_46 if reg17 jne reg18 [][]
+	reg47 = 0 [][]
+	jump Label_47 [][]
+Label_46:
+	jump Label_48 if reg17 jne reg19 [][]
+	reg49 = 0 [][]
+	jump Label_49 [][]
+Label_48:
+	jump Label_50 if reg17 jne reg20 [][]
+	reg51 = 0 [][]
+	jump Label_51 [][]
+Label_50:
+	jump Label_52 if reg17 jne reg21 [][]
+	reg53 = 0 [][]
+	jump Label_53 [][]
+Label_52:
+	jump Label_54 if reg17 jne qword [ h__ ] [][]
+	reg55 = 0 [][]
+	jump Label_55 [][]
+Label_54:
+	jump Label_56 if reg17 jne qword [ i__ ] [][]
+	reg57 = 0 [][]
+	jump Label_57 [][]
+Label_56:
+	jump Label_58 if reg17 jne qword [ j__ ] [][]
+	reg59 = 0 [][]
+	jump Label_59 [][]
+Label_58:
+	jump Label_60 if reg17 jne qword [ k__ ] [][]
+	reg61 = 0 [][]
+	jump Label_61 [][]
+Label_60:
+	jump Label_62 if reg18 jne reg19 [][]
+	reg63 = 0 [][]
+	jump Label_63 [][]
+Label_62:
+	jump Label_64 if reg18 jne reg20 [][]
+	reg65 = 0 [][]
+	jump Label_65 [][]
+Label_64:
+	jump Label_66 if reg18 jne reg21 [][]
+	reg67 = 0 [][]
+	jump Label_67 [][]
+Label_66:
+	jump Label_68 if reg18 jne qword [ h__ ] [][]
+	reg69 = 0 [][]
+	jump Label_69 [][]
+Label_68:
+	jump Label_70 if reg18 jne qword [ i__ ] [][]
+	reg71 = 0 [][]
+	jump Label_71 [][]
+Label_70:
+	jump Label_72 if reg18 jne qword [ j__ ] [][]
+	reg73 = 0 [][]
+	jump Label_73 [][]
+Label_72:
+	jump Label_74 if reg18 jne qword [ k__ ] [][]
+	reg75 = 0 [][]
+	jump Label_75 [][]
+Label_74:
+	jump Label_76 if reg19 jne reg20 [][]
+	reg77 = 0 [][]
+	jump Label_77 [][]
+Label_76:
+	jump Label_78 if reg19 jne reg21 [][]
+	reg79 = 0 [][]
+	jump Label_79 [][]
+Label_78:
+	jump Label_80 if reg19 jne qword [ h__ ] [][]
+	reg81 = 0 [][]
+	jump Label_81 [][]
+Label_80:
+	jump Label_82 if reg19 jne qword [ i__ ] [][]
+	reg83 = 0 [][]
+	jump Label_83 [][]
+Label_82:
+	jump Label_84 if reg19 jne qword [ j__ ] [][]
+	reg85 = 0 [][]
+	jump Label_85 [][]
+Label_84:
+	jump Label_86 if reg19 jne qword [ k__ ] [][]
+	reg87 = 0 [][]
+	jump Label_87 [][]
+Label_86:
+	jump Label_88 if reg20 jne reg21 [][]
+	reg89 = 0 [][]
+	jump Label_89 [][]
+Label_88:
+	jump Label_90 if reg20 jne qword [ h__ ] [][]
+	reg91 = 0 [][]
+	jump Label_91 [][]
+Label_90:
+	jump Label_92 if reg20 jne qword [ i__ ] [][]
+	reg93 = 0 [][]
+	jump Label_93 [][]
+Label_92:
+	jump Label_94 if reg20 jne qword [ j__ ] [][]
+	reg95 = 0 [][]
+	jump Label_95 [][]
+Label_94:
+	jump Label_96 if reg20 jne qword [ k__ ] [][]
+	reg97 = 0 [][]
+	jump Label_97 [][]
+Label_96:
+	jump Label_98 if reg21 jne qword [ h__ ] [][]
+	reg99 = 0 [][]
+	jump Label_99 [][]
+Label_98:
+	jump Label_100 if reg21 jne qword [ i__ ] [][]
+	reg101 = 0 [][]
+	jump Label_101 [][]
+Label_100:
+	jump Label_102 if reg21 jne qword [ j__ ] [][]
+	reg103 = 0 [][]
+	jump Label_103 [][]
+Label_102:
+	jump Label_104 if reg21 jne qword [ k__ ] [][]
+	reg105 = 0 [][]
+	jump Label_105 [][]
+Label_104:
+	jump Label_106 if qword [ i__ ] jne qword [ j__ ] [][]
+	reg107 = 0 [][]
+	jump Label_107 [][]
+Label_106:
+	reg109 = qword [ h__ ] != qword [ k__ ] [][]
+	reg107 = reg109 [][]
+Label_107:
+	reg105 = reg107 [][]
+Label_105:
+	reg103 = reg105 [][]
+Label_103:
+	reg101 = reg103 [][]
+Label_101:
+	reg99 = reg101 [][]
+Label_99:
+	reg97 = reg99 [][]
+Label_97:
+	reg95 = reg97 [][]
+Label_95:
+	reg93 = reg95 [][]
+Label_93:
+	reg91 = reg93 [][]
+Label_91:
+	reg89 = reg91 [][]
+Label_89:
+	reg87 = reg89 [][]
+Label_87:
+	reg85 = reg87 [][]
+Label_85:
+	reg83 = reg85 [][]
+Label_83:
+	reg81 = reg83 [][]
+Label_81:
+	reg79 = reg81 [][]
+Label_79:
+	reg77 = reg79 [][]
+Label_77:
+	reg75 = reg77 [][]
+Label_75:
+	reg73 = reg75 [][]
+Label_73:
+	reg71 = reg73 [][]
+Label_71:
+	reg69 = reg71 [][]
+Label_69:
+	reg67 = reg69 [][]
+Label_67:
+	reg65 = reg67 [][]
+Label_65:
+	reg63 = reg65 [][]
+Label_63:
+	reg61 = reg63 [][]
+Label_61:
+	reg59 = reg61 [][]
+Label_59:
+	reg57 = reg59 [][]
+Label_57:
+	reg55 = reg57 [][]
+Label_55:
+	reg53 = reg55 [][]
+Label_53:
+	reg51 = reg53 [][]
+Label_51:
+	reg49 = reg51 [][]
+Label_49:
+	reg47 = reg49 [][]
+Label_47:
+	reg45 = reg47 [][]
+Label_45:
+	reg43 = reg45 [][]
+Label_43:
+	reg41 = reg43 [][]
+Label_41:
+	reg39 = reg41 [][]
+Label_39:
+	reg37 = reg39 [][]
+Label_37:
+	reg35 = reg37 [][]
+Label_35:
+	reg33 = reg35 [][]
+Label_33:
+	reg31 = reg33 [][]
+Label_31:
+	reg29 = reg31 [][]
+Label_29:
+	jump Label_26 if reg29 je 1 [][]
 	jump Label_27 [][]
 Label_26:
-	reg44 = qword [reg27 + reg33 * 8] [][]
-	reg45 = qword [reg27 + reg33 * 8] [][]
-	reg46 = qword [reg22 + reg33 * 8] [][]
-	reg47 = qword [reg22 + reg35 * 8] [][]
-	reg50 = qword [reg45 + reg34 * 8] + qword [reg46 + reg35 * 8] [][]
-	reg49 = reg50 + qword [reg47 + reg34 * 8] [][]
-	reg52 = 1 << 30 [][]
-	reg51 = reg52 - 1 [][]
-	reg48 = reg49 & reg51 [][]
-	qword [reg44 + reg34 * 8] = reg48 [][]
-	reg53 = qword [reg32 + reg33 * 8] [][]
-	reg54 = qword [reg27 + reg33 * 8] [][]
-	reg55 = qword [reg22 + reg33 * 8] [][]
-	reg56 = qword [reg22 + reg35 * 8] [][]
-	reg59 = qword [reg54 + reg34 * 8] + qword [reg55 + reg35 * 8] [][]
-	reg58 = reg59 + qword [reg56 + reg34 * 8] [][]
-	reg61 = 1 << 30 [][]
-	reg60 = reg61 - 1 [][]
-	reg57 = reg58 & reg60 [][]
-	qword [reg53 + reg34 * 8] = reg57 [][]
-	reg62 = qword [reg32 + reg33 * 8] [][]
-	reg63 = qword [reg27 + reg33 * 8] [][]
-	reg64 = qword [reg22 + reg33 * 8] [][]
-	reg65 = qword [reg22 + reg35 * 8] [][]
-	reg68 = qword [reg63 + reg34 * 8] + qword [reg64 + reg35 * 8] [][]
-	reg67 = reg68 + qword [reg65 + reg34 * 8] [][]
-	reg70 = 1 << 30 [][]
-	reg69 = reg70 - 1 [][]
-	reg66 = reg67 & reg69 [][]
-	qword [reg62 + reg34 * 8] = reg66 [][]
-	reg71 = qword [reg32 + reg33 * 8] [][]
-	reg72 = qword [reg27 + reg33 * 8] [][]
-	reg73 = qword [reg22 + reg33 * 8] [][]
-	reg74 = qword [reg22 + reg35 * 8] [][]
-	reg77 = qword [reg72 + reg34 * 8] + qword [reg73 + reg35 * 8] [][]
-	reg76 = reg77 + qword [reg74 + reg34 * 8] [][]
-	reg79 = 1 << 30 [][]
-	reg78 = reg79 - 1 [][]
-	reg75 = reg76 & reg78 [][]
-	qword [reg71 + reg34 * 8] = reg75 [][]
-	jump Label_25 [][]
+	reg110 = qword [ total__ ] [][]
+	qword [ total__ ] = qword [ total__ ] + 1 [][]
+	jump Label_27 [][]
 Label_27:
-Label_25:
-Label_21:
-	reg35 = reg35 + 1 [][]
+	reg111 = reg21 [][]
+	reg21 = reg21 + 1 [][]
 	jump Label_24 [][]
 Label_22:
-Label_17:
-	reg34 = reg34 + 1 [][]
+	reg112 = reg20 [][]
+	reg20 = reg20 + 1 [][]
 	jump Label_20 [][]
 Label_18:
-Label_13:
-	reg33 = reg33 + 1 [][]
+	reg113 = reg19 [][]
+	reg19 = reg19 + 1 [][]
 	jump Label_16 [][]
 Label_14:
-	reg80 = 0 [][]
-	reg33 = 0 [][]
-Label_31:
-	jump Label_30 if reg33 jl reg17 [][]
-	jump Label_29 [][]
-Label_30:
-	reg34 = 0 [][]
-Label_35:
-	jump Label_34 if reg34 jl reg17 [][]
-	jump Label_33 [][]
-Label_34:
-	reg85 = qword [reg27 + reg33 * 8] [][]
-	reg84 = reg80 + qword [reg85 + reg34 * 8] [][]
-	reg87 = 1 << 30 [][]
-	reg86 = reg87 - 1 [][]
-	reg83 = reg84 & reg86 [][]
-	reg80 = reg83 [][]
-Label_32:
-	reg34 = reg34 + 1 [][]
-	jump Label_35 [][]
-Label_33:
-Label_28:
-	reg33 = reg33 + 1 [][]
-	jump Label_31 [][]
-Label_29:
-		rdi = reg80 [][]
+	reg114 = reg18 [][]
+	reg18 = reg18 + 1 [][]
+	jump Label_12 [][]
+Label_10:
+	reg115 = reg17 [][]
+	reg17 = reg17 + 1 [][]
+	jump Label_8 [][]
+Label_6:
+	reg116 = reg16 [][]
+	reg16 = reg16 + 1 [][]
+	jump Label_4 [][]
+Label_2:
+		rdi = qword [ total__ ] [][]
 		FuncCall toString Param_size : 1 [][]
-		reg88 = rax [][]
-		rdi = reg88 [][]
-		FuncCall print Param_size : 1 [][]
-		reg89 = rax [][]
+		reg117 = rax [][]
+		rdi = reg117 [][]
+		FuncCall println Param_size : 1 [][]
+		reg118 = rax [][]
 	rax = 0 [][]
-	jump Label_1 [][]
-Label_1:
+	jump Label_0 [][]
+Label_0:

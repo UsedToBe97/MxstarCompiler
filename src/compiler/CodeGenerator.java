@@ -121,6 +121,10 @@ public class CodeGenerator {
 
 
     public void visit(Binop x) {
+        if (x.del) {
+            System.err.println("del");
+            return;
+        }
         switch (x.op) {
             case "+" : A(x.dest, x.lhs, x.rhs, "add"); break;
             case "-" : A(x.dest, x.lhs, x.rhs, "sub"); break;
@@ -145,6 +149,10 @@ public class CodeGenerator {
     }
 
     public void visit(Call x) {
+        if (x.del) {
+            System.err.println("del");
+            return;
+        }
         int tmp = x.size > 6 ? (x.size - 6) * 8 : 0;
 
         if(tmp > 0) ans.append("\tsub\trsp, " + Integer.toString(tmp) + "\n");
@@ -180,6 +188,10 @@ public class CodeGenerator {
     }
 
     public void visit(CJump x) {
+        if (x.del) {
+            System.err.println("del");
+            return;
+        }
         x.lhs = getOp(x.lhs, X86Reg.rcx);
         x.rhs = getOp(x.rhs, X86Reg.rdx);
         if (!(x.lhs instanceof Reg)) {
@@ -191,6 +203,10 @@ public class CodeGenerator {
     }
 
     public void visit(FuncCall x) {
+        if (x.del) {
+            System.err.println("del");
+            return;
+        }
         ans.append("\tcall\t" + x.name + "\n");
     }
 
@@ -199,6 +215,10 @@ public class CodeGenerator {
     }
 
     public void visit(Move x) {
+        if (x.del) {
+            System.err.println("del");
+            return;
+        }
         /*if (x.src instanceof INum) {
             x.dest = getOp(x.dest, X86Reg.rbx);
             ans.append("\tmov\t" + x.dest.toString() + ", " + x.src.toString() + "\n");
@@ -226,6 +246,10 @@ public class CodeGenerator {
     }
 
     public void visit(UnaryOp x) {
+        if (x.del) {
+            System.err.println("del");
+            return;
+        }
         x.src = getOp(x.src, X86Reg.rdx);
         if (x.op.equals("~")) {
             ans.append("\tnot\t" + x.src.toString() + "\n");
@@ -239,6 +263,10 @@ public class CodeGenerator {
     }
 
     public void visit(Jump x) {
+        if (x.del) {
+            System.err.println("del");
+            return;
+        }
         ans.append("\tjmp\t" + x.label.name + "\n");
     }
 
