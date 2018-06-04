@@ -8,88 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/Atom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/Atom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/Root.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/Root.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/definition/ClassDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/definition/ClassDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/definition/Def.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/definition/Def.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/definition/FuncDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/definition/FuncDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/definition/VarDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/definition/VarDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/ArrayExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/ArrayExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/AssignExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/AssignExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/BinaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/BinaryExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/ConstExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/ConstExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/Expr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/FuncExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/FuncExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/IDExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/IDExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/LUnaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/LUnaryExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/MemberExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/MemberExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/MemberFuncExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/MemberFuncExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/NewExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/NewExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/expr/RUnaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/expr/RUnaryExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/BlockStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/BlockStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/BreakStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/BreakStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/ContStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/ContStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/ExprStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/ExprStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/ForStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/ForStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/IfStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/IfStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/ReturnStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/ReturnStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/Stmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/stmt/WhileStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/stmt/WhileStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/type/ArrayType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/type/ArrayType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/type/BoolType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/type/BoolType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/type/ClassType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/type/ClassType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/type/IntType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/type/IntType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/type/NullType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/type/NullType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/type/StringType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/type/StringType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/type/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/type/Type.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/type/TypeClassifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/type/TypeClassifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ast/type/VoidType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ast/type/VoidType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/AstBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/AstBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/CodeGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/IrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/IrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/compiler/RegAllocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/RegAllocator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/Func.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/Func.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/Ir.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/Ir.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/inst/Binop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/inst/Binop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/inst/CJump.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/inst/CJump.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/inst/Call.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/inst/Call.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/inst/FuncCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/inst/FuncCall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/inst/Inst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/inst/Inst.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/inst/Jump.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/inst/Jump.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/inst/Label.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/inst/Label.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/inst/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/inst/Move.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/inst/UnaryOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/inst/UnaryOp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/operand/INum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/operand/INum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/operand/Operand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/operand/Operand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/operand/addr/GlobalAddr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/operand/addr/GlobalAddr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/operand/addr/MemAddr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/operand/addr/MemAddr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/operand/reg/Reg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/operand/reg/Reg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/operand/reg/VirtualReg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/operand/reg/VirtualReg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/operand/reg/X86Reg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/operand/reg/X86Reg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/Mxstar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Mxstar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/CompileError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/CompileError.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/GlobalClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/GlobalClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Pair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Pair.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ScopeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ScopeNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/ScopeTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/ScopeTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/IrBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/IrBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/RegAllocator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/RegAllocator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/Mxstar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/Mxstar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BracketsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BracketsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BracketsexprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BracketsexprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ConstantContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ConstantContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ExprListContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ExprListContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ExprbrContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ExprbrContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$RawbrContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$RawbrContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/1.test" beforeDir="false" afterPath="$PROJECT_DIR$/test/1.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/new_myIR.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/new_myIR.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/old_myIR.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/old_myIR.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/try.asm" beforeDir="false" afterPath="$PROJECT_DIR$/test/try.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/try2.asm" beforeDir="false" afterPath="$PROJECT_DIR$/test/try2.asm" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -215,7 +133,7 @@
           <file leaf-file-name="CodeGenerator.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/compiler/CodeGenerator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-531">
+                <state relative-caret-position="-186">
                   <caret line="115" column="47" selection-start-line="115" selection-start-column="47" selection-end-line="115" selection-end-column="47" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -731,12 +649,12 @@
       <workItem from="1528077196070" duration="900000" />
       <workItem from="1528078115659" duration="17895000" />
       <workItem from="1528099978759" duration="485000" />
-      <workItem from="1528100862133" duration="10313000" />
+      <workItem from="1528100862133" duration="10665000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="501215000" />
+    <option name="totallyTimeSpent" value="501567000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -753,7 +671,7 @@
     <layout>
       <window_info anchor="right" id="Palette" order="2" />
       <window_info anchor="bottom" id="Tool Output" order="13" weight="0.32897604" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50373137" side_tool="true" weight="0.3943355" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50692964" side_tool="true" visible="true" weight="0.25925925" />
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info id="Capture Tool" order="5" />
@@ -770,9 +688,9 @@
       <window_info id="Image Layers" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49307036" visible="true" weight="0.25925925" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49307036" visible="true" weight="0.25925925" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32897604" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17643923" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17643923" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info id="Favorites" order="4" side_tool="true" />
@@ -1210,7 +1128,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/CodeGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-531">
+        <state relative-caret-position="-186">
           <caret line="115" column="47" selection-start-line="115" selection-start-column="47" selection-end-line="115" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
