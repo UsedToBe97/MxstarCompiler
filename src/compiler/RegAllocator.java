@@ -294,7 +294,7 @@ public class RegAllocator {
         x.opt = true;
         ArrayList<Inst> orders = LivenessAnalyse(x);
         while (DeadCodeElimination(orders)) orders = LivenessAnalyse(x);
-        while (DeadCodeElimination2(orders)) orders = LivenessAnalyse(x);
+        //while (DeadCodeElimination2(orders)) orders = LivenessAnalyse(x);
 //        System.err.println(cc);
 
         boolean[][] map = new boolean[x.num][x.num];
