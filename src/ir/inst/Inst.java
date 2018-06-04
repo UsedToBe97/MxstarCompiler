@@ -13,6 +13,7 @@ import java.util.Set;
 
 public abstract class Inst extends Atom {
     public Set<Reg> in = new HashSet<>();
+    public boolean del = false;
     public Reg def;
     public Inst nxt;
     public void set(Operand y) {if (y instanceof Reg) def = (Reg) y;}

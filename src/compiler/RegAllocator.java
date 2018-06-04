@@ -3,6 +3,7 @@ package compiler;
 import ir.Func;
 import ir.Ir;
 import ir.inst.*;
+import ir.operand.addr.MemAddr;
 import ir.operand.reg.Reg;
 import ir.operand.reg.X86Reg;
 
@@ -42,6 +43,67 @@ public class RegAllocator {
     }
     public void visit(Label x) {}
     public void visit(Jump x) {}
+    public boolean Contain(Set<Reg> in, Set<Reg> out) {
+        if (in.size() < out.size()) return false;
+        for (Reg t : out) if (!in.contains(t)) return false;
+        return true;
+    }
+    public boolean ok(Inst ins, Set<Reg> in) {
+        if (ins instanceof Binop) {
+            if (((Binop) ins).dest instanceof MemAddr) return false;
+            if (((Binop) ins).dest instanceof Reg) in.remove(((Binop) ins).dest);
+        }
+        if (ins instanceof UnaryOp) {
+            if (((UnaryOp) ins).src instanceof MemAddr) return false;
+            if (((UnaryOp) ins).src instanceof Reg) in.remove(((UnaryOp) ins).src);
+        }
+        if (ins instanceof Move) {
+            if (((Move) ins).dest instanceof MemAddr) return false;
+            if (((Move) ins).dest instanceof Reg) in.remove(((Move) ins).dest);
+        }
+        return !(ins instanceof Call);
+    }
+    public ArrayList<Inst> DeadCodeElimination(ArrayList<Inst> insts) {
+        ArrayList<Inst> tmp = new ArrayList<>();
+        int sz = insts.size();
+        for (int i = 0; i < sz; ++i) {
+            Inst ins = insts.get(i);
+            int ed = i - 1, mx = -1;
+            if (ins.del) continue;
+            if (ins instanceof Call) continue;
+            if (ins instanceof Jump) continue;
+            if (ins instanceof Jump) {
+                int x = insts.indexOf(((Jump) ins).label);
+                if (x < i) continue;
+                else if (mx < x) mx = x;
+            }
+            if (ins instanceof CJump) {
+                int x = insts.indexOf(((CJump) ins).dest);
+                if (x < i) continue;
+                else if (mx < x) mx = x;
+            }
+            Set<Reg> in = ins.in;
+            for (int j = i; j < sz; ++j) {
+                Inst ins2 = insts.get(j);
+                if (!ok(ins2, in)) break;
+                else if (ins2 instanceof Jump) {
+                    int x = insts.indexOf(((Jump) ins2).label);
+                    if (x < i) break;
+                    else if (mx < x) mx = x;
+                } else if (ins2 instanceof CJump) {
+                    int x = insts.indexOf(((CJump) ins).dest);
+                    if (x < i) break;
+                    else if (mx < x) mx = x;
+                }
+                Set<Reg> out = ins2.nxt.in;
+                if (Contain(in, out)) ed = j;
+            }
+            if (ed >= mx && ed >= i) for (int j = i; j <= ed; ++j) insts.get(j).del = true;
+        }
+        for (Inst ins : insts) if (!ins.del) tmp.add(ins);
+        return tmp;
+    }
+
     public void alloc(Func x) {
         if (x.num > 800) return;
         x.opt = true;
@@ -85,7 +147,10 @@ public class RegAllocator {
                 if (u.nxt != null) need |= gao(u, u.nxt.in);
             }
         }
+
+        orders = DeadCodeElimination(orders);
 //        System.err.println(cc);
+
         boolean[][] map = new boolean[x.num][x.num];
         int[] col = new int[x.num];
         int[] vis = new int[x.num];

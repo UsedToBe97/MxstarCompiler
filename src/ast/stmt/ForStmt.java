@@ -33,7 +33,7 @@ public class ForStmt extends Stmt {
         return pos;
     }
     public void check() {
-        if (stmt instanceof ExprStmt) {
+        /*if (stmt instanceof ExprStmt) {
             Expr tmp = ((ExprStmt)stmt).expr;
             if (tmp instanceof AssignExpr) {
                 if (((AssignExpr) tmp).expr1 instanceof IDExpr) {
@@ -52,7 +52,7 @@ public class ForStmt extends Stmt {
                     }
                 }
             }
-        }
+        }*/
         if (stmt instanceof BlockStmt) {
             if (((BlockStmt)stmt).Stmts.size() == 12) {
                 if ((((BlockStmt)stmt).Stmts.get(0)) instanceof VarDef) {
