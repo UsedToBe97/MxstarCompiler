@@ -7,21 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/CodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/CodeGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/compiler/RegAllocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/RegAllocator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/Mxstar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Mxstar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/MxstarParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/MxstarParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/CodeGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/CodeGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/compiler/RegAllocator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/compiler/RegAllocator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/Mxstar.g4" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/Mxstar.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BracketsContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BracketsContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BracketsexprContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$BracketsexprContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ConstantContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ConstantContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ExprListContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ExprListContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ExprbrContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$ExprbrContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser$RawbrContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser$RawbrContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/parser/MxstarParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/parser/MxstarParser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/1.test" beforeDir="false" afterPath="$PROJECT_DIR$/test/1.test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/new_myIR.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/new_myIR.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/try2.asm" beforeDir="false" afterPath="$PROJECT_DIR$/test/try2.asm" afterDir="false" />
@@ -60,7 +47,7 @@
             <entry file="file://$PROJECT_DIR$/src/compiler/RegAllocator.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="6647">
-                  <caret line="328" column="32" selection-start-line="328" selection-start-column="32" selection-end-line="328" selection-end-column="32" />
+                  <caret line="327" column="32" selection-start-line="327" selection-start-column="32" selection-end-line="327" selection-end-column="32" />
                 </state>
               </provider>
             </entry>
@@ -151,7 +138,7 @@
             <entry file="file://$PROJECT_DIR$/src/compiler/CodeGenerator.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="1357">
-                  <caret line="76" column="34" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
+                  <caret line="84" column="34" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -175,8 +162,8 @@
           <file leaf-file-name="RegAllocator.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/compiler/RegAllocator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="214">
-                  <caret line="347" column="42" selection-start-line="347" selection-start-column="42" selection-end-line="347" selection-end-column="42" />
+                <state relative-caret-position="237">
+                  <caret line="321" column="10" selection-start-line="321" selection-start-column="10" selection-end-line="321" selection-end-column="10" />
                 </state>
               </provider>
             </entry>
@@ -202,17 +189,8 @@
           <file leaf-file-name="ForStmt.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/ast/stmt/ForStmt.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="920">
+                <state relative-caret-position="587">
                   <caret line="54" column="21" selection-start-line="63" selection-start-column="49" selection-end-line="63" selection-end-column="60" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="BlockStmt.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/ast/stmt/BlockStmt.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="322">
-                  <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
                 </state>
               </provider>
             </entry>
@@ -220,7 +198,7 @@
           <file leaf-file-name="IrBuilder.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/compiler/IrBuilder.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2507">
+                <state relative-caret-position="587">
                   <caret line="113" column="60" selection-start-line="113" selection-start-column="60" selection-end-line="113" selection-end-column="60" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -241,8 +219,8 @@
           <file leaf-file-name="CodeGenerator.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/compiler/CodeGenerator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2229">
-                  <caret line="69" column="37" lean-forward="true" selection-start-line="69" selection-start-column="37" selection-end-line="69" selection-end-column="37" />
+                <state relative-caret-position="-3855">
+                  <caret line="69" column="99" selection-start-line="69" selection-start-column="99" selection-end-line="69" selection-end-column="99" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -671,12 +649,12 @@
       <workItem from="1528099978759" duration="485000" />
       <workItem from="1528100862133" duration="11086000" />
       <workItem from="1528114829725" duration="9617000" />
-      <workItem from="1528162874897" duration="3316000" />
+      <workItem from="1528162874897" duration="4589000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="514921000" />
+    <option name="totallyTimeSpent" value="516194000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -702,11 +680,11 @@
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4936034" visible="true" weight="0.25599128" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4936034" visible="true" weight="0.25599128" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32897604" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17963752" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17963752" />
       <window_info anchor="right" id="Database" order="8" weight="0.32995737" />
       <window_info anchor="bottom" id="ANTLR Preview" order="12" weight="0.32897604" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1063,13 +1041,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ir/inst/Inst.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/Iterable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1081">
@@ -1081,23 +1052,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
           <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/compiler/IrBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2461">
-          <caret line="134" column="9" selection-start-line="134" selection-start-column="9" selection-end-line="134" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ast/stmt/ForStmt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="920">
-          <caret line="54" column="21" selection-start-line="63" selection-start-column="49" selection-end-line="63" selection-end-column="60" />
         </state>
       </provider>
     </entry>
@@ -1136,10 +1090,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/compiler/IrBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2461">
+          <caret line="134" column="9" selection-start-line="134" selection-start-column="9" selection-end-line="134" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ast/stmt/ForStmt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="54" column="21" selection-start-line="63" selection-start-column="49" selection-end-line="63" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ir/inst/Inst.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/CodeGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1357">
-          <caret line="76" column="34" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
+          <caret line="84" column="34" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1149,7 +1127,7 @@
     <entry file="file://$PROJECT_DIR$/src/compiler/RegAllocator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6647">
-          <caret line="328" column="32" selection-start-line="328" selection-start-column="32" selection-end-line="328" selection-end-column="32" />
+          <caret line="327" column="32" selection-start-line="327" selection-start-column="32" selection-end-line="327" selection-end-column="32" />
         </state>
       </provider>
     </entry>
