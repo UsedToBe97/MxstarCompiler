@@ -4,6 +4,7 @@ import ast.definition.VarDef;
 import ir.Func;
 import ir.Ir;
 import ir.inst.*;
+import ir.operand.INum;
 import ir.operand.Operand;
 import ir.operand.addr.GlobalAddr;
 import ir.operand.addr.MemAddr;
@@ -58,6 +59,14 @@ public class CodeGenerator {
     public void visit(Inst x) {x.accept(this);}
 
     public void A(Operand dest, Operand lhs, Operand rhs, String op) {
+        if (lhs instanceof Reg && dest instanceof Reg && rhs instanceof INum && op.equals("add") && !dest.toString().equals(lhs.toString())) {
+            //ans.append("\tmov\t" + dest.toString() + ", " + lhs.toString() + "\n");
+            //ans.append("\t" + op + "\t" + dest.toString() + ", " + rhs.toString() + "\n");
+            if (((Reg) lhs).idx < 16 && ((Reg) dest).idx < 16) {
+                ans.append("\tlea\t" + dest.toString() + ", [" + lhs.toString() + "+" + rhs.toString() + "]\n");
+                return;
+            }
+        }
         lhs = getOp(lhs, X86Reg.rcx);
         dest = getOp(dest, X86Reg.rdx);
         if (lhs.toString().equals(dest.toString()) && dest instanceof Reg) {

@@ -3,6 +3,7 @@ package compiler;
 import ir.Func;
 import ir.Ir;
 import ir.inst.*;
+import ir.operand.INum;
 import ir.operand.Operand;
 import ir.operand.addr.GlobalAddr;
 import ir.operand.addr.MemAddr;
@@ -235,6 +236,28 @@ public class RegAllocator {
             tmp.add(u);
         }
         x.Insts = tmp;
+        tmp = new ArrayList<>();
+        for (int i = 0; i <  x.Insts.size(); ++i) {
+            Inst u = x.Insts.get(i);
+            if (i + 2 < x.Insts.size()) {
+                Inst v = x.Insts.get(i + 1);
+                if (u instanceof Binop && v instanceof Move) {
+                    if (((Binop) u).dest == ((Move) v).src && ((Binop) u).rhs instanceof INum)
+                        //if (((Move) v).dest == ((Binop) u).lhs)
+                        if (((Binop) u).op.equals("+"))
+                            if (v.nxt != null && !(v.nxt.in.contains(((Binop) u).dest))){
+                                ((Binop) u).dest = ((Move) v).dest;
+                                tmp.add(u);
+                                ++i;
+                                continue;
+                            }
+                }
+            }
+            tmp.add(u);
+        }
+        x.Insts = tmp;
+
+
 
         ArrayList<Inst> orders = new ArrayList<>();
         Inst pre = null;
@@ -242,6 +265,7 @@ public class RegAllocator {
         for (Inst u: x.Insts) {
             if (u instanceof CJump) ((CJump) u).dest.from.clear();
             if (u instanceof Jump) ((Jump) u).label.from.clear();
+            u.nxt = null;
         }
 
         for (Inst u : x.Insts) {
@@ -293,8 +317,10 @@ public class RegAllocator {
         if (x.num > 800) return;
         x.opt = true;
         ArrayList<Inst> orders = LivenessAnalyse(x);
-        while (DeadCodeElimination(orders)) orders = LivenessAnalyse(x);
-        while (DeadCodeElimination2(orders)) orders = LivenessAnalyse(x);
+        while (DeadCodeElimination(orders))
+            orders = LivenessAnalyse(x);
+        while (DeadCodeElimination2(orders))
+            orders = LivenessAnalyse(x);
 //        System.err.println(cc);
 
         boolean[][] map = new boolean[x.num][x.num];
@@ -319,7 +345,7 @@ public class RegAllocator {
             vis[i] = 0;
         }
         int dfn = 0;
-        for (int i = 16; i < x.num; ++i) {
+        for (int i = x.num - 1; i > 15; --i) {
             ++dfn;
             for (int j = 0; j < x.num; ++j)
                 if (map[i][j] && col[j] != -1) vis[col[j]] = dfn;
@@ -331,6 +357,10 @@ public class RegAllocator {
                     break;
                 }
         }
+        for (int i = 16; i < x.num; ++i) {
+            System.err.println("reg " + i + " : "  + col[i]);
+        }
+        int ta = 0; ++ta;
     }
 
     public boolean gao(Inst inst, Set<Reg> out) {
