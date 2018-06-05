@@ -56,32 +56,7 @@ public class ForStmt extends Stmt {
                 }
             }
         }
-        if (exprs.get(1) instanceof BinaryExpr) {
-            BinaryExpr t = (BinaryExpr) exprs.get(1);
-            if (t.expr2 instanceof ConstExpr && t.op.equals("<=")) {
-                ConstExpr tt = ((ConstExpr) t.expr2);
-                if (tt.type instanceof IntType) {
-                    if (((IntType) tt.type).data == 30000000) {
-                        AssignExpr res = new AssignExpr();
-                        BinaryExpr tmp = new BinaryExpr();
-                        tmp.pos = exprs.get(2).pos;
-                        tmp.op = "+";
-                        tmp.expr1 = new IDExpr("i", tmp.pos);
-                        tmp.expr2 = new ConstExpr(new IntType(3000000));
-                        res.expr2 = tmp;
-                        res.expr1 = new IDExpr("i", tmp.pos);
-                        exprs.remove(2);
-                        exprs.add(res);
-                        Expr e = exprs.get(0);
-                        if (((AssignExpr)e).expr2 instanceof  ConstExpr) {
-                            if (((ConstExpr) ((AssignExpr) e).expr2).type instanceof IntType)
-                                ((IntType) ((ConstExpr) ((AssignExpr) e).expr2).type).data = 3000000;
-                        }
-                        exprs.set(0, e);
-                    }
-                }
-            }
-        }
+        
         GlobalClass.circnt++;
         if (!(stmt instanceof BlockStmt)) GlobalClass.st.enterScope();
         for (int i = 0; i < exprs.size(); i++) {
