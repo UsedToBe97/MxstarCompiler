@@ -1670,7 +1670,7 @@ public class MxstarParser extends Parser {
 						setState(208);
 						((BinaryExprContext)_localctx).op = match(T__24);
 						setState(209);
-						expr(8);
+						expr(9);
 						}
 						break;
 					case 4:
@@ -2342,7 +2342,7 @@ public class MxstarParser extends Parser {
 		"\2\2\u00c9\u00c3\3\2\2\2\u00ca\u0101\3\2\2\2\u00cb\u00cc\f\f\2\2\u00cc"+
 		"\u00cd\t\6\2\2\u00cd\u0100\5\32\16\r\u00ce\u00cf\f\13\2\2\u00cf\u00d0"+
 		"\7\34\2\2\u00d0\u0100\5\32\16\f\u00d1\u00d2\f\n\2\2\u00d2\u00d3\7\33\2"+
-		"\2\u00d3\u0100\5\32\16\n\u00d4\u00d5\f\t\2\2\u00d5\u00d6\t\7\2\2\u00d6"+
+		"\2\u00d3\u0100\5\32\16\13\u00d4\u00d5\f\t\2\2\u00d5\u00d6\t\7\2\2\u00d6"+
 		"\u0100\5\32\16\n\u00d7\u00d8\f\b\2\2\u00d8\u00d9\t\b\2\2\u00d9\u0100\5"+
 		"\32\16\t\u00da\u00db\f\7\2\2\u00db\u00dc\t\t\2\2\u00dc\u0100\5\32\16\b"+
 		"\u00dd\u00de\f\6\2\2\u00de\u00df\t\n\2\2\u00df\u0100\5\32\16\7\u00e0\u00e1"+

@@ -344,8 +344,8 @@ public class RegAllocator {
             vis[i] = 0;
         }
         int dfn = 0;
-        for (int i = x.num - 1; i > 15; --i) {
-        //for (int i = 16; i < x.num; ++i) {
+        //for (int i = x.num - 1; i > 15; --i) {
+        for (int i = 16; i < x.num; ++i) {
             ++dfn;
             for (int j = 0; j < x.num; ++j)
                 if (map[i][j] && col[j] != -1) vis[col[j]] = dfn;
