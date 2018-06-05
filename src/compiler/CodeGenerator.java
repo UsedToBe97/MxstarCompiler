@@ -4,7 +4,6 @@ import ast.definition.VarDef;
 import ir.Func;
 import ir.Ir;
 import ir.inst.*;
-import ir.operand.INum;
 import ir.operand.Operand;
 import ir.operand.addr.GlobalAddr;
 import ir.operand.addr.MemAddr;
@@ -59,22 +58,6 @@ public class CodeGenerator {
     public void visit(Inst x) {x.accept(this);}
 
     public void A(Operand dest, Operand lhs, Operand rhs, String op) {
-        if (lhs instanceof Reg && dest instanceof Reg && rhs instanceof INum && op.equals("add") && !dest.toString().equals(lhs.toString())) {
-            //ans.append("\tmov\t" + dest.toString() + ", " + lhs.toString() + "\n");
-            //ans.append("\t" + op + "\t" + dest.toString() + ", " + rhs.toString() + "\n");
-            if (((Reg) lhs).idx < 16 && ((Reg) dest).idx < 16) {
-                ans.append("\tlea\t" + dest.toString() + ", [" + lhs.toString() + "+" + rhs.toString() + "]\n");
-                return;
-            }
-        }
-        if (lhs instanceof Reg && dest instanceof Reg && rhs instanceof INum && op.equals("sub") && !dest.toString().equals(lhs.toString())) {
-            //ans.append("\tmov\t" + dest.toString() + ", " + lhs.toString() + "\n");
-            //ans.append("\t" + op + "\t" + dest.toString() + ", " + rhs.toString() + "\n");
-            if (((Reg) lhs).idx < 16 && ((Reg) dest).idx < 16) {
-                ans.append("\tlea\t" + dest.toString() + ", [" + lhs.toString() + "-" + rhs.toString() + "]\n");
-                return;
-            }
-        }
         lhs = getOp(lhs, X86Reg.rcx);
         dest = getOp(dest, X86Reg.rdx);
         if (lhs.toString().equals(dest.toString()) && dest instanceof Reg) {
@@ -129,8 +112,8 @@ public class CodeGenerator {
         String tt = JW(lhs);
         String tt2 = JW(dest);
         String tt3 = JW(rhs);
-        ans.append("\tmov\tecx, " + tt3 + "\n");
         ans.append("\tmov\teax, " + tt + "\n");
+        ans.append("\tmov\tecx, " + tt3 + "\n");
         ans.append("\tcdq\n\tidiv\tecx\n");
         String src = op.equals("div") ? "eax" : "edx";
         ans.append("\tmov\t" + tt2 + ", " + src + "\n");
@@ -254,10 +237,10 @@ public class CodeGenerator {
             if (((VirtualReg) x.dest).idx == ((VirtualReg) x.src).idx) return;
         }*/
         x.dest = getOp(x.dest, X86Reg.rbx);
-        x.src = getOp(x.src, X86Reg.rcx);
+        x.src = getOp(x.src, X86Reg.rax);
         if (!(x.dest instanceof Reg) && !(x.src instanceof Reg)) {
-            ans.append("\tmov\trcx, " + x.src.toString() + "\n");
-            x.src = X86Reg.rcx;
+            ans.append("\tmov\trax, " + x.src.toString() + "\n");
+            x.src = X86Reg.rax;
         }
         ans.append("\tmov\t" + x.dest.toString() + ", " + x.src.toString() + "\n");
     }

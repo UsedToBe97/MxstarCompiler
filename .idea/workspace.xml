@@ -6,9 +6,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/compiler/RegAllocator.java" line="111" mnemonic="1" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/compiler/RegAllocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/compiler/RegAllocator.java" afterDir="false" />
-    </list>
+    <list default="true" id="9a436705-f88d-4773-9549-58aeb4fc7e6b" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -158,8 +156,8 @@
           <file leaf-file-name="RegAllocator.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/compiler/RegAllocator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="460">
-                  <caret line="321" column="10" selection-start-line="321" selection-start-column="10" selection-end-line="321" selection-end-column="10" />
+                <state relative-caret-position="1541">
+                  <caret line="323" lean-forward="true" selection-start-line="323" selection-end-line="323" />
                 </state>
               </provider>
             </entry>
@@ -346,7 +344,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="546" />
     <option name="y" value="48" />
     <option name="width" value="1400" />
@@ -645,12 +643,12 @@
       <workItem from="1528099978759" duration="485000" />
       <workItem from="1528100862133" duration="11086000" />
       <workItem from="1528114829725" duration="9617000" />
-      <workItem from="1528162874897" duration="5616000" />
+      <workItem from="1528162874897" duration="6750000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="517221000" />
+    <option name="totallyTimeSpent" value="518355000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -662,7 +660,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="2" />
@@ -676,7 +674,7 @@
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4936034" visible="true" weight="0.25599128" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4936034" weight="0.25599128" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32897604" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="2" />
@@ -1123,8 +1121,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/compiler/RegAllocator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="321" column="10" selection-start-line="321" selection-start-column="10" selection-end-line="321" selection-end-column="10" />
+        <state relative-caret-position="1541">
+          <caret line="323" lean-forward="true" selection-start-line="323" selection-end-line="323" />
         </state>
       </provider>
     </entry>
